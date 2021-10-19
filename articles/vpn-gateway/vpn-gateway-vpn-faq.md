@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 07/26/2021
 ms.author: yushwang
-ms.openlocfilehash: 0551cf435b732b621ad5493914251afd67f18882
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: b3619ba68338e40773cdd962298b01806bde5b2b
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707131"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660621"
 ---
 # <a name="vpn-gateway-faq"></a>VPN 网关常见问题
 
@@ -185,6 +185,10 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 隧
 我们支持将 Windows Server 2012 路由和远程访问 (RRAS) 服务器用于站点到站点跨界配置。
 
 其他软件 VPN 解决方案只要遵循行业标准 IPsec 实现，就会与我们的网关兼容。 有关配置和支持说明，请与该软件的供应商联系。
+
+### <a name="can-i-connect-to-azure-gateway-via-point-to-site-when-located-at-a-site-that-has-an-active-site-to-site-connection"></a>位于具有活动站点到站点连接的站点时，是否可以通过点到站点连接到 Azure 网关？
+
+是的，但是点到站点客户端的公共 IP 地址需要与站点到站点 VPN 设备使用的公共 IP 地址不同，否则点到站点连接将无效。 对于具有 IKEv2 的点到站点连接，无法从在同一 Azure VPN 网关上配置站点到站点 VPN 连接的相同公共 IP 地址来启动。 
 
 ## <a name="point-to-site---certificate-authentication"></a><a name="P2S"></a>点到站点 - 证书身份验证
 

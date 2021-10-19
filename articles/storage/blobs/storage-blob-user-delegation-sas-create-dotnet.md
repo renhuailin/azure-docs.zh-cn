@@ -10,12 +10,12 @@ ms.date: 02/03/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 80c02416f5e1fb232d84b1311d261122dc7b9a35
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: ebd9ba6beabe1a0bd3e6f158b90ca90510ea1b66
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733657"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857810"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-directory-or-blob-with-net"></a>使用 .NET 为容器、目录或 Blob 创建用户委派 SAS
 
@@ -29,13 +29,11 @@ ms.locfileid: "113733657"
 
 当 Azure AD 安全主体尝试访问 Blob 数据时，该安全主体必须具有对资源的访问权限。 不管安全主体是 Azure 中的托管标识还是在开发环境中运行代码的 Azure AD 用户帐户，都必须为安全主体分配一个 Azure 角色，由该角色授权访问 Azure 存储中的 Blob 数据。 有关通过 Azure RBAC 分配权限的信息，请参阅[分配用于访问 Blob 数据的 Azure 角色](assign-azure-role-data-access.md)。
 
-[!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
-
-若要详细了解如何使用 Azure 存储中的 Azure 标识客户端库进行身份验证，请参阅 [使用 Azure Active Directory 和 Azure 资源的托管标识授权访问 Blob 和队列](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library)中标题为 **使用 Azure 标识库进行身份验证** 的部分。
+若要详细了解如何使用 Azure 标识客户端库从 Azure 存储获取令牌，请参阅[使用 Azure 标识库获取用于授权的访问令牌](../common/identity-library-acquire-token.md)。
 
 ## <a name="get-an-authenticated-token-credential"></a>获取经过身份验证的令牌凭据
 
-若要获取令牌凭据，以便代码用它来授权对 Azure 存储的请求，请创建 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 类的实例。
+若要获取令牌凭据，以便代码用它来授权对 Azure 存储的请求，请创建 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 类的实例。 有关使用 DefaultAzureCredential 类授权托管标识访问 Azure 存储的详细信息，请参阅[适用于 .NET 的 Azure 标识客户端库](/dotnet/api/overview/azure/identity-readme)。
 
 以下代码片段演示了如何获取经身份验证的令牌凭据并使用它来为 Blob 存储创建服务客户端：
 

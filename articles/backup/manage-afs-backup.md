@@ -2,13 +2,13 @@
 title: 管理 Azure 文件共享备份
 description: 本文介绍了管理和监视由 Azure 备份所备份的 Azure 文件共享时需要执行的常见任务。
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 973c28b2c8caac4d2acda9e2cd976f9ceb8c387c
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 10/08/2021
+ms.openlocfilehash: e955ed1cf01c055ea72218076799d7da31d096b7
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534037"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714262"
 ---
 # <a name="manage-azure-file-share-backups"></a>管理 Azure 文件共享备份
 
@@ -30,31 +30,65 @@ ms.locfileid: "129534037"
 
 ## <a name="monitor-using-azure-backup-reports"></a>使用 Azure 备份报告进行监视
 
-Azure 备份提供使用 [Azure Monitor 日志](../azure-monitor/logs/log-analytics-tutorial.md)和 [Azure 工作簿](../azure-monitor/visualize/workbooks-overview.md)的报告解决方案。这些资源可帮助你获取有关备份的丰富见解。 可以利用这些报告来获取有关 Azure 文件存储备份项、项级别作业的见解和活动策略的详细信息。 使用备份报告中提供的“通过电子邮件发送报告”功能，可以创建自动化任务以通过电子邮件接收定期报告。[了解](/azure/backup/configure-reports#get-started)如何配置和查看 Azure 备份报告。
+Azure 备份提供使用 [Azure Monitor 日志](../azure-monitor/logs/log-analytics-tutorial.md)和 [Azure 工作簿](../azure-monitor/visualize/workbooks-overview.md)的报告解决方案。 这些资源可帮助你深入了解备份。 可以利用这些报告来获取有关 Azure 文件存储备份项、项级别作业的见解和活动策略的详细信息。 使用备份报告中提供的“通过电子邮件发送报告”功能，可以创建自动化任务以通过电子邮件接收定期报告。[了解](/azure/backup/configure-reports#get-started)如何配置和查看 Azure 备份报告。
 
 ## <a name="create-a-new-policy"></a>创建新策略
 
 你可以创建新的策略，以便通过恢复服务保管库的“备份策略”部分备份 Azure 文件共享。 为文件共享配置备份时创建的所有策略都会显示，其“策略类型”为“Azure 文件共享”。 
 
+若要创建新的备份策略，请执行以下步骤：
+
+1. 在恢复服务保管库的“备份策略”窗格中，选择“+ 添加”。
+
+   :::image type="content" source="./media/manage-afs-backup/new-backup-policy.png" alt-text="显示用于开始创建新备份策略的选项的屏幕截图。":::
+
+1. 在“添加”窗格中，选择“Azure 文件共享”作为“策略类型”。
+
+   :::image type="content" source="./media/manage-afs-backup/define-policy-type.png" alt-text="显示选择“Azure 文件共享”作为策略类型的屏幕截图。":::
+
+1. 在“Azure 文件共享”的“备份策略”窗格打开时，指定策略名称。 
+
+1. 在“备份计划”中，选择适当的备份频率：“每日”或“每小时”。  
+
+   :::image type="content" source="./media/manage-afs-backup/backup-frequency-types.png" alt-text="显示备份的频率类型的屏幕截图。":::
+
+   - 每日：每日触发一次备份。 对于每日频率，请为以下选项选择适当的值：
+
+     - 时间：需要触发备份作业时的时间戳。
+     - 时区：备份作业的对应时区。
+
+   - 每小时：每天触发多个备份。 对于每小时频率，请为以下选项选择适当的值：
+   
+     - 计划：连续备份之间的时间间隔（以小时为单位）。
+     - 开始时间：需要触发当天第一个备份作业的时间。
+     - 持续时间：表示备份窗口（以小时为单位），即根据所选计划需要触发备份作业的时间跨度。
+     - 时区：备份作业的对应时区。
+     
+     例如，你的 RPO（恢复点目标）要求为 4 小时，你的工作时间为上午 9 点至晚上 9 点。 为了满足这些要求，备份计划的配置将如下所示：
+    
+     - 计划：每 4 小时
+     - 开始时间：上午 9 点 
+     - 持续时间：12 小时 
+     
+     :::image type="content" source="./media/manage-afs-backup/hourly-backup-frequency-values-scenario.png" alt-text="显示每小时备份频率值示例的屏幕截图。":::
+
+     根据你的选择，备份作业详细信息（触发备份作业时的时间戳）将显示在备份策略边栏选项卡上。
+
+1. 在“保留期”中，为备份指定适当的保留值 - 标记为每天、每周、每月或每年。
+
+1. 定义策略的所有属性后，单击“创建”。
+  
+### <a name="view-policy"></a>查看策略
+
 若要查看现有备份策略，请执行以下操作：
 
 1. 打开用于为文件共享配置备份的恢复服务保管库。 在恢复服务保管库菜单的“管理”部分选择“备份策略”。  此时会显示保管库中配置的所有备份策略。
 
-   ![所有备份策略](./media/manage-afs-backup/all-backup-policies.png)
+   :::image type="content" source="./media/manage-afs-backup/all-backup-policies.png" alt-text="显示所有备份策略的屏幕截图。":::
 
 1. 若要查看特定于 Azure 文件共享的策略，请从右上角的下拉列表中选择“Azure 文件共享”。
 
-   ![选择“Azure 文件共享”](./media/manage-afs-backup/azure-file-share.png)
-
-若要创建新的备份策略，请执行以下操作：
-
-1. 在“备份策略”窗格中，选择“+ 添加”。
-
-   ![新建备份策略](./media/manage-afs-backup/new-backup-policy.png)
-
-1. 在“添加”窗格中，选择“Azure 文件共享”作为“策略类型”。 此时会打开 Azure 文件共享的“备份策略”窗格。  指定策略名称、备份频率以及恢复点的保持期。 在定义策略后，选择“确定”。
-
-   ![定义备份策略](./media/manage-afs-backup/define-backup-policy.png)
+   :::image type="content" source="./media/manage-afs-backup/azure-file-share.png" alt-text="显示选择 Azure 文件共享的过程的屏幕截图。":::
 
 ## <a name="modify-policy"></a>修改策略
 

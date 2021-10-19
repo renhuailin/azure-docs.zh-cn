@@ -7,12 +7,12 @@ ms.reviewer: mbullwin
 ms.custom: devx-track-python
 author: lzchen
 ms.author: lechen
-ms.openlocfilehash: 988f32cae16a026ddef0294815ffd21ba0d81760
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: 98af913787ede9a0c9f543315043540b7994729f
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112991732"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754228"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>为 Python 应用程序设置 Azure Monitor
 
@@ -27,7 +27,7 @@ Microsoft 支持的用于跟踪和导出 Python 应用程序数据的解决方�
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-- Python 安装。 本文使用 [Python 3.7.0](https://www.python.org/downloads/release/python-370/)，但其他版本在经过轻微的更改后也可能适用。 Opencensus Python SDK 仅支持 Python v2.7 和 v3.4-v3.7。
+- Python 安装。 本文使用 [Python 3.7.0](https://www.python.org/downloads/release/python-370/)，但其他版本在经过轻微的更改后也可能适用。 Opencensus Python SDK 仅支持 Python v2.7 和 v3.4+。
 - 创建 Application Insights [资源](./create-new-resource.md)。 系统将针对你的资源为你分配自己的检测密钥 (ikey)。
 
 ## <a name="introducing-opencensus-python-sdk"></a>Opencensus Python SDK 简介
@@ -349,47 +349,47 @@ Opencensus Python SDK 允许通过 `tags`（实质上是键/值对的字典）�
 
 1. 将想要使用的标记插入到标记映射中。 标记映射的作用就像一种“池塘”，包含所有可用的标记。
 
-```python
-...
-tmap = tag_map_module.TagMap()
-tmap.insert("url", "http://example.com")
-...
-```
+    ```python
+    ...
+    tmap = tag_map_module.TagMap()
+    tmap.insert("url", "http://example.com")
+    ...
+    ```
 
 1. 对于特定 `View`，请通过标记键来指定在使用该视图记录指标时要使用的标记。
 
-```python
-...
-prompt_view = view_module.View("prompt view",
-                               "number of prompts",
-                               ["url"], # <-- A sequence of tag keys used to specify which tag key/value to use from the tag map
-                               prompt_measure,
-                               aggregation_module.CountAggregation())
-...
-```
+    ```python
+    ...
+    prompt_view = view_module.View("prompt view",
+                                "number of prompts",
+                                ["url"], # <-- A sequence of tag keys used to specify which tag key/value to use from the tag map
+                                prompt_measure,
+                                aggregation_module.CountAggregation())
+    ...
+    ```
 
 1. 在度量映射中记录时，请务必使用标记映射。 在 `View` 中指定的标记键必须能在用于记录的标记映射中找到。
 
-```python
-...
-mmap = stats_recorder.new_measurement_map()
-mmap.measure_int_put(prompt_measure, 1)
-mmap.record(tmap) # <-- pass the tag map in here
-...
-```
+    ```python
+    ...
+    mmap = stats_recorder.new_measurement_map()
+    mmap.measure_int_put(prompt_measure, 1)
+    mmap.record(tmap) # <-- pass the tag map in here
+    ...
+    ```
 
 1. 在 `customMetrics` 表下，使用 `prompt_view` 发出的所有指标记录都将具有自定义维度 `{"url":"http://example.com"}`。
 
 1. 若要使用相同的键生成具有不同值的标记，请为这些标记创建新的标记映射。
 
-```python
-...
-tmap = tag_map_module.TagMap()
-tmap2 = tag_map_module.TagMap()
-tmap.insert("url", "http://example.com")
-tmap2.insert("url", "https://www.wikipedia.org/wiki/")
-...
-```
+    ```python
+    ...
+    tmap = tag_map_module.TagMap()
+    tmap2 = tag_map_module.TagMap()
+    tmap.insert("url", "http://example.com")
+    tmap2.insert("url", "https://www.wikipedia.org/wiki/")
+    ...
+    ```
 
 #### <a name="performance-counters"></a>性能计数器
 

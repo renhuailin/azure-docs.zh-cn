@@ -3,12 +3,12 @@ title: 跨租户管理体验
 description: Azure Lighthouse 在许多 Azure 服务中启用和增强跨租户体验。
 ms.date: 09/30/2021
 ms.topic: conceptual
-ms.openlocfilehash: a6ad75df4e22f56c8bcb0f28586c736fc6b04a49
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 90ff0396a467f3137d6501ac34cf707577e43bdf
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129349778"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714782"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 

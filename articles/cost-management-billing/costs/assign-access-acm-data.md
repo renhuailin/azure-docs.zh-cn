@@ -1,24 +1,24 @@
 ---
 title: 分配对 Azure 成本管理数据的访问权限
-description: 本文介绍如何分配不同访问范围的 Azure 成本管理数据访问权限。
+description: 本文介绍如何分配不同访问范围的成本管理数据访问权限。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/27/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 9ee0f7f854363389f3e6594946411f05b1b8b790
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: dddb6292530687e75e4b5e697f4fc754d98040fb
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988690"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706255"
 ---
 # <a name="assign-access-to-cost-management-data"></a>分配对成本管理数据的访问权限
 
-具有 Azure Enterprise 协议的用户在 Azure 门户和企业 (EA) 门户中被授予了一些权限的组合，这些权限定义了用户对 Azure 成本管理数据的访问级别。 对于其他 Azure 帐户类型的用户，使用 Azure 基于角色的访问控制 (Azure RBAC) 来定义用户对成本管理数据的访问级别更为简单。 本文介绍如何分配对成本管理数据的访问权限。 为用户分配权限组合后，该用户可以根据其访问范围及其在 Azure 门户中选择的范围查看成本管理中的数据。
+具有 Azure Enterprise 协议的用户在 Azure 门户和企业 (EA) 门户中被授予了一些权限的组合，这些权限定义了用户对成本管理数据的访问级别。 对于其他 Azure 帐户类型的用户，使用 Azure 基于角色的访问控制 (Azure RBAC) 来定义用户对成本管理数据的访问级别更为简单。 本文介绍如何分配对成本管理数据的访问权限。 为用户分配权限组合后，该用户可以根据其访问范围及其在 Azure 门户中选择的范围查看成本管理中的数据。
 
 用户所选的范围将用于整个成本管理，以提供数据整合并控制对成本信息的访问。 使用范围时，用户不要多选它们。 而应选择一个子范围要汇总到的较大范围，然后筛选到要查看的范围。 理解数据整合很重要，因为有些人不应该访问子范围所属的父范围。
 
@@ -56,7 +56,7 @@ ms.locfileid: "112988690"
 - 订阅
 - 资源组
 
-在合作伙伴将客户加入 Microsoft 客户协议后，将有各种范围可用。 在 CSP 合作伙伴为其 CSP 客户启用成本管理功能后，客户即可使用该功能。 有关详细信息，请参阅[面向合作伙伴的 Azure 成本管理入门](get-started-partners.md)。
+在合作伙伴将客户加入 Microsoft 客户协议后，将有各种范围可用。 在 CSP 合作伙伴为其 CSP 客户启用成本管理功能后，客户即可使用该功能。 有关详细信息，请参阅[面向合作伙伴的成本管理入门](get-started-partners.md)。
 
 ## <a name="enable-access-to-costs-in-the-azure-portal"></a>启用对 Azure 门户中的成本的访问
 
@@ -161,7 +161,7 @@ ms.locfileid: "112988690"
 
 ## <a name="cross-tenant-authentication-issues"></a>跨租户身份验证问题
 
-目前，Azure 成本管理对跨租户身份验证提供有限的支持。 在某些情况下，当你尝试跨租户进行身份验证时，可能会在成本分析中收到“访问被拒绝”  错误。 如果你为另一租户的订阅配置 Azure 基于角色的访问控制 (Azure RBAC)，然后尝试查看成本数据，则可能会出现此问题。
+目前，成本管理对跨租户身份验证提供有限的支持。 在某些情况下，当你尝试跨租户进行身份验证时，可能会在成本分析中收到“访问被拒绝”  错误。 如果你为另一租户的订阅配置 Azure 基于角色的访问控制 (Azure RBAC)，然后尝试查看成本数据，则可能会出现此问题。
 
 *若要解决此问题，请执行以下操作*：在配置跨租户 Azure RBAC 后，请等待一小时。 然后，尝试在两个租户中查看成本分析中的成本或者向用户授予成本管理访问权限。  
 

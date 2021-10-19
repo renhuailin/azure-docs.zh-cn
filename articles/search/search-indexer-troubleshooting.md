@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: 650f5f40bf8b8fc0909b4fec85ef6b5724a2e3c7
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 4453660cb58a1b976488d1cc9e240768637a85b6
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539817"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857087"
 ---
 # <a name="indexer-troubleshooting-guidance-for-azure-cognitive-search"></a>Azure 认知搜索的索引器故障排除指导
 
@@ -26,7 +26,7 @@ ms.locfileid: "123539817"
 >
 > 可以通过 ping 搜索服务的完全限定的域名（例如 `<your-search-service-name>.search.windows.net`）来查找其 IP 地址。
 >
-> 可以使用[可下载的 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)或通过[服务标记发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 找到 `AzureCognitiveSearch` [服务标记](../virtual-network/service-tags-overview.md#available-service-tags)的 IP 地址范围。 IP 地址范围每周更新一次。
+> 可以使用[可下载的 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)或通过[服务标记发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) 找到 `AzureCognitiveSearch` [服务标记](../virtual-network/service-tags-overview.md#available-service-tags)的 IP 地址范围。 IP 地址范围每周更新一次。
 
 ### <a name="firewall-rules"></a>防火墙规则
 
@@ -105,7 +105,7 @@ Azure Functions（可用作[自定义 Web API 技能](cognitive-search-custom-sk
 
     额外的 IP 地址用于来自索引器的[多租户执行环境](search-indexer-securing-resources.md#indexer-execution-environment)的请求。 可以从服务标记获取此 IP 地址范围。
 
-    `AzureCognitiveSearch` 服务标记的 IP 地址范围可通过[发现 API（预览版）](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)或[可下载的 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)获取。
+    `AzureCognitiveSearch` 服务标记的 IP 地址范围可通过[发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) 或[可下载的 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)获取。
 
     对于本演练，假设搜索服务是 Azure 公有云，应下载 [Azure 公共 JSON 文件](https://www.microsoft.com/download/details.aspx?id=56519)。
 

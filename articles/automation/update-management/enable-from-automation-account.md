@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: bc17b875c8f16304d5292f7ed852909373b8c5d9
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 36d78edebdcc1624270cf27f136f701b2ebc0191
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768308"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715357"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>从自动化帐户启用更新管理
 
@@ -24,7 +24,7 @@ ms.locfileid: "122768308"
 
 * Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 用于管理计算机的[自动化帐户](../automation-security-overview.md)。
-* [Azure 虚拟机](../../virtual-machines/windows/quick-create-portal.md)，或已注册到已启用 Arc 的服务器的 VM 或服务器。 非 Azure VM 或服务器需要安装用于 Windows 或 Linux 的 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)，在其中启用了向链接到自动化帐户更新管理的工作区报告的功能。 建议通过先将计算机连接到[已启用 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Windows 或 Linux 的日志分析代理，然后使用 Azure Policy 来分配[将日志分析代理部署到 Linux 或 Windows Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略。  或者，如果计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
+* [Azure 虚拟机](../../virtual-machines/windows/quick-create-portal.md)，或已注册到已启用 Azure Arc 的服务器的 VM 或服务器。 非 Azure VM 或服务器需要安装用于 Windows 或 Linux 的 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)，并向链接到自动化帐户的工作区（其中启用了更新管理）报告。 建议通过先将计算机连接到[已启用 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Windows 或 Linux 的日志分析代理，然后使用 Azure Policy 来分配[将日志分析代理部署到 Linux 或 Windows Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略。  或者，如果计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure

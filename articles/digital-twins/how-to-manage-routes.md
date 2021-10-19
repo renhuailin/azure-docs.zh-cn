@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/30/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4e9bfa2dc340f567a6c2b7c4ab5d45cfeaa41e6c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 99fbf0a6ecd232ae646639e84864addd103c1f5a
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128661006"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129807774"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>在 Azure 数字孪生中管理终结点和路由
 
@@ -42,9 +42,12 @@ ms.locfileid: "128661006"
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>为 Azure 数字孪生创建终结点
 
 以下是可为实例创建的受支持的终结点类型：
-* [事件网格](../event-grid/overview.md) 
-* [事件中心](../event-hubs/event-hubs-about.md)
-* [服务总线](../service-bus-messaging/service-bus-messaging-overview.md)
+* [事件网格](../event-grid/overview.md)主题
+* [事件中心](../event-hubs/event-hubs-about.md)中心
+* [服务总线](../service-bus-messaging/service-bus-messaging-overview.md)主题
+
+>[!NOTE]
+> 对于事件网格端点，只支持事件网格主题。 不支持将事件网格域作为终结点。
 
 有关不同终结点类型的更多信息，请参阅在 Azure 消息服务之间进行选择。
 
@@ -58,7 +61,7 @@ ms.locfileid: "128661006"
 
 | 终结点类型 | 所需的资源（已链接到创建说明） |
 | --- | --- |
-| 事件网格终结点 | [事件网格主题](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) |
+| 事件网格终结点 | [事件网格主题](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)<br/>\* 事件架构必须是事件网格架构或云事件架构 v1.0 |
 | 事件中心终结点 | [事件&nbsp;中心&nbsp;命名空间](../event-hubs/event-hubs-create.md)<br/><br/>[事件中心](../event-hubs/event-hubs-create.md)<br/><br/>（可选）基于密钥的身份验证的[授权规则](../event-hubs/authorize-access-shared-access-signature.md) | 
 | Service Bus 终结点 | [服务总线命名空间](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md)<br/><br/>[服务总线主题](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md)<br/><br/> （可选）基于密钥的身份验证的[授权规则](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature)|
 

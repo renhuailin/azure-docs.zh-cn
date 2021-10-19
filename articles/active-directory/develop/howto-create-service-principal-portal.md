@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
-ms.date: 06/16/2021
+ms.date: 10/11/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, subject-rbac-steps
-ms.openlocfilehash: 2b8e8c73286eb058f5fcd183ac43998801a0ebe8
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: f04dc73c6137e311b309a2009d6493414591eda5
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123038425"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858869"
 ---
 # <a name="use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -38,11 +38,11 @@ ms.locfileid: "123038425"
 ### <a name="check-azure-ad-permissions"></a>检查 Azure AD 权限
 
 1. 选择“Azure Active Directory” 。
-1. 记下你的角色。 如果角色为“用户”，则必须确保非管理员可以注册应用程序。
+1. 在“概述”->“我的源”下面找到你的角色。 如果角色为“用户”，则必须确保非管理员可以注册应用程序。
 
-   ![找到你的角色。 如果你是用户，请确保非管理员可以注册应用](./media/howto-create-service-principal-portal/view-user-info.png)
+   :::image type="content" source="media/howto-create-service-principal-portal/view-user-info.png" alt-text="找到你的角色。如果你是“用户”，请确保非管理员可以注册应用":::
 
-1. 在左侧窗格中，选择“用户设置”。
+1. 在左窗格中选择“用户”，然后选择“用户设置”。 
 1. 检查“应用注册”  设置。 只有管理员可设置此值。 如果设置为“是”，则 Active AD 租户中的任何用户都可以注册应用。
 
 如果应用注册设置设定为“否”，则只有具有管理员角色的用户才能注册这些类型的应用程序。 请参阅 [Azure AD 内置角色](../roles/permissions-reference.md#all-roles)来了解 Azure AD 中的可用管理员角色以及授予每个角色的具体权限。 如果为帐户分配“用户”角色，但应用注册设置仅限于管理员用户，请要求管理员为你分配可以创建和管理应用注册的所有方面的管理员角色之一，或者让用户能够注册应用。
@@ -67,9 +67,9 @@ ms.locfileid: "123038425"
 
    ![选择要在其中创建服务主体的订阅](./media/howto-create-service-principal-portal/view-details.png)
 
-1. 在“角色分配”中选择“查看”， 以便查看分配的角色，并确定你是否拥有足够的权限，以便将角色分配给 AD 应用。 如果没有，请要求订阅管理员将你添加到用户访问管理员角色。 在下图中，为用户分配了“所有者”角色，这意味着该用户具有足够的权限。
+1. 在“角色分配”中查看你已分配的角色，并确定你是否拥有足够的权限来为 AD 应用分配角色。 如果没有，请要求订阅管理员将你添加到用户访问管理员角色。 在下图中，为用户分配了“所有者”角色，这意味着该用户具有足够的权限。
 
-   ![此示例演示如何为用户分配“所有者”角色](./media/howto-create-service-principal-portal/view-user-role.png)
+   :::image type="content" source="media/howto-create-service-principal-portal/view-user-role.png" alt-text="此示例演示如何为用户分配“所有者”角色":::
 
 ## <a name="register-an-application-with-azure-ad-and-create-a-service-principal"></a>向 Azure AD 注册应用程序并创建服务主体
 

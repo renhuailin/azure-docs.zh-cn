@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 07/27/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: e88637f67e8e9db01c46b6de5518c95ad4290ee9
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 5b1a0f5890f55e2dc114801a8f4fd058ef4db69b
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419202"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660450"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>对环境映像生成进行故障排除
 
@@ -145,9 +145,9 @@ Pip 子进程错误：
 
 如果依赖项中存在无法解决的冲突，pip 安装可能会陷入无限循环。 如果在本地使用，请将 pip 版本降级到 20.3 以下。 在通过 YAML 文件创建的 conda 环境中，只有在 conda-forge 是最高优先级通道的情况下才出现此问题。 若要缓解此问题，请在 conda 规范文件中显式指定 pip < 20.3（!=20.3 或 =20.2.4 会固定到其他版本）作为 conda 依赖项。
 
-### <a name="modulenotfounderror-no-module-named-distutilsdir_util"></a>ModuleNotFoundError: No module named 'distutils.dir_util'
+### <a name="modulenotfounderror-no-module-named-distutilsdir_util"></a>ModuleNotFoundError：没有名为“distutils.dir_util”的模块
 
-设置环境时，有时会遇到“ModuleNotFoundError: 没有名为 "distutils.dir_util" 的模块”问题。 要解决此问题，请运行以下命令：
+设置环境时，有时会遇到“ModuleNotFoundError: 没有名为 "distutils.dir_util" 的模块”问题。 若要解决此问题，请运行以下命令：
 
 ```bash
 apt-get install -y --no-install-recommends python3 python3-distutils && \
@@ -162,7 +162,15 @@ RUN apt-get update && \
   ln -sf /usr/bin/python3 /usr/bin/python
 ```
 
-运行此命令将安装正确的模块依赖项来配置环境。 
+运行此命令会安装正确的模块依赖项来配置环境。 
+
+### <a name="build-failure-when-using-spark-packages"></a>使用 Spark 包时生成失败
+
+将环境配置为不对包进行预先缓存。 
+
+```python
+env.spark.precache_packages = False
+```
 
 ## <a name="service-side-failures"></a>服务端失败
 

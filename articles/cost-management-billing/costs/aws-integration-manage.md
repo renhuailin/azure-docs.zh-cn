@@ -9,16 +9,16 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 4f657e742165bdb87e1cc1c021966dc2e5473e81
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d64d0bead5df1aa8b91ae39a79c1255eaac51f27
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128647725"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706173"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>在 Azure 中管理 AWS 成本和使用情况
 
-为 Azure 成本管理设置并配置 AWS 成本和使用情况报表集成后，便可以开始管理 AWS 成本和使用情况。 本文可帮助你了解如何在成本管理中使用成本分析和预算来管理 AWS 成本和使用情况。
+为成本管理设置并配置 AWS 成本和使用情况报表集成后，便可以开始管理 AWS 成本和使用情况。 本文可帮助你了解如何在成本管理中使用成本分析和预算来管理 AWS 成本和使用情况。
 
 如果尚未配置集成，请参阅[设置和配置 AWS 使用情况报表集成](aws-integration-set-up-configure.md)。
 
@@ -151,7 +151,7 @@ AWS 成本可在以下范围内用于成本分析：
 
 **错误代码：** _AccessDeniedReportDefinitions_
 
-此错误表示成本管理无法查看成本和使用情况报表定义。 此权限用来验证 Azure 成本管理是否按预期定义了 CUR。 请参阅[在 AWS 中创建成本和使用情况报表](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)。
+此错误表示成本管理无法查看成本和使用情况报表定义。 此权限用来验证成本管理是否按预期定义了 CUR。 请参阅[在 AWS 中创建成本和使用情况报表](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)。
 
 ### <a name="collection-failed-with-access-denied---list-reports"></a>收集失败，出现“拒绝访问”错误 - 列出报表
 

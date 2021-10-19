@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/16/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: be6bc9166ffc0bddae5433734d3213b53e6f6f0e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 57a3f1f9d9665e23ba40479062f0f60e59608b66
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128673647"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707453"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中创建计算目标以进行模型训练和部署
 
@@ -172,7 +172,7 @@ ms.locfileid: "128673647"
 [!INCLUDE [arc-enabled-machine-learning-create-training-compute](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
 
 > [!IMPORTANT]
-> 若要附加 Azure Kubernetes 服务 (AKS) 或启用了 Arc 的 Kubernetes 群集，你必须是订阅所有者，或者必须有权访问订阅中的 AKS 群集资源。 否则，“附加新计算”页上的群集列表将会是空白。
+> 若要附加 Azure Kubernetes 服务 (AKS) 或启用了 Azure Arc 的 Kubernetes 群集，你必须是订阅所有者，或者必须有权访问订阅中的 AKS 群集资源。 否则，“附加新计算”页上的群集列表将会是空白。
 
 若要拆离计算，请使用以下步骤：
 

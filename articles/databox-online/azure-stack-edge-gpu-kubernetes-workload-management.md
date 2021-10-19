@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 67110a2a2bd7f34c735edd126cfc655f45247fc2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a0b3a5d0cbbae9f25a845f79db35d1049f93f776
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560227"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710181"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro 设备上的 Kubernetes 工作负载管理
 
@@ -57,7 +57,7 @@ ms.locfileid: "105560227"
     
     通过启用了 Azure Arc 的 Kubernetes，还可以使用适用于容器的 Azure Monitor 来查看和监视群集。 有关详细信息，请转到[什么是启用了 Azure Arc 的 Kubernetes？](../azure-arc/kubernetes/overview.md)。
     
-    启用了 Azure Arc 的 Kubernetes 将于 2021 年 3 月正式发布，收取标准使用费用。 作为重要的预览版客户，你可以在 Azure Stack Edge 设备上免费使用启用了 Azure Arc 的 Kubernetes。 若要获得预览版产品/服务，请创建[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)：
+    已启用 Azure Arc 的 Kubernetes 将于 2021 年 3 月面向用户正式发布，并且将收取标准使用费用。 作为重要的预览版客户，你可以在 Azure Stack Edge 设备上免费使用启用了 Azure Arc 的 Kubernetes。 若要获得预览版产品/服务，请创建[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)：
 
     1. 在“问题类型”下，选择“计费”。  
     2. 在“订阅”下，选择自己的订阅。

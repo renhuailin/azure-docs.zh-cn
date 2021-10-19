@@ -7,16 +7,16 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: 7354f0504197742a8c8acf2d0c555a524fef95d9
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 89c76331f9aad8238b596094ad2057df98eea9a9
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538851"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659519"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 输出缓存提供程序
 
-Redis 输出缓存提供程序是用于输出缓存数据的进程外存储机制。 此数据专门用于完整 HTTP 响应（页面输出缓存）。 此提供程序会插入 ASP.NET 4 中引入的新输出缓存提供程序扩展点。 对于 ASP.NET Core 应用程序，请参阅 [ASP.NET Core 中的响应缓存](/aspnet/core/performance/caching/response)。 
+Redis 输出缓存提供程序是用于输出缓存数据的进程外存储机制。 此数据专门用于完整 HTTP 响应（页面输出缓存）。 此提供程序会插入 ASP.NET 4 中引入的新输出缓存提供程序扩展点。 对于 ASP.NET Core 应用程序，请参阅 [ASP.NET Core 中的响应缓存](/aspnet/core/performance/caching/response)。
 
 要使用 Redis 输出缓存提供程序，首先配置用户的缓存，然后使用 Redis 输出缓存提供程序 NuGet 包配置 ASP.NET 应用程序。 本文提供有关配置应用程序以使用 Redis 输出缓存提供程序的指南。 有关创建和配置 Azure Redis 缓存实例的详细信息，请参阅[创建缓存](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)。
 
@@ -26,14 +26,11 @@ Redis 输出缓存提供程序是用于输出缓存数据的进程外存储机�
 
 从 `Package Manager Console` 窗口运行以下命令。
 
-```
+```powershell
 Install-Package Microsoft.Web.RedisOutputCacheProvider
 ```
 
-Redis 输出缓存提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName 包。 如果项目中没有 StackExchange.Redis.StrongName 包，则会安装它。 有关 Redis 输出缓存提供程序 NuGet 包的详细信息，请参阅 [RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/) NuGet 页。
-
->[!NOTE]
->除了强命名的 StackExchange.Redis.StrongName 包外，还有 StackExchange.Redis 非强命名版本。 如果项目使用非强命名的 StackExchange.Redis 版本，则必须将其卸载，否则会在项目中遇到命名冲突。 有关这些包的详细信息，请参阅[配置 .NET 缓存客户端](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)。
+Redis 输出缓存提供程序 NuGet 包依赖于 StackExchange.Redis 包。 如果项目中没有 StackExchange.Redis 包，则会安装它。 有关 Redis 输出缓存提供程序 NuGet 包的详细信息，请参阅 [RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/) NuGet 页。
 
 NuGet 包会下载并添加所需的程序集引用，并将以下节添加到 web.config 文件中。 此节包含的配置是 ASP.NET 应用程序使用 Redis 输出缓存提供程序所必需的。
 

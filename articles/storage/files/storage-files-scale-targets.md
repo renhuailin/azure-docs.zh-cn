@@ -4,15 +4,15 @@ description: 了解 Azure 文件的可伸缩性和性能目标信息，包括容
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 10/06/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 83e33933e8afb8b376750368a64c60cb56406a75
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 66ad68711d57767f6f657d941222e4b225c4b20e
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128651534"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658930"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 [Azure 文件](storage-files-introduction.md)在云中提供可通过 SMB 和 NFS 文件系统协议访问的完全托管的文件共享。 本文讨论了 Azure 文件和 Azure 文件同步的可伸缩性和性能目标。
@@ -56,7 +56,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 | 属性 | 标准文件共享<sup>1</sup> | 高级文件共享 |
 |-|-|-|
 | 文件共享的最小大小 | 无最小值 | 100 GiB（预配值） |
-| 预配大小增加/减少单位 | 不可用 | 1 GiB |
+| 预配大小增加/减少单位 | 空值 | 1 GiB |
 | 文件共享的最大大小 | <ul><li>100 TiB，如果启用大型文件共享功能<sup>2</sup></li><li>5 TiB，默认值</li></ul> | 100 TiB |
 | 文件共享中的文件数上限 | 无限制 | 无限制 |
 | 最大请求速率（最大 IOPS） | <ul><li>20,000，启用了大型文件共享功能<sup>2</sup></li><li>每 100 毫秒 1,000 或 100 个请求，默认值</li></ul> | <ul><li>基线 IOPS：400 + 每 GiB 1 IOPS，最高 100,000</li><li>IOPS 突发：Max (4000, 每 GiB 3x IOPS)，最高 100,000</li></ul> |
@@ -71,7 +71,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 
 <sup>1</sup> 标准文件共享的限制适用于标准文件共享可用的所有三个层：事务优化层、热层和冷层。
 
-<sup>2</sup> 标准文件共享的默认大小为 5 TiB，请参阅[创建 Azure 文件共享](./storage-how-to-create-file-share.md)以了解如何创建大小为 100 TiB 的文件共享以及如何将现有的标准文件共享增加至 100 TiB。
+<sup>2</sup> 标准文件共享的默认大小为 5 TiB，请参阅[创建 Azure 文件共享](./storage-how-to-create-file-share.md)以了解如何创建大小为 100 TiB 的文件共享以及如何将现有的标准文件共享增加至 100 TiB。 要利用更大的缩放目标，必须更改配额，使其大于 5 TiB。
 
 ### <a name="file-scale-targets"></a>文件缩放目标
 | 属性 | 标准文件共享中的文件  | 高级文件共享中的文件  |

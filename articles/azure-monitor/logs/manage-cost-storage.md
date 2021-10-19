@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/23/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0e894fc6c6e210249e591ed7f9b9b662ff5ae187
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: febbfc5a1a3381affac50a75a29cb502c7872d69
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272920"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657212"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本    
 
@@ -150,6 +150,8 @@ New-AzResourceGroupDeployment -ResourceGroupName "YourResourceGroupName" -Templa
 > 如果工作区可访问“按节点”定价层，但你想知道在即用即付层中是否成本更低，则可以[使用以下查询](#evaluating-the-legacy-per-node-pricing-tier)来轻松获取建议。 
 
 2016 年 4 月之前创建的工作区可以继续使用“标准”和“高级”定价层（分别有 30 天和 365 天的固定数据保留期）。 无法在“标准”或“高级”定价层中创建新的工作区，并且如果将工作区移出这些层，则无法将其移回 。 Azure 账单上针对这些旧层的数据引入计量称为“分析的数据”。
+
+### <a name="legacy-pricing-tiers-and-azure-defender-security-center"></a>旧版定价层和 Azure Defender（安全中心）
 
 在使用旧 Log Analytics 层和 [Azure Defender（安全中心）](../../security-center/index.yml)的使用情况计费方式之间还有一些行为。 
 

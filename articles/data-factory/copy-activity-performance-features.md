@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 09/09/2021
-ms.openlocfilehash: c9cedace5f4755e22c4f08ecdde0d3f6fb8fa52f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/29/2021
+ms.openlocfilehash: 5c898b9547377f8a021f4126c70bba3cb66fdab7
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128663205"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714140"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>复制活动性能优化功能
 
@@ -90,8 +90,8 @@ ms.locfileid: "128663205"
 | --- | --- |
 | 文件存储之间 | `parallelCopies` 确定文件级别的并行度。 每个文件内的区块化会自动透明地在该级别下进行。 它旨在对给定数据存储类型使用最佳区块大小，以并行加载数据。 <br/><br/>复制活动在运行时使用的实际并行副本数不超过现有的文件数。 如果复制行为是在文件接收器中执行 **mergeFile**，则复制活动无法利用文件级并行度。 |
 | 从文件存储到非文件存储 | - 在将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认的并行副本数还取决于接收器层（DTU/RU 数目）。<br>- 在将数据复制到 Azure 表时，默认的并行副本数为 4 个。 |
-| 从非文件存储到文件存储 | - 从启用了分区选项的数据存储复制数据时（此类数据存储包括 [Azure SQL 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、[SAP 表](connector-sap-table.md#sap-table-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source) 和 [Teradata](connector-teradata.md#teradata-as-source)），默认的并行副本数为 4。 复制活动在运行时使用的实际并行副本数不超过现有的数据分区数。 使用自承载集成运行时并复制到 Azure Blob/ADLS Gen2 时请注意，每个 IR 节点的最大有效并行副本数为 4 或 5 个。<br>- 对于其他方案，并行复制不起作用。 即使指定了并行度，也不会应用并行复制。 |
-| 非文件存储之间 | - 在将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认的并行副本数还取决于接收器层（DTU/RU 数目）。<br/>- 从启用了分区选项的数据存储复制数据时（此类数据存储包括 [Azure SQL 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、[SAP 表](connector-sap-table.md#sap-table-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source) 和 [Teradata](connector-teradata.md#teradata-as-source)），默认的并行副本数为 4。<br>- 在将数据复制到 Azure 表时，默认的并行副本数为 4 个。 |
+| 从非文件存储到文件存储 | - 从启用了分区选项的数据存储复制数据时（此类数据存储包括 [Azure SQL 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Amazon RDS for Oracle](connector-amazon-rds-for-oracle.md#amazon-rds-for-oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、[SAP 表](connector-sap-table.md#sap-table-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Amazon RDS for SQL Server](connector-amazon-rds-for-sql-server.md#amazon-rds-for-sql-server-as-a-source) 和 [Teradata](connector-teradata.md#teradata-as-source)），默认的并行副本数为 4。 复制活动在运行时使用的实际并行副本数不超过现有的数据分区数。 使用自承载集成运行时并复制到 Azure Blob/ADLS Gen2 时请注意，每个 IR 节点的最大有效并行副本数为 4 或 5 个。<br>- 对于其他方案，并行复制不起作用。 即使指定了并行度，也不会应用并行复制。 |
+| 非文件存储之间 | - 在将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认的并行副本数还取决于接收器层（DTU/RU 数目）。<br/>- 从启用了分区选项的数据存储复制数据时（此类数据存储包括 [Azure SQL 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Amazon RDS for Oracle](connector-amazon-rds-for-oracle.md#amazon-rds-for-oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、[SAP 表](connector-sap-table.md#sap-table-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Amazon RDS for SQL Server](connector-amazon-rds-for-sql-server.md#amazon-rds-for-sql-server-as-a-source) 和 [Teradata](connector-teradata.md#teradata-as-source)），默认的并行副本数为 4。<br>- 在将数据复制到 Azure 表时，默认的并行副本数为 4 个。 |
 
 若要控制托管数据存储的计算机上的负载或优化复制性能，可以替代默认值并为 `parallelCopies` 属性指定值。 该值必须是大于或等于 1 的整数。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
 

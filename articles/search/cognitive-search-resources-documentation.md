@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/16/2021
-ms.openlocfilehash: 9bc027f269355a76d43fe02e4ca90a0e9f65024d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 26338164ca073ff5d9b331d36a5a9d935a3f3468
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128656600"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707594"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充文档资源
 
@@ -34,7 +34,8 @@ AI 扩充是基于索引器的索引的加载项，用于查找非文本源和�
 
 ## <a name="hands-on-walkthroughs"></a>动手演练
 
-+ [快速入门：在 Azure 门户中创建认知技能集](cognitive-search-quickstart-blob.md)
++ [快速入门：创建文本翻译和实体技能集](cognitive-search-quickstart-blob.md)
++ [快速入门：创建 OCR 图像技能集](cognitive-search-quickstart-ocr.md)
 + [教程：使用 AI 扩充的索引](cognitive-search-tutorial-blob.md)
 + [教程：用调试会话诊断、修正和提交对技能组的更改](cognitive-search-tutorial-debug-sessions.md)
 

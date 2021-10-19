@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: bac463aa01a997122d86e32e140b135938d589da
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: fcf7235ae071dece392a11bacbf9f750569380ae
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093281"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715309"
 ---
 # <a name="plan-your-update-management-deployment"></a>计划更新管理部署
 
@@ -85,7 +85,7 @@ Azure 自动化更新管理依赖 Windows 更新代理来下载和安装 Windows
 
 - 使用 Azure [资源管理器模板](enable-from-template.md)将更新管理部署到订阅中新的或现有的自动化帐户和 Azure Monitor Log Analytics 工作区。 它不会配置应管理的计算机范围，而是在使用模板后在单独的步骤中执行此操作。
 
-- 从一台或多台 Azure 和非 Azure 计算机（包括启用了 Arc 的服务器）的[自动化帐户](enable-from-automation-account.md)。
+- 从一台或多台 Azure 和非 Azure 计算机（包括启用了 Azure Arc 的服务器）的[自动化帐户](enable-from-automation-account.md)。
 
 - 使用 Enable-AutomationSolution [runbook](enable-from-runbook.md) 自动加入 Azure VM。
 

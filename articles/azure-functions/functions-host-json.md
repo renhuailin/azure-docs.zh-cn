@@ -3,12 +3,12 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: b646c4d263896e1bf4d63bdaf965209c005b8228
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8844e76c7f01bf33bc81ef2fec733b9e538e34cc
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742652"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660507"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -16,12 +16,15 @@ ms.locfileid: "121742652"
 > * [版本 1](functions-host-json-v1.md)
 > * [版本 2+](functions-host-json.md)
 
-*host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了从 Azure Functions 运行时 2.x 版开始可用的设置。  
+host.json 元数据文件包含影响函数应用实例中所有函数的配置选项。 本文列出了从 Azure Functions 运行时 2.x 版开始可用的设置。  
 
 > [!NOTE]
 > 本文适用于 Azure Functions 2.x 及更高版本。  有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
 
-其他函数应用配置选项在[应用设置](functions-app-settings.md)（适用于已部署的应用）或 [local.settings.json](functions-develop-local.md#local-settings-file) 文件（用于本地开发）中进行管理。
+其他函数应用程序配置选项根据函数应用的运行位置进行管理：
+
++ 部署到 Azure：在[应用程序设置](functions-app-settings.md)中 
++ 在本地计算机上：在 [local.settings.json](functions-develop-local.md#local-settings-file) 文件中。
 
 host.json 中与绑定相关的配置将同样地应用于函数应用中的每个函数。 
 

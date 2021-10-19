@@ -3,12 +3,12 @@ title: 管理 Service Fabric 群集升级
 description: 管理 Service Fabric 群集运行时的更新时间和方式
 ms.topic: how-to
 ms.date: 03/26/2021
-ms.openlocfilehash: 98c3300e5cc51c32d894397839879e25190d979b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 129bdae4dc131013bd7c13377b61575141c27ccd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731147"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714574"
 ---
 # <a name="manage-service-fabric-cluster-upgrades"></a>管理 Service Fabric 群集升级
 
@@ -40,7 +40,7 @@ Azure Service Fabric 群集是你拥有的但部分由 Microsoft 管理的资源
 
 ### <a name="resource-manager-template"></a>资源管理器模板
 
-若要使用资源管理器模板更改群集升级模式，需要为 Microsoft.ServiceFabric/clusters 资源定义的 `upgradeMode` 属性指定“自动”或“手动”  。 如果选择手动升级，还需将 `clusterCodeVersion` 设置为当前[支持的结构版本](#query-for-supported-cluster-versions)。
+若要使用资源管理器模板更改群集升级模式，需要为 Microsoft.ServiceFabric/clusters 资源定义的 `upgradeMode` 属性指定“自动”或“手动”  。 如果选择手动升级，还需将 `clusterCodeVersion` 设置为当前[支持的结构版本](#check-for-supported-cluster-versions)。
 
 :::image type="content" source="./media/service-fabric-cluster-upgrade/ARMUpgradeMode.PNG" alt-text="屏幕截图显示一个模板，该模板以纯文本方式缩进来反映结构。突出显示了“clusterCodeVersion”和“upgradeMode”属性。":::
 
@@ -126,11 +126,11 @@ Azure Service Fabric 群集是你拥有的但部分由 Microsoft 管理的资源
 
 :::image type="content" source="./media/service-fabric-cluster-upgrade/custom-upgrade-policy.png" alt-text="在 Azure 门户中的群集资源的“结构升级”部分中选择“自定义”升级策略选项，以便在升级期间设置自定义运行状况策略":::
 
-## <a name="query-for-supported-cluster-versions"></a>查询支持的群集版本
+## <a name="check-for-supported-cluster-versions"></a>查看支持的群集版本
 
-可以使用 [Azure REST API](/rest/api/azure/) 列出可用于指定位置和订阅的所有可用的 Service Fabric 运行时版本 ([clusterVersions](/rest/api/servicefabric/sfrp-api-clusterversions_list))。
+可以参考 [Service Fabric 版本](service-fabric-versions.md)，了解有关支持的版本和操作系统的更多详细信息。
 
-还可以参考 [Service Fabric 版本](service-fabric-versions.md)，了解有关支持的版本和操作系统的更多详细信息。
+还可以使用 [Azure REST API](/rest/api/azure/) 列出可用于指定位置和订阅的所有可用的 Service Fabric 运行时版本 ([clusterVersions](/rest/api/servicefabric/sfrp-api-clusterversions_list))。
 
 ```REST
 GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2018-02-01
@@ -171,6 +171,40 @@ GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.Serv
 ```
 
 输出中的 `supportExpiryUtc` 报告给定版本的到期时间。 最新版本没有有效日期，但有一个值 9999-12-31T23:59:59.9999999，这表示尚未设置其到期日期。
+
+
+## <a name="check-for-supported-upgrade-path"></a>查看支持的升级路径
+
+可以参考 [Service Fabric 版本](service-fabric-versions.md)文档，了解支持的升级路径和相关版本信息。 
+
+利用支持的目标版本信息，可以使用以下 PowerShell 步骤来验证支持的升级路径。
+
+1) 登录 Azure
+   ```PowerShell
+   Login-AzAccount
+   ```
+
+2) 选择订阅
+   ```PowerShell
+   Set-AzContext -SubscriptionId <your-subscription>
+   ```
+
+3) 调用 API
+   ```PowerShell
+   $params = @{ "TargetVersion" = "<target version>"}
+   Invoke-AzResourceAction -ResourceId -ResourceId <cluster resource id> -Parameters $params -Action listUpgradableVersions -Force
+   ```
+
+   示例： 
+   ```PowerShell
+   $params = @{ "TargetVersion" = "8.1.335.9590"}
+   Invoke-AzResourceAction -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ServiceFabric/clusters/myCluster -Parameters $params -Action listUpgradableVersions -Force
+
+   Output
+   supportedPath
+   -------------
+   {8.1.329.9590, 8.1.335.9590}
+   ```
 
 
 ## <a name="next-steps"></a>后续步骤

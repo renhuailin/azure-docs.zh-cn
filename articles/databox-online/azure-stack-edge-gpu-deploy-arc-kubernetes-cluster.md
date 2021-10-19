@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 44716cea30df107d3e966ce39e941bcbe385ebb8
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: a43b3945a214f0825f1b580610dd364be446eeba
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535672"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713073"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备的 Kubernetes 群集上启用 Azure Arc
 
@@ -142,7 +142,7 @@ ms.locfileid: "129535672"
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>"` 
     
-    运行此命令时，会有一个后续提示，要求你输入 `ClientSecret`。 `ClientSecret` 是安全字符串。
+    运行此命令时，会有一个后续提示，要求你输入 `ClientSecret`。 提供服务主体密码。
 
     如果使用的云不是 Azure 公有云，请添加 `CloudEnvironment` 参数。 可以将此参数设置为 `AZUREPUBLICCLOUD`、`AZURECHINACLOUD`、`AZUREGERMANCLOUD` 和 `AZUREUSGOVERNMENTCLOUD`。
 
@@ -154,7 +154,17 @@ ms.locfileid: "129535672"
     以下是示例：
    
     ```powershell
-    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed&quot; -ResourceGroupName &quot;myaserg1&quot; -ResourceName &quot;myasetestresarc&quot; -Location &quot;westeurope&quot; -TenantId &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot; -ClientId &quot;aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b"
+    [10.100.10.10]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed&quot; -ResourceGroupName &quot;myaserg1&quot; -ResourceName &quot;myasetestresarc&quot; -Location &quot;westeurope&quot; -TenantId &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot; -ClientId &quot;aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b"
+    
+    WARNING: A script or application on the remote computer 10.126.76.0 is sending a prompt request. When you are prompted,
+    enter sensitive information, such as credentials or passwords, only if you trust the remote computer and the
+    application or script that is requesting the data.
+
+    cmdlet Set-HcsKubernetesAzureArcAgent at command pipeline position 1
+
+    Supply values for the following parameters:
+    ClientSecret: **********************************
+    [10.100.10.10]: PS>
     ```
     
     在 Azure 门户中，带有在前一个命令中提供的名称的资源应已创建。
@@ -214,7 +224,7 @@ ms.locfileid: "129535672"
 - `metrics-agent`：收集其他 Arc 代理的指标，以确保这些代理表现出最佳性能
 - `cluster-metadata-operator`：收集群集元数据 - 群集版本、节点计数和 Azure Arc 代理版本
 - `resource-sync-agent`：将上面提到的群集元数据同步到 Azure
-- `clusteridentityoperator`：已启用 Azure Arc 的 Kubernetes 目前支持系统分配的标识。 clusteridentityoperator 维护供其他代理用来与 Azure 通信的托管服务标识 (MSI) 证书。
+- `clusteridentityoperator`：启用了 Azure Arc 的 Kubernetes 目前支持系统分配的标识。 clusteridentityoperator 维护供其他代理用来与 Azure 通信的托管服务标识 (MSI) 证书。
 - `flux-logs-agent`：从在源代码管理配置过程中部署的 flux operator 收集日志。
 - `connect-agent`：与 Azure Arc 资源通信。
 

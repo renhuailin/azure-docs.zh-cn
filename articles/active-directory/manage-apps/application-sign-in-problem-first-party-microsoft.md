@@ -1,5 +1,6 @@
 ---
-title: 登录 Microsoft 应用程序时出现的问题 | Microsoft Docs
+title: 登录 Microsoft 应用程序时出现的问题
+titleSuffix: Azure AD
 description: 排查使用 Azure AD 登录到第一方 Microsoft 应用程序（如 Microsoft 365）时遇到的常见问题。
 services: active-directory
 author: davidmu1
@@ -12,16 +13,16 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c52cd2062745bd3506f687492dff240d15bbcc1b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 345d5e014631ef4f4a5dc0897face90a6267d032
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738888"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619078"
 ---
-# <a name="problems-signing-in-to-a-microsoft-application"></a>登录 Microsoft 应用程序时出现的问题
+# <a name="problems-signing-in-to-a-microsoft-application-in-azure-active-directory"></a>在登录 Azure Active Directory 中的 Microsoft 应用程序时遇到问题
 
-Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和管理与集成到 Azure AD 进行单一登录的第三方 SaaS 应用程序或其他应用程序略有不同。
+Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和管理与集成到 Azure AD 以进行单一登录的第三方 SaaS 应用程序或其他应用程序略有不同。
 
 用户访问 Microsoft 发布的应用程序的方法主要有三种。
 

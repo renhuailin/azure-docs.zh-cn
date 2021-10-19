@@ -3,20 +3,20 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 07/27/2021
-ms.openlocfilehash: 6b860e40acd118bc708ab00001707755272525b6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ada3429d32ea08f8185ba19937b963a30400c7b0
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128663604"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659652"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
-函数应用中的应用设置包含对该函数应用的所有函数产生影响的全局配置选项。 在本地运行时，这些设置将作为本地[环境变量](functions-develop-local.md#local-settings-file)进行访问。 本文列出可在函数应用中使用的应用设置。
+函数应用中的应用设置包含对该函数应用的所有函数产生影响的配置选项。 在本地运行时，这些设置将作为本地[环境变量](functions-develop-local.md#local-settings-file)进行访问。 本文列出可在函数应用中使用的应用设置。
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-[host.json](functions-host-json.md) 文件和 [local.settings.json](functions-develop-local.md#local-settings-file) 文件中提供了其他全局配置选项。
+[host.json](functions-host-json.md) 文件和 [local.settings.json](functions-develop-local.md#local-settings-file) 文件中提供了其他函数应用程序配置选项。
 为了便于阅读，示例连接字符串值被截断。
 
 > [!NOTE]
@@ -47,7 +47,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 默认情况下，[Functions 代理](functions-proxies.md)使用快捷方式从代理直接将 API 调用发送到同一函数应用中的函数。 使用此快捷方式取代创建新的 HTTP 请求。 此设置让你能够禁用该快捷方式行为。
 
-|键|值|说明|
+|键|Value|说明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|`true`|具有指向本地函数应用中函数的后端 URL 的调用不会直接发送到函数， 相反，请求会定向回函数应用的 HTTP 前端。|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|`false`|具有指向本地函数应用中函数的后端 URL 的调用会直接转发到函数。 这是默认值。 |
@@ -259,7 +259,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 配置特定于 Python 函数应用。 它定义模块加载顺序的优先级。 当 Python 函数应用面临与模块冲突相关的问题时（例如，在项目中使用 protobuf、tensorflow 或 grpcio 时），将此应用设置配置为 `1` 应该能够解决问题。 默认情况下，此值设置为 `0`。 此标志目前处于预览状态。
 
-|键|值|说明|
+|键|Value|说明|
 |---|-----|-----------|
 |PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|`0`| 优先从内部 Python 辅助角色的依赖项加载 Python 库。 requirements.txt 中定义的第三方库可能会被隐藏。 |
 |PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|`1`| 优先从 requirements.txt 中定义的应用程序包加载 Python 库。 这可以防止你的库与内部 Python 辅助角色的库发生冲突。 |
@@ -268,7 +268,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 配置特定于 Python 函数应用。 将其设置为 `1` 后，工作线程能够加载 requirements.txt 中定义的 [Python工作线程扩展](functions-reference-python.md#python-worker-extensions)。 通过该扩展，函数应用能够访问第三方包提供的新功能。 它也可能改变函数在应用中加载和调用的行为。 请确保所选扩展可靠，因为你需要承担使用它所带来的风险。 Azure Functions 不提供针对任何扩展的明示保证。 有关如何使用扩展的详细说明，请访问相关扩展的手册页或自述文件。此值默认设置为 `0`。
 
-|密钥|值|说明|
+|密钥|Value|说明|
 |---|-----|-----------|
 |PYTHON\_ENABLE\_WORKER\_EXTENSIONS|`0`| 禁用任何 Python 工作线程扩展。 |
 |PYTHON\_ENABLE\_WORKER\_EXTENSIONS|`1`| 允许 Python 工作线程从 requirements.txt 加载扩展。 |
@@ -402,6 +402,6 @@ _仅限 Windows_。
 
 [了解如何更新应用设置](functions-how-to-use-azure-function-app-settings.md#settings)
 
-[查看 host.json 文件中的全局设置](functions-host-json.md)
+[查看 host.json 文件中的配置设置](functions-host-json.md)
 
 [查看应用服务应用的其他应用设置](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

@@ -9,22 +9,22 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 0461228678762adbc4db936c35849f16a482c1a9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 616376d034fd32fae23d24a3a6e12f329604d376
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605499"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858955"
 ---
 # <a name="best-practices-to-use-key-vault"></a>使用密钥保管库的最佳做法
 
 ## <a name="use-separate-key-vaults"></a>使用单独的密钥保管库
 
-我们的建议是对每个环境（开发环境、预生产环境和生产环境）的每个应用程序使用一个保管库。 这可以帮助你避免在不同环境之间共享机密，并可在出现安全漏洞时降低威胁。
+我们的建议是在每个区域中，对每个环境（开发环境、预生产环境和生产环境）的每个应用程序使用一个保管库。 这可以帮助你避免在不同环境、区域之间共享机密，并可在出现安全漏洞时降低威胁。
 
 ### <a name="why-we-recommend-separate-key-vaults"></a>为何建议使用单独的密钥保管库
 
-访问策略是 Azure Key Vault 中的“全部或无”概念。 如果身份具有特定权限（例如，Get），则该身份可以获取保管库中的任何机密、密钥或证书。 这意味着，将敏感数据分组到同一保管库会增加安全事件的冲击半径，因为攻击可能能够跨关注点访问敏感信息。 若要缓解这种情况，请考虑特定应用程序应有权访问哪些敏感信息，然后根据此描述分离密钥保管库。 按应用分离密钥保管库是最常见的边界。
+密钥保管库实例定义了存储机密的安全边界。 将机密分组到同一保管库会增加安全事件的冲击半径，因为攻击可能能够跨关注点访问机密。 若要缓解这种情况，请考虑特定应用程序应有权访问哪些机密，然后根据此描述分离密钥保管库。 最常见的边界是按应用程序分隔密钥保管库，但对于大型应用程序（例如，每组相关服务），安全边界可以更细化。
 
 ## <a name="control-access-to-your-vault"></a>控制对保管库的访问权限
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 236a7729a8be0fb1ad20be28efd7b45f5796c1dd
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 7efbb49565027ed7b982d37e99a27e1d66c59bf5
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110615156"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728088"
 ---
 # <a name="add-technical-details-for-a-saas-offer"></a>为 SaaS 产品/服务添加技术详细信息
 
@@ -31,7 +31,7 @@ ms.locfileid: "110615156"
   > [!IMPORTANT]
   > 登录页应该是全天候运行。 只有这样，您才能收到有关在商业市场上发布的 SaaS 产品/服务的新购买或产品/服务的有效订阅的配置请求的通知。
 
-- **连接 Webhook**（必需）- 对于 Microsoft 需要向你发送的所有异步事件（例如，SaaS 订阅已取消），我们要求提供连接 Webhook URL。 我们将调用此 URL 来向你通知事件。
+- 连接 Webhook（必需）- 对于 Microsoft 需向你发送的所有异步事件（例如，SaaS 订阅已取消），我们要求提供[连接 Webhook URL](./partner-center-portal/pc-saas-fulfillment-api-v2.md#implementing-a-webhook-on-the-saas-service)。 我们将调用此 URL 来向你通知事件。
 
   > [!IMPORTANT]
   > 你的 Webhook 应该是 24/7 全天候运行的，因为系统只采用这种方式来通知你关于客户提供商业市场购买的 SaaS 订阅的更新。

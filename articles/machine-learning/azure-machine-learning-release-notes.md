@@ -8,19 +8,45 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 08/18/2021
-ms.openlocfilehash: f4c7c43c0406ed7a6c05c3d83e467bc335c43093
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/04/2021
+ms.openlocfilehash: 598cc1944cb49024d91da476b95f9aa0b25f6279
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128628102"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811087"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](/python/api/overview/azure/ml/intro) 参考页。
 
 __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在页面更新时收到通知：`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-10-11"></a>2021 年 10 月 11 日
+
+### <a name="azure-machine-learning-sdk-for-python-v1350"></a>适用于 Python v1.35.0 的 Azure 机器学习 SDK
+  + **azureml-automl-core**
+    + 启用二进制指标计算
+  + **azureml-contrib-fairness**
+    + 改进了仪表板下载失败时显示的错误消息
+  + **azureml-core**
+    + 已解决为托管标识身份验证指定非公有云时出现 bug 的问题。
+    + Dataset.File.upload_directory() 和 Dataset.Tabular.register_pandas_dataframe() 实验性标志现已删除。
+    + 现已在 TabularDataset 类 partition_by () 方法中删除实验性标志。
+  + **azureml-pipeline-steps**
+    + 现已删除 ParallelRunConfig 类 `partition_keys` 参数的实验性标志。
+  + **azureml-interpret**
+    + azureml-interpret 包已更新为 intepret-community 0.20。*
+  + **azureml-mlflow**
+    + 可以在 MLflow 中使用子目录记录项目与图像
+  + **azureml-responsibleai**
+    + 改进了仪表板下载失败时显示的错误消息
+  + **azureml-train-automl-client**
+    + 添加了对计算机视觉任务（如图像分类、物体检测和实例分段）的支持。 可在 https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-image-models 中找到详细文档
+    + 启用二进制指标计算
+  + **azureml-train-automl-runtime**
+    + 向模型测试运行添加 TCNForecaster 支持。
+    + 更新模型测试 predictions.csv 输出格式。 输出列现在包括原始目标值和已经传递到测试运行的功能。 可以通过在 `AutoMLConfig` 中设置 `test_include_predictions_only=True` 或在 `ModelProxy.test()` 中设置 `include_predictions_only=True`，来关闭此状态。 如果用户请求仅包含预测，则输出格式如下所示（预测与回归相同）：Classification => [predicted values] [probabilities] Regression => [predicted values] else (default): Classification => [original test data labels] [predicted values] [probabilities] [features] Regression => [original test data labels] [predicted values] [features]；`[predicted values]` 列名称 = `[label column name] + "_predicted"`。 `[probabilities]` 列名称 = `[class name] + "_predicted_proba"`。 如果未将目标列作为输入传递至测试运行，则 `[original test data labels]` 将不会出现在输出中。
 
 ## <a name="2021-09-07"></a>2021-09-07
 
@@ -1038,8 +1064,6 @@ Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 �
     + 添加了新类型的用户异常，此异常在缓存存储内容被篡改的情况下引发
   + **azureml-automl-runtime**
     + 如果用户禁用特征化，则不会再启用类均衡扫描。  
-  + **azureml-contrib-itp**
-    + 支持 CmAks 计算类型。 你可以将自己的 AKS 群集附加到工作区来完成训练作业。
   + **azureml-contrib-notebook**
     + 对 azureml-contrib-notebook 包进行了文档改进。
   + **azureml-contrib-pipeline-steps**

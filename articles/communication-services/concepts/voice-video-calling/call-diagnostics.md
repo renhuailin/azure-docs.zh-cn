@@ -10,12 +10,12 @@ ms.date: 08/17/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: calling
-ms.openlocfilehash: 23307fbfccdce2faa1b6c5808095f0f97c7a0e66
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 23b75ff29e32bafdce320d334d9236902cbe4b2c
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635881"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667604"
 ---
 # <a name="call-diagnostics"></a>通话诊断
 
@@ -41,7 +41,7 @@ const callDiagnostics = call.api(Features.Diagnostics);
 | ------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------- |
 | noNetwork                 | 无可用网络。                                  | - 当通话因无可用网络而无法启动时，设为 `True`。 <br/> - 当存在 ICE 候选人时，设为 `False`。                                                                                                  | 设备未连接到网络。               |
 | networkRelaysNotReachable | 网络问题。                                        | - 当网络存在一些不允许访问 ACS 中继的限制时，设为 `True`。 <br/> - 进行新通话时，设为 `False`。                                                                                                | 在 WiFi 信号打开和关闭时的通话期间。 |
-| networkReconnect          | 连接断开，我们正在重新连接到网络。 | - 当媒体传输连接断开时，设为 `Poor` <br/> - 网络断开时，设为 `Bad` <br/> - 连接新会话时，设为 `Good`。                                                                       | 低带宽、没有 Internet                          |
+| networkReconnect          | 连接断开，我们正在重新连接到网络。 | - 网络断开时，设为 `Bad` <br/> - 当媒体传输连接断开时，设为 `Poor` <br/> - 连接新会话时，设为 `Good`。                                                                       | 低带宽、没有 Internet                          |
 | networkReceiveQuality     | 关于传入流质量的指标。                 | - 当接收流存在严重问题时，设为 `Bad`。 质量 <br/> - 当接收流存在轻微问题时，设为 `Poor`。 质量 <br/> - 当接收流不存在问题时，设为 `Good`。 | 低带宽                                       |
 
 ### <a name="audio-values"></a>音频值

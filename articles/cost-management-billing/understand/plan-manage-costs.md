@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 087cc0e9e650e89edb099e2593383a54d173ad89
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d1a76078db3acd79d1f59ce43852d538edac7964
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588079"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710905"
 ---
 # <a name="plan-to-manage-azure-costs"></a>计划管理 Azure 成本
 
@@ -95,7 +95,7 @@ ms.locfileid: "128588079"
 
 ## <a name="optimize-and-reduce-costs"></a>优化和降低成本
 
-如果你不熟悉成本管理的原理，请阅读[如何使用 Azure 成本管理优化云投资](../costs/cost-mgt-best-practices.md)。
+如果你不熟悉成本管理的原理，请阅读[如何使用成本管理优化云投资](../costs/cost-mgt-best-practices.md)。
 
 在 Azure 门户中，还可以使用 VM 自动关闭和顾问建议来优化及降低 Azure 成本。
 

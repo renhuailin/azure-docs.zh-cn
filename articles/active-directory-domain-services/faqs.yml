@@ -10,14 +10,14 @@ metadata:
   ms.subservice: domain-services
   ms.workload: identity
   ms.topic: how-to
-  ms.date: 09/01/2021
+  ms.date: 10/08/2021
   ms.author: justinha
-  ms.openlocfilehash: f11d8198c04cc93587591e41359fe9e359d350d6
-  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+  ms.openlocfilehash: 104b738143169ffe6f9787a8223efa757a8656d6
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123433136"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129710354"
 title: 有关 Azure Active Directory (AD) 域服务的常见问题 (FAQ)
 summary: 本页面解答了有关 Azure Active Directory 域服务的常见问题。
 sections:
@@ -77,9 +77,9 @@ sections:
       能否在资源林和本地林之间创建双向林信任？
     answer: "否。 托管域资源林支持多达五个到本地林的单向出站林信任。 \n"
   - question: >
-      是否可将现有 Azure AD 域服务托管域移动到不同的订阅、资源组、区域、虚拟网络或子网？
+      是否可以移动托管域？
     answer: >
-      不是。 在创建了 Azure AD 域服务托管域之后，便无法将现有 Azure AD 域服务托管域移动到不同的订阅、资源组、区域、虚拟网络或子网。 部署托管域时，请注意选择最合适的订阅、资源组、区域、虚拟网络和子网。
+      否。 在创建了 Azure AD 域服务托管域之后，便无法将其移动到不同的订阅、资源组、区域、虚拟网络或子网。 作为一种解决方法，可使用 PowerShell 或 Azure 门户[删除托管域](delete-aadds.md)，然后使用所需的设置重新创建它。 重新创建托管域时，无法提供任何还原操作。
   - question: >
       能否重命名现有 Azure AD 域服务域名？
     answer: >

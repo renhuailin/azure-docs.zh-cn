@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 09/22/2021
-ms.openlocfilehash: 033bd5a96c75a1097438e01390ba800089d89d1d
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 9e35609a6e6d450b2938dfbb4feab319f5a3c9c2
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426918"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660211"
 ---
 # <a name="network-traffic-flow-when-using-a-secured-workspace"></a>使用受保护工作区时的网络流量流
 
@@ -92,7 +92,7 @@ Azure 机器学习工作室的以下功能使用数据事件探查：
 > [!TIP]
 > 可以在创建工作区时提供服务主体。 如果你不这样做，系统将为你创建一个与工作区同名的服务主体。
 
-若要允许访问存储帐户，请将存储帐户配置为“允许受信任服务列表中的 Azure 服务访问此存储帐户”。 此设置允许托管服务通过 Azure 数据中心网络访问存储。 
+若要允许访问存储帐户，请将存储帐户配置为允许工作区的“资源实例”或选择“允许受信任服务列表中的 Azure 服务访问此存储帐户” 。 此设置允许托管服务通过 Azure 数据中心网络访问存储。 
 
 接下来，将工作区的服务主体添加到存储帐户专用终结点的“读取者”角色。 此角色用于验证工作区和存储子网信息。 如果它们相同，则允许访问。 最后，服务主体还需要对存储帐户拥有“Blob 数据参与者”访问权限。
 

@@ -7,12 +7,12 @@ ms.date: 03/03/2021
 ms.author: thweiss
 author: ThomasWeiss
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: eb448630424939ef7d17144c6c0d385474fdf917
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 61e836fcb07045ce25df02ba48823ac5a2d70762
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113360246"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859297"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置 IP 防火墙
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -108,7 +108,7 @@ ms.locfileid: "113360246"
 
 若要访问要添加到防火墙设置的当前出站 IP 范围的列表，请参阅[下载 Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)。
 
-若要自动执行此列表，请参阅[使用服务标记发现 API（公共预览版）](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)。
+若要自动生成此列表，请参阅[使用服务标记发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api)。
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>使用资源管理器模板配置 IP 防火墙
 

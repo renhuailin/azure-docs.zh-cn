@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 10/03/2021
+ms.date: 10/06/2021
 ms.author: memildin
-ms.openlocfilehash: c0ae5cc8d3dee5a09916194418345c1602a19e4b
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: bd8ebca221041684a47bb66bb01c176fd1b65ba6
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424777"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729513"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -30,7 +30,50 @@ ms.locfileid: "129424777"
 
 10月更新包括：
 
+- [添加了 Microsoft 威胁和漏洞管理作为漏洞评估解决方案（预览版）](#microsoft-threat-and-vulnerability-management-added-as-vulnerability-assessment-solution-in-preview)
+- [现在可以自动启用漏洞评估解决方案（预览版）](#vulnerability-assessment-solutions-can-now-be-auto-enabled-in-preview)
+- [资产清单中新增的软件清单过滤器（预览版）](#software-inventory-filters-added-to-asset-inventory-in-preview)
 - [将某些警报类型的前缀从“ARM_”更改为“VM_”](#changed-prefix-of-some-alert-types-from-arm_-to-vm_)
+
+
+### <a name="microsoft-threat-and-vulnerability-management-added-as-vulnerability-assessment-solution-in-preview"></a>添加了 Microsoft 威胁和漏洞管理作为漏洞评估解决方案（预览版）
+
+我们扩展了 [Azure Defender for servers](defender-for-servers-introduction.md)和 Microsoft Defender for Endpoint 之间的集成，以支持为你的计算机提供的新漏洞评估：[Microsoft 威胁和漏洞管理](/microsoft-365/security/defender-endpoint/next-gen-threat-and-vuln-mgt)。 
+
+在集成了 [Microsoft Defender for Endpoint](security-center-wdatp.md) 的情况下使用 **威胁和漏洞管理**，可以近乎实时地发现漏洞和错误配置，而无需额外的代理或定期扫描。 威胁和漏洞管理会根据组织中的威胁形势和检测情况对漏洞进行优先级排序。
+
+使用安全建议“[应在虚拟机上启用漏洞评估解决方案](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/ffff0522-1e88-47fc-8382-2a80ba848f5d)”来手动发现威胁和漏洞管理针对[支持的计算机](/microsoft-365/security/defender-endpoint/tvm-supported-os?view=o365-worldwide&preserve-view=true)检测到的漏洞。 
+
+若要在现有和新计算机上自动发现漏洞，而无需手动修正建议，请参阅[现在可以自动启用漏洞评估解决方案（预览版）](#vulnerability-assessment-solutions-can-now-be-auto-enabled-in-preview)。
+
+若要了解详细信息，请参阅[通过 Microsoft Defender for Endpoint 威胁和漏洞管理调查弱点](deploy-vulnerability-assessment-tvm.md)。
+
+### <a name="vulnerability-assessment-solutions-can-now-be-auto-enabled-in-preview"></a>现在可以自动启用漏洞评估解决方案（预览版）
+
+安全中心的自动预配页面现在包括一个选项，可在受 [Azure Defender for Server](defender-for-servers-introduction.md) 保护的订阅上自动为 Azure 虚拟机和 Azure Arc 计算机启用漏洞评估解决方案。
+
+此外，如果启用了[与 Microsoft Defender for Endpoint 的集成](security-center-wdatp.md)，则将可以选择如下漏洞评估解决方案：
+
+- （新）Microsoft Defender for Endpoint 的 Microsoft 威胁和漏洞管理模块（请参阅[发行说明](#microsoft-threat-and-vulnerability-management-added-as-vulnerability-assessment-solution-in-preview)）
+- 集成 Qualys 代理
+
+:::image type="content" source="media/deploy-vulnerability-assessment-tvm/auto-provision-vulnerability-assessment-agent.png" alt-text="通过 Azure 安全中心配置 Microsoft 的威胁和漏洞管理的自动预配。":::
+
+所选解决方案将在受支持的计算机上自动启用。
+
+请参阅[为计算机自动配置漏洞评估](auto-deploy-vulnerability-assessment.md)以了解详细信息。
+
+### <a name="software-inventory-filters-added-to-asset-inventory-in-preview"></a>资产清单中新增的软件清单过滤器（预览版）
+
+[资产清单](asset-inventory.md)页面现在包含一个过滤器，用于选择运行特定软件的计算机 - 甚至指定感兴趣的版本。 
+
+此外，还可以在 **Azure Resource Graph Explorer** 中查询软件清单数据。
+
+若要使用这些新功能，需要启用[与 Microsoft Defender for Endpoint 的集成](security-center-wdatp.md)。 
+
+有关完整的详细信息，包括 Azure Resource Graph 的示例 Kusto 查询，请参阅[访问软件清单](asset-inventory.md#access-a-software-inventory)。
+
+:::image type="content" source="media/deploy-vulnerability-assessment-tvm/software-inventory.png" alt-text="如果已启用威胁和漏洞解决方案，安全中心的资产清单会提供一个筛选器，用于按已安装的软件选择资源。":::
 
 ### <a name="changed-prefix-of-some-alert-types-from-arm_-to-vm_"></a>将某些警报类型的前缀从“ARM_”更改为“VM_” 
 
@@ -71,7 +114,7 @@ ms.locfileid: "129424777"
 
 9 月发布了以下更新：
 
-### <a name="two-new-recommendations-to-audit-os-configurations-for-azure-security-baseline-compliance"></a>用于审核 Azure 安全基线符合性的 OS 配置的两个新建议
+### <a name="two-new-recommendations-to-audit-os-configurations-for-azure-security-baseline-compliance-in-preview"></a>用于审核 Azure 安全基线符合性的 OS 配置的两个新建议（预览版）
 
 发布了以下两个建议来评估计算机是否符合 [Windows 安全基线](../governance/policy/samples/guest-configuration-baseline-windows.md)和 [Linux 安全基线](../governance/policy/samples/guest-configuration-baseline-linux.md)：
 
@@ -284,7 +327,7 @@ Azure Sentinel 包括 Azure 安全中心在订阅和租户级别的内置连接�
 
 | 建议                                                                                               | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 严重性 |
 |--------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------:|
-| **虚拟机应该加密计算和存储资源之间的临时磁盘、缓存和数据流** | 默认情况下，虚拟机的 OS 和数据磁盘使用平台管理的密钥进行静态加密；临时磁盘和数据缓存不加密，数据在计算和存储资源之间流动时也不加密。 有关 Azure 中不同磁盘加密技术的比较，请参阅 https://aka.ms/diskencryptioncomparison 。<br>使用 Azure 磁盘加密来加密所有这些数据。 如果出现以下情况，请忽略此建议：(1) 你正在使用主机加密功能，或者 (2) 托管磁盘上的服务器端加密满足你的安全要求。 若要了解详细信息，请参阅“Azure 磁盘存储的服务器端加密”。 | 高     |
+| **虚拟机应加密临时磁盘、缓存以及计算资源和存储资源之间的数据流** | 默认情况下，虚拟机的 OS 和数据磁盘使用平台管理的密钥进行静态加密；临时磁盘和数据缓存不加密，数据在计算和存储资源之间流动时也不加密。 有关 Azure 中不同磁盘加密技术的比较，请参阅 https://aka.ms/diskencryptioncomparison 。<br>使用 Azure 磁盘加密来加密所有这些数据。 如果出现以下情况，请忽略此建议：(1) 你正在使用主机加密功能，或者 (2) 托管磁盘上的服务器端加密满足你的安全要求。 若要了解详细信息，请参阅“Azure 磁盘存储的服务器端加密”。 | 高     |
 |                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |          |
 
 
@@ -511,11 +554,11 @@ Azure 安全中心使用新的捆绑包扩展其 SQL 保护产品/服务，以�
 
 :::image type="content" source="media/release-notes/open-query-menu-security-findings.png" alt-text="“打开查询”按钮现提供更详细的查询选项，显示漏洞扫描程序相关建议的安全发现。":::
 
-**打开查询** 按钮还提供了一些其他相关建议的附加选项。
+**打开查询** 按钮提供了一些其他相关建议的附加选项。
 
 了解关于安全中心漏洞扫描程序的更多信息：
 
-- [适用于 Azure 和混合计算机的 Azure Defender 集成式漏洞评估扫描程序](deploy-vulnerability-assessment-vm.md)
+- [适用于 Azure 和混合计算机的 Azure Defender 集成式 Qualys 漏洞扫描程序](deploy-vulnerability-assessment-vm.md)
 - [适用于 SQL 服务器的集成式漏洞评估扫描程序](defender-for-sql-on-machines-vulnerability-assessment.md)
 - [适用于容器寄存表的 Azure Defender 集成式漏洞评估扫描程序](defender-for-container-registries-usage.md)
 

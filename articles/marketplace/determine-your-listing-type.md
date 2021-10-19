@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 07/30/2021
-ms.openlocfilehash: 154cfa6f8fd413c1cef1a22143d7e4d357053760
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: f1f352c93fca84f26516811b0014f6fca549b1cd
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867010"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129668801"
 ---
 # <a name="introduction-to-listing-options"></a>列表选项简介
 
@@ -24,19 +24,19 @@ ms.locfileid: "122867010"
 | ------------ | ------------- | ------------- | ------------- | ------------- |
 | Azure 应用程序（托管的应用） |   | &#10004; |   | &#10004; |
 | Azure 应用程序（解决方案模板） |  |  |  | &#10004; |
-| 咨询服务 |  |  | &#10004; |  |
 | Azure 容器 |  |  |  | &#10004; |
+| Azure 虚拟机 | &#10004; | &#10004; |  | &#10004; |
+| 咨询服务 |  |  | &#10004; |  |
 | Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; | &#10004; |
 | Dynamics 365 Customer Engagement 和 Power Apps | &#10004; | &#10004; | &#10004; | &#10004; |
 | Dynamics 365 for Operations | &#10004; | &#10004; | &#10004; | &#10004; |
 | IoT Edge 模块 |  |  |  | &#10004; |
 | 托管服务 |  |  |  | &#10004; |
 | Power BI 应用 |  |  |  | &#10004; |
-| Azure 虚拟机 | &#10004; | &#10004; |  | &#10004; |
 | 软件即服务 | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
 
-&#42; “立即获取”列表选项包括立即获取（免费）、自带许可 (BYOL)、订阅和基于使用情况的定价。 有关详细信息，请参阅[立即获取](#get-it-now)。
+\*“立即获取”列表选项包括立即获取（免费）、自带许可 (BYOL)、订阅和基于使用情况的定价。 有关详细信息，请参阅[立即获取](#get-it-now)。
 
 ## <a name="change-the-offer-type"></a>更改产品/服务类型
 

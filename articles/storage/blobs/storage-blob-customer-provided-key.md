@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3096da8b3c83dbfe8cfdd6a5fa4d177241334de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6f7001b9eabd34774930378d0656b4ad7ef3c25
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97693516"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857790"
 ---
 # <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>使用 .NET 在对 Blob 存储的请求中指定客户提供的密钥
 
@@ -29,7 +29,7 @@ ms.locfileid: "97693516"
 
 ## <a name="use-a-customer-provided-key-to-write-to-a-blob"></a>使用客户提供的密钥写入到 Blob
 
-下面的示例在使用用于 blob 存储的 v12 客户端库上传 blob 时提供了 AES-256 密钥。 该示例使用 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 对象授权 Azure AD 的写入请求，但也可以使用共享密钥凭据授权该请求。
+下面的示例在使用用于 blob 存储的 v12 客户端库上传 blob 时提供了 AES-256 密钥。 该示例使用 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 对象授权 Azure AD 的写入请求，但也可以使用共享密钥凭据授权该请求。 有关使用 DefaultAzureCredential 类授权托管标识访问 Azure 存储的详细信息，请参阅[适用于 .NET 的 Azure 标识客户端库](/dotnet/api/overview/azure/identity-readme)。
 
 ```csharp
 async static Task UploadBlobWithClientKey(Uri blobUri,

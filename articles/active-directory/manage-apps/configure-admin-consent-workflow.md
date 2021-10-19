@@ -1,5 +1,6 @@
 ---
-title: 配置管理员同意工作流 - Azure Active Directory | Microsoft Docs
+title: 配置管理员同意工作流
+titleSuffix: Azure AD
 description: 了解如何为最终用户配置一种请求访问需要管理员同意的应用程序的方式。
 services: active-directory
 author: davidmu1
@@ -8,18 +9,18 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/08/2021
+ms.date: 10/06/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5611de6dde5ef1380a819ba3f3a2e6050d79374b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 07254d54d535616aa3a6b1c17a2b1b81d8fe16bb
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738851"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659196"
 ---
-# <a name="configure-the-admin-consent-workflow"></a>配置管理员同意工作流
+# <a name="configure-the-admin-consent-workflow-in-azure-active-directory"></a>在 Azure Active Directory 中配置管理员同意工作流
 
 本文介绍如何启用管理员同意工作流功能，最终用户可通过此功能请求访问需要管理员同意的应用程序。
 
@@ -90,7 +91,7 @@ ms.locfileid: "121738851"
 
 8. 评估该请求并采取适当的操作：
 
-   * 批准请求。 若要批准请求，请向应用程序授予管理员同意。 批准请求后，系统会通知所有请求者已向其授予访问权限。  
+   * 批准请求。 若要批准请求，请向应用程序授予管理员同意。 批准请求后，系统会通知所有请求者已向其授予访问权限。 批准请求允许租户中的所有用户访问应用程序，用户分配另有限制除外。 
    * 拒绝请求。 若要拒绝请求，必须提供一个理由，该理由将提供给所有请求者。 拒绝请求后，系统会通知所有请求者已拒绝其访问该应用程序。 拒绝请求不会阻止用户将来再次请求对该应用的管理员同意。  
    * 阻止请求。 若要阻止请求，必须提供一个理由，该理由将提供给所有请求者。 阻止请求后，系统会通知所有请求者已拒绝其访问该应用程序。 阻止请求会在租户中为该应用程序创建一个处于禁用状态的服务主体对象。 用户将来无法请求对该应用程序的管理员同意。
 

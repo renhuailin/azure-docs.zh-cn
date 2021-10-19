@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 7a94d82c3ec2a47869c64520e20bed6cdf58ebdb
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 0cc474ba9566737cb0117cc3a0f2bfb079cdf3d9
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210511"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616505"
 ---
 # <a name="labeling-in-azure-purview"></a>Azure Purview 中的标记
 
@@ -64,7 +64,7 @@ Azure Purview 允许你将敏感度标签应用于资产，使你能够对数据
 
 ## <a name="labeling-for-sql-databases"></a>SQL 数据库标记
 
-除了 Purview 标记数据库列外，Microsoft 还支持使用 [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms) 中的 SQL 数据分类标记 SQL 数据库列。 Purview 使用全局 [MIP 敏感度标签](/microsoft-365/compliance/sensitivity-labels)，而 SSMS 仅使用本地定义的标签。
+除了 Purview 标记数据库列外，Microsoft 还支持使用 [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms) 中的 SQL 数据分类标记 SQL 数据库列。 Purview 使用全局[敏感度标签](/microsoft-365/compliance/sensitivity-labels)，而 SSMS 仅使用本地定义的标签。
 
 Purview 中的标记和 SSMS 中的标记是独立的进程，当前不会彼此交互。 因此，SSMS 中应用的标签不会显示在 Purview 中，反之亦然。 建议使用 Azure Purview 标记 SQL 数据库，因为它使用可跨多个平台应用的全局 MIP 标签。
 

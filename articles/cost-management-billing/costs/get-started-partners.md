@@ -1,24 +1,24 @@
 ---
 title: 面向合作伙伴的 Azure 成本管理入门
-description: 本文介绍合作伙伴如何使用 Azure 成本管理功能，以及如何为客户启用成本管理访问。
+description: 本文介绍合作伙伴如何使用成本管理功能，以及如何为客户启用访问。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 78a2ef8491eea5fa3df5355236f23be730062108
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d402acaf43682a7c025147fd38bccb9baa033683
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752005"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705987"
 ---
-# <a name="get-started-with-azure-cost-management-for-partners"></a>面向合作伙伴的 Azure 成本管理入门
+# <a name="get-started-with-cost-management-for-partners"></a>面向合作伙伴的成本管理入门
 
-Azure 成本管理原生可用于已将其客户加入 Microsoft 客户协议并已[购买 Azure 计划](/partner-center/purchase-azure-plan)的直接合作伙伴。 本文介绍合作伙伴如何使用 [Azure 成本管理](../index.yml)功能查看 Azure 计划中的订阅的成本。 此外，还将介绍合作伙伴如何以零售价为其客户启用成本管理访问。
+成本管理原生可用于已将其客户加入 Microsoft 客户协议并已[购买 Azure 计划](/partner-center/purchase-azure-plan)的直接合作伙伴。 本文介绍合作伙伴如何使用[成本管理](../index.yml)功能查看 Azure 计划中的订阅的成本。 此外，还将介绍合作伙伴如何以零售价为其客户启用成本管理访问。
 
 就直接合作伙伴和间接提供商而言，全局管理员和管理员代理可以访问合作伙伴租户中的成本管理并以已开票的价格管理成本。
 
@@ -43,19 +43,19 @@ CSP 合作伙伴可以使用成本管理来实现以下目的：
 
 [![显示单个客户的成本的示例](./media/get-started-partners/customer-costs2.png)](./media/get-started-partners/customer-costs2.png#lightbox)
 
-还可以通过 REST API 使用 Azure 成本管理提供的所有功能。 使用 API 可以自动化成本管理任务。
+还可以通过 REST API 使用成本管理提供的所有功能。 使用 API 可以自动化成本管理任务。
 
 ## <a name="prerequisites"></a>先决条件
 
-对于合作伙伴而言，Azure 成本管理原生仅适用于 Azure 计划中的订阅。
+对于合作伙伴而言，成本管理原生仅适用于 Azure 计划中的订阅。
 
-若要在 Azure 门户中启用 Azure 成本管理，必须确认客户接受 Microsoft 客户协议（代表客户）并将客户转换到 Azure 计划。 Azure 成本管理中仅提供已转换到 Azure 计划的订阅的成本。
+若要在 Azure 门户中启用成本管理，必须确认客户接受 Microsoft 客户协议（代表客户）并将客户转换到 Azure 计划。 成本管理中仅提供已转换到 Azure 计划的订阅的成本。
 
-Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
+成本管理要求对计费帐户或订阅拥有读取访问权限。
 
-有关为计费帐户启用 Azure 成本管理并分配其访问权限的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。 “全局管理员”和“管理员代理”角色可以管理计费帐户的成本。
+有关为计费帐户启用成本管理并分配其访问权限的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。 “全局管理员”和“管理员代理”角色可以管理计费帐户的成本。
 
-若要在订阅范围访问 Azure 成本管理，对某个订阅拥有 Azure RBAC 访问权限的任何用户都可查看零售（即用即付）费率的成本。 但是，必须[为客户租户启用成本可见性策略](#enable-the-policy-to-view-azure-usage-charges)。 若要查看受支持帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。
+若要在订阅范围访问成本管理，对某个订阅拥有 Azure RBAC 访问权限的任何用户都可查看零售（即用即付）费率的成本。 但是，必须[为客户租户启用成本可见性策略](#enable-the-policy-to-view-azure-usage-charges)。 若要查看受支持帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。
 
 将现有计费协议转移给新的合作伙伴时，成本管理功能仅适用于与该合作伙伴建立的当前计费关系。 转移给新的合作伙伴之前的历史费用不计入新的计费帐户。 不过，历史费用记录仍保留在原始的关联计费帐户中。
 
@@ -145,7 +145,7 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 将显示与所选客户的订阅相关联的“Azure 用量”费用的当前成本可见性策略。
 ![允许客户查看即用即付费用的策略](./media/get-started-partners/cost-management-billing-policies.png)
 
-将策略设置为“否”时，与该客户关联的订阅用户无法使用 Azure 成本管理。 除非已由合作伙伴启用，否则默认会对所有订阅用户禁用成本可见性策略。
+将策略设置为“否”时，与该客户关联的订阅用户无法使用成本管理。 除非已由合作伙伴启用，否则默认会对所有订阅用户禁用成本可见性策略。
 
 将成本策略设置为“是”时，与客户租户关联的订阅用户可以查看按即用即付费率计算的使用费。
 
@@ -162,8 +162,6 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 Azure RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。 权利的购买成本（如预留实例和市场费用）仅显示在进行购买的合作伙伴租户的计费范围内。
 
 用于计算视图中显示的成本的零售价与适用于所有客户的 Azure 定价计算器中显示的价格相同。 显示的成本不包括合作伙伴可能具有的任何折扣或额度，例如“合作伙伴赚取的额度”、“分级折扣”和“全局服务折扣”。
-
- 
 
 ## <a name="analyze-costs-in-cost-analysis"></a>在成本分析中分析成本
 
@@ -229,7 +227,7 @@ Azure RBAC 范围内的预留实例的摊销视图和实际成本将显示零费
 | unitOfMeasure | 指明服务的计价单位。 例如，GB 和小时。 | 指明服务的计价单位。 例如，GB、小时和 10,000 秒。 |
 | pricingCurrency | 定义单价的货币。 | 价目表中的货币。|
 | billingCurrency | 定义计费成本的货币。 | 定义为发票上的计费货币的货币。 |
-| chargeType | 定义成本在 Azure 成本管理中所代表的费用类型，例如购买和退款。 | 费用或调整的类型。 不适用于当前活动。 |
+| chargeType | 定义成本在成本管理中所代表的费用类型，例如购买和退款。 | 费用或调整的类型。 不适用于当前活动。 |
 | costinBillingCurrency | 采用计费货币的 ExtendedCost 或混合税前成本。 | 空值 |
 | costinPricingCurrency | 与价格关联的采用定价货币的 ExtendedCost 或混合税前成本。 | 空值 |
 | **costinUSD** | 以美元为货币的估算 ExtendedCost 或混合税前成本。 | 空值 |
@@ -247,7 +245,7 @@ Azure RBAC 范围内的预留实例的摊销视图和实际成本将显示零费
 
 ## <a name="view-partner-earned-credit-pec-resource-costs"></a>查看合作伙伴赚取的返点 (PEC) 资源成本
 
-在 Azure 成本管理中，合作伙伴可以使用成本分析来查看收到了 PEC 权益的成本。
+在成本管理中，合作伙伴可以使用成本分析来查看收到了 PEC 权益的成本。
 
 在 Azure 门户中登录到合作伙伴租户，并选择“成本管理 + 计费”。 在“成本管理”下，选择“成本分析”。
 
@@ -261,7 +259,7 @@ Azure RBAC 范围内的预留实例的摊销视图和实际成本将显示零费
 
 如果 **PartnerEarnedCreditApplied** 属性为 _False_，则关联的成本不符合所需的返点条件。 或者，购买的服务不符合合作伙伴赚取的返点的条件。
 
-服务使用情况数据通常需要在 8-24 小时后才显示在成本管理中。 有关详细信息，请参阅[成本和使用情况数据的更新和保留](understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)。 从访问时间开始算起的 48 小时内，PEC 返点将显示在 Azure 成本管理中。
+服务使用情况数据通常需要在 8-24 小时后才显示在成本管理中。 有关详细信息，请参阅[成本和使用情况数据的更新和保留](understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)。 从访问时间开始算起的 48 小时内，PEC 返点将显示在成本管理中。
 
 
 还可以使用“分组依据”选项，按 **PartnerEarnedCreditApplied** 属性进行分组和筛选。 使用这些选项可以检查包含和不包含 PEC 的成本。
@@ -298,7 +296,7 @@ Azure RBAC 范围内的预留实例的摊销视图和实际成本将显示零费
 
 合作伙伴和客户可以使用以下部分中所述的成本管理 API 来完成常见任务。
 
-### <a name="azure-cost-management-apis---direct-and-indirect-providers"></a>Azure 成本管理 API - 直接和间接提供程序
+### <a name="cost-management-apis---direct-and-indirect-providers"></a>成本管理 API - 直接和间接提供程序
 
 有权访问合作伙伴租户中的计费范围的合作伙伴可以使用以下 API 来查看开票成本。
 

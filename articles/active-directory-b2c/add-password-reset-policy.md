@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d87a09615df4882b132fd407417c046d174e9a0f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fc49dc992125e22205f50faa3f38283024559cba
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128570434"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657561"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置密码重置流
 
@@ -68,7 +68,7 @@ selfAsserted.html 中“更改电子邮件”按钮的默认名称为“changecl
 
 若要为注册或登录用户流设置自助式密码重置，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在门户工具栏中，选择“目录 + 订阅”图标。
 1. 在“门户设置 | 目录+订阅”窗格的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
@@ -269,7 +269,7 @@ SelfAsserted-LocalAccountSignin-Email 技术配置文件 setting.forgotPasswordL
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在门户工具栏中，选择“目录 + 订阅”图标。
 1. 在“门户设置 | 目录+订阅”窗格的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
-1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
+1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在菜单中的“策略”下，选择“Identity Experience Framework”。
 1. 选择“上传自定义策略”。 按以下顺序上传已更改的两个策略文件：
    1. 扩展策略，例如 TrustFrameworkExtensions.xml。
@@ -338,6 +338,9 @@ SelfAsserted-LocalAccountSignin-Email 技术配置文件 setting.forgotPasswordL
 自定义策略是上传到 Azure AD B2C 租户的一组 XML 文件，用于定义用户旅程。 我们提供了初学者包，其中有多个预构建策略，包括注册和登录、密码重置以及配置文件编辑策略。 有关详细信息，请参阅 [Azure AD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)。
 
 ::: zone-end
+
+## <a name="troubleshoot-azure-ad-b2c-user-flows-and-custom-policies"></a>Azure AD B2C 用户流和自定义策略故障排除
+你的应用程序需要处理来自 Azure B2C 服务的某些错误。 了解[如何对 Azure AD B2C 用户流和自定义策略进行故障排除](troubleshoot.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.date: 08/16/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ad16a831b22097e98bd02b606e3a6596cf4e48f5
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f8f399ec557bbddd031b386d69436f3376ee42b1
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124810946"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129808502"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>如何使用分析功能来分析设备数据
 
@@ -52,6 +52,8 @@ Azure IoT Central 提供丰富的分析功能，用于分析历史趋势并关�
 ## <a name="interact-with-your-data"></a>与你的数据进行交互
 
 查询数据后，可在折线图上将其可视化。 可在网格中显示或隐藏遥测数据、更改持续时间或查看数据。
+
+选择“保存”，以保存分析查询。 稍后，可以检索保存的任何查询。
 
 - “时间编辑器”面板：默认情况下，你会看到前一天的数据。 可拖动时间滑块的任何一端来更改持续时间。 还可以使用日历控件选择某个预定义的时间桶，或选择自定义时间范围。 时间控件还有一个“间隔大小”滑块，可控制用于聚合数据的间隔大小。
 

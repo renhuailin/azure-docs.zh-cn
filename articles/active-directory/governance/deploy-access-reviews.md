@@ -16,12 +16,12 @@ ms.date: 04/16/2021
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5974f8d3f94d16a27c77c81837d7c430ee48b26
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 141322495fe31283b90f34bbf77a7d1ebb86d00d
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124817924"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730463"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>规划 Azure Active Directory 访问评审部署
 
@@ -191,10 +191,10 @@ ms.locfileid: "124817924"
 
 | 资源类型| 创建和管理访问评审（创建者）| 读取访问评审结果 |
 | - | - | -|
-| 组或应用程序| 全局管理员 <p>用户管理员| 创建者和安全管理员 |
-| Azure AD 中的特权角色| 全局管理员 <p>特权角色管理员| 创建者 <p>安全读取者<p>安全管理员 |
-| Azure 中的特权角色（资源）| 全局管理员<p>用户管理员<p>资源所有者| 创建者 |
-| 访问包| 全局管理员<p>访问包的创建者| 仅限全局管理员 |
+| 组或应用程序| 全局管理员 <p>用户管理员<p>Identity Governance 管理员<p>特权角色管理员（仅评审可分配 Azure AD 角色的组）<p>组所有者（[如果管理员已启用]( create-access-review.md#allow--group-owners-to-create-and-manage-access-reviews-preview)）| 全局管理员角色<p>全局读取者<p>用户管理员<p>Identity Governance 管理员<p>特权角色管理员<p>安全读取者<p>组所有者（[如果管理员已启用]( create-access-review.md#allow--group-owners-to-create-and-manage-access-reviews-preview)） |
+|Azure AD 角色| 全局管理员 <p>特权角色管理员|  全局管理员角色<p>全局读取者<p>用户管理员<p>特权角色管理员<p> <p>安全读取者 |
+| Azure 资源角色| 全局管理员角色<p>资源所有者| 全局管理员角色<p>全局读取者<p>用户管理员<p>特权角色管理员<p> <p>安全读取者  |
+| 访问包| 全局管理员<p>用户管理员<p>Identity Governance 管理员| 全局管理员角色<p>全局读取者<p>用户管理员<p>Identity Governance 管理员<p> <p>安全读取者  |
 
 有关详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../roles/permissions-reference.md)。
 

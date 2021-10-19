@@ -1,247 +1,217 @@
 ---
 title: 支持可用性区域的 Azure 服务
-description: 若要在 Azure 中创建具有高可用性和弹性的应用程序，可用性区域提供了可用于运行资源的物理独立位置。
+description: 了解可用性区域支持哪些服务并了解所有 Azure 服务的复原能力。
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 10/05/2021
+ms.date: 10/01/2021
 ms.author: prsandhu
-ms.reviewer: cnthn
-ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 22b6f4570736d891b7cbcb9c0d2c10d6847ee83f
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.reviewer: cynthn
+ms.custom: references_regions
+ms.openlocfilehash: 452948e3fffa9d6bdd5bc8b9523c659a06247a27
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533656"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129668022"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支持可用性区域的 Azure 服务
 
-Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提供最高级别的冗余和复原能力。 Azure 基础结构由地理位置、区域和可用性区域组成，可以遏制故障的冲击半径，从而限制对客户应用程序和数据造成的潜在影响。 开发 Azure 可用性区域构造的目的是提供软件和网络解决方案来防范数据中心故障，并进一步为客户提供高可用性 (HA)。
+Azure [区域和可用性区域](az-overview.md)是每个 Azure 区域中物理隔离的位置，可承受数据中心故障，这是因为有冗余的基础结构以及 Azure 服务的逻辑隔离。 
 
-可用性区域是 Azure 区域中独特的物理位置。 每个局部区域由一个或多个数据中心组成，这些数据中心配置了独立的电源、散热系统和网络。 地理区域中可用性区域的物理隔离限制了局部区域故障对应用程序和数据的影响，这些故障包括大规模洪灾、大风暴和超级风暴，以及可能导致现场进出、安全通道、公用设施长时间运转和资源可用性受到干扰的其他事件。 可用性区域及其关联数据中心的设计方式可确保当某个局部区域受到损坏时，地理区域中的其他可用性区域能够为服务、容量和可用性提供支持。
+可用性区域与网络冗余密不可分。 支持可用性区域的 Azure 服务旨在提供适当级别的复原能力和灵活性，同时提供超低的延迟。 使用支持可用性区域的 Azure 服务，无论是自行构建复原能力还是选择自动复制和分发，都能获得相同的优势。 无论服务类型如何，你都可以跨高度可用的服务获得卓越的复原能力。 
 
-所有 Azure 管理服务的架构方式使其能够在发生地理区域级别的故障后复原。 在故障波及的范围方面，地理区域内一个或多个可用性区域的故障影响半径比整个地理区域的故障范围影响更小。 当地理区域内部的管理服务发生局部区域级别的故障时，Azure 可以恢复。 Azure 每次对地理区域内的一个局部区域执行关键维护，以防止任何故障影响到地理区域内各个可用性区域中部署的客户资源。
-
-
-![包含 3 个局部区域的 Azure 区域概念视图](./media/az-region/azure-region-availability-zones.png)
-
-
-支持可用性区域的 Azure 服务划分为三个类别：**局部区域**、**局部区域冗余** 和 **非地理区域** 服务。 可将客户工作负载分类，以利用其中的任一体系结构方案来满足应用程序性能和持久性需求。
-
-- **局部区域服务** – 可将资源部署到自选的特定可用性区域，以满足更严格的延迟或性能要求。  复原能力是通过将应用程序和数据复制到地理区域中的一个或多个局部区域来自我形成的。  资源可固定到特定的局部区域。 例如，可将虚拟机、托管磁盘或标准 IP 地址固定到特定的区域，这样就可以凭借分散在多个局部区域的一个或多个资源实例来提高复原能力。
-
-- **区域冗余服务** - 资源自动在各个区域间复制或分布。 例如，ZRS 将跨三个区域复制数据，这样可避免区域故障影响数据的高可用性。  
-
-- **非地理区域服务** – 服务始终从 Azure 地理位置提供，可以灵活应对局部区域和地理区域范围的服务中断。 
-
-
-若要在 Azure 上实现全面的业务连续性，可结合使用可用性区域和 Azure 区域对来构建应用程序体系结构。 可以使用 Azure 区域中的可用性区域以同步方式复制应用程序和数据以实现高可用性，并以异步方式跨 Azure 区域复制以实现灾难恢复保护。 有关详细信息，请参阅[使用可用性区域构建高可用性解决方案](/azure/architecture/high-availability/building-solutions-for-high-availability)。 
-
-## <a name="azure-services-supporting-availability-zones"></a>支持可用性区域的 Azure 服务
-
- - 较旧一代的虚拟机未列出。 有关详细信息，请参阅[前几代虚拟机大小](../virtual-machines/sizes-previous-gen.md)。
- - 如 [Azure 中的地理区域和可用性区域](az-overview.md)中所述，某些服务不是地理区域性的。 这些服务不依赖于特定的 Azure 区域，因此可以灵活应对局部区域和地理区域范围的服务中断。  可在[各区域可用的产品](https://azure.microsoft.com/global-infrastructure/services/)中找到非地理区域服务的列表。
-
+Azure 致力于在每项服务和产品中实现高度的复原能力。 运行支持可用性区域的 Azure 服务可针对几乎所有场景提供完全透明且一致的复原能力，而不会中断。
 
 ## <a name="azure-regions-with-availability-zones"></a>包含可用性区域的 Azure 区域
- 
 
-| 美洲           | 欧洲               | 非洲              | 亚太区   |
+Azure 为所有云提供商提供最广泛的全球覆盖，并正在迅速开放新的区域和可用性区域。 以下区域目前支持可用性区域。
+
+| 美洲 | 欧洲 | 非洲 | 亚太区 |
 |--------------------|----------------------|---------------------|----------------|
-| 巴西南部       | 法国中部       | 南非北部  | 澳大利亚东部 |
-| 加拿大中部     | 德国中西部 |                     | 印度中部* |
-| 美国中部         | 北欧         |                     | 日本东部     |
-| 美国东部            | 挪威东部          |                     | 韩国中部  |
-| 美国东部 2          | 英国南部             |                     | 东南亚 |
-| 美国中南部   | 西欧          |                     |                |
-| US Gov 弗吉尼亚州    | 瑞典*              |                     |                |
-| 美国西部 2          |                      |                     |                |
-| 美国西部 3          |                      |                     |                |
+| 巴西南部 | 法国中部 | 南非北部 | 澳大利亚东部 |
+| 加拿大中部 | 德国中西部 | | 印度中部\* |
+| 美国中部 | 北欧 | | 日本东部 |
+| 美国东部 | 挪威东部 | | 韩国中部 |
+| 美国东部 2 | 英国南部 | | 东南亚 |
+| 美国中南部 | 西欧 | | |
+| US Gov 弗吉尼亚州 | 瑞典* | | |
+| 美国西部 2 | | | |
+| 美国西部 3 | | | |
 
-\* 若要详细了解这些地理区域中的可用性区域和可用服务支持，请与 Microsoft 销售或客户代表联系。 有关即将支持可用性区域的地理区域，请参阅 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。
+\* 若要详细了解该区域中的可用性区域和可用服务支持，请与 Microsoft 销售或客户代表联系。 有关即将支持可用性区域的地理区域的信息，请参阅 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。
 
+请参阅[可用性区域文档](az-overview.md)，其中按 Azure 区域列出了支持可用性区域的 Azure 服务。
 
-## <a name="azure-services-supporting-availability-zones"></a>支持可用性区域的 Azure 服务
+## <a name="highly-available-services"></a>高度可用的服务
 
-- 较旧一代的虚拟机未在下面列出。 有关详细信息，请参阅[前几代虚拟机大小](../virtual-machines/sizes-previous-gen.md)。
+三种类型的 Azure 服务支持可用性区域：“区域”、“区域冗余”和“始终可用”服务。   在设计复原能力策略时，可以组合使用这三种体系结构方法。
 
-- 某些服务不是地理区域性的，有关详细信息，请参阅 [Azure 中的地理区域和可用性区域](az-overview.md)。 这些服务不依赖于特定的 Azure 区域，因此可以灵活应对局部区域和地理区域范围的服务中断。  可在[各区域可用的产品](https://azure.microsoft.com/global-infrastructure/services/)中找到非地理区域服务的列表。
+- 局部区域服务：可将资源部署到自选的特定可用性区域，以满足更严格的延迟或性能要求。 复原能力是通过将应用程序和数据复制到地理区域中的一个或多个局部区域来自我形成的。 资源可固定到特定的局部区域。 例如，可将虚拟机、托管磁盘或标准 IP 地址固定到特定的区域，这样就可以凭借分散在多个局部区域的一个或多个资源实例来提高复原能力。
+- 区域冗余服务：资源自动在各个区域间复制或分布。 例如，区域冗余服务可以跨三个区域复制数据，因此一个区域中发生故障不会影响数据的高可用性。 
+- 始终可用的服务：在所有 Azure 地区始终可用，并且对区域范围的中断和区域范围的中断具有复原能力。 有关 Azure 中始终可用服务（也称为非区域服务）的完整列表，请参阅[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。
 
+正如上文所述，并非所有 Azure 服务都在所有区域普遍可用。 产品/服务分为三类，以反映其区域可用性：基础服务、主流服务和战略服务。   Azure 向任何指定区域部署服务的一般策略主要取决于区域类型、服务类别和客户需求。 有关详细信息，请参阅 [Azure 服务](region-types-service-categories-azure.md)。
 
-### <a name="zone-resilient-services"></a>局部区域复原服务 
+- 基础服务：在区域正式发布后或新基础服务正式发布后 90 天内，所有建议区域和备用区域均可用的服务。
+- 主流服务：在区域正式发布后 90 天内，所有建议区域均可用的服务。 主流服务在备用区域根据需求进行发布，许多已部署到备用区域的大型子集中。
+- 战略服务：有针对性的服务产品，通常专注于特定行业或由定制硬件提供支持。 战略服务在不同区域根据需求进行发布，许多已部署到建议区域的大型子集中。
 
-:globe_with_meridians: 非地理区域服务 – 服务始终从 Azure 地理位置提供，可以灵活应对局部区域和地理区域范围的服务中断。
+支持可用性区域的 Azure 服务（包括区域和区域冗余产品/服务）正在不断扩展。
 
-:large_blue_diamond: 灵活应对局部区域范围的服务中断 
+有关上一代虚拟机的详细信息，请参阅[前几代虚拟机大小](/azure/virtual-machines/sizes-previous-gen)。
 
-**基础服务**
+以下几张表汇总了当前提供的区域、区域冗余和始终可用的 Azure 服务。 这几张表根据每个 Azure 产品/服务的区域可用性列出这些 Azure 产品/服务。
 
-|     产品                                                    | 复原能力             |
-|-----------------------------------------------------------------|:----------------------------:|
-|     [应用程序网关 (V2)](../application-gateway/application-gateway-autoscaling-zone-redundant.md)                                  | :large_blue_diamond:  |
-|     [Azure 备份](../backup/backup-create-rs-vault.md#set-storage-redundancy)                                                | :large_blue_diamond:  |
-|     [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)                                           | :large_blue_diamond:  |
-|     [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)                             | :large_blue_diamond:  |
-|     [Azure DNS：Azure DNS 专用区域](../dns/private-dns-getstarted-portal.md)                   | :large_blue_diamond:  |
-|     [Azure Express Route](../expressroute/designing-for-high-availability-with-expressroute.md)                                       | :large_blue_diamond:  |
-|     [Azure 公共 IP](../virtual-network/public-ip-addresses.md)                                           | :large_blue_diamond:  |
-|     Azure SQL 数据库（[常规用途层](../azure-sql/database/high-availability-sla.md)）                 | :large_blue_diamond:  |
-|     Azure SQL 数据库（[高级和业务关键层](../azure-sql/database/high-availability-sla.md)）     | :large_blue_diamond:  |
-|     [磁盘存储](../storage/common/storage-redundancy.md)                                                | :large_blue_diamond:  |
-|     [事件中心](../event-hubs/event-hubs-geo-dr.md#availability-zones)                                                  | :large_blue_diamond:  |
-|     [密钥保管库](../key-vault/general/disaster-recovery-guidance.md)                                                   | :large_blue_diamond:  |
-|     [负载均衡器](../load-balancer/load-balancer-standard-availability-zones.md)                                               | :large_blue_diamond:  |
-|     [服务总线](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)                                                 | :large_blue_diamond:  |
-|     [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md)                                            | :large_blue_diamond:  |
-|     [存储帐户](../storage/common/storage-redundancy.md)                                           | :large_blue_diamond:  |
-|     存储：[热/冷 Blob 存储层](../storage/common/storage-redundancy.md)                      | :large_blue_diamond:  |
-|     存储：[托管磁盘](../virtual-machines/managed-disks-overview.md)                                    | :large_blue_diamond:  |
-|     [虚拟机规模集](../virtual-machine-scale-sets/scripts/cli-sample-zone-redundant-scale-set.md)                               | :large_blue_diamond:  |
-|     [虚拟机](../virtual-machines/windows/create-powershell-availability-zone.md)                                          | :large_blue_diamond:  |
-|     虚拟机：[Av2 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                              | :large_blue_diamond:  |
-|     虚拟机：[Bs 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
-|     虚拟机：[DSv2 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                             | :large_blue_diamond:  |
-|     虚拟机：[DSv3 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                            | :large_blue_diamond:  |
-|     虚拟机：[Dv2 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                             | :large_blue_diamond:  |
-|     虚拟机：[Dv3 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                              | :large_blue_diamond:  |
-|     虚拟机：[ESv3 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                             | :large_blue_diamond:  |
-|     虚拟机：[Ev3 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                              | :large_blue_diamond:  |
-|     虚拟机：[F 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                                | :large_blue_diamond:  |
-|     虚拟机：[FS 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
-|     虚拟机：[共享映像库](../virtual-machines/shared-image-galleries.md#make-your-images-highly-available) | :large_blue_diamond:  |
-|     [虚拟网络](../vpn-gateway/create-zone-redundant-vnet-gateway.md)                                         | :large_blue_diamond:  |
-|     [VPN 网关](../vpn-gateway/about-zone-redundant-vnet-gateways.md)                                             | :large_blue_diamond:  |
+##### <a name="legend"></a>图例
+![图例包含与表中每个服务的服务类别和区域可用性相关的图标和含义。](media/legend.png) 
 
+在产品目录中，始终可用的服务被列为“非区域”服务。
 
-**主流服务**
+### <a name="an-icon-that-signifies-this-service-is-foundational-foundational-services"></a>![表示此服务是基础服务的图标。](media/icon-foundational.svg) 基本服务 
 
+| **产品**   | **复原能力**   |
+| --- | --- |
+| [Azure 应用程序网关 (V2)](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg) ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| [Azure 备份](/architecture/backup/backup-create-rs-vault#set-storage-redundancy.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)   |
+| [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure DNS：Azure DNS 专用区域](../dns/private-dns-getstarted-portal.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure ExpressRoute](../expressroute/designing-for-high-availability-with-expressroute.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure 公共 IP](../virtual-network/public-ip-addresses.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg) ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| Azure SQL 数据库（[常规用途层](../azure-sql/database/high-availability-sla.md)）  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| Azure SQL 数据库（[高级和业务关键层](../azure-sql/database/high-availability-sla.md)）  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure 磁盘存储](../storage/common/storage-redundancy.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure 事件中心](../event-hubs/event-hubs-geo-dr.md#availability-zones)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure Key Vault](../key-vault/general/disaster-recovery-guidance.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure 负载均衡器](../load-balancer/load-balancer-standard-availability-zones.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg) ![表示此服务是区域性服务的图标](media/icon-zonal.svg)  |
+| [Azure 服务总线](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg) ![表示此服务是区域性服务的图标](media/icon-zonal.svg)  |
+| [Azure 存储帐户](../storage/common/storage-redundancy.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| 存储： [热/冷 Azure Blob 存储层](../storage/common/storage-redundancy.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| 存储： [托管磁盘](../virtual-machines/managed-disks-overview.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg) ![表示此服务是区域性服务的图标](media/icon-zonal.svg)  |
+| [Azure 虚拟机规模集](../virtual-machine-scale-sets/scripts/cli-sample-zone-redundant-scale-set.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg) ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| [Azure 虚拟机](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [Av2 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [Bs 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [DSv2 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [DSv3 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [Dv2 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [Dv3 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [ESv3 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [Ev3 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [F 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [FS 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [共享映像库](../virtual-machines/shared-image-galleries.md#make-your-images-highly-available)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure 虚拟网络](../vpn-gateway/create-zone-redundant-vnet-gateway.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure VPN 网关](../vpn-gateway/about-zone-redundant-vnet-gateways.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+### <a name="an-icon-that-signifies-this-service-is-mainstream-mainstream-services"></a>![表示此服务是主流服务的图标。](media/icon-mainstream.svg) 主流服务
 
-|     产品                                                    | 复原能力             |
-|-----------------------------------------------------------------|:----------------------------:|
-|     [应用服务](../app-service/how-to-zone-redundancy.md)                                    | :large_blue_diamond:  |
-|     [应用服务环境](../app-service/environment/zone-redundancy.md)                                    | :large_blue_diamond:  |
-|     [Azure Active Directory 域服务](../active-directory-domain-services/overview.md)                      | :large_blue_diamond:  |
-|     [Azure API 管理](../api-management/zone-redundancy.md)                      | :large_blue_diamond:  |
-|     [Azure 应用配置](../azure-app-configuration/faq.yml#how-does-app-configuration-ensure-high-data-availability)   | :large_blue_diamond:  |    
-|     [Azure Batch](/azure/batch/create-pool-availability-zones)                                               | :large_blue_diamond:  |
-|     [Azure Bastion](../bastion/bastion-overview.md)                                               | :large_blue_diamond:  |
-|     [用于 Redis 的 Azure 缓存](../azure-cache-for-redis/cache-high-availability.md)                              | :large_blue_diamond:  |
-|     [Azure 认知搜索](../search/search-performance-optimization.md#availability-zones)               | :large_blue_diamond:  |
-|     Azure 认知服务：[文本分析](../cognitive-services/text-analytics/index.yml)                    | :large_blue_diamond:  |
-|     [Azure 数据资源管理器](/azure/data-explorer/create-cluster-database-portal)                               | :large_blue_diamond:  |
-|     [Azure 数据工厂](../data-factory/index.yml)                               | :large_blue_diamond:  |
-|     Azure Database for MySQL - [灵活服务器](../mysql/flexible-server/concepts-high-availability.md)                  | :large_blue_diamond:  |
-|     Azure Database for PostgreSQL - [灵活服务器](../postgresql/flexible-server/overview.md)             | :large_blue_diamond:  |
-|     [Azure DDoS 防护](../ddos-protection/ddos-faq.yml)                                       | :large_blue_diamond:  |
-|     [Azure 磁盘加密](../virtual-machines/disks-redundancy.md)                                       | :large_blue_diamond:  |
-|     [Azure 防火墙](../firewall/deploy-availability-zone-powershell.md)                                              | :large_blue_diamond:  |
-|     [Azure 防火墙管理器](../firewall-manager/quick-firewall-policy.md)                                      | :large_blue_diamond:  |
-|     [Azure Functions](https://azure.github.io/AppService/2021/08/25/App-service-support-for-availability-zones.html)     | :large_blue_diamond:  |
-|     [Azure Kubernetes 服务 (AKS)](../aks/availability-zones.md)                              | :large_blue_diamond:  |
-|     [Azure 媒体服务 (AMS)](../media-services/latest/concept-availability-zones.md)        | :large_blue_diamond:  |
-|     [Azure Monitor](/azure/azure-monitor/logs/availability-zones)        | :large_blue_diamond:  |
-|     [Azure Monitor：Application Insights](/azure/azure-monitor/logs/availability-zones)        | :large_blue_diamond:  |
-|     [Azure Monitor：Log Analytics](/azure/azure-monitor/logs/availability-zones)        | :large_blue_diamond:  |
-|     [Azure 专用链接](../private-link/private-link-overview.md)                                          | :large_blue_diamond:  |
-|     [Azure Site Recovery](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)                                       | :large_blue_diamond:  |
-|     Azure SQL：[虚拟机](../azure-sql/database/high-availability-sla.md)                                                                 | :large_blue_diamond:  |
-|     [Azure Web 应用程序防火墙](../firewall/deploy-availability-zone-powershell.md)                                                         | :large_blue_diamond:  |
-|     [容器注册表](../container-registry/zone-redundancy.md)                                                                               | :large_blue_diamond:  |
-|     [事件网格](../event-grid/overview.md)                                                                                                      | :large_blue_diamond:  |
-|     [HDInsight](/azure/hdinsight/hdinsight-use-availability-zones)                                                                               | :large_blue_diamond:  |
-|     [网络观察程序](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                                     | :large_blue_diamond:  |
-|     网络观察程序：[流量分析](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                  | :large_blue_diamond:  |
-|     [Power BI Embedded](/power-bi/admin/service-admin-failover#what-does-high-availability)                                                      | :large_blue_diamond:  |
-|     [高级 Blob 存储](../storage/blobs/storage-blob-performance-tiers.md)                                        | :large_blue_diamond:  |
-|     存储：[Azure 高级文件](../storage/files/storage-files-planning.md)                                | :large_blue_diamond:  |
-|     虚拟机：[Azure 专用主机](../virtual-machines/windows/create-powershell-availability-zone.md)                     | :large_blue_diamond:  |
-|     虚拟机：[Ddsv4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                              | :large_blue_diamond:  |
-|     虚拟机：[Ddv4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
-|     虚拟机：[Dsv4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
-|     虚拟机：[Dv4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                                | :large_blue_diamond:  |
-|     虚拟机：[Edsv4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                              | :large_blue_diamond:  |
-|     虚拟机：[Edv4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
-|     虚拟机：[Esv4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
-|     虚拟机：[Ev4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                                | :large_blue_diamond:  |
-|     虚拟机：[Fsv2 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
-|     虚拟机：[M 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                                  | :large_blue_diamond:  |
-|     [虚拟 WAN](../virtual-wan/virtual-wan-faq.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                                 | :large_blue_diamond:  |
-|     虚拟 WAN：[ExpressRoute](../virtual-wan/virtual-wan-faq.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                   | :large_blue_diamond:  |
-|     虚拟 WAN：[点到站点 VPN 网关](../vpn-gateway/about-zone-redundant-vnet-gateways.md)                      | :large_blue_diamond:  |
-|     虚拟 WAN：[站点到站点 VPN 网关](../vpn-gateway/about-zone-redundant-vnet-gateways.md)                       | :large_blue_diamond:  |
+| **产品**   | **复原能力**   |
+| --- | --- |
+| [应用服务](../app-service/how-to-zone-redundancy.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg) ![表示此服务是区域性服务的图标](media/icon-zonal.svg)  |
+| [Azure 应用服务环境](../app-service/environment/zone-redundancy.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg) ![表示此服务是区域性服务的图标](media/icon-zonal.svg)  |
+| [Azure Active Directory 域服务](../active-directory-domain-services/overview.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure API 管理](../api-management/zone-redundancy.md)  | ![表示此服务是区域性服务的图标](media/icon-zonal.svg)  |
+| [Azure 应用配置](../azure-app-configuration/faq.yml#how-does-app-configuration-ensure-high-data-availability)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure Bastion](../bastion/bastion-overview.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure Batch](../batch/create-pool-availability-zones.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [用于 Redis 的 Azure 缓存](../azure-cache-for-redis/cache-high-availability.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg) ![表示此服务是区域性服务的图标](media/icon-zonal.svg)  |
+| [Azure 认知搜索](../search/search-performance-optimization.md#availability-zones)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| Azure 认知服务： [文本分析](../cognitive-services/text-analytics/index.yml)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure 数据资源管理器](/azure/data-explorer/create-cluster-database-portal)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure 数据工厂](../data-factory/index.yml)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| Azure Database for MySQL -  [灵活服务器](../mysql/flexible-server/concepts-high-availability.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| Azure Database for PostgreSQL -  [灵活服务器](../postgresql/flexible-server/overview.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure DDoS 防护](../ddos-protection/ddos-faq.yml)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg) |
+| [Azure 磁盘加密](../virtual-machines/disks-redundancy.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg) |
+| [Azure 防火墙](../firewall/deploy-availability-zone-powershell.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure 防火墙管理器](../firewall-manager/quick-firewall-policy.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure Functions](https://azure.github.io/AppService/2021/08/25/App-service-support-for-availability-zones.html)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure Kubernetes 服务 (AKS)](../aks/availability-zones.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg) ![表示此服务是区域性服务的图标](media/icon-zonal.svg)  |
+| [Azure Monitor](../azure-monitor/logs/availability-zones.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure Monitor：Application Insights](../azure-monitor/logs/availability-zones.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure Monitor：Log Analytics](../azure-monitor/logs/availability-zones.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure 专用链接](../private-link/private-link-overview.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure Site Recovery](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)  | ![表示此服务是区域性服务的图标](media/icon-zonal.svg)  |
+| Azure SQL： [虚拟机](../azure-sql/database/high-availability-sla.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg) |
+| [Azure Web 应用程序防火墙](../firewall/deploy-availability-zone-powershell.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure 容器注册表](../container-registry/zone-redundancy.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Azure 事件网格](../event-grid/overview.md)  | ![表示此服务是区域冗余服务的图标](media/icon-zone-redundant.svg)  |
+| [Azure HDInsight](../hdinsight/hdinsight-use-availability-zones.md)  | ![表示此服务是区域性服务的图标](media/icon-zonal.svg)  |
+| [Azure 网络观察程序](../network-watcher/frequently-asked-questions.yml)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| 网络观察程序： [流量分析](../network-watcher/frequently-asked-questions.yml)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [Power BI Embedded](/power-bi/admin/service-admin-failover#what-does-high-availability)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| [高级 Blob 存储](../storage/blobs/storage-blob-performance-tiers.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| 存储： [Azure 高级文件](../storage/files/storage-files-planning.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| 虚拟机： [Azure 专用主机](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [Ddsv4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [Ddv4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [Dsv4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [Dv4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [Edsv4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [Edv4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [Esv4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [Ev4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [Fsv2 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| 虚拟机： [M 系列](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
+| [Azure 虚拟 WAN](../virtual-wan/virtual-wan-faq.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| 虚拟 WAN： [Azure ExpressRoute](../virtual-wan/virtual-wan-faq.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| 虚拟 WAN： [点到站点 VPN 网关](../vpn-gateway/about-zone-redundant-vnet-gateways.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| 虚拟 WAN： [站点到站点 VPN 网关](../vpn-gateway/about-zone-redundant-vnet-gateways.md)  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
 
+### <a name="an-icon-that-signifies-this-service-is-strategic-strategic-services"></a>![表示此服务是战略服务的图标。](media/icon-strategic.svg) 战略服务
 
-**专用服务**
+| **产品**   | **复原能力**   |
+| --- | --- |
+| Azure Red Hat OpenShift  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg) ![表示此服务是区域性服务的图标](media/icon-zonal.svg)  |
+| Azure 认知服务：异常检测器  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| Azure 认知服务：表单识别器  | ![表示此服务是区域冗余服务的图标。](media/icon-zone-redundant.svg)  |
+| Azure 存储：超级磁盘  | ![表示此服务是区域性服务的图标。](media/icon-zonal.svg)  |
 
-|     产品                                                    | 复原能力             |
-|-----------------------------------------------------------------|:----------------------------:|
-|     Azure Red Hat OpenShift                                     | :large_blue_diamond:  |
-|     认知服务：异常检测器                        | :large_blue_diamond:  |
-|     认知服务：表单识别器                         | :large_blue_diamond:  |
-|     存储：超级磁盘                                         | :large_blue_diamond:  |
+### <a name="an-icon-that-signifies-this-service-is-non-regional-non-regional-services-always-available-services"></a>![表示此服务是非区域服务的图标。](media/icon-always-available.svg) 非区域服务（始终可用的服务）
 
+| **产品**   | **复原能力**   |
+| --- | --- |
+| Azure DNS  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure Active Directory  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure 高级威胁防护  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure 顾问  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure 蓝图  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure 机器人服务  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure Front Door  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| 适用于 IoT 的 Azure Defender  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure Front Door  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure 信息保护  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure Lighthouse  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure 托管应用程序  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure Maps  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure Performance Diagnostics  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure Policy  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure Resource Graph  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure Sentinel  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure Stack  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure Stack Edge  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure Cloud Shell  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure 内容分发网络  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure 成本管理和计费 | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Microsoft Azure 客户密码箱  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Microsoft Intune  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure 对等互连服务  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure 门户  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Microsoft Cloud App Security  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Microsoft Graph  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure 安全中心  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
+| Azure 流量管理器  | ![表示此服务始终可用服务的图标。](media/icon-always-available.svg) |
 
-**非地理区域**
+请参阅[可用性区域文档](az-overview.md)，其中按 Azure 区域列出了支持可用性区域的 Azure 服务。
 
-|     产品                                                    | 复原能力             |
-|-----------------------------------------------------------------|:----------------------------:|
-|     Azure DNS                                                   | :globe_with_meridians: |
-|     Azure Active Directory                                    | :globe_with_meridians: |
-|     Azure 高级威胁防护                            | :globe_with_meridians: |
-|     Azure 顾问                                               | :globe_with_meridians: |
-|     Azure 蓝图                                            | :globe_with_meridians: |
-|     Azure 机器人服务                                          | :globe_with_meridians: |
-|     Azure Front Door                                            | :globe_with_meridians: |
-|     Azure Defender for IoT                                    | :globe_with_meridians: |
-|     Azure Front Door                                            | :globe_with_meridians: |
-|     Azure 信息保护                              | :globe_with_meridians: |
-|     Azure Lighthouse                                          | :globe_with_meridians: |
-|     Azure 托管应用程序                                | :globe_with_meridians: |
-|     Azure Maps                                                  | :globe_with_meridians: |
-|     Azure Performance Diagnostics                               | :globe_with_meridians: |
-|     Azure Policy                                                | :globe_with_meridians: |
-|     Azure Resource Graph                                      | :globe_with_meridians: |
-|     Azure Sentinel                                              | :globe_with_meridians: |
-|     Azure Stack                                                 | :globe_with_meridians: |
-|     Azure Stack Edge                                          | :globe_with_meridians: |
-|     Cloud Shell                                                 | :globe_with_meridians: |
-|     内容分发网络                                    | :globe_with_meridians: |
-|     成本管理                                             | :globe_with_meridians: |
-|     Microsoft Azure 客户密码箱                      | :globe_with_meridians: |
-|     Intune                                                      | :globe_with_meridians: |
-|     Microsoft Azure 对等互连服务                           | :globe_with_meridians: |
-|     Microsoft Azure 门户                                    | :globe_with_meridians: |
-|     Microsoft Cloud App Security                                | :globe_with_meridians: |
-|     Microsoft Graph                                             | :globe_with_meridians: |
-|     安全中心                                           | :globe_with_meridians: |
-|     流量管理器                                           | :globe_with_meridians: |
+## <a name="pricing-for-virtual-machines-in-availability-zones"></a>可用性区域中虚拟机的定价
 
-
-## <a name="pricing-for-vms-in-availability-zones"></a>可用性区域中 VM 的定价
-
-Azure 可用性区域随 Azure 订阅提供。 在此处了解详情 - [带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)。
-
-
-## <a name="get-started-with-availability-zones"></a>可用性区域入门
-
-- [创建虚拟机](../virtual-machines/windows/create-portal-availability-zone.md)
-- [使用 PowerShell 添加托管磁盘](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
-- [创建区域冗余的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [使用具有区域冗余前端的标准负载均衡器跨区域对 VM 进行负载均衡](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard)
-- [使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard)
-- [区域冗余存储](../storage/common/storage-redundancy.md)
-- [Azure SQL 数据库常规用途层](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
-- [事件中心异地灾难恢复](../event-hubs/event-hubs-geo-dr.md#availability-zones)
-- [服务总线异地灾难恢复](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
-- [创建区域冗余的虚拟网关](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
-- [为 Azure Cosmos DB 添加局部区域冗余的地理区域](../cosmos-db/high-availability.md#availability-zone-support)
-- [Azure Cache for Redis 可用性区域入门](https://gist.github.com/JonCole/92c669ea482bbb7996f6428fb6c3eb97#file-redisazgettingstarted-md)
-- [创建 Azure Active Directory 域服务实例](../active-directory-domain-services/tutorial-create-instance.md)
-- [创建使用可用性区域的 Azure Kubernetes 服务 (AKS) 群集](../aks/availability-zones.md)
-
+可以使用 Azure 订阅访问 Azure 可用性区域。 要了解更多信息，请参阅[带宽定价](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [Azure 中的区域和可用性区域](az-overview.md)
+- [使用可用性区域构建高可用性解决方案](/architecture/high-availability/building-solutions-for-high-availability)
+- [使用 Azure 服务实现高可用性](/architecture/framework/resiliency/overview)
+- [高可用性的设计模式](/architecture/framework/resiliency/app-design)

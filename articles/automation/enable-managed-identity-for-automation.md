@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/23/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b84c73e5286dc633b54ade2d59d43957f517361e
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: eb883fafd7c738ca99fe2282edb67d1849b9b1af
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129057655"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858151"
 ---
 # <a name="using-a-system-assigned-managed-identity-for-an-azure-automation-account-preview"></a>为 Azure 自动化帐户使用系统分配的托管标识（预览版）
 
@@ -23,7 +23,7 @@ ms.locfileid: "129057655"
 
 - 一个 Azure 自动化帐户。 有关说明，请参阅[创建 Azure 自动化帐户](./quickstarts/create-account-portal.md)。
 
-- Azure 帐户模块的最新版本。 当前版本为 2.2.8。 （请参阅 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/)，了解此版本的相关详情。）
+- 最新版本的 Az PowerShell 模块 Az.Accounts、Az.Resources、Az.Automation、Az.KeyVault。
 
 - 要从自动化 runbook 访问的 Azure 资源。 此资源需要为托管标识定义角色，这可帮助自动化 runbook 对资源访问进行身份验证。 若要添加角色，需要成为相应 Azure AD 租户中资源的所有者。
 

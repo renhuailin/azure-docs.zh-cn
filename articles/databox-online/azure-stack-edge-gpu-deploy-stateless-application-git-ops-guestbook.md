@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack Edge Pro GPU 设备上启用了 Arc 的 Kubernetes 上部署 PHP `Guestbook` 应用 | Microsoft Docs
-description: 介绍如何在 Azure Stack Edge Pro 设备上启用了 Arc 的 Kubernetes 群集上，使用 GitOps 部署具有 Redis 的 PHP `Guestbook` 无状态应用程序。
+title: 在 Azure Stack Edge Pro GPU 设备上启用了 Azure Arc 的 Kubernetes 上部署 PHP `Guestbook` 应用 | Microsoft Docs
+description: 介绍如何在 Azure Stack Edge Pro 设备上启用了 Azure Arc 的 Kubernetes 群集上，使用 GitOps 部署具有 Redis 的 PHP `Guestbook` 无状态应用程序。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 4c5a361fafeaed6452481adc9e6eae856828bfda
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bcf2b8e97a00e693825124e92acd0f551ebfde14
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635577"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709787"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 的启用了 Arc 的 Kubernetes 群集上部署具有 Redis 的 PHP `Guestbook` 无状态应用程序
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-azure-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 的启用了 Azure Arc 的 Kubernetes 群集上部署具有 Redis 的 PHP `Guestbook` 无状态应用程序
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "128635577"
 - 多个复制的 Redis 实例，用于提供读取服务
 - 多个 Web 前端实例
 
-部署是在 Azure Stack Edge Pro 设备上启用了 Arc 的 Kubernetes 群集上使用 GitOps 完成的。 
+部署是在 Azure Stack Edge Pro 设备上启用了 Azure Arc 的 Kubernetes 群集上使用 GitOps 完成的。 
 
 此过程适用于已阅读 [Azure Stack Edge Pro 设备上的 Kubernetes 工作负载](azure-stack-edge-gpu-kubernetes-workload-management.md)一文且熟悉[什么是已启用 Azure Arc 的 Kubernetes（预览版）](../azure-arc/kubernetes/overview.md)中的概念的用户。
 

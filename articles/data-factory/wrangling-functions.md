@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
-ms.date: 04/16/2021
-ms.openlocfilehash: 2af1e7f9e1b787e73247d9537b4a8876cc4f7220
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/06/2021
+ms.openlocfilehash: c0a646624054aca3bc043f4ee573dac274f2aa77
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361240"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129809912"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Power Query 中用于数据整理的转换函数
 
@@ -137,6 +137,26 @@ ms.locfileid: "129361240"
 in
   #"Pivoted column"
 ```
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWNbBf]
+
+### <a name="formatting-datetime-columns"></a>设置日期/时间列的格式
+
+要在使用 Power Query ADF 时设置日期/时间格式，请按照以下设定来设置格式。
+
+![Power Query 更改类型](media/data-flow/power-query-date-2.png)
+
+1. 在 Power Query UI 中选择列，然后选择“更改类型”>“日期/时间”
+2. 你将看到一条警告消息
+3. 打开高级编辑器，并将 ```TransformColumnTypes``` 更改为 ```TransformColumns```。 根据输入数据指定格式和区域性。
+
+![Power Query 编辑器](media/data-flow/power-query-date-3.png)
+
+```
+#"Changed column type 1" = Table.TransformColumns(#"Duplicated column", {{"start - Copy", each DateTime.FromText(_, [Format = "yyyy-MM-dd HH:mm:ss", Culture = "en-us"]), type datetime}})
+```
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWNdQg]
 
 ## <a name="next-steps"></a>后续步骤
 

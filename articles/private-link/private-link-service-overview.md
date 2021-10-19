@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 50d918cb6cb096674dc5b79d478d37d65422106e
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: a621d93bda3c3a032932a9d6349dcbce0190610c
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186004"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740239"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure 专用链接服务？
 
@@ -87,7 +87,7 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服�
 
 别名由三个部分组成：<前缀>.<GUID>.<后缀>   
 
-- 前缀是服务名称。 可以选择自己的前缀。 创建“别名”后，无法对其进行更改，因此请适当地选择前缀。  
+- 前缀是服务名称。 可以选取自己的前缀。 创建“别名”后，无法对其进行更改，因此请适当地选择前缀。  
 - GUID 由平台提供。 它帮助确保名称的全局唯一性。 
 - 后缀由 Azure 追加：<区域>.azure.privatelinkservice  
 

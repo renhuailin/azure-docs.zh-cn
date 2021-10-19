@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: d38c2518b3504b79f70c58aff1e6cf832d05c8a5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8388df72352669eb81a22df392ca077f91d13cfb
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633900"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754646"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）中的计算和存储选项
 
@@ -101,11 +101,11 @@ ms.locfileid: "128633900"
 
 ### <a name="storage-auto-grow"></a>存储自动增长
 
-存储自动增长可防止服务器耗尽存储空间并变为只读。 如果启用了存储自动增长，存储会在不影响工作负荷的情况下自动增长。 默认情况下，会为所有新创建的服务器启用存储自动增长。 对于预配存储小于等于 100 GB 的服务器，当可用存储小于预配存储的 10% 时，预配存储大小会增加 5 GB。 对于预配存储大于 100 GB 的服务器，可用存储空间小于预配存储大小 10 GB 时，预配存储大小会增加 5%。 适用上面指定的最大存储限制。
+存储自动增长可防止服务器耗尽存储空间并变为只读。 如果启用了存储自动增长，存储会在不影响工作负荷的情况下自动增长。 默认情况下，会为所有新创建的服务器启用存储自动增长。 对于预配存储小于等于 100 GB 的服务器，当可用存储小于预配存储的 10% 时，预配存储大小会增加 5 GB。 对于预配存储大于 100 GB 的服务器，可用存储空间小于预配存储大小 10 GB 时，预配存储大小会增加 5%。 适用上面指定的最大存储限制。 刷新服务器实例，以查看在“计算 + 存储”边栏选项卡中预配的已更新存储。 
 
 例如，如果已预配 1000 GB 的存储，而实际使用量超过 990 GB，则服务器存储大小会增加到 1050 GB。 或者，如果已预配 10 GB 的存储，则当可用存储少于 1 GB 时，存储大小会增加到 15 GB。
 
-请记住，存储只能纵向扩展，不能纵向缩减
+记住，存储在自动纵向扩展后无法纵向缩减。
 
 ## <a name="iops"></a>IOPS
 

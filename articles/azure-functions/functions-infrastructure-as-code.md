@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: 62330b341d2aa59f33b5f780005042d114400748
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f8cddbe0cf82245b566903541c51c78f0242005e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128625670"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713457"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -571,7 +571,7 @@ Linux 应用还应包含 `siteConfig` 下的 `linuxFxVersion` 属性。 如果�
 
 ## <a name="deploy-to-azure-arc"></a>部署到 Azure Arc
 
-Azure Functions 可以部署到[支持 Azure Arc 的 Kubernetes](../app-service/overview-arc-integration.md)。 此过程主要遵循[部署到应用服务计划](#deploy-on-app-service-plan)，但有几个差异需要注意。
+Azure Functions 可以部署到[已启用 Azure Arc 的 Kubernetes](../app-service/overview-arc-integration.md)。 此过程主要遵循[部署到应用服务计划](#deploy-on-app-service-plan)，但有几个差异需要注意。
 
 若要创建应用和计划资源，必须已为支持 Azure Arc 的 Kubernetes 群集[创建应用服务 Kubernetes 环境](../app-service/manage-create-arc-environment.md)。 这些示例假定你知道要部署到的自定义位置和应用服务 Kubernetes 环境的资源 ID。 对于大多数模板，可以将这两个资源 ID 作为参数提供。
 

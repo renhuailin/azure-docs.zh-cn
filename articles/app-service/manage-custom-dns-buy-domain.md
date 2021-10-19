@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: c15c4e2f269791dfce80d89edf22d5041be636b9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 03dd990fdc6d5e2d274a0ea858d1d91feb5a0b07
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734472"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659880"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
 
@@ -20,7 +20,7 @@ ms.locfileid: "121734472"
 
 ## <a name="prerequisites"></a>先决条件
 
-为完成此教程：
+完成本教程：
 
 * [创建应用服务应用](./index.yml)，或使用为另一教程创建的应用。 应用应位于 Azure 公共区域中。 目前，不支持 Azure 国家云。
 * [移除订阅中的支出限制](../cost-management-billing/manage/spending-limit.md#remove)。 无法购买具有免费订阅信用额度的应用服务域。
@@ -98,6 +98,11 @@ ms.locfileid: "121734472"
 
 现可将应用服务应用分配给该自定义域。
 
+> [!NOTE]
+> 根据订阅类型，在创建应用服务域之前可能需要足够多的付款历史记录。 
+> 
+> 如果已付款，但仍出现此错误，可以联系支持人员并提供付款凭证。
+
 ## <a name="prepare-the-app"></a>准备应用
 
 若要将自定义 DNS 名称映射到 Web 应用，Web 应用的[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于付费层（Azure Functions 的共享、基本、标准、高级或消耗层）。 在此步骤中，需确保应用服务计划位于受支持的定价层。
@@ -122,7 +127,7 @@ ms.locfileid: "121734472"
 
     ![扩展菜单](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-1. 蓝色边框突出显示了应用的当前层。 检查以确保应用不在 **F1** 层中。 **F1** 层不支持自定义 DNS。 
+1. 蓝色的框突出显示了应用的当前层。 检查以确保应用不在 **F1** 层中。 **F1** 层不支持自定义 DNS。 
 
     :::image type="content" source="./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png" alt-text="应用页左侧导航菜单的屏幕截图，其中选中了“纵向扩展(应用服务计划)”。":::
 

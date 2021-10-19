@@ -7,69 +7,82 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 08/09/2021
+ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 247400ea72567108fb9dc320bddd1b87d6ef6ced
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+recommendations: false
+ms.openlocfilehash: 425a5cb9ab332076ddd0d745bba7b914e5601917
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641667"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707148"
 ---
-# <a name="form-recognizer-layout-service"></a>表单识别器布局服务
+# <a name="form-recognizer-layout-model"></a>表单识别器布局模型
 
 Azure 表单识别器的布局 API 可从文档（PDF 和 TIFF）和图像（JPG、PNG 和 BMP）提取文本、表、选择标记和结构信息。 它使客户能够使用各种格式的文档，并返回文档的结构化数据表示形式。 它结合了强大的增强版[光学字符识别 (OCR)](../../cognitive-services/computer-vision/overview-ocr.md) 功能与深度学习模型，能够提取文本、表、选择标记和文档结构。
 
-## <a name="what-does-the-layout-service-do"></a>布局服务有什么作用？
+##### <a name="sample-form-processed-with-form-recognizer-sample-labeling-tool--layout-feature"></a>使用[表单识别器示例标记工具](https://fott-2-1.azurewebsites.net/)布局功能处理的示例表单：
 
-布局 API 能够非常准确地从文档提取文本、包含表头的表、选择标记和结构信息，并返回有序的结构化 JSON 响应。 文档可以是各种格式和质量，包括手机拍摄的图像、扫描文档和数字 PDF。 布局 API 将从所有这些文档中准确提取结构化输出。
+:::image type="content" source="media/layout-demo.gif" alt-text="{alt-text}":::
 
-![布局示例](./media/layout-demo.gif)
+数据提取功能
 
-## <a name="try-it&quot;></a>试用
+| **布局模型**   | 文本提取   | 选定标记   | **表**  |
+| --- | --- | --- | --- |
+| Layout  | ✓  | ✓  | ✓  |
 
-若要试用表单识别器布局服务，请转到联机 UI 工具示例：
+## <a name="try-form-recognizer-studio-preview"></a>试用表单识别器工作室（预览版）
 
-> [!div class=&quot;nextstepaction&quot;]
-> [试用布局模型](https://aka.ms/fott-2.1-ga &quot;开始使用布局预生成模型从表单中提取数据。")
+* 预览版 (v3.0) API 随附了表单识别器工作室。
 
-若要试用表单识别器布局 API，你将需要一个 Azure 订阅（[免费创建一个](https://azure.microsoft.com/free/cognitive-services)）和一个[表单识别器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)终结点和密钥。
+* 使用我们的表单识别器工作室的布局功能，从表单和文档中提取表格、复选框和文本：
 
-![示例 UI 屏幕截图；分析文档的文本、表和选定标记](./media/analyze-layout.png)
+> [!div class="nextstepaction"]
+> [试用表单识别器工作室](https://formrecognizer.appliedai.azure.com/studio/layout)
+
+## <a name="try-form-recognizer-sample-labeling-tool"></a>试用表单识别器的示例标签工具
+
+可以通过试用示例标签工具来了解如何提取布局数据。 将需要以下各项：
+
+* Azure 订阅，可以[免费创建一个](https://azure.microsoft.com/free/cognitive-services/)
+
+* Azure 门户中的[表单识别器实例](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)。 可以使用免费定价层 (`F0`) 来试用该服务。 部署资源后，单击“转到资源”以获取 API 密钥和终结点。
+
+ :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="屏幕截图：Azure 门户中的密钥和终结点位置。":::
+
+* 表单文档。 可以使用我们的[示例表单文档](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-layout.pdf)。
+
+> [!div class="nextstepaction"]
+  > [试用](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
+
+  在表单识别器 UI 中：
+
+  1. 选择“使用‘布局’来获取文本、表和选择标记”。
+  1. 从下拉菜单中选择“本地文件”。
+  1. 上传文件并选择“运行布局”
+
+  :::image type="content" source="media/try-layout.png" alt-text="屏幕截图：示例标签工具下拉布局文件源选择菜单。":::
 
 ## <a name="input-requirements"></a>输入要求
 
-[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
+* 为获得最佳结果，请针对每个文档提供一张清晰的照片或高质量的扫描件。
+* 支持的文件格式：JPEG、PNG、BMP、TIFF 和 PDF（文本嵌入或扫描式）。 最好是使用文本嵌入式 PDF，这可以避免在提取和定位字符时出错。
+* 对于 PDF 和 TIFF，最多可以处理 2000 页（对于免费层订阅，仅处理前两页）。
+* 文件大小必须小于 50 MB。
+* 图像尺寸必须介于 50 x 50 像素与 10000 x 10000 像素之间。
+* PDF 尺寸最大为 17 x 17 英寸，相当于法律专用纸或 A3 纸张尺寸或更小。
+* 训练数据的总大小不得超过 500 页。
+* 如果 PDF 是密码锁定的文件，则必须先删除锁，然后才能提交它们。
+* 对于非监督式学习（没有已标记的数据）：
+  * 数据必须包含键和值。
+  * 键可以显示在值的上方或左侧，而不能显示在下方或右侧。
 
-## <a name="analyze-layout"></a>分析布局
+> [!NOTE]
+> [示例标记工具](https://fott-2-1.azurewebsites.net/)不支持 BMP 文件格式。 这是工具限制，而非表单识别器服务限制。
 
-首先，调用[“分析布局”](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeLayoutAsync)操作。 分析布局采用文档（图像、TIFF 或 PDF 文件）作为输入，并提取文本、表、选定标记和文档的结构。 该调用返回一个名为 `Operation-Location` 的响应标头字段。 `Operation-Location` 值是一个 URL，其中包含要在下一步骤中使用的结果 ID。
+## <a name="supported-languages-and-locales"></a>支持的语言和区域设置
 
-|响应标头| 结果 URL |
-|:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1/layout/analyzeResults/{resultId}' |
-
-## <a name="get-analyze-layout-result"></a>获取“分析布局”结果
-
-第二步是调用 [Get Analyze Layout Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetAnalyzeLayoutResult) 操作。 此操作采用分析布局操作创建的结果 ID 作为输入。 此操作返回一个 JSON 响应，其中包含具有以下可能值的 **status** 字段。
-
-|字段| 类型 | 可能值 |
-|:-----|:----:|:----|
-|status | 字符串 | `notStarted`：分析操作尚未开始。<br /><br />`running`：分析操作正在进行。<br /><br />`failed`：分析操作失败。<br /><br />`succeeded`：分析操作成功。|
-
-可以不断地以迭代方式调用此操作，直到它返回 `succeeded` 值为止。 使用 3 到 5 秒的间隔可以避免超过每秒请求数 (RPS) 的速率限制。
-
-当“status”字段的值为 `succeeded` 时，JSON 响应将包含提取的布局、文本、表和选定标记。 提取的数据包括提取的文本行和单词、边界框、带有手写指示的文本外观、表以及所指示的选定/未选择的选定标记。
-
-## <a name="sample-json-output"></a>示例 JSON 输出
-
-对 Get Analyze Layout Result 操作的响应是文档的结构化表示形式，其中提取了所有信息。
-有关[示例文档文件](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-layout.pdf)及其结构化输出[示例布局输出](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-layout-output.json)，请参阅此处。
-
-JSON 输出分为两个部分：
-
-* `readResults` 节点包含所有已识别的文本和选定标记。 文本按页，然后按行，然后按单个单词进行组织。
-* `pageResults` 节点包含提取的表和单元格及其边界框、置信度以及对“readResults”中的行和词的引用。
+ 表单识别器预览版为布局模型引入了额外的语言支持。 有关支持的手写和打印文本的完整列表，请参阅我们的[语言支持](language-support.md#layout-and-custom-model)。
 
 ## <a name="features"></a>功能
 
@@ -109,12 +122,22 @@ JSON 输出分为两个部分：
 
 :::image type="content" source="./media/layout-select-pages-for-text.png" alt-text="布局选定页面输出":::
 
+## <a name="form-recognizer-preview-v30"></a>表单识别器预览版 v3.0
+
+ 表单识别器预览版引入了几个新特性和功能。
+
+* 遵循我们的[表单识别器 v3.0 迁移指南](v3-migration-guide.md)，了解如何在你的应用程序和工作流中使用预览版。
+
+* 探索我们的 [REST API（预览版）](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)以了解有关预览版和新功能的更多信息。
+
 ## <a name="next-steps"></a>后续步骤
 
-* 使用[表单识别器示例 UI 工具](https://aka.ms/fott-2.1-ga)尝试自己进行布局提取
-* 完成[表单识别器快速入门](quickstarts/client-library.md#analyze-layout)，开始以你选择的开发语言提取布局。
+* 完成表单识别器快速入门：
 
-## <a name="see-also"></a>请参阅
+  > [!div class="nextstepaction"]
+  > [表单识别器快速入门](quickstarts/try-sdk-rest-api.md)
 
-* [什么是表单识别器？](./overview.md)
-* [REST API 参考文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeLayoutAsync)
+* 探索我们的 REST API：
+
+    > [!div class="nextstepaction"]
+    > [表单识别器 API v2.1](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeLayoutAsync)

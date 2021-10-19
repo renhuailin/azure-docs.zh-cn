@@ -6,49 +6,45 @@ author: aaronpowell
 ms.author: aapowell
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/07/2021
-ms.openlocfilehash: b09d1f6d6cdd5838f4c43e7cb05f63d8efd3e7f9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/08/2021
+ms.openlocfilehash: 49921eba1a7f4c6c898eaadf1d8743d8d210057a
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723405"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729798"
 ---
 # <a name="custom-authentication-in-azure-static-web-apps"></a>Azure Static Web Apps 中的自定义身份验证
 
 Azure Static Web Apps 提供[托管身份验证](authentication-authorization.md)，此身份验证方法使用 Azure 管理的提供程序注册。 为了实现比该注册更高的灵活性，可使用自定义注册替代默认设置。
 
-- 自定义身份验证还允许配置支持 [OpenID Connect](https://openid.net/connect/) 的[自定义提供程序](#configure-a-custom-openid-connect-provider)。 此配置允许注册多个外部提供程序。
+- 自定义身份验证还允许配置支持 [OpenID Connect](https://openid.net/connect/) 的[自定义提供程序](./authentication-custom.md?tabs=openid-connect#configure-a-custom-identity-provider)。 此配置允许注册多个外部提供程序。
 
 - 使用任何自定义注册会禁用所有预配置的提供程序。
-
-- 具体对于 Azure Active Directory (AAD) 注册而言，你可以选择提供一个租户，这样就可以绕过用于组管理的[邀请流](./authentication-authorization.md#role-management)。
 
 > [!NOTE]
 > 只能在 Azure Static Web Apps 标准计划中使用自定义身份验证。
 
-## <a name="override-pre-configured-provider"></a>替代预配置的提供程序
+## <a name="configure-a-custom-identity-provider"></a>配置自定义标识提供程序
 
-用于替代提供程序的设置是在[配置文件](configuration.md)的 `auth` 节中配置的。
+在`auth`配置文件[的 ](configuration.md) 部分中配置自定义标识提供程序。
 
 为了避免在源代码管理中添加机密，配置将在配置文件的[应用程序设置](application-settings.md)中查找匹配的名称。 你还可以选择将机密存储在 [Azure 密钥保管库](./key-vault-secrets.md)中。
 
-### <a name="configuration"></a>配置
+# <a name="azure-active-directory"></a>Azure Active Directory
 
-若要设置自定义身份验证，需要参考一些存储为[应用程序设置](./application-settings.md)的机密。 
-
-# <a name="azure-active-directory"></a>[Azure Active Directory](#tab/aad)
-
-Azure Active Directory 提供程序有两个不同的版本。 版本 1 显式定义了 `userDetailsClaim`，它允许有效负载返回用户信息。 相比之下，版本 2 默认返回用户信息，并由 `openIdIssuer` URL 中的 `v2.0` 指定。
-
-若要创建注册，请首先创建以下应用程序设置：
+要创建注册，请首先创建以下[应用程序设置](application-settings.md)：
 
 | 设置名称 | “值” |
 | --- | --- |
 | `AAD_CLIENT_ID` | 用于 Azure AD 应用注册的应用程序（客户端）ID。 |
 | `AAD_CLIENT_SECRET` | 用于 Azure AD 应用注册的客户端密码。 |
 
-#### <a name="azure-active-directory-version-1"></a>Azure Active Directory 版本 1
+接下来，使用以下示例在[配置文件](configuration.md)中配置提供程序。
+
+Azure Active Directory 提供程序有两个不同的版本。 版本 1 显式定义了 `userDetailsClaim`，它允许有效负载返回用户信息。 相比之下，版本 2 默认返回用户信息，并由 `openIdIssuer` URL 中的 `v2.0` 指定。
+
+### <a name="azure-active-directory-version-1"></a>Azure Active Directory 版本 1
 
 ```json
 {
@@ -69,7 +65,7 @@ Azure Active Directory 提供程序有两个不同的版本。 版本 1 显式�
 
 确保将 `<TENANT_ID>` 替换为你的 Azure Active Directory 租户 ID。
 
-#### <a name="azure-active-directory-version-2"></a>Azure Active Directory 版本 2
+### <a name="azure-active-directory-version-2"></a>Azure Active Directory 版本 2
 
 ```json
 {
@@ -89,21 +85,21 @@ Azure Active Directory 提供程序有两个不同的版本。 版本 1 显式�
 
 确保将 `<TENANT_ID>` 替换为你的 Azure Active Directory 租户 ID。
 
-有关如何配置 Azure Active Directory 的详细信息，请参阅[应用服务身份验证/授权文档](../app-service/configure-authentication-provider-aad.md)。
+有关如何配置 Azure Active Directory 的详细信息，请参阅有关使用现有注册的[应用服务身份验证/授权文档](../app-service/configure-authentication-provider-aad.md#-option-2-use-an-existing-registration-created-separately)。
 
 > [!NOTE]
 > 虽然 Azure Active Directory 的配置部分是 `azureActiveDirectory`，但平台在用于登录、注销和清除用户信息的 URL 中将它别名为 `aad`。 有关详细信息，请参阅[身份验证和授权](authentication-authorization.md)部分。
 
 # <a name="apple"></a>[Apple](#tab/apple)
 
-若要创建注册，请首先创建以下应用程序设置：
+要创建注册，请首先创建以下[应用程序设置](application-settings.md)：
 
 | 设置名称 | “值” |
 | --- | --- |
 | `APPLE_CLIENT_ID` | Apple 客户端 ID。 |
 | `APPLE_CLIENT_SECRET` | Apple 客户端密码。 |
 
-接下来，使用以下示例配置提供程序。
+接下来，使用以下示例在[配置文件](configuration.md)中配置提供程序。
 
 ```json
 {
@@ -124,14 +120,14 @@ Azure Active Directory 提供程序有两个不同的版本。 版本 1 显式�
 
 # <a name="facebook"></a>[Facebook](#tab/facebook)
 
-若要创建注册，请首先创建以下应用程序设置：
+要创建注册，请首先创建以下[应用程序设置](application-settings.md)：
 
 | 设置名称 | “值” |
 | --- | --- |
 | `FACEBOOK_APP_ID` | Facebook 应用程序 ID。 |
 | `FACEBOOK_APP_SECRET` | Facebook 应用程序机密。 |
 
-接下来，使用以下示例配置提供程序。
+接下来，使用以下示例在[配置文件](configuration.md)中配置提供程序。
 
 ```json
 {
@@ -153,14 +149,14 @@ Azure Active Directory 提供程序有两个不同的版本。 版本 1 显式�
 # <a name="github"></a>[GitHub](#tab/github)
 
 
-若要创建注册，请首先创建以下应用程序设置：
+要创建注册，请首先创建以下[应用程序设置](application-settings.md)：
 
 | 设置名称 | “值” |
 | --- | --- |
 | `GITHUB_CLIENT_ID` | GitHub 客户端 ID。 |
 | `GITHUB_CLIENT_SECRET` | GitHub 客户端密码。 |
 
-接下来，使用以下示例配置提供程序。
+接下来，使用以下示例在[配置文件](configuration.md)中配置提供程序。
 
 ```json
 {
@@ -180,14 +176,14 @@ Azure Active Directory 提供程序有两个不同的版本。 版本 1 显式�
 # <a name="google"></a>[Google](#tab/google)
 
 
-若要创建注册，请首先创建以下应用程序设置：
+要创建注册，请首先创建以下[应用程序设置](application-settings.md)：
 
 | 设置名称 | “值” |
 | --- | --- |
 | `GOOGLE_CLIENT_ID` | Google 客户端 ID。 |
 | `GOOGLE_CLIENT_SECRET` | Google 客户端密码。 |
 
-接下来，使用以下示例配置提供程序。
+接下来，使用以下示例在[配置文件](configuration.md)中配置提供程序。
 
 ```json
 {
@@ -208,14 +204,14 @@ Azure Active Directory 提供程序有两个不同的版本。 版本 1 显式�
 
 # <a name="twitter"></a>[Twitter](#tab/twitter)
 
-若要创建注册，请首先创建以下应用程序设置：
+要创建注册，请首先创建以下[应用程序设置](application-settings.md)：
 
 | 设置名称 | “值” |
 | --- | --- |
 | `TWITTER_CONSUMER_KEY` | Twitter 使用者密钥。 |
 | `TWITTER_CONSUMER_SECRET` | Twitter 使用者机密。 |
 
-接下来，使用以下示例配置提供程序。
+接下来，使用以下示例在[配置文件](configuration.md)中配置提供程序。
 
 ```json
 {
@@ -234,11 +230,9 @@ Azure Active Directory 提供程序有两个不同的版本。 版本 1 显式�
 
 有关如何将 Twitter 配置为身份验证提供程序的详细信息，请参阅[应用服务身份验证/授权文档](../app-service/configure-authentication-provider-twitter.md)。
 
----
+# <a name="openid-connect"></a>[OpenID Connect](#tab/openid-connect)
 
-## <a name="configure-a-custom-openid-connect-provider"></a>配置自定义 OpenID Connect 提供程序
-
-本部分介绍如何将 Azure Static Web Apps 配置为使用遵守 [OpenID Connect (OIDC) 规范](https://openid.net/connect/)的自定义身份验证提供程序。 需要执行以下步骤才能使用自定义 OIDC 提供程序。
+可将 Azure Static Web Apps 配置为使用遵守 [OpenID Connect (OIDC) 规范](https://openid.net/connect/)的自定义身份验证提供程序。 需要执行以下步骤才能使用自定义 OIDC 提供程序。
 
 - 允许一个或多个 OIDC 提供程序。
 - 每个提供程序在配置中必须具有唯一的名称。
@@ -297,9 +291,25 @@ Azure Active Directory 提供程序有两个不同的版本。 版本 1 显式�
   - 确保将 `<PROVIDER_ISSUER_URL>` 替换为提供程序的颁发者 URL 的路径。
   - `login` 对象允许提供自定义范围、登录参数或自定义声明的值。
 
-### <a name="login-logout-and-purging-user-details"></a>登录、注销和清除用户详细信息
+---
 
-若要使用自定义 OIDC 提供程序，请使用以下 URL 模式。
+## <a name="authentication-callbacks"></a>身份验证回调
+
+标识提供程序需使用重定向 URL 来完成登录或注销请求。 大多数提供程序都要求将回调 URL 添加到允许列表。 以下终结点可用作重定向目标。
+
+| 类型   | URL 模式                                                 |
+| ------ | ----------------------------------------------------------- |
+| 登录  | `https://<YOUR_SITE>/.auth/login/<PROVIDER_NAME_IN_CONFIG>/callback`  |
+| Logout | `https://<YOUR_SITE>/.auth/logout/<PROVIDER_NAME_IN_CONFIG>/callback` |
+
+如果你使用的是 Azure Active Directory，请使用 `aad` 作为 `<PROVIDER_NAME_IN_CONFIG>` 占位符的值。
+
+> [!Note]
+> 这些 URL 由 Azure Static Web Apps 提供，以便用来接收身份验证提供程序的响应，你无需在这些路由中创建页面。
+
+## <a name="login-logout-and-purging-user-details"></a>登录、注销和清除用户详细信息
+
+要使用自定义标识提供程序，请使用以下 URL 模式。
 
 | 操作             | 模式                                  |
 | ------------------ | ---------------------------------------- |
@@ -307,21 +317,7 @@ Azure Active Directory 提供程序有两个不同的版本。 版本 1 显式�
 | Logout             | `/.auth/logout`                          |
 | 清除用户详细信息 | `/.auth/purge/<PROVIDER_NAME_IN_CONFIG>` |
 
-如果你使用的是 Azure Active Directory，请使用 `aad` 作为 `<AUTHENTICATION_PROVIDER_NAME>` 占位符的值。
-
-### <a name="authentication-callbacks"></a>身份验证回调
-
-自定义 OIDC 提供程序需使用重定向 URL 来完成登录或注销请求。 以下终结点可用作重定向目标。
-
-| 类型   | URL 模式                                                 |
-| ------ | ----------------------------------------------------------- |
-| 登录  | `https://<YOUR_SITE>/.auth/login/<PROVIDER_NAME_IN_CONFIG>/callback`  |
-| Logout | `https://<YOUR_SITE>/.auth/logout/<PROVIDER_NAME_IN_CONFIG>/callback` |
-
-如果你使用的是 Azure Active Directory，请使用 `aad` 作为 `<AUTHENTICATION_PROVIDER_NAME>` 占位符的值。
-
-> [!Note]
-> 这些 URL 由 Azure Static Web Apps 提供，以便用来接收身份验证提供程序的响应，你无需在这些路由中创建页面。
+如果你使用的是 Azure Active Directory，请使用 `aad` 作为 `<PROVIDER_NAME_IN_CONFIG>` 占位符的值。
 
 ## <a name="next-steps"></a>后续步骤
 

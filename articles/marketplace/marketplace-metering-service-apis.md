@@ -4,15 +4,15 @@ description: 通过使用事件 API，可以发出 Microsoft AppSource 和 Azure
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 10/12/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 85bc266dcd1434a7d28eb642376bea32c94c3610
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 056fd364902ccd530b1aa2d540cd7d0457e0276b
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457119"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855852"
 ---
 # <a name="marketplace-metered-billing-apis"></a>市场按流量计费 API
 
@@ -164,8 +164,12 @@ ms.locfileid: "129457119"
 | `authorization`      | 唯一的访问令牌，用于标识发出此 API 调用的 ISV。 如果发布者按如下所述检索令牌值，则格式为 `Bearer <access_token>`： <br> <ul> <li> [使用 HTTP POST 获取令牌](partner-center-portal/pc-saas-registration.md#get-the-token-with-an-http-post)（针对 SaaS）。 </li> <li> [身份验证策略](./marketplace-metering-service-authentication.md)（针对托管应用程序）。 </li> </ul> |
 | | |
 
+>[!NOTE]
+>在请求正文中，资源标识符对于 SaaS 应用和发出自定义计量的 Azure 托管应用具有不同的含义。 SaaS 应用的资源标识符是 `resourceID`。 Azure 应用程序托管应用计划的资源标识符是 `resourceUri`。
 
-请求正文示例：
+对于 SaaS 产品/服务，`resourceId` 是 SaaS 订阅 ID。 有关 SaaS 订阅的更多详细信息，请参阅[列出订阅](partner-center-portal/pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions)。
+
+*SaaS 应用的请求正文示例：*
 
 ```json
 {
@@ -188,12 +192,30 @@ ms.locfileid: "129457119"
 }
 ```
 
->[!NOTE]
->`resourceId` 对于发出自定义计量的 SaaS 应用和托管应用具有不同的含义。 
+对于 Azure 应用程序托管应用计划，`resourceUri` 是托管应用 `resource group Id`。 可在[使用 Azure 管理的标识令牌](marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)中找到用于提取它的示例脚本。 
 
-对于 Azure 应用程序托管应用计划，`resourceId` 是托管应用 `resource group Id`。 可在[使用 Azure 管理的标识令牌](marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)中找到用于提取它的示例脚本。 
+*Azure 应用程序托管应用的请求正文示例：*
 
-对于 SaaS 产品/服务，`resourceId` 是 SaaS 订阅 ID。 有关 SaaS 订阅的更多详细信息，请参阅[列出订阅](partner-center-portal/pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions)。
+```json
+{
+  "request": [ // list of usage events for the same or different resources of the publisher
+    { // first event
+      "resourceUri": "<guid1>", // Unique identifier of the resource against which usage is emitted. 
+      "quantity": 5.0, // how many units were consumed for the date and hour specified in effectiveStartTime, must be greater than 0, can be integer or float value
+      "dimension": "dim1", //Custom dimension identifier
+      "effectiveStartTime": "2018-12-01T08:30:14",//Time in UTC when the usage event occurred, from now and until 24 hours back
+      "planId": "plan1", // id of the plan purchased for the offer
+    },
+    { // next event
+      "resourceId": "<guid2>", 
+      "quantity": 39.0, 
+      "dimension": "email", 
+      "effectiveStartTime": "2018-11-01T23:33:10
+      "planId": "gold", // id of the plan purchased for the offer
+    }
+  ]
+}
+```
 
 ### <a name="responses"></a>响应
 

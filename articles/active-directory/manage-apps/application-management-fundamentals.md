@@ -1,5 +1,6 @@
 ---
-title: 应用程序管理：最佳实践和建议 | Microsoft Docs
+title: 应用程序管理：最佳做法和建议
+titleSuffix: Azure AD
 description: 学习有关在 Azure Active Directory 中管理应用程序的最佳实践和建议。 了解如何使用自动预配并使用应用程序代理发布本地应用。
 services: active-directory
 author: davidmu1
@@ -14,14 +15,14 @@ ms.subservice: app-mgmt
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: napuri
-ms.openlocfilehash: ccccc1f72724cec3577016e34532b30ff9e695ee
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 0dc4edc86065a0569f933f92990cec86d7dada2b
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233628"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615004"
 ---
-# <a name="application-management-best-practices"></a>应用程序管理最佳做法
+# <a name="application-management-best-practices-in-azure-active-directory"></a>Azure Active Directory 中的应用程序管理最佳做法
 
 本文包含有关使用自动预配来管理 Azure Active Directory (Azure AD) 中的应用程序以及使用应用程序代理发布本地应用的建议和最佳实践。
 
@@ -54,6 +55,6 @@ ms.locfileid: "129233628"
 | 在部署应用程序代理之前同步用户 | 在部署应用程序代理之前，请从本地目录同步用户标识，或直接在 Azure AD 中创建用户标识。 标识同步允许 Azure AD 在授予用户对应用代理发布的应用程序的访问权限之前对用户进行预身份验证。 标识同步还提供必要的用户标识符信息以执行单一登录 (SSO)。 （请参阅[应用程序代理计划](../app-proxy/application-proxy-deployment-plan.md)。） |
 | 遵循我们的提示以实现高可用性和负载平衡 | 要了解流量在用户、应用程序代理连接器和后端应用服务器之间流动方式，以及如何获取优化性能和负载均衡的技巧，请参阅[应用程序代理连接器和应用程序的高可用性和负载平衡](../app-proxy/application-proxy-high-availability-load-balancing.md)。 |
 | 使用多个连接器 | 使用两个或更多应用程序代理连接器以获得更高的复原能力、可用性和规模（请参阅[应用程序代理连接器](../app-proxy/application-proxy-connectors.md)） 创建连接器组，并确保每个连接器组至少具有两个连接器（最好是三个连接器）。 |
-| 找到距离应用程序服务器最近的连接器服务器，并确保它们位于同一个域中 | 为优化性能，请将连接器服务器搬到应用程序服务器附近（请参阅[网络拓扑注意事项](../app-proxy/application-proxy-network-topology.md)）。 此外，连接器服务器和 Web 应用程序服务器还应属于同一个 Active Directory 域，或者跨信任域。 若要使用集成 Windows 身份验证 (IWA) 和 Kerberos 约束委派 (KCD) 来执行 SSO，必须使用此配置。 如果服务器在不同的域中，则需要使用基于资源的委派进行 SSO（请参阅[使用 KCD 执行应用程序代理的单一登录](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md)）。 |
+| 找到距离应用程序服务器最近的连接器服务器，并确保它们位于同一个域中 | 为优化性能，请将连接器服务器搬到应用程序服务器附近（请参阅[网络拓扑注意事项](../app-proxy/application-proxy-network-topology.md)）。 此外，连接器服务器和 Web 应用程序服务器还应属于同一个 Active Directory 域，或者跨信任域。 要使用集成 Windows 身份验证 (IWA) 和 Kerberos 约束委派 (KCD) 执行 SSO，此配置是必需的。 如果服务器在不同的域中，则需要使用基于资源的委派进行 SSO（请参阅[使用 KCD 执行应用程序代理的单一登录](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md)）。 |
 | 为连接器启用自动更新 | 为连接器启用自动更新，以获取最新功能和 bug 修复。 Microsoft 为最新连接器版本和之前的一个版本提供直接支持。 （请参阅[应用程序代理发布版本历史记录](../app-proxy/application-proxy-release-version-history.md)。） |
 | 绕过本地代理 | 为了便于维护，请将连接器配置为绕过本地代理，使其直接连接到 Azure 服务。 （请参阅[应用程序代理连接器和代理服务器](../app-proxy/application-proxy-configure-connectors-with-proxy-servers.md)。） |

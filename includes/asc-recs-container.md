@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/05/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: bdc98523c2c9795f3f69baeaef7599352ff9e4dc
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: fbad522ca99449773402b70839578fdcab24716c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536819"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725792"
 ---
 这一类别有 **23** 条相关建议。
 
@@ -29,7 +29,7 @@ ms.locfileid: "123536819"
 |[容器应只侦听允许的端口](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/5f88450f-9546-4b78-a181-a2d9162bb441) |要减少 Kubernetes 群集的受攻击面，请限制容器对已配置端口的访问权限，以此限制对群集的访问权限。<br />（相关策略：[确保容器仅侦听 Kubernetes 群集中允许的端口](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f440b515e-a580-421e-abeb-b159a61ddcbc)） |中型 |
 |[应强制对容器使用不可变（只读）根文件系统](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/27d6f0e9-b4d5-468b-ae7e-03d5473fd864) |Kubernetes 群集中的容器应使用只读根文件系统。 不可变文件系统将恶意二进制文件添加到路径，可防止容器在运行时更改。<br />（相关策略：[Kubernetes 群集容器应使用只读根文件系统运行](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fdf49d893-a74c-421d-bc95-c663042e5b80)） |中型 |
 |[应为 Kubernetes API 服务器配置受限访问权限](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/1a2b5b4c-f80d-46e7-ac81-b51a9fb363de) |若要确保只有来自允许的网络、计算机或子网的应用程序可以访问群集，请限制对 Kubernetes API 服务器的访问权限。 可以通过定义授权的 IP 范围或将 API 服务器设置为专用群集（如 /azure/aks/private-clusters 中所述）来限制访问权限<br />（相关策略：[应在 Kubernetes 服务上定义经授权的 IP 范围](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e246bcf-5f6f-4f87-bc6f-775d4712c7ea)） |高 |
-|[Kubernetes 群集应只可通过 HTTPS 进行访问](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/c6d87087-9ebe-b31f-b452-0bf3bbbaccd2) |使用 HTTPS 可确保执行身份验证，并保护传输中的数据不受网络层窃听攻击威胁。 此功能目前已面向 Kubernetes 服务 (AKS) 正式发布，并面向 AKS 引擎和启用了 Azure Arc 的 Kubernetes 提供预览版。 有关详细信息，请访问 https://aka.ms/kubepolicydoc<br />（相关策略：[在 Kubernetes 群集中强制实施 HTTPS 入口](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d)） |高 |
+|[Kubernetes 群集应只可通过 HTTPS 进行访问](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/c6d87087-9ebe-b31f-b452-0bf3bbbaccd2) |使用 HTTPS 可确保执行身份验证，并保护传输中的数据不受网络层窃听攻击威胁。 此功能目前已面向 Kubernetes 服务 (AKS) 正式发布，并面向 AKS 引擎和已启用 Azure Arc 的 Kubernetes 提供预览版。 有关详细信息，请访问 https://aka.ms/kubepolicydoc<br />（相关策略：[在 Kubernetes 群集中强制实施 HTTPS 入口](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d)） |高 |
 |[应强制对容器使用最低权限 Linux 功能](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/11c95609-3553-430d-b788-fd41cde8b2db) |为了减少容器的攻击面，请限制 Linux 功能，并向容器授予特定特权，而不授予根用户的所有特权。 建议先删除所有功能，再添加所需的功能<br />（相关策略：[Kubernetes 群集容器只应使用允许的功能](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc26596ff-4d70-4e6a-9a30-c2506bd2f80c)） |中型 |
 |[应限制替代或禁用容器 AppArmor 配置文件](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/86f91051-9d6a-47c3-a07f-bd14cb214b45) |在 Kubernetes 集群上运行的容器应仅限使用允许的 AppArmor 配置文件。<br>AppArmor（应用程序防御）是一种 Linux 安全模块，可保护操作系统及其应用程序免受安全威胁。 为使用此模块，系统管理员需要将 AppArmor 安全配置文件与每个程序相关联。<br />（相关策略：[Kubernetes 群集容器只应使用允许的 AppArmor 配置文件](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f511f5417-5d12-434d-ab2e-816901e72a5e)） |高 |
 |[应避免特权容器](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/5d90913f-a1c5-4429-ad54-2c6c17fb3c73) |要防止主机访问不受限制，请尽可能避免使用特权容器。<p>特权容器具有主机的所有根功能。 它们可用作攻击的入口点，并将恶意代码或恶意软件传播到受攻击的应用程序、主机和网络。</p><br />（相关策略：[不允许 Kubernetes 群集中有特权容器](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f95edb821-ddaf-4404-9732-666045e056b4)） |中型 |

@@ -6,14 +6,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/28/2021
+ms.date: 10/05/2021
 ms.author: kgremban
-ms.openlocfilehash: 5ed9768f8cb1a6279eeb97a73d508a41984ef160
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: b062f4984bd5630f282d181e773e853f2234bb81
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214338"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710762"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>安装或卸载 Azure IoT Edge for Linux
 
@@ -214,36 +214,21 @@ IoT 标识服务在 IoT Edge 1.2 版中引入。 此服务处理 IoT Edge 以及
 <!-- 1.2 -->
 ::: moniker range=">=iotedge-2020-11"
 
-基于在安装 IoT Edge 的过程中提供的模板文件为你的设备创建配置文件。
+可以使用以下命令通过对称密钥身份验证快速配置 IoT Edge 设备：
 
    ```bash
-   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   sudo iotedge config mp --connection-string 'PASTE_CONNECTION_STRING_HERE'
    ```
 
-在 IoT Edge 设备上，打开配置文件。
+`iotedge config mp` 命令会在设备上创建一个配置文件，提供你的连接字符串，并应用配置更改。
+
+如果要查看配置文件，则可以将其打开：
 
    ```bash
    sudo nano /etc/aziot/config.toml
    ```
 
-找到文件的预配部分，并取消注释“使用连接字符串进行手动预配”行。
-
-   ```toml
-   # Manual provisioning with connection string
-   [provisioning]
-   source = "manual"
-   connection_string = "<ADD DEVICE CONNECTION STRING HERE>"
-   ```
-
-使用 IoT Edge 设备的连接字符串更新 connection_string 的值。
-
-将剪贴板内容粘贴到 Nano `Shift+Right Click` 或按 `Shift+Insert`。
-
-保存并关闭该文件。
-
-   `CTRL + X`, `Y`, `Enter`
-
-在配置文件中输入预配信息后，应用所做的更改：
+如果对配置文件进行任何更改，请使用 `iotedge config apply` 命令应用更改：
 
    ```bash
    sudo iotedge config apply

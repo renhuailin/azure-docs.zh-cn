@@ -7,13 +7,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 08/06/2021
-ms.openlocfilehash: f930c52c4b913e9411c6f619231fb50d0bb6cc5c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/11/2021
+ms.openlocfilehash: 2412673dd71c6fbe6a1f070451db24d748694a8d
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733399"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811137"
 ---
 # <a name="configure-export-policy-for-nfs-or-dual-protocol-volumes"></a>为 NFS 或双重协议卷配置导出策略
 
@@ -44,7 +44,7 @@ ms.locfileid: "121733399"
 
       ![Kerberos 安全选项](../media/azure-netapp-files/kerberos-security-options.png) 
 
-    * **根访问权限**：指定 `root` 帐户是否可以访问该卷。  默认情况下，根访问权限设置为“开”，并且 `root` 帐户有权访问卷。
+    * **根访问权限**：指定 `root` 帐户是否可以访问该卷。  默认情况下，根访问权限设置为“开”，并且 `root` 帐户有权访问卷。  此选项不适用于 NFSv4.1 Kerberos 卷。
 
       ![导出策略](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 37b09e09207b91e966fef7249cc38a2f13fe4e68
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5f6765d4e6fc60a4b1d34846b1279456e1e8dca7
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747146"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754285"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>使用 Logstash 将数据源连接到 Azure Sentinel
 
@@ -48,7 +48,7 @@ Logstash 引擎由三个组件组成：
 >
 > - Microsoft 不支持第三方输出插件，或其他任何类型的 Logstash 插件或组件。
 >
-> - Azure Sentinel Logstash 输出插件仅支持 Logstash 版本 7.0 到 7.9。
+> - Azure Sentinel 的 Logstash 输出插件仅支持 Logstash 版本 7.0 到 7.15。
 
 Logstash 的 Azure Sentinel 输出插件使用 Log Analytics HTTP 数据收集器 REST API 将 JSON 格式的数据发送到 Log Analytics 工作区。 数据将引入自定义日志。
 

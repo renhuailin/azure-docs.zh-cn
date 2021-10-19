@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: c45be7452d71002c2120e37999c2ecfacb8608b0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3e406f9ed38aa9360da3fed2ce256654ad7c10c0
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124799997"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707522"
 ---
 # <a name="preview-azure-automanage-for-virtual-machines"></a>预览版：适用于虚拟机的 Azure Automanage
 
@@ -36,7 +36,7 @@ Azure Automanage 也会自动监视偏移情况，并在检测到偏移时予以
 Automanage 只存储/处理 VM 所在的地理位置中的客户数据。 在东南亚地区，Automanage 只存储/处理东南亚地区范围的数据。
 
 > [!NOTE]
-> 可以在 Azure 虚拟机和已启用 Arc 的服务器上启用 Automanage。 Automanage 目前在美国政府云中不可用。
+> 可以在 Azure 虚拟机和已启用 Azure Arc 的服务器上启用 Automanage。 Automanage 目前在美国政府云中不可用。
 
 ## <a name="prerequisites"></a>先决条件
 

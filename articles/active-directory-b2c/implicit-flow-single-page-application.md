@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 31dd0096140544db9c1265999b8c0c709def9cda
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 16c024926ddb863e3b40eac07f494c8d5dbeae9c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350066"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617979"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的 OAuth 2.0 隐式流的单页登录
 
@@ -222,7 +222,7 @@ error=user_authentication_required
 如果在 iframe 请求中收到此错误，用户必须再次以交互方式登录以检索新令牌。
 
 ## <a name="refresh-tokens"></a>刷新令牌
-ID 令牌和访问令牌在较短时间后都会过期。 应用必须准备好定期刷新这些令牌。  若要刷新任一类型的令牌，请使用 `prompt=none` 参数控制 Azure AD 步骤，执行我们在先前示例中使用的同一隐藏的 iframe 请求。  若要接收新的 `id_token` 值，请务必使用 `response_type=id_token` 和 `scope=openid`，以及 `nonce` 参数。
+ID 令牌和访问令牌在较短时间后都会过期。 应用必须准备好定期刷新这些令牌。 由于安全原因，隐式流不允许你获取刷新令牌。 要刷新任一类型的令牌，请在隐藏的 HTML iframe 元素中使用隐式流。 在授权请求中包含 `prompt=none` 参数。 要接收新的 id_token 值，请务必使用 `response_type=id_token` 和 `scope=openid` 以及一个 `nonce` 参数。
 
 ## <a name="send-a-sign-out-request"></a>发送注销请求
 如果想要从应用中注销用户，请将用户重定向到 Azure AD 进行注销。如果不对用户进行重定向，用户可能不需要输入其凭据就能重新通过应用的身份验证，因为他们与 Azure AD 之间仍然存在有效的单一登录会话。

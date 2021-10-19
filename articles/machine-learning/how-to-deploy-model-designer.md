@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 10/29/2020
+ms.date: 10/08/2021
 ms.topic: how-to
 ms.custom: deploy, studio, designer
-ms.openlocfilehash: 110bb5e6349ab5cb64366ba365ccace8ab029362
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: d2553ddde013c43b9ce4d23d2cc0b4541150e6f3
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949427"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740464"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>使用工作室部署在设计器中训练的模型
 
@@ -100,7 +100,8 @@ ms.locfileid: "107949427"
 下载所需的文件后，就可以部署该模型了。
 
 1. 在“模型”资产页，选择已注册的模型。
-1. 选择“部署”按钮。
+1. 选择“部署”，然后选择“部署到 Web 服务”。 
+    ![模型资产页面中“部署”按钮的屏幕截图](./media/how-to-deploy-model-designer/open-deploy-wizard.png)
 1. 在“配置”菜单中，输入以下信息：
 
     - 输入终结点的名称。

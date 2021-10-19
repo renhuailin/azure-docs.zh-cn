@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 08/10/2021
+ms.date: 10/11/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: d1a46cd010f0a629e787a7ebabcfe002837b7ad3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c6cc19bd688dd2c38210fae8d77a036f2ba5be7e
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124811165"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754304"
 ---
 # <a name="azure-firewall-premium-features"></a>Azure 防火墙高级版功能
 
@@ -103,6 +103,8 @@ URL 筛选可以应用于 HTTP 和 HTTPS 流量。 检查 HTTPS 通信时，Azur
 - 印度中部（公共/印度）
 - 美国中部（公共/美国）
 - 美国中部 EUAP（公共/加那利（美国））
+- 中国北部 2（Mooncake/中国）
+- 中国东部 2（Mooncake/中国）
 - 东亚（公共/亚太）
 - 美国东部（公共/美国）
 - 美国东部 2（公共/美国）
@@ -125,6 +127,9 @@ URL 筛选可以应用于 HTTP 和 HTTPS 流量。 检查 HTTPS 通信时，Azur
 - 阿拉伯联合酋长国北部（公共/阿拉伯联合酋长国）
 - 英国南部（公共/英国）
 - 英国西部（公共/英国）
+- USGov 亚利桑那州（费尔法克斯/USGov）
+- USGov 德克萨斯州（费尔法克斯/USGov）
+- USGov 弗吉尼亚州（费尔法克斯/USGov）
 - 美国中西部（公共/美国）
 - 西欧（公共/欧洲）
 - 印度西部（公共/印度）

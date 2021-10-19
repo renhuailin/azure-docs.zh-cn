@@ -5,12 +5,12 @@ author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 09/30/2021
-ms.openlocfilehash: df925bd149c8516f4c6af8b49a65969737aaffa2
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 6b093eeda754d288030e6ff3f1739a5c68c659c1
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352376"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615593"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -141,7 +141,7 @@ ms.locfileid: "129352376"
     }
 ```
 > [!NOTE] 
-> 对尚未在三天以上的时间内发出的现有自定义指标定义警报规则时，还需要使用 skipMetricValidation 参数。
+> 对尚未在几天以上的时间内发出的现有自定义指标定义警报规则时，还可能需要使用 skipMetricValidation 参数。
 
 ## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>通过 Azure 门户导出指标警报规则的 Azure 资源管理器模板
 

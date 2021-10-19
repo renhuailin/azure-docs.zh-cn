@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 预留容量节省 Azure Synapse Analytics 费用
+title: 使用 Azure 预留容量节省 Azure Synapse Analytics（仅数据仓库）费用
 description: 了解如何通过省钱的预留容量节省 Azure Synapse Analytics 的费用成本。
 author: bandersmsft
 ms.reviewer: primittal
@@ -8,20 +8,20 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: f738b2e551ecb26426ef25603969fb471ecfa437
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7e5987aee066e8c9e439b2789b1242e1bc541c35
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128666583"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714103"
 ---
-# <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>使用预留容量节省 Azure Synapse Analytics 费用成本
+# <a name="save-costs-for-azure-synapse-analytics-data-warehousing-only-charges-with-reserved-capacity"></a>使用预留容量节省 Azure Synapse Analytics（仅数据仓库）费用成本
 
-通过承诺使用一到三年的 cDWU 预留量，你可以节省 Azure Synapse Analytics 的费用。 若要购买 Azure Synapse Analytics 预留容量，需要选择 Azure 区域和期限。 然后，将 Azure Synapse Analytics SKU 添加到购物车，并选择要购买的 cDWU 单位数量。
+通过承诺使用一到三年的 cDWU 预留量，可以节省 Azure Synapse Analytics（仅数据仓库）的费用。 若要购买 Azure Synapse Analytics 预留容量，需要选择 Azure 区域和期限。 然后，将 Azure Synapse Analytics SKU 添加到购物车，并选择要购买的 cDWU 单位数量。
 
 在购买预留容量后，与预留属性匹配的 Azure Synapse Analytics 用量不再按即用即付费率收费。
 
-预留不涵盖与 Azure Synapse Analytics 用量相关的存储或网络费用。
+预留不涵盖与 Azure Synapse Analytics 用量相关的存储或网络费用，它仅涵盖与数据仓库用量相关的存储或网络费用。
 
 当预留容量到期时，Azure Synapse Analytics 实例会继续运行，但会按即用即付费率计费。 预留容量不会自动续订。
 

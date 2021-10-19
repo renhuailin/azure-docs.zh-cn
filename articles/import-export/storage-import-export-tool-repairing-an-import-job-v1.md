@@ -5,17 +5,21 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 10/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: b0eeb73ffb5436284f4f23cef943db0a3307a2b2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 63394c71642917c37bd0383682b64b70f3b870ee
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564562"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709263"
 ---
 # <a name="repairing-an-import-job"></a>修复导入作业
+
+> [!IMPORTANT]
+> Azure 导入/导出工具不再支持作业修复。 在版本 1.5.0.300 及更高版本中，需修复 blob 导入中的问题，然后[创建新的导入作业](storage-import-export-data-to-blobs.md?tabs=azure-portal#step-2-create-an-import-job)。
+
 Microsoft Azure 导入/导出服务可能无法将某些文件或某个文件的部分内容复制到 Windows Azure Blob 服务。 失败的部分原因包括：  
   
 -   文件已损坏  
@@ -24,7 +28,7 @@ Microsoft Azure 导入/导出服务可能无法将某些文件或某个文件的
   
 -   存储帐户密钥在传输文件时已更改。  
   
-可以使用导入作业的复制日志文件运行 Microsoft Azure 导入/导出工具。 该工具会将缺少的文件（或某个文件的部分内容）上传到 Windows Azure 存储帐户，从而完成导入作业。  
+可以使用导入作业的复制日志文件运行 Microsoft Azure 导入/导出工具。 该工具会将缺少的文件（或某个文件的部分内容）上传到 Windows Azure 存储帐户，从而完成导入作业。
   
 ## <a name="repairimport-parameters"></a>RepairImport 参数
 
@@ -99,7 +103,7 @@ WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bo
   
 ## <a name="next-steps"></a>后续步骤
  
-* [设置 Azure 导入/导出工具](storage-import-export-tool-setup-v1.md)   
+<!--* [Setting Up the Azure Import/Export Tool](storage-import-export-tool-setup-v1.md)- ARCHIVED-->   
 * [为导入作业准备硬盘驱动器](storage-import-export-data-to-blobs.md#step-1-prepare-the-drives)   
 * [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [修复导出作业](./storage-import-export-tool-repairing-an-export-job-v1.md)

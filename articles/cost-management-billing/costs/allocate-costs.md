@@ -3,21 +3,21 @@ title: 分摊 Azure 成本
 description: 本文介绍如何创建成本分摊规则，以将订阅、资源组或标记的成本分摊给其他订阅、资源组或标记。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/10/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: b837e5819318707b44932f5915746479e27646ec
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 7696dc683d41080f5be2c97ebcb0cdf314e2098d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734861"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706259"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>创建和管理 Azure 成本分摊规则（预览版）
 
-大型企业的 Azure 服务或资源通常是集中管理的，但由不同的内部部门或业务部分使用。 通常，集中管理团队想要将共享服务的成本重新分摊给频繁使用这些服务的内部部门或组织业务部门。 本文可帮助你了解和使用 Azure 成本管理中的成本分摊。
+大型企业的 Azure 服务或资源通常是集中管理的，但由不同的内部部门或业务部分使用。 通常，集中管理团队想要将共享服务的成本重新分摊给频繁使用这些服务的内部部门或组织业务部门。 本文可帮助你了解和使用成本管理中的成本分摊。
 
 利用成本分摊，你可以将共享服务的成本从订阅、资源组或标记重新分配或分发到组织中的其他订阅、资源组或标记。 成本分摊会将共享服务的成本转移到使用这些服务的内部部门或业务部门拥有的其他订阅、资源组或标记。 换句话说，成本分摊有助于管理和显示从某处到另一处的成本责任。
 
@@ -26,7 +26,7 @@ ms.locfileid: "109734861"
 分摊的成本显示在成本分析中。 它们显示为与创建成本分摊规则时指定的目标订阅、资源组或标记相关联的附加项。
 
 > [!NOTE]
-> Azure 成本管理的成本分摊功能目前提供公共预览版。 成本管理中的某些功能可能不受支持，或者其功能受限。
+> 成本管理的成本分摊功能目前提供公共预览版。 成本管理中的某些功能可能不受支持，或者其功能受限。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -132,4 +132,4 @@ ms.locfileid: "109734861"
 
 - 阅读[成本管理 + 计费常见问题解答](../cost-management-billing-faq.yml)，了解关于成本分摊的问题及解答。
 - 使用[成本分摊 Rest API](/rest/api/cost-management/costallocationrules) 创建或更新分摊规则
-- 详细了解[如何通过 Azure 成本管理优化云投资](cost-mgt-best-practices.md)
+- 详细了解[如何通过成本管理优化云投资](cost-mgt-best-practices.md)

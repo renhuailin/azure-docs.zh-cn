@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 16191b274f840438cac8deab6754991b7b9e29df
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 679be09b977ffd39dd513e88968fe4b0d474e74b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425005"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705360"
 ---
 # <a name="python-package-extensibility-for-prebuilt-docker-images-preview"></a>预生成 Docker 映像的 Python 包扩展性（预览版）
 
@@ -31,7 +31,7 @@ ms.locfileid: "129425005"
     此方法可用于生产部署。 由于包含包的目录已装载到映像中，因此即使部署无法访问公共 Internet，也可以使用该目录。 例如，在已部署到受保护 Azure 虚拟网络的情况下。
 
 > [!IMPORTANT]
-> 将预生成的 Docker 映像与 Azure 机器学习配合使用的功能目前以预览版提供。 预览功能按原样提供，不保证支持或服务级别协议。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 将预生成 Docker 映像的 Python 包可扩展性与 Azure 机器学习配合使用的功能目前以预览版提供。 预览功能按原样提供，不保证支持或服务级别协议。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 

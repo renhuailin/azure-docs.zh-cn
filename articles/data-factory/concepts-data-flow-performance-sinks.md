@@ -1,20 +1,20 @@
 ---
-title: 优化映射数据流中的接收器性能
+title: 映射数据流中的接收器性能和最佳做法
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何优化 Azure 数据工厂和 Azure Synapse Analytics 管道的映射数据流中的接收器性能。
+description: 了解如何优化 Azure 数据工厂和 Azure Synapse Analytics 管道的映射数据流中的接收器性能和最佳做法。
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
-ms.date: 09/29/2021
-ms.openlocfilehash: 54c03cc8b4c34be02d3dee608ce4a759e75f2200
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/06/2021
+ms.openlocfilehash: 4ed5d50d4b74e86b91d51e4011e41f2b600edb88
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129293501"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618679"
 ---
 # <a name="optimizing-sinks"></a>优化接收器
 
@@ -23,6 +23,10 @@ ms.locfileid: "129293501"
 ## <a name="azure-sql-database-sinks"></a>Azure SQL 数据库接收器
 
 在 Azure SQL 数据库中，大多数情况下默认分区均可正常运行。 接收器的分区可能过多，SQL 数据库无法处理。 如果遇到这种情况，请减少 SQL 数据库接收器输出的分区数。
+
+### <a name="best-practice-for-deleting-rows-in-sink-based-on-missing-rows-in-source"></a>基于源中缺少的行删除接收器中的行的最佳做法
+
+以下视频演练了如何将数据流与退出、更改行和接收器转换一起用于实现此常见模式：> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWMLr5]
 
 ### <a name="impact-of-error-row-handling-to-performance"></a>错误行处理对性能的影响
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: af8e6a64e94530d6cca1494aff2c3b249186a42e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9ca3471b599e9f0671cd39603d71def344f7d72c
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738544"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660488"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>适用于 Azure Functions 的 Azure Blob 存储绑定概述
 
@@ -36,7 +36,7 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 
 
 #### <a name="storage-extension-5x-and-higher"></a>存储扩展 5.x 和更高版本
 
-新版本的存储绑定扩展可用作[预览 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.3)。 此预览版引入了[使用标识而不是机密进行连接](./functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改可以绑定到的类型，并将 `WindowsAzure.Storage` 和 `Microsoft.Azure.Storage` 中的类型替换为 [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs) 中的新类型。 从 [Azure.Storage.Blobs 迁移指南](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Blobs/AzureStorageNetMigrationV12.md)中详细了解这些新类型的不同之处以及如何迁移到它们。
+新版本的存储绑定扩展可用作[预览 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.3)。 此预览版引入了[使用标识而不是机密进行连接](./functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改可以绑定到的类型，并将 `WindowsAzure.Storage` 和 `Microsoft.Azure.Storage` 中的类型替换为 [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs) 中的新类型。 通过 [Azure.Storage.Blobs 迁移指南](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Blobs/AzureStorageNetMigrationV12.md)详细了解这些新类型的不同之处以及如何迁移它们。
 
 > [!NOTE]
 > 预览包不包括在扩展捆绑包中，必须手动安装。 对于 .NET 应用，请添加对包的引用。 对于所有其他应用类型，请参阅[更新扩展]。
@@ -55,10 +55,10 @@ Functions 1.x 应用会自动引用 [Microsoft.Azure.WebJobs](https://www.nuget.
 
 ## <a name="hostjson-settings"></a>host.json 设置
 
-> [!NOTE]
-> 本部分介绍的内容不适用于使用 5.0.0 之前的扩展版本的情况。 对于这些版本，没有适用于 blob 的全局配置设置。
+本部分介绍可用于此绑定函数的函数应用程序配置设置。 这些设置仅在使用[扩展版本 5.0.0 及更高版本](#storage-extension-5x-and-higher)时才适用。 下面的示例 host.json 文件仅包含此绑定的 2.x 版及更高版本设置。 若要详细了解版本 2.x 及更高版本中的函数应用程序配置设置，请参阅 [Azure Functions 的 host.json 参考](functions-host-json.md)。
 
-当使用的[扩展版本不低于 5.0.0](#storage-extension-5x-and-higher) 时，本部分中介绍的全局配置设置才适用于此绑定。 下面的示例 host.json 文件仅包含此绑定的 2.x 版及更高版本设置。 若要详细了解 2.x 版及更高版本的 Azure Functions 中的全局配置设置，请参阅 [Azure Functions 的 host.json 参考](functions-host-json.md)。
+> [!NOTE]
+> 本部分不适用于 5.0.0 之前的扩展版本。 对于这些早期版本，没有任何适用于 Blob 的函数应用范围的配置设置。
 
 ```json
 {

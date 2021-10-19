@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/05/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 2fdc6aa55c71ed30559346e4ae2ca2da5e83bd6f
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 52a01ec04cec442f9cbde9946a8332258968e340
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536821"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725513"
 ---
 这一类别有 **70** 条相关建议。
 
@@ -32,7 +32,7 @@ ms.locfileid: "123536821"
 |[应将 SQL Server 的审核保留设置为至少 90 天](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/620671b8-6661-273a-38ac-4574967750ec) |审核配置的审核保持期少于 90 天的 SQL 服务器。<br />（相关策略：[SQL Server 应配置有 90 天或更长时间的审核保留期。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f89099bee-89e0-4b26-a5f4-165451757743)） |低 |
 |[应启用 SQL 服务器上的审核](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/94208a8b-16e8-4e5b-abbd-4e81c9d02bee) |在 SQL Server 上启用审核以跟踪服务器上所有数据库的数据库活动，并将其保存在审核日志中。<br />（相关策略：[应对 SQL Server 启用审核](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9)） |低 |
 |[你的订阅应启用 Log Analytics 代理自动预配](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/af849052-4299-0692-acc0-bffcbe9e440c) |为了监视安全漏洞和威胁，Azure 安全中心会从 Azure 虚拟机收集数据。 数据是使用 Log Analytics 代理收集的，该代理以前称为 Microsoft Monitoring Agent (MMA)，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到 Log Analytics 工作区以用于分析。 建议启用自动预配，将代理自动部署到所有受支持的 Azure VM 和任何新创建的 VM。<br />（相关策略：[你的订阅应启用 Log Analytics 代理自动预配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f475aae12-b88a-4572-8b36-9b712b2b3a17)） |低 |
-|[已启用 Azure Arc 的 Kubernetes 群集应安装 Azure Defender 扩展](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/3ef9848c-c2c8-4ff3-8b9c-4c8eb8ddfce6) |Azure Arc 的 Azure Defender 扩展为你启用了 Arc 的 Kubernetes 群集提供威胁防护。 该扩展从群集中的所有控制平面（主）节点收集数据，并将数据发送到云中的 Azure Defender for Kubernetes 后端作进一步分析。 在 /azure/security-center/defender-for-kubernetes-azure-arc 中了解详细信息。<br />（无相关策略） |高 |
+|[已启用 Azure Arc 的 Kubernetes 群集应安装 Azure Defender 的扩展](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/3ef9848c-c2c8-4ff3-8b9c-4c8eb8ddfce6) |适用于 Azure Arc 的 Azure Defender 的扩展为已启用 Azure Arc 的 Kubernetes 群集提供威胁防护。 该扩展从群集中的所有控制平面（主）节点收集数据，并将数据发送到云中的 Azure Defender for Kubernetes 后端作进一步分析。 在 /azure/security-center/defender-for-kubernetes-azure-arc 中了解详细信息。<br />（无相关策略） |高 |
 |[Azure Cache for Redis 应驻留在虚拟网络中](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/be264018-593c-1162-bd5e-b74a39396652) |Azure 虚拟网络 (VNet) 部署为 Azure Redis 缓存提供增强的安全性和隔离性，并提供子网、访问控制策略以及其他进一步限制访问的功能。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。<br />（相关策略：[Azure Cache for Redis 应驻留在虚拟网络中](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7d092e0a-7acd-40d2-a975-dca21cae48c4)） |中型 |
 |[Azure Cosmos DB 帐户应有防火墙规则](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/276b1952-c364-852b-11e5-657f0fa34dc6) |应在 Azure Cosmos DB 帐户上定义防火墙规则，以防止来自未经授权的源的流量。 至少定义了一个 IP 规则且启用了虚拟网络筛选器的帐户才会被视为合规。 禁用公共访问的帐户也被视为合规。<br />（相关策略：[Azure Cosmos DB 帐户应有防火墙规则](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb)） |中型 |
 |[应启用适用于 Azure SQL 数据库服务器的 Azure Defender](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/58d72d9d-0310-4792-9a3b-6dd111093cdb) |Azure Defender for SQL 是提供高级 SQL 安全功能的统一包。<br>它包括以下功能：呈现和缓解潜在数据库漏洞、检测可能指示对数据库产生威胁的异常活动以及发现敏感数据并对其进行分类。<br><br>重要说明：修正此建议将产生 Azure SQL Database 服务器保护费用。 如果此订阅中没有任何 Azure SQL Database 服务器，则不会产生任何费用。<br>如果以后在此订阅中创建任何 Azure SQL Database 服务器，它们将自动受到保护，并从该时间点开始计费。<br> <a href='/azure/azure-sql/database/advanced-data-security'>详细了解适用于 Azure SQL 数据库服务器的 Azure Defender。</a><br />（相关策略：[应启用适用于 Azure SQL 数据库服务器的 Azure Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)） |高 |

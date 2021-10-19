@@ -1,6 +1,6 @@
 ---
-title: 如何面向 Microsoft 商业市场计划 SaaS 产品/服务
-description: 如何使用 Microsoft 合作伙伴中心的商业市场计划规划新的服务型软件 (SaaS) 产品/服务，以在 Microsoft AppSource、Azure 市场或通过云解决方案提供商 (CSP) 计划列出或销售。
+title: 面向 Microsoft 商业市场 - Azure 市场规划 SaaS 产品/服务
+description: 使用 Microsoft 合作伙伴中心的商业市场计划规划新的服务型软件 (SaaS) 产品/服务，以在 Microsoft AppSource、Azure 市场中或通过云解决方案提供商 (CSP) 计划列出或销售。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/17/2021
-ms.openlocfilehash: e31fff677b6e1363d0afda420d521d31b2cf4247
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6f429bd55c3fbf93f88c91168021eed9f1d6505a
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657550"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730178"
 ---
-# <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何面向商业市场规划 SaaS 产品/服务
+# <a name="plan-a-saas-offer-for-the-commercial-marketplace"></a>面向商业市场规划 SaaS 产品/服务
 
 本文介绍面向 Microsoft 商业市场发布服务型软件 (SaaS) 产品/服务的不同选项和要求。 使用 SaaS 产品/服务，可以通过在线订阅向客户交付和许可软件解决方案。 作为 SaaS 发布者，你负责管理所需的基础结构并支付相关费用，以便支持客户使用该产品/服务。 本文将通过合作伙伴中心帮助你准备产品/服务，以便面向商业市场发布。
 
@@ -72,7 +72,7 @@ ms.locfileid: "128657550"
 
     配置的登陆页面应全天候保持正常运行。 只有这样，在商业市场中你的 SaaS 产品/服务有新交易或触发有效产品/服务订阅的配置请求后，你才会收到通知。
 
-- 连接 Webhook：对于 Microsoft 需要向你发送的所有异步事件（例如，SaaS 订阅已取消），我们要求提供连接 Webhook URL。 我们将调用此 URL 来向你通知事件。
+- 连接 Webhook：对于 Microsoft 需向你发送的所有异步事件（例如，SaaS 订阅已取消），我们要求[提供连接 Webhook URL](./partner-center-portal/pc-saas-fulfillment-api-v2.md#implementing-a-webhook-on-the-saas-service)。 我们将调用此 URL 来向你通知事件。
 
   提供的 Webhook 应全天候保持正常运行。 只有这样，你才能收到客户通过商业市场购买的 SaaS 订阅的更新通知。
 
@@ -107,17 +107,17 @@ ms.locfileid: "128657550"
 如果 SaaS 产品既是 IT 解决方案（Azure 市场），又是业务解决方案 (AppSource)，则可以选择适用于每个在线商店的类别和子类别。 发布到这两个在线商店的产品/服务应设定价值主张：IT 解决方案和业务解决方案。
 
 > [!IMPORTANT]
-> 通过 Azure 市场和 Azure 门户可获取[按流量计费](partner-center-portal/saas-metered-billing.md)的 SaaS 产品/服务。 通过 Azure 门户可获取只有专用计划的 SaaS 产品/服务。
+> 通过 Azure 市场和 Azure 门户可获取[按流量计费](partner-center-portal/saas-metered-billing.md)的 SaaS 产品/服务。 通过 Azure 门户和 AppSource 可获取只有专用计划的 SaaS 产品/服务。
 
 | 按流量计费 | 公共计划 | 专用计划 | 获取方式： |
 |---|---|---|---|
 | 是             | 是         | 否           | Azure 市场和 Azure 门户 |
 | 是             | 是         | 是          | Azure 市场和 Azure 门户* |
 | 是             | 否          | 是          | 仅使用 Azure 门户 |
-| 否              | 否          | 是          | 仅使用 Azure 门户 |
+| 否              | 否          | 是          | Azure 门户和 AppSource |
 |||||
 
-&#42;产品/服务的专用计划只能通过 Azure 门户获取。
+&#42; 只能通过 Azure 门户和 AppSource 获取产品/服务的专用计划。
 
 例如，一款按流量计费的产品/服务只有专用计划（无公共计划），则客户可在 Azure 门户中进行购买。 详细了解 [Microsoft 商业市场中的专用产品/服务](private-offers.md)。
 
@@ -132,7 +132,6 @@ ms.locfileid: "128657550"
 > [!NOTE]
 > 使用商业市场的标准协定发布产品/服务后，就无法使用你自己的自定义条款和条件。 它是“或”方案。 要么根据标准协定提供解决方案，要么根据自己的条款和条件提供解决方案。 如果想修改标准协定的条款，可以通过标准协定修订进行。
 
-
 ## <a name="microsoft-365-integration"></a>Microsoft 365 集成
 
 通过与 Microsoft 365 集成，SaaS 产品/服务可通过相关的免费加载项（如 Teams 应用、Office 加载项和 SharePoint Framework 解决方案）跨多个 Microsoft 365 应用表面提供连接体验。 通过提供以下信息，可帮助你的客户轻松发现 E2E 解决方案的所有方面（Web 服务 + 相关加载项）并将它们部署在一个进程中。 
@@ -140,7 +139,7 @@ ms.locfileid: "128657550"
     
      如果选择通过 Microsoft 销售产品/服务，则这是已注册在登陆页上使用的同一 AAD 应用 ID，用于获取完成客户订阅激活所需的基本用户信息。 有关详细指导，请参阅[为商业市场中的可交易 SaaS 产品/服务构建登陆页](azure-ad-transactable-saas-landing-page.md)。 
     
-   -    提供与要链接的 SaaS 产品/服务配合使用的相关加载项列表。 客户将能够在 AppSource 上发现 E2E 解决方案，而管理员可以通过 Microsoft 365 管理中心在同一进程中同时部署 SaaS 和已链接的所有相关加载项。
+   -    提供与要链接的 SaaS 产品/服务配合使用的相关加载项列表。 客户将能够在 Microsoft AppSource 上发现 E2E 解决方案，而管理员可以通过 Microsoft 365 管理中心在同一进程中同时部署 SaaS 和已链接的所有相关加载项。
     
         若要链接相关加载项，需要提供加载项的 AppSource 链接，这意味着必须先将加载项发布到 AppSource。 可以链接的受支持加载项类型包括：Teams 应用、Office 加载项和 SharePoint Framework (SPFx) 解决方案。 每个链接的加载项对于 SaaS 产品/服务必须唯一。 
 
@@ -214,9 +213,9 @@ ms.locfileid: "128657550"
 
   这些徽标用于在线商店的不同位置：
 
-  - 小徽标显示在 Azure 市场搜索结果中，以及 Microsoft AppSource 主页和搜索结果页上。
+  - 小徽标显示在 Azure 市场搜索结果中以及 AppSource 主页和搜索结果页上。
   - 中徽标在 Microsoft Azure 中创建新资源时显示。
-  - 大徽标显示在 Azure 市场和 Microsoft AppSource 的产品/服务列表页上。
+  - 大徽标显示在 Azure 市场和 AppSource 的产品/服务列表页上。
 
 - 媒体-屏幕截图：必须至少添加一个符合以下要求的屏幕截图（最多 5 个），以显示产品/服务的工作原理：
   - 1280 x 720 像素

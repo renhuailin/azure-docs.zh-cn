@@ -4,17 +4,17 @@ description: 本文详细说明了 Azure 如何将分配的 SQL 许可证应用�
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/30/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: bc08d9465830043071fd78a6e9735f0443be42ec
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 69517a84fa28a6c1d9cde0cb51df82a296bd653a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547285"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710152"
 ---
 # <a name="how-azure-applies-assigned-sql-licenses-to-hourly-usage"></a>Azure 如何将分配的 SQL 许可证应用于每小时使用情况
 
@@ -37,7 +37,7 @@ ms.locfileid: "129547285"
 
 :::image type="content" source="./media/manage-licenses-centrally/partially-discounted-consumption.svg" alt-text="显示部分折扣使用量的关系图。" border="false" lightbox="./media/manage-licenses-centrally/partially-discounted-consumption.svg":::
 
-已分配的核心许可证所涵盖的 Azure SQL 资源可能每小时都不同。 差异取决于运行的资源以及自动化系统处理其使用情况的顺序。 但是，系统会确保已分配的 SQL 许可证在所选范围内达到最大使用量。 可以使用 Azure 成本管理监视使用情况。 有关详细信息，请参阅[如何跟踪分配的许可证使用情况](create-sql-license-assignments.md#track-assigned-license-use)。
+已分配的核心许可证所涵盖的 Azure SQL 资源可能每小时都不同。 差异取决于运行的资源以及自动化系统处理其使用情况的顺序。 但是，系统会确保已分配的 SQL 许可证在所选范围内达到最大使用量。 可以使用成本管理监视使用情况。 有关详细信息，请参阅[如何跟踪分配的许可证使用情况](create-sql-license-assignments.md#track-assigned-license-use)。
 
 下图显示了如何随时间应用分配的 SQL Server 许可证，以获得最大的 Azure 混合权益折扣。
 

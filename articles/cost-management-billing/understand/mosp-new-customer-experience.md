@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 05/20/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: b4a4bd73672b36e8301d33618701a5d6b43926a5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8e58a31d37e4b6aece877e8a2d920e7abc91d8f8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474866"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710948"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>开始使用更新的 Azure 计费帐户
 
@@ -140,7 +140,7 @@ Azure 计费帐户提供以下新功能。
 
 作为已更新帐户的一部分，你在成本管理 + 计费方面有了新的范围。 除了有助于分层组织和开票，它们还是查看多个基础订阅的组合费用的一种方式。 有关计费范围的详细信息，请参阅 [Microsoft 客户协议范围](../costs/understand-work-scopes.md#microsoft-customer-agreement-scopes)。
 
-你还可以访问成本管理 API 以获得更高范围的组合成本视图。 所有使用订阅范围的成本管理 API 仍然可用，只是在架构中进行了一些细微更改。 有关 API 的详细信息，请参阅 [Azure 成本管理 API](/rest/api/cost-management/) 和 [Azure 消耗 API](/rest/api/consumption/)。
+你还可以访问成本管理 API 以获得更高范围的组合成本视图。 所有使用订阅范围的成本管理 API 仍然可用，只是在架构中进行了一些细微更改。 有关 API 的详细信息，请参阅[成本管理 API](/rest/api/cost-management/) 和 [Azure 消耗 API](/rest/api/consumption/)。
 
 #### <a name="cost-allocation"></a>成本分配
 
@@ -148,7 +148,7 @@ Azure 计费帐户提供以下新功能。
 
 #### <a name="power-bi"></a>Power BI
 
-适用于 Power BI Desktop 的 Azure 成本管理连接器可帮助你构建有关 Azure 使用情况和支出的自定义可视化效果和报表。 连接到更新的帐户后，你可以访问成本和使用情况数据。 有关适用于 Power BI Desktop 的 Azure 成本管理连接器的详细信息，请参阅[在 Power BI Desktop 中使用 Azure 成本管理连接器创建视觉对象和报表](/power-bi/connect-data/desktop-connect-azure-cost-management)。
+适用于 Power BI Desktop 的成本管理连接器可帮助你构建有关 Azure 使用情况和支出的自定义可视化效果和报表。 连接到更新的帐户后，你可以访问成本和使用情况数据。 有关适用于 Power BI Desktop 的成本管理连接器的详细信息，请参阅[在 Power BI Desktop 中使用成本管理连接器创建视觉对象和报表](/power-bi/connect-data/desktop-connect-azure-cost-management)。
 
 ### <a name="updated-capabilities"></a>更新的功能
 

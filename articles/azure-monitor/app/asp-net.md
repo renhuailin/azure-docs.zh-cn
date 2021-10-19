@@ -4,12 +4,12 @@ description: 为托管在本地或 Azure 中的 ASP.NET 网站配置性能、可
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: a60419e6c3ff8c4dd030e5e800edbae62a7f7787
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a0a262564306448fd587a699b24982595506df50
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733403"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740695"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站配置 Application Insights
 
@@ -29,7 +29,7 @@ ms.locfileid: "121733403"
 > [!IMPORTANT]
 > 建议使用[连接字符串](./sdk-connection-string.md?tabs=net)替代检测密钥。 新的 Azure 区域要求使用连接字符串而不是检测密钥。
 >
-> 连接字符串会标识出要与遥测数据相关联的资源。 你还可借此修改你的资源会将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+> 连接字符串标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 
 ## <a name="create-a-basic-aspnet-web-app"></a>创建基本的 ASP.NET Web 应用
@@ -44,7 +44,7 @@ ms.locfileid: "121733403"
 
 本部分将指导你将 Application Insights 自动添加到基于模板的 ASP.NET Web 应用。 在 Visual Studio 中的 ASP.NET Web 应用项目中，请执行以下操作：
 
-1. 选择“添加 Application Insights 遥测” > “Application Insights Sdk (本地)” > “下一步” > “完成” > “关闭”    。
+1. 选择“项目” > “添加 Application Insights 遥测” > “Application Insights SDK（本地）” > “下一步” > “完成” > “关闭”。
 2. 打开 ApplicationInsights.config 文件。 
 3. 在结束 `</ApplicationInsights>` 标记之前，添加包含 Application Insights 资源检测密钥的一行。  可以在新建的 Application Insights 资源的“概述”窗格中找到检测密钥，我们已将其创建为本文的先决条件之一。
 
@@ -360,7 +360,7 @@ ms.locfileid: "121733403"
 
 对于本文中基于模板的 ASP.NET MVC 应用，需要编辑的文件为 _Layout.cshtml。 可以在“视图” > “共享”中找到该文件。 若要添加客户端监视，请打开 _Layout.cshtml，并按照有关客户端 JavaScript SDK 配置一文的[基于代码片段的设置说明](javascript.md#snippet-based-setup)进行操作。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 Visual Studio 2019 的当前版本中存在一个已知问题：将检测密钥存储在用户机密中这项操作对基于 .NET Framework 的应用无效。 密钥最终必须硬编码到 applicationinsights.config 文件中，以修复此 bug。 本文旨在通过不使用用户密码来完全避免此问题。  
 

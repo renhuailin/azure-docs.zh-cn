@@ -3,12 +3,12 @@ title: 来自容器见解的指标警报
 description: 本文介绍容器见解提供的建议指标警报（公共预览版）。
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 8280b567adb36511c4eb58d7ec72b775d36feb6a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7036bc7a0f161044312687d6b22171df99821e6a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734354"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714417"
 ---
 # <a name="recommended-metric-alerts-preview-from-container-insights"></a>来自容器见解的建议指标警报（预览版）
 
@@ -17,6 +17,9 @@ ms.locfileid: "121734354"
 本文介绍相关体验，并提供有关如何配置和管理这些警报规则的指导。
 
 如果你不熟悉 Azure Monitor 警报，请在开始之前参阅 [Microsoft Azure 中的警报概述](../alerts/alerts-overview.md)。 若要详细了解指标警报，请参阅 [Azure Monitor 中的指标警报](../alerts/alerts-metric-overview.md)。
+
+> [!NOTE]
+> 从 2021 年 10 月 8 日开始，三个警报已更新以正确计算警报条件：“容器 CPU 百分比”、“容器工作集内存百分比”和“持久卷使用率百分比”。   这些新警报与其对应的先前可用警报具有相同的名称，但新警报使用更新后的新指标。 我们建议你禁用本文所述的使用“旧”指标的警报，并启用“新”指标。 “旧”指标在禁用后将不再在推荐警报中可用，但你可以手动重新启用这些旧指标。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,11 +44,11 @@ ms.locfileid: "121734354"
 
 |名称| 描述 |默认阈值 |
 |----|-------------|------------------|
-|平均容器 CPU 使用率(%) |计算每个容器的平均 CPU 使用率。|当每个容器的平均 CPU 使用率大于 95% 时。| 
-|平均容器工作集内存使用率(%) |计算每个容器的平均工作集内存使用率。|当每个容器的平均工作集内存使用率大于 95% 时。 |
+|(新)平均容器 CPU 使用率(%) |计算每个容器的平均 CPU 使用率。|当每个容器的平均 CPU 使用率大于 95% 时。| 
+|(新)平均容器工作集内存使用率(%) |计算每个容器的平均工作集内存使用率。|当每个容器的平均工作集内存使用率大于 95% 时。 |
 |平均 CPU 百分比 |计算每个节点的平均 CPU 使用率。 |当节点平均 CPU 利用率大于 80% 时 |
 |平均磁盘使用率(%) |计算节点的平均磁盘使用率。|当节点的磁盘使用率大于 80% 时。 |
-|平均永久性卷使用率(%) |计算每个 Pod 的平均 PV 使用率。 |当每个 Pod 的平均 PV 使用率大于 80% 时。|
+|(新)平均永久性卷使用率(%) |计算每个 Pod 的平均 PV 使用率。 |当每个 Pod 的平均 PV 使用率大于 80% 时。|
 |平均工作集内存使用率(%) |计算节点的平均工作集内存使用率。 |当节点的平均工作集内存使用率大于 80% 时。 |
 |重启容器计数 |计算重启容器的次数。 | 当容器重启次数大于 0 时。 |
 |故障 Pod 计数 |计算是否有任何 Pod 处于故障状态。|当处于故障状态的 Pod 数大于 0 时。 |
@@ -80,7 +83,7 @@ ms.locfileid: "121734354"
 
 ## <a name="metrics-collected"></a>收集的指标
 
-除非另有指定，否则作为此功能的一部分，将启用并收集以下指标：
+除非另有指定，否则作为此功能的一部分，将启用并收集以下指标。 带有“旧”标签且以粗体显示的指标将被替换为新指标，收集这些新指标是为了正确评估警报。
 
 |指标命名空间 |指标 |说明 |
 |---------|----|------------|
@@ -97,10 +100,14 @@ ms.locfileid: "121734354"
 |Insights.container/pods |restartingContainerCount |按控制器和 Kubernetes 命名空间列出的容器重启次数。|
 |Insights.container/pods |oomKilledContainerCount |按控制器和 Kubernetes 命名空间列出的 OOM 终止容器计数。|
 |Insights.container/pods |podReadyPercentage |按控制器和 Kubernetes 命名空间列出的处于就绪状态的 Pod 百分比。|
-|Insights.container/containers |cpuExceededPercentage |超过用户可配置的阈值（默认阈值为 95.0）的容器 CPU 利用率百分比，按容器名称、控制器名称、Kubernetes 命名空间和 Pod 名称列出。<br> 已收集  |
-|Insights.container/containers |memoryRssExceededPercentage |超过用户可配置的阈值（默认阈值为 95.0）的容器内存 RSS 百分比，按容器名称、控制器名称、Kubernetes 命名空间和 Pod 名称列出。|
-|Insights.container/containers |memoryWorkingSetExceededPercentage |超过用户可配置的阈值（默认阈值为 95.0）的容器内存工作集百分比，按容器名称、控制器名称、Kubernetes 命名空间和 Pod 名称列出。|
-|Insights.container/persistentvolumes |pvUsageExceededPercentage |超过用户可配置的阈值（默认阈值为 60.0）的永久性卷 PV 利用率百分比，按声明名称、Kubernetes 命名空间、卷名称、Pod 名称和节点名称列出。
+|Insights.container/containers |(旧)cpuExceededPercentage |超过用户可配置的阈值（默认阈值为 95.0）的容器 CPU 利用率百分比，按容器名称、控制器名称、Kubernetes 命名空间和 Pod 名称列出。<br> 已收集  |
+|Insights.container/containers |(新)cpuThresholdViolated |超过用户可配置的阈值（默认阈值为 95.0）的容器 CPU 利用率百分比时触发的警报，按容器名称、控制器名称、Kubernetes 命名空间和 Pod 名称列出。<br> 已收集  |
+|Insights.container/containers |(旧)memoryRssExceededPercentage |超过用户可配置的阈值（默认阈值为 95.0）的容器内存 RSS 百分比，按容器名称、控制器名称、Kubernetes 命名空间和 Pod 名称列出。|
+|Insights.container/containers |(新)memoryRssThresholdViolated |超过用户可配置的阈值（默认阈值为 95.0）的容器内存 RSS 百分比时触发的警报，按容器名称、控制器名称、Kubernetes 命名空间和 Pod 名称列出。|
+|Insights.container/containers |(旧)memoryWorkingSetExceededPercentage |超过用户可配置的阈值（默认阈值为 95.0）的容器内存工作集百分比，按容器名称、控制器名称、Kubernetes 命名空间和 Pod 名称列出。|
+|Insights.container/containers |(新)memoryWorkingSetThresholdViolated |超过用户可配置的阈值（默认阈值为 95.0）的容器内存工作集百分比时触发的警报，按容器名称、控制器名称、Kubernetes 命名空间和 Pod 名称列出。|
+|Insights.container/persistentvolumes |(旧)pvUsageExceededPercentage |超过用户可配置的阈值（默认阈值为 60.0）的永久性卷 PV 利用率百分比，按声明名称、Kubernetes 命名空间、卷名称、Pod 名称和节点名称列出。|
+|Insights.container/persistentvolumes |(新)pvUsageThresholdViolated |超过用户可配置的阈值（默认阈值为 60.0）的永久性卷 PV 利用率百分比时触发的指标，按声明名称、Kubernetes 命名空间、卷名称、Pod 名称和节点名称列出。
 
 ## <a name="enable-alert-rules"></a>启用警报规则
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: 091181388656dd02ee438d1e5ef77a19d489205a
-ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
+ms.openlocfilehash: dabb12e5c0e6bd95ebe1a8025b431ec57e42745b
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129419081"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615365"
 ---
 # <a name="azure-sentinel-information-model-asim-schemas-public-preview"></a>Azure Sentinel 信息模型 (ASIM) 架构（公共预览版）
 
@@ -30,6 +30,7 @@ ms.locfileid: "129419081"
 
  - [网络会话](normalization-schema.md)
  - [DNS 活动](dns-normalization-schema.md)
+ - [DHCP 活动](dhcp-normalization-schema.md)
  - [进程事件](process-events-normalization-schema.md)
  - [身份验证事件](authentication-normalization-schema.md)
  - [注册表事件](registry-event-normalization-schema.md)
@@ -64,10 +65,10 @@ ms.locfileid: "129419081"
 |**日期/时间**     |  根据引入方法功能，按优先级的降序使用以下任一物理表示形式： <br><br>- Log Analytics 内置的日期时间类型 <br>- 使用 Log Analytics 日期时间数字表示形式的整数字段。 <br>- 使用 Log Analytics 日期时间数字表示形式的字符串字段 <br>- 用于存储受支持 [Log Analytics 日期/时间格式](/azure/data-explorer/kusto/query/scalar-data-types/datetime)的字符串字段。       |  [Log Analytics 日期和时间表示形式](/azure/kusto/query/scalar-data-types/datetime)与 Unix 时间的表示形式类似，但两者实际上是不同的。 有关详细信息，请参阅[转换指南](/azure/kusto/query/datetime-timespan-arithmetic)。 <br><br>注意：在适用的情况下，应调整时间的时区。 |
 |**MAC 地址**     |  String       | 冒分十六进制表示法        |
 |**IP 地址**     |字符串         |    Azure Sentinel 架构没有单独的 IPv4 和 IPv6 地址。 任一 IP 地址字段都可以包含 IPv4 地址或 IPv6 地址，如下所述： <br><br>- 采用点分十进制表示法的 IPv4  <br>- 采用 8 个 16 位段表示法的 IPv6，允许短格式<br><br>例如：<br>`192.168.10.10` (IPv4)<br>`FEDC:BA98:7654:3210:FEDC:BA98:7654:3210` (IPv6)<br>`1080::8:800:200C:417A`（IPv6 短格式）     |
-|**FQDN**        |   字符串      |    使用点分表示法的完全限定域名，例如 `docs.microsoft.com` |
+|**FQDN**        |   string      |    使用点分表示法的完全限定域名，例如 `docs.microsoft.com` |
 |**国家/地区**     |   字符串      |    根据以下优先级使用 [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) 的字符串： <br><br> - Alpha-2 代码，例如 `US` 表示美国 <br> - Alpha-3 代码，例如 `USA` 表示美国 <br>- 短名称<br><br>在[国际标准化组织 (ISO) 网站](https://www.iso.org/obp/ui/#search)上可以找到代码列表|
 |**区域**     | 字符串        |   使用 ISO 3166-2 的国家/地区辖区名称<br><br>在[国际标准化组织 (ISO) 网站](https://www.iso.org/obp/ui/#search)上可以找到代码列表|
-|**城市**     |  字符串       |         |
+|**城市**     |  String       |         |
 |**经度**     | Double        |  ISO 6709 坐标表示形式（带符号的十进制数）       |
 |**纬度**     | Double        |    ISO 6709 坐标表示形式（带符号的十进制数）     |
 |**MD5**     |    字符串     |  32 个十六进制字符       |
@@ -83,7 +84,7 @@ ms.locfileid: "129419081"
 | 字段               | 类       | 类型       |  说明        |
 |---------------------|-------------|------------|--------------------|
 | <a name="timegenerated"></a>TimeGenerated | 内置 | datetime | 报告设备生成事件的时间。|
-| _ResourceId   | 内置 |  guid     | 报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。 |
+| _ResourceId   | 内置 |  GUID     | 报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。 |
 | **Type** | 内置 | String | 从中提取记录的原始表。 当同一事件可以通过两个通道传入不同的表，但具有相同的 `EventVendor` 和 `EventProduct` 时，此字段很有用。 例如，Sysmon 事件可以传入 Event 表或 SecurityEvent 表。 |
 | **EventMessage**        | 可选    | 字符串     |     一般消息或说明，包含在记录中或者根据记录生成。   |
 | “EventCount”          | 必需   | Integer    |     记录描述的事件数。 <br><br>当源支持聚合且单个记录可以表示多个事件时，将使用此值。 <br><br>对于其他源，设置为 `1`。   |
@@ -100,8 +101,8 @@ ms.locfileid: "129419081"
 | **EventVendor**         | 必需   | 字符串     |           生成事件的产品的供应商。 <br><br>示例： `Microsoft`  <br><br>注意：此字段在源记录中可能不可用。 在这种情况下，此字段必须由分析器设置。  |
 | **EventSchemaVersion**  | 必需   | 字符串     |    架构的版本。 每个架构将记录其当前版本。         |
 | **EventReportUrl**      | 可选    | 字符串     | 在资源的事件中提供的 URL，提供有关该事件的其他信息。|
-| “Dvc” | 必需       | 字符串     |               发生该事件的设备的唯一标识符。 <br><br>此字段可能又称为 [DvcId](#dvcid)、[DvcHostname](#dvchostname) 或 [DvcIpAddr](#dvcipaddr) 字段。 对于没有明确的设备的云源，请使用与 [EventProduct](#eventproduct) 字段相同的值。           |
-| <a name ="dvcipaddr"></a>“DvcIpAddr”           | 建议 | IP 地址 |         发生该事件的设备的 IP 地址。  <br><br>示例： `45.21.42.12`    |
+| Dvc | 必需       | 字符串     |               发生该事件的设备的唯一标识符。 <br><br>此字段可以别名化 [DvcId](#dvcid)、[DvcHostname](#dvchostname) 或 [DvcIpAddr](#dvcipaddr) 字段。 对于没有明确的设备的云源，请使用与 [EventProduct](#eventproduct) 字段相同的值。           |
+| <a name ="dvcipaddr"></a>DvcIpAddr           | 建议 | IP 地址 |         发生该事件的设备的 IP 地址。  <br><br>示例： `45.21.42.12`    |
 | <a name ="dvchostname"></a>“DvcHostname”         | 建议 | 主机名   |               发生该事件的设备的主机名。 <br><br>示例： `ContosoDc.Contoso.Azure`               |
 | <a name ="dvcid"></a>“DvcId”               | 可选    | 字符串     |  发生该事件的设备的唯一 ID。 <br><br>示例： `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
 | **DvcMacAddr**          | 可选    | MAC        |   发生该事件的设备的 MAC 地址。  <br><br>示例： `00:1B:44:11:3A:B7`       |
@@ -124,7 +125,7 @@ ms.locfileid: "129419081"
 |准则  |说明  |
 |---------|---------|
 |描述符和别名     | 由于单个事件通常包括相同类型的多个实体（例如源主机和目标主机），因此描述符用作前缀来标识与特定实体关联的所有字段。 <br><br>为了保持规范化，Azure Sentinel 信息模型使用少量的标准描述符，并为实体的特定角色选择最合适的描述符。  <br><br>如果某种类型的单个实体与某个事件相关，则无需使用描述符。 此外，一组不带描述符的字段将别名化每种类型的最常用实体。  |
-|标识符和类型     | 规范化架构允许为每个实体使用多个标识符，我们预期这些标识符将在事件中共存。 如果源事件具有无法映射到规范化架构的其他实体标识符，请将这些标识符保留为源的形式，或使用 `AdditionalFields` 动态字段。 <br><br>若要维护标识符的类型信息，在适用的情况下，请将类型存储在具有相同名称且后缀为 `Type` 的字段中。 例如，`UserIdType`。         |
+|标识符和类型     | 规范化架构允许为每个实体使用多个标识符，我们预期这些标识符将在事件中共存。 如果源事件具有无法映射到规范化架构的其他实体标识符，请将这些标识符保留为源的形式，或使用 `AdditionalFields` 动态字段。 <br><br>若要维护标识符的类型信息，在适用的情况下，请将类型存储在具有相同名称且后缀为 `Type` 的字段中。 例如 `UserIdType`。         |
 |**特性**     |   实体通常具有其他不用作标识符的属性，并且也可以使用描述符对其进行限定。 例如，如果源用户具有域信息，则规范化字段为 `SrcUserDomain`。      |
 | | |
 

@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 04/09/2021
+ms.date: 10/08/2021
 ms.author: cshoe
-ms.openlocfilehash: 00f01e184b254e4fbc40fefa79506498bae30597
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: e38cc40407f636f8bfd53a9196ecaf9c431d34db
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634908"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729817"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps"></a>Azure 静态 Web 应用的身份验证和授权
 
@@ -21,7 +21,8 @@ Azure 静态 Web 应用提供简化的身份验证体验。 默认情况下，�
 - 任何用户都可以使用已启用的提供程序进行身份验证。
 - 登录后，用户默认属于 `anonymous` 和 `authenticated` 角色。
 - 授权用户可以通过在 [staticwebapp.config.json 文件](./configuration.md) 中定义的规则获取对受限 [路由](configuration.md#routes) 的访问权限。
-- 用户通过特定于提供程序的 [邀请](#invitations)或通过 [自定义的 Azure Active Directory 提供程序注册](./authentication-custom.md) 来加入自定义角色。
+- 使用内置[邀请](#invitations)系统向用户分配自定义角色。
+- 可通过 API 函数在登录时以编程方式向用户分配自定义角色。
 - 默认情况下，将启用所有身份验证提供程序。
   - 若要限制身份验证提供程序，请使用自定义路由规则[阻止访问](#block-an-authorization-provider)。
 - 已预配置的提供程序包括：
@@ -38,9 +39,11 @@ Azure 静态 Web 应用提供简化的身份验证体验。 默认情况下，�
 - 匿名：所有用户都自动属于“匿名”角色。
 - 已通过身份验证：已登录的所有用户都属于“已通过身份验证”角色。
 
-除了内置角色以外，你还可以创建新角色，通过邀请将其分配给用户，并在 staticwebapp.config.json 文件中引用它们。
+除了内置角色以外，还可向用户分配自定义角色，并在 staticwebapp.config.json 文件中引用这些角色。
 
 ## <a name="role-management"></a>角色管理
+
+# <a name="invitations"></a>[邀请](#tab/invitations)
 
 ### <a name="add-a-user-to-a-role"></a>将用户添加到角色
 
@@ -104,6 +107,115 @@ Azure 静态 Web 应用提供简化的身份验证体验。 默认情况下，�
 1. 删除用户会使其权限失效。
 1. 全球传播可能需要几分钟时间。
 1. 如果用户已重新添加到应用，则 [`userId` 会发生更改](user-information.md)。
+
+# <a name="function-preview"></a>[函数（预览版）](#tab/function)
+
+可使用无服务器函数而不是使用内置邀请系统在用户登录时以编程方式向用户分配角色。
+
+要在函数中分配自定义角色，可定义每次用户成功使用标识提供程序进行身份验证后自动调用的 API 函数。 函数从提供程序传递用户的信息。 它必须返回向用户分配的自定义角色的列表。
+
+此函数的示例用法包括：
+
+- 查询数据库以确定应向用户分配的角色
+- 调用 [Microsoft Graph API](https://developer.microsoft.com/graph)，根据用户的 Active Directory 组成员身份确定用户的角色
+- 根据标识提供程序返回的声明确定用户的角色
+
+> [!NOTE]
+> 只有在配置[自定义身份验证](authentication-custom.md)时，才能通过函数分配角色。
+>
+> 启用此功能后，将忽略任何通过内置邀请系统分配的角色。
+
+### <a name="configure-a-function-for-assigning-roles"></a>配置用于分配角色的函数
+
+要将 Static Web Apps 配置为使用 API 函数作为角色分配函数，请向应用的[配置文件](configuration.md)的 `auth` 部分添加一个 `rolesSource` 属性。 `rolesSource` 属性的值为 API 函数的路径。
+
+```json
+{
+  "auth": {
+    "rolesSource": "/api/GetRoles",
+    "identityProviders": {
+      // ...
+    }
+  }
+}
+```
+
+> [!NOTE]
+> 配置后，外部 HTTP 请求无法再访问角色分配函数。
+
+### <a name="create-a-function-for-assigning-roles"></a>创建用于分配角色的函数
+
+在应用的配置中定义 `rolesSource` 属性后，在指定的路径中添加一个静态 Web 应用中的 [API 函数](apis.md)。 可使用托管函数应用或自带函数应用。
+
+每次用户成功使用标识提供程序进行身份验证时，将调用指定的函数。 该函数在请求正文中传递一个 JSON 对象，其中包含来自提供程序的用户信息。 对于某些标识提供程序，用户信息还包含一个 `accessToken`，该函数可将其用于使用用户的标识进行 API 调用。
+
+这是来自 Azure Active Directory 的示例有效负载：
+
+```json
+{
+  "identityProvider": "aad",
+  "userId": "72137ad3-ae00-42b5-8d54-aacb38576d76",
+  "userDetails": "ellen@contoso.com",
+  "claims": [
+      {
+          "typ": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+          "val": "ellen@contoso.com"
+      },
+      {
+          "typ": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname",
+          "val": "Contoso"
+      },
+      {
+          "typ": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname",
+          "val": "Ellen"
+      },
+      {
+          "typ": "name",
+          "val": "Ellen Contoso"
+      },
+      {
+          "typ": "http://schemas.microsoft.com/identity/claims/objectidentifier",
+          "val": "7da753ff-1c8e-4b5e-affe-d89e5a57fe2f"
+      },
+      {
+          "typ": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier",
+          "val": "72137ad3-ae00-42b5-8d54-aacb38576d76"
+      },
+      {
+          "typ": "http://schemas.microsoft.com/identity/claims/tenantid",
+          "val": "3856f5f5-4bae-464a-9044-b72dc2dcde26"
+      },
+      {
+          "typ": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+          "val": "ellen@contoso.com"
+      },
+      {
+          "typ": "ver",
+          "val": "1.0"
+      }
+  ],
+  "accessToken": "eyJ0eXAiOiJKV..."
+}
+```
+
+该函数可使用用户的信息来确定要向用户分配的角色。 它必须返回具有 JSON 正文的 HTTP 200 响应，其中包含要向用户分配的自定义角色名列表。
+
+例如，要将用户分配到 `Reader` 和 `Contributor` 角色，请返回以下响应：
+
+```json
+{
+  "roles": [
+    "Reader",
+    "Contributor"
+  ]
+}
+```
+
+如果不想向用户分配任何其他角色，请返回一个空 `roles` 数组。
+
+要了解详细信息，请参阅[教程：使用函数和 Microsoft Graph 分配自定义角色](assign-roles-microsoft-graph.md)。
+
+---
 
 ## <a name="remove-personal-identifying-information"></a>删除个人身份信息
 

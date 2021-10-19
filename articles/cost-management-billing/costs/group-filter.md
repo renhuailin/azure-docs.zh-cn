@@ -1,19 +1,19 @@
 ---
 title: Azure 成本管理中的分组和筛选选项
-description: 本文介绍如何使用 Azure 成本管理中的分组和筛选选项。
+description: 本文介绍如何使用成本管理中的分组和筛选选项。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/15/2021
+ms.date: 10/11/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 89344ccfe70a3d0becef103bd0bd3ffee79bb80c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8cc4a0bfd7503a48b3df6887c05f268fcfae5733
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616453"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856327"
 ---
 # <a name="group-and-filter-options-in-cost-analysis"></a>成本分析中的分组和筛选选项
 
@@ -40,8 +40,8 @@ ms.locfileid: "128616453"
 | **计量** | 按使用计量细分成本。 | 购买项和市场使用情况会显示为“无计量”。 请参阅“收费类型”以确定购买情况，参阅“发布者类型”以确定市场费用。 |
 | **操作** | 按运营细分 AWS 成本。 | 仅适用于 AWS 范围和管理组。 Azure 数据不包括运营，会显示为“无运营” - 改用“计量” 。 |
 | **定价模型** | 按需求、预留或点使用细分成本。 | 购买项显示为 **OnDemand**。 如果看到“不适用”，请按“预留”分组来确定使用是预留还是按需使用，并按“费用类型”分组来确定购买情况。
-| **提供程序** | 按 AWS 和 Azure 细分成本。 | 仅适用于管理组。 |
-| **发布者类型** | 细分 AWS、Azure 和 Azure 市场成本。 |  |
+| **提供程序** | 按提供程序类型进行成本细分：Azure、Microsoft 365、Dynamics 365、AWS 等。 | 产品和业务线的标识符。 |
+| **发布者类型** | Microsoft、Azure、AWS 和 Azure 市场成本细分。 | 对于 MCA 帐户，值为“Microsoft”，对于 EA 和即用即付帐户，值为“Azure”。  |
 | **预留** | 按预留细分成本。 | 不与预留关联的任何使用情况或购买项会显示为“无预留”。 按“发布者类型”分组，以确定其他 Azure、AWS 或市场购买。 |
 | **资源** | 按资源细分成本。 | 市场购买项显示为“其他市场购买项”，Azure 购买项（如预留和支持费用）显示为“其他 Azure 购买项” 。 按“发布者类型”分组或筛选，以识别其他 Azure、AWS 或市场购买项。 |
 | **资源组** | 按资源组细分成本。 | 购买项、不与订阅关联的租户资源、未部署到资源组的订阅资源以及经典资源没有资源组，会显示为“其他市场购买项”、“其他 Azure 购买项”、“其他租户资源”、“其他订阅资源”、“$system”或“其他费用”     。 |
@@ -52,6 +52,27 @@ ms.locfileid: "128616453"
 | **标记** | 按特定标记键的标记值细分成本。 | 购买项、不与订阅关联的租户资源、未部署到资源组的订阅资源以及经典资源不可标记，会显示为“标记不可用”。 在使用情况数据中不包括标记的服务会显示为“不支持标记”。 未在资源上指定标记的任何其他情况都将显示为“未标记”。 详细了解[每种资源类型的标记支持](../../azure-resource-manager/management/tag-support.md)。 |
 
 有关术语的详细信息，请参阅[了解在 Azure 使用情况和费用文件中使用的术语](../understand/understand-usage.md)。
+
+## <a name="changes-to-publisher-type-values"></a>“发布者类型”值的更改
+
+对于具有 MCA 协议的客户，`Publisher type` 值“Azure”将替换为值“Microsoft”，以反映它适用于在“成本管理 + 计费”中跟踪的 Microsoft 的所有费用。  此更改于 2021 年 10 月 14 日生效。
+
+注意以下事项：
+
+- 成本分析中的已保存视图 - 任何使用筛选器`PublisherType` = “Azure”的已保存视图都将更新，以反映新值“Microsoft”。 
+    - 所需操作：无。
+- 具有 `PublisherType` 筛选器的预算 - 任何使用`PublisherType` = “Azure”筛选器创建的预算都将更新，以反映新值“Microsoft”。
+    - 所需操作：无。
+- 导出 - 2021 年 10 月 14 日之前生成的任何导出文件的 `PublisherType field` 的值为“Azure”，在 2021 年 10 月 14 日之后，值将为“Microsoft”。 
+    - 所需操作：在将新文件与 2021 年 10 月 14 日之前下载的文件合并时，务必要考虑变化的值。
+- 下载的数据 - 在从“成本分析”下载的任何文件中，2021 年 10 月 14 日之前下载的使用情况详细信息文件的 `PublisherType` 字段仍为旧值“Azure”。
+    - 所需操作：在将新文件与 2021 年 10 月 14 日之前下载的文件合并时，务必要考虑变化的值。
+- REST API 调用 - 如果使用“成本管理 + 计费”REST API 调用（按照值“Azure”筛选“发布者类型”字段），请在 2021 年 10 月 14 日之后更新调用以按照“Microsoft”进行筛选。 
+    - 所需操作：在 REST API 调用中使用`Publisher type` = “Microsoft”来获取所有第一方费用。使用`Publisher type` = “Azure”的调用将不会返回任何数据。**
+
+> [!NOTE]
+> 如果用户有企业协议 (EA) 帐户或即用即付 (PAYG) 帐户，此更改不会造成影响。
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: 04662b734f86905f0064bad43ecbecd84bc48042
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: beb3d2374e89402795dab0480d840e291c391ec8
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129401382"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811565"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -61,7 +61,7 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
     - 北欧
     - 南非北部
     - 美国中南部
-    - 东南亚
+    - Southeast Asia
     - 瑞士北部
     - 瑞士西部
     - 阿拉伯联合酋长国北部
@@ -142,12 +142,46 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 [![存储帐户防火墙和虚拟网络](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
 ### <a name="create-or-update-data-export-rule"></a>创建或更新数据导出规则
-数据导出规则定义导出数据的表和目标。 工作区中可以有 10 条已启用的规则，而 10 条以外的规则必须处于禁用状态。 在工作区的所有导出规则中，目标必须唯一。
+数据导出规则定义导出数据的表和目标。 可以在工作区中启用 10 条规则，可以添加其他规则，但添加的规则会处于“禁用”状态。 目标在工作区中的所有导出规则中必须是唯一的。
 
-> [!NOTE]
-> 数据导出会将日志发送到你拥有的目标，而这些目标具有[存储帐户可伸缩性](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)和[事件中心命名空间配额](../../event-hubs/event-hubs-quotas.md)等限制。 建议监视目标的带宽限制，在接近其限制时采取措施。 例如： 
-> - 在事件中心设置自动扩充功能，以自动纵向扩展并增加 TU（吞吐量单位）的数量。 当自动扩充达到最大值时，可以请求更多 TU
-> - 将表格拆分到多个导出规则，其中每个规则都指向不同的目标
+数据导出目标存在某些限制，应监视这些目标，以最大程度地减少导出限制、失败和延迟的情况。 请参阅[存储帐户可伸缩性](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)和[事件中心命名空间配额](../../event-hubs/event-hubs-quotas.md)。
+
+#### <a name="recommendations-for-storage-account"></a>关于存储帐户的建议 
+
+1. 使用单独的存储帐户进行导出
+1. 使用以下设置来配置关于以下指标的警报： 
+   - `Operator` 大于
+   - `Aggregation type` 总数
+   - `Aggregation granularity (period)` 5 分钟
+   - `Frequency of evaluation` 每隔 5 分钟
+  
+    | 范围 | 指标命名空间 | 指标 | 聚合 | 阈值 |
+    |:---|:---|:---|:---|:---|
+    | 存储名称 | 帐户 | 流入量 | Sum | 最大存储流入速率的 80%。 例如：在美国西部，常规用途 v2 为 60Gbps |
+  
+1. 修正操作
+    - 使用单独的事件中心命名空间进行导出
+    - Azure 存储标准帐户支持根据请求提高入口上限。 要请求提高上限，请联系 [Azure 支持](https://azure.microsoft.com/support/faq/)
+    - 在其他存储帐户之间拆分表
+
+#### <a name="recommendations-for-event-hub"></a>关于事件中心的建议
+
+1. 使用以下设置来配置关于以下指标的警报： 
+   - `Operator` 大于
+   - `Aggregation type` 总数
+   - `Aggregation granularity (period)` 5 分钟
+   - `Frequency of evaluation` 每隔 5 分钟
+  
+    | 范围 | 指标命名空间 | 指标 | 聚合 | 阈值 |
+    |:---|:---|:---|:---|:---|
+    | 命名空间-名称 | 事件中心标准指标 | 传入字节数 | Sum | 每 5 分钟最大流入量的 80%。 例如，每个 TU 为 1MB/秒 |
+    | 命名空间-名称 | 事件中心标准指标 | 传入消息数 | Sum | 每 5 分钟最大事件数的 80%。 例如，每个 TU 为 1000/s |
+    | 命名空间-名称 | 事件中心标准指标 | 限制请求 | Sum | 介于请求的 1% 到 5% |
+
+1. 修正操作
+   - 增加限制单位 (TU) 的数量
+   - 在其他命名空间之间拆分表
+   - 使用高级版事件中心层级提高吞吐量
 
 导出规则应该包含你在你的工作区中拥有的表。 运行此查询可获取工作区中可用表的列表。
 
@@ -437,7 +471,7 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-不可用
+空值
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -469,7 +503,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-不可用
+空值
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -516,7 +550,7 @@ Content-type: application/json
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-不可用
+空值
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

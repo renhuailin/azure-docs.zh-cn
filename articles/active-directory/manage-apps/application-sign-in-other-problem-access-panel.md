@@ -1,5 +1,6 @@
 ---
-title: 排查从 Azure AD 我的应用登录到应用程序时的问题
+title: 排查从“我的应用”门户登录到应用程序时的问题
+titleSuffix: Azure AD
 description: 排查从 Azure AD 我的应用登录到应用程序时的问题
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ea4b1cb837c481dab1a63850d6eb3753720ae4fa
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e4f03e2f7540b4724b7dfe001f5fc77ac3c0706e
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796393"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617827"
 ---
-# <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>排查从 Azure AD 我的应用登录到应用程序时的问题
+# <a name="troubleshoot-application-sign-in-in-azure-active-directory"></a>Azure Active Directory 应用程序登录疑难解答
 
 “我的应用”是一个基于 Web 的门户，在 Azure Active Directory (Azure AD) 中拥有工作或学校帐户的用户可以使用它来查看和启动 Azure AD 管理员已授权他们访问的基于云的应用程序。 使用 Web 浏览器在 [https://myapps.microsoft.com](https://myapps.microsoft.com) 中访问“我的应用”。
 

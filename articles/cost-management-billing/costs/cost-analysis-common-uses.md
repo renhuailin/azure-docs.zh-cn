@@ -1,23 +1,23 @@
 ---
 title: 常见成本分析在 Azure 成本管理中的使用
-description: 本文介绍如何在 Azure 成本管理中获取常见成本分析任务的结果。
+description: 本文介绍如何在成本管理中获取常见成本分析任务的结果。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: e17a30f5210f77c8fcabdeaf6b719814025b87fa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0fa5eba77727676f21a7b45848171859395b00f0
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128599841"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705995"
 ---
 # <a name="common-cost-analysis-uses"></a>常见成本分析的使用
 
-Azure 成本管理用户通常需要那些对许多其他人提出的问题的解答。 本文详细介绍如何在成本管理中获取常见成本分析任务的结果。
+成本管理用户通常需要那些对许多其他人提出的问题的解答。 本文详细介绍如何在成本管理中获取常见成本分析任务的结果。
 
 ## <a name="view-forecasted-costs"></a>查看预测成本
 

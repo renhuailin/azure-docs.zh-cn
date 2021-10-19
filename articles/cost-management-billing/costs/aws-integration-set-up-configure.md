@@ -1,23 +1,23 @@
 ---
 title: 设置 AWS 与 Azure 成本管理的集成
-description: 本文逐步讲解如何设置并配置 AWS 成本和使用情况报表与 Azure 成本管理的集成。
+description: 本文逐步讲解如何设置并配置 AWS 成本和使用情况报表与成本管理的集成。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 098766674e3bd665bb533fbf4d78fe1b0b1aebda
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6c8c03f93e811e622daa93515740e1cc25e65434
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756034"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706163"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>设置并配置 AWS 成本和使用情况报表集成
 
-使用 Amazon Web Services (AWS) 成本和使用情况报表 (CUR) 集成，可以在 Azure 成本管理中监视和控制 AWS 支出。 借助这种集成，可以在 Azure 门户中的单个位置监视和控制 Azure 与 AWS 的支出。 本文介绍如何设置并配置集成，以便可以使用 Azure 成本管理功能来分析成本和查看预算。
+使用 Amazon Web Services (AWS) 成本和使用情况报表 (CUR) 集成，可以在成本管理中监视和控制 AWS 支出。 借助这种集成，可以在 Azure 门户中的单个位置监视和控制 Azure 与 AWS 的支出。 本文介绍如何设置并配置集成，以便可以使用成本管理功能来分析成本和查看预算。
 
 成本管理使用你的 AWS 访问凭据来处理 S3 桶中存储的 AWS 成本和使用情况报表，以获取报表定义并下载报表 GZIP CSV 文件。
 
@@ -59,7 +59,7 @@ AWS 最长可能需要在 24 小时后才开始将报表传送到 Amazon S3 桶�
 
 ## <a name="create-a-role-and-policy-in-aws"></a>在 AWS 中创建角色和策略
 
-Azure 成本管理每天会多次访问成本和使用情况报表所在的 S3 桶。 服务需要访问凭据来检查新数据。 请在 AWS 中创建角色和策略，使成本管理能够访问凭据。
+成本管理每天会多次访问成本和使用情况报表所在的 S3 桶。 服务需要访问凭据来检查新数据。 请在 AWS 中创建角色和策略，使成本管理能够访问凭据。
 
 若要在成本管理中启用对 AWS 帐户的基于角色的访问，请在 AWS 控制台中创建角色。 需要通过 AWS 控制台获取角色 ARN 和外部 ID。   稍后，将在成本管理中的“创建 AWS 连接器”页上使用这些信息。 
 
@@ -71,7 +71,7 @@ Azure 成本管理每天会多次访问成本和使用情况报表所在的 S3 �
 4. 在下一页上，选择“另一个 AWS 帐户”。 
 5. 在“帐户 ID”中输入 **432263259397**。 
 6. 在“选项”中，选择“需要外部 ID (当第三方充当此角色时的最佳做法)”。  
-7. 在“外部 ID”中，输入充当 AWS 角色与 Azure 成本管理之间的共享密码的外部 ID。  在成本管理中的“新建连接器”页上，也要使用与此相同的外部 ID。  Microsoft 建议在输入外部 ID 时使用强密码策略。
+7. 在“外部 ID”中，输入充当 AWS 角色与成本管理之间的共享密码的外部 ID。 在成本管理中的“新建连接器”页上，也要使用与此相同的外部 ID。  Microsoft 建议在输入外部 ID 时使用强密码策略。
     > [!NOTE]
     > 不要更改“需要 MFA”选项。  应将其保持清除状态。
 8. 在完成时选择“下一步:  权限”。
@@ -114,7 +114,7 @@ Azure 成本管理每天会多次访问成本和使用情况报表所在的 S3 �
 5. 在完成时选择“下一步:  查看”。
 6. 输入新角色的名称。 检查输入的信息是否正确，然后选择“创建角色”。 
 
-    请记下在上述步骤中创建角色时使用的角色 ARN 和外部 ID。 稍后在设置 Azure 成本管理连接器时，需要用到这些信息。
+    请记下在上述步骤中创建角色时使用的角色 ARN 和外部 ID。 稍后在设置成本管理连接器时，需要用到这些信息。
 
 策略 JSON 应类似于以下示例。 将 _bucketname_ 替换为 S3 桶的名称。
 

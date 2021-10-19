@@ -1,5 +1,5 @@
 ---
-title: 预留折扣如何应用于 Azure Synapse Analytics | Microsoft Docs
+title: 预留折扣如何应用于 Azure Synapse Analytics（仅限数据仓库） | Microsoft Docs
 description: 了解预留折扣如何应用于 Azure Synapse Analytics 以帮助你节省资金。
 author: yashesvi
 ms.reviewer: yashar
@@ -8,20 +8,20 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 1d1ac2d61b8ef70b63f174431168a169868a989b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4d8560484e085f44553c717b10c18920725be212
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128625195"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710222"
 ---
-# <a name="how-reservation-discounts-apply-to-azure-synapse-analytics"></a>预留折扣如何应用于 Azure Synapse Analytics
+# <a name="how-reservation-discounts-apply-to-azure-synapse-analytics-data-warehousing-only"></a>预留折扣如何应用于 Azure Synapse Analytics（仅限数据仓库）
 
 购买 Azure Synapse Analytics 预留容量后，预留折扣会自动应用于该区域中存在的已预配实例。 预留折扣应用于 Azure Synapse Analytics cDWU 计量器指示的用量。 存储和网络按照即用即付费率进行收费。
 
 ## <a name="reservation-discount-application"></a>预留折扣应用
 
-Azure Synapse Analytics 预留容量折扣按小时应用于正在运行的仓库。 如果在一个小时内没有部署仓库，则该小时的保留容量将浪费。 它不会结转。
+Azure Synapse Analytics 预留容量折扣按小时应用于正在运行的数据仓库。 如果在一个小时内没有部署仓库，则该小时的保留容量将浪费。 它不会结转。
 
 购买后，所购预留将匹配到在任何时间点正在运行的仓库所指示的 Azure Synapse Analytics 用量。 如果关闭了某些仓库，则预留折扣将自动应用于任何其他匹配仓库。
 

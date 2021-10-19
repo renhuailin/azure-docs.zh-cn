@@ -4,12 +4,12 @@ description: Azure Functions 支持多个版本的运行时。 了解这些版�
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 09/22/2021
-ms.openlocfilehash: 85df4bec5eb4802820a8837a1bb23394851aca42
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 516bcbdd00ae4b116326e797746485c82be9c3fb
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128637606"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740505"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
@@ -74,19 +74,14 @@ Azure 中的已发布应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 
 Azure Functions 版本 4.x（预览版）向后高度兼容版本 3.x。  许多应用应该能够安全地升级到 4.x，而无需更改任何代码。 在更改生产应用的主版本之前，请务必运行大量测试。
 
-若要将应用从 3.x 迁移到 4.x，请执行以下操作：
+要将应用从 3.x 迁移到 4.x，请使用以下 Azure CLI 命令将 `FUNCTIONS_EXTENSION_VERSION` 应用程序设置设为 `~4`：
 
-- 使用以下 Azure CLI 命令将 `FUNCTIONS_EXTENSION_VERSION` 应用程序设置设为 `~4`：
+```bash
+az functionapp config appsettings set --settings FUNCTIONS_EXTENSION_VERSION=~4 -n <APP_NAME> -g <RESOURCE_GROUP_NAME>
 
-    ```bash
-    az functionapp config appsettings set --settings FUNCTIONS_EXTENSION_VERSION=~4 -n <APP_NAME> -g <RESOURCE_GROUP_NAME>
-    ```
-
-- 对于 Windows 函数应用，运行时需要使用以下 Azure CLI 命令启用 .NET 6.0：
-
-    ```bash
-    az functionapp config set --net-framework-version v6.0 -n <APP_NAME> -g <RESOURCE_GROUP_NAME>
-    ```
+# For Windows function apps only, also enable .NET 6.0 that is needed by the runtime
+az functionapp config set --net-framework-version v6.0 -n <APP_NAME> -g <RESOURCE_GROUP_NAME>
+```
 
 ### <a name="breaking-changes-between-3x-and-4x"></a>3\.x 和 4.x 之间的中断性变更
 
@@ -101,6 +96,13 @@ Azure Functions 版本 4.x（预览版）向后高度兼容版本 3.x。  许多
 - Azure Functions 4.x 强制执行扩展的[最低版本要求](https://github.com/Azure/Azure-Functions/issues/1987)。 升级到受影响的扩展的最新版本。 对于非 .NET 语言，请[升级](./functions-bindings-register.md#extension-bundles)到扩展包版本 2.x 或更高版本。
 
 - 现在，在 4.x Linux 消费函数应用程序中强制执行默认和最大超时。
+
+- 默认情况下，4.x 中不再包含 Application Insights。 它现在可以作为单独的扩展提供。
+    - 对于进程内 .NET 应用，将 [Microsoft.Azure.WebJobs.Extensions.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ApplicationInsights/) 扩展包添加到函数应用中。
+    - 对于独立的 .NET 应用：
+        - 将 [Microsoft.Azure.Functions.Worker.Extensions.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Extensions.ApplicationInsights/) 扩展包添加到函数应用中。
+        - 将 [Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/) 和 [Microsoft.Azure.Functions.Worker.Sdk](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk/) 包更新到最新版本。
+    - 对于其他语言，[Azure Functions 扩展捆绑包](functions-bindings-register.md#extension-bundles)的未来更新将包含 Application Insights 扩展。 如果新捆绑包可用，你的应用将自动使用新捆绑包。
 
 #### <a name="languages"></a>语言
 

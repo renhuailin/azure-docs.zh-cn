@@ -3,12 +3,12 @@ title: 使用备份中心监视和操作备份
 description: 本文介绍如何使用备份中心大规模监视和操作备份
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 86b81110d6abeb1425e18ee45dfe65a96f69687d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cab9e710cfe4bf43b0d225d64e8f64b16c09e3a6
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506104"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659842"
 ---
 # <a name="monitor-and-operate-backups-using-backup-center"></a>使用备份中心监视和操作备份
 
@@ -88,6 +88,14 @@ ms.locfileid: "102506104"
 选择“备份策略”菜单项可以查看在备份空间中创建的所有策略。 可以按保管库订阅、资源组、数据源类型和保管库来筛选列表。 右键单击网格中的某个项可查看该策略的关联项、编辑策略，甚至在必要时将其删除。
 
 ![备份中心 - 策略](./media/backup-center-monitor-operate/backup-center-policies.png)
+
+
+## <a name="resource-centric-views"></a>以资源为中心的视图
+
+如果组织将多个资源备份到一个公共保管库，且每个资源所有者只想查看他们拥有的资源的备份信息，则可以在备份中心中使用以资源为中心的视图。 若要使用以资源为中心的视图，请选中“仅显示我有权访问的数据源的信息”复选框。 这些选项卡当前支持此选项：“概述”、“备份实例”、“作业”****、“警报”****。 支持的工作负载包括 Azure VM、Azure VM SQL、 Azure VM SAP HANA、Azure Blob 和 Azure 磁盘。
+
+> [!NOTE]
+> 即使用户使用的是以资源为中心的视图，他们仍然需要对保管库拥有所需的 RBAC 权限。 此视图可使单个用户避免查看他们并不拥有的资源信息（例如 VM）。
 
 ## <a name="next-steps"></a>后续步骤
 

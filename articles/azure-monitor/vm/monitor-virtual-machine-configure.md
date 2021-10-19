@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: ce9fd7bd2b123877f73978caaabafca8c767c2be
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: ceb57d364cca4b05d170ad6e42e8894f9a1ce86e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114674324"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710242"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-configure-monitoring"></a>使用 Azure Monitor 监视虚拟机：配置监视
 本文是[在 Azure Monitor 中监视虚拟机及其工作负载](monitor-virtual-machine.md)方案的一部分。 文中介绍了如何在 Azure Monitor 中对 Azure 虚拟机和混合虚拟机配置监视。
@@ -75,12 +75,12 @@ Azure Monitor 提供针对 Azure 虚拟机的基本级别监视，无需任何�
 使用 Azure 专用链接，可为 Log Analytics 工作区创建专用终结点。 配置完成后，必须通过此专用终结点建立到工作区的任何连接。 专用链接使用 DNS 覆写进行工作，因此对单个代理没有配置要求。 有关专用链接的详细信息，请参阅[使用 Azure 专用链接将网络安全地连接到 Azure Monitor](../logs/private-link-security.md)。
 
 ## <a name="prepare-hybrid-machines"></a>准备混合计算机
-混合计算机是任何未在 Azure 中运行的计算机。 它可以是在另一个云中运行的虚拟机，或是托管提供的虚拟机，或是在数据中心内本地运行的虚拟或物理计算机。 在混合计算机上使用[已启用 Azure Arc 的服务器](../../azure-arc/servers/overview.md)，就可以像管理 Azure 虚拟机一样管理这些计算机。 你可以使用 Azure Monitor 中的 VM 见解，使用相同的进程对已启用 Azure Arc 的服务器启用监视，就像对 Azure 虚拟机所做的一样。 有关为 Azure 准备混合计算机的完整指南，请参阅[计划和部署已启用 Azure Arc 的服务器](../../azure-arc/servers/plan-at-scale-deployment.md)。 此任务包括启用单个计算机和使用 [Azure Policy](../../governance/policy/overview.md) 大规模启用整个混合环境。
+混合计算机是任何未在 Azure 中运行的计算机。 它可以是在另一个云中运行的虚拟机，或是托管提供的虚拟机，或是在数据中心内本地运行的虚拟或物理计算机。 在混合计算机上使用[已启用 Azure Arc 的服务器](../../azure-arc/servers/overview.md)，以便像管理 Azure 虚拟机一样管理这些计算机。 可使用 Azure Monitor 中的 VM 见解，使用相同的进程对已启用 Azure Arc 的服务器启用监视，就像对 Azure 虚拟机所做的一样。 有关为 Azure 准备混合计算机的完整指南，请参阅[计划和部署已启用 Azure Arc 的服务器](../../azure-arc/servers/plan-at-scale-deployment.md)。 此任务包括启用单个计算机和使用 [Azure Policy](../../governance/policy/overview.md) 大规模启用整个混合环境。
 
 已启用 Azure Arc 的服务器无需支付额外费用，但对于启用的不同选项可能需要收取一些费用。 有关详细信息，请参阅 [Azure Arc 定价](https://azure.microsoft.com/pricing/details/azure-arc/)。 为 VM 见解启用混合计算机后，工作区中收集的数据需要付费。
 
-### <a name="machines-that-cant-use-azure-arcenabled-servers"></a>计算机无法使用已启用 Azure Arc 的服务器
-如果有任何符合以下条件的混合计算机，则这些计算机将无法使用已启用 Azure Arc 的服务器： 
+### <a name="machines-that-cant-use-azure-arc-enabled-servers"></a>计算机无法使用已启用 Azure Arc 的服务器
+任何符合以下条件的混合计算机将无法使用已启用 Azure Arc 的服务器：
 
 - 由 Azure Arc 启用的服务器代理不支持该计算机的操作系统。有关详细信息，请参阅[受支持的操作系统](../../azure-arc/servers/agent-overview.md#prerequisites)。
 - 安全策略不允许计算机直接连接到 Azure。 无论是否安装了已启用 Azure Arc 的服务器，Log Analytics 代理都可以使用 [Log Analytics 网关](../agents/gateway.md)。 由 Azure Arc 启用的服务器代理必须直接连接到 Azure。
@@ -93,7 +93,7 @@ Azure Monitor 提供针对 Azure 虚拟机的基本级别监视，无需任何�
 ## <a name="enable-vm-insights-on-machines"></a>在计算机上启用 VM 见解
 在计算机上启用 VM 见解后，它会安装 Log Analytics 代理和 Dependency Agent，连接到工作区，然后开始收集性能数据。 你可以开始使用性能视图和工作簿来分析各种来宾操作系统指标的趋势，启用 VM 见解的映射功能来分析运行进程和计算机之间的依赖项，还可以收集所需数据以创建各种警报规则。
 
-你可以在单个计算机上启用 VM 见解，方法与在 Azure 虚拟机和已启用 Azure Arc 的服务器上的使用方法相同。 这些方法包括通过 Azure 门户或 Azure 资源管理器模板加入单个计算机，或者使用 Azure Policy 大规模启用计算机。 不会对 VM 见解直接收取费用，但在 Log Analytics 工作区中引入和保留收集的数据需要付费。
+可在单个计算机上启用 VM 见解，方法与在 Azure 虚拟机和已启用 Azure Arc 的服务器上使用的方法相同。 这些方法包括通过 Azure 门户或 Azure 资源管理器模板加入单个计算机，或者使用 Azure Policy 大规模启用计算机。 不会对 VM 见解直接收取费用，但在 Log Analytics 工作区中引入和保留收集的数据需要付费。
 
 有关为计算机启用 VM 见解的不同选项，请参阅[启用 VM 见解概述](vminsights-enable-overview.md)。 若要创建策略以实现在任何新创建的计算机上自动启用 VM 见解，请参阅[使用 Azure Policy 启用 VM 见解](vminsights-enable-policy.md)。
 
@@ -110,7 +110,7 @@ Azure Monitor 代理需要至少一条数据收集规则 (DCR) 用于定义应�
 
 请注意不要将数据发送到日志，因为这对于 Log Analytics 代理已收集的数据而言是多余的。
 
-你可使用与在 Azure 虚拟机和已启用 Azure Arc 的服务器上相同的方法，在单个计算机上安装 Azure Monitor 代理。 这些方法包括使用 Azure 门户或资源管理器模板加入单个计算机，或者使用 Azure Policy 大规模启用计算机。 对于无法使用已启用 Azure Arc 的服务器的混合计算机，请手动安装代理。
+可在单个计算机上安装 Azure Monitor 代理，方法与在 Azure 虚拟机和已启用 Azure Arc 的服务器上使用的方法相同。 这些方法包括使用 Azure 门户或资源管理器模板加入单个计算机，或者使用 Azure Policy 大规模启用计算机。 对于无法使用已启用 Azure Arc 的服务器的混合计算机，请手动安装代理。
 
 若要使用 Azure 门户创建 DCR 并将 Azure Monitor 代理部署到一个或多个代理，请参阅[在 Azure 门户中创建规则和关联](../agents/data-collection-rule-azure-monitor-agent.md)。 [安装 Azure Monitor 代理](../agents/azure-monitor-agent-install.md)中还介绍了其他安装方法。 若要创建策略，以便将代理和 DCR 自动部署到任何新创建的计算机，请参阅[使用 Azure Policy 大规模部署 Azure Monitor](../deploy-scale.md#azure-monitor-agent)。
 

@@ -7,21 +7,21 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 55ad3c97fd70db854faf3d2181a55630d04f5e41
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 15119b3196735e2358b76c1a804ca25f67b05efa
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129215085"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129809934"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>使用 Key Vault 证书进行 TLS 终止
 
 [Azure Key Vault](../key-vault/general/overview.md) 是平台托管的机密存储，可以用来保证机密、密钥和 TLS/SSL 证书的安全。 Azure 应用程序网关支持与密钥保管库集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限 v2 SKU 版应用程序网关。
 
-Key Vault 集成提供了两种用于 TLS 终止的模型：
+应用程序网关为 TLS 终止提供两种模型：
 
-- 显式提供附加到侦听器的 TLS/SSL 证书。 此模型是将 TLS/SSL 证书传递到应用程序网关进行 TLS 终止的传统方式。
-- 可以选择在创建启用 HTTPS 的侦听器时提供对现有密钥保管库证书或机密的引用。
+- 提供附加到侦听器的 TLS/SSL 证书。 此模型是将 TLS/SSL 证书传递到应用程序网关进行 TLS 终止的传统方式。
+- 在创建启用 HTTPS 的侦听器时，提供对现有密钥保管库证书或机密的引用。
 
 应用程序网关与 Key Vault 集成具有许多优势，其中包括：
 
@@ -36,11 +36,11 @@ Key Vault 集成提供了两种用于 TLS 终止的模型：
 
 应用程序网关目前仅支持经软件验证的证书。 不支持硬件安全模块 (HSM) 验证的证书。 
 
-在应用程序网关在配置为使用 Key Vault 证书以后，其实例会从 Key Vault 检索证书并将其安装到本地进行 TLS 终止。 实例还按 4 小时的时间间隔轮询密钥保管库，以便检索证书的续订版本（如果存在）。 如果发现了更新的证书，则目前与 HTTPS 侦听器关联的 TLS/SSL 证书会自动轮换。 
+在应用程序网关在配置为使用 Key Vault 证书以后，其实例会从 Key Vault 检索证书并将其安装到本地进行 TLS 终止。 实例按 4 小时的时间间隔轮询密钥保管库，以便检索证书的续订版本（如果存在）。 如果发现了更新的证书，则目前与 HTTPS 侦听器关联的 TLS/SSL 证书会自动轮换。 
 
 应用程序网关在密钥保管库中使用机密标识符引用证书。 对于 Azure PowerShell、Azure CLI 或 Azure 资源管理器，我们强烈建议使用未指定版本的机密标识符。 这样，如果密钥保管库中有更新的版本可用，应用程序网关将自动轮换证书。 没有版本的机密 URI 的一个示例是 `https://myvault.vault.azure.net/secrets/mysecret/`。
 
-Azure 门户仅支持密钥保管库证书，而不支持机密。 应用程序网关仍支持从密钥保管库引用机密，但只能通过非门户资源，如 PowerShell、Azure CLI、API 和 Azure 资源管理器模板（ARM 模板）。 
+Azure 门户仅支持密钥保管库证书，而不支持机密。 应用程序网关仍支持从密钥保管库引用机密，但只能通过非门户资源，如 PowerShell、Azure CLI、API 和 Azure 资源管理器模板（ARM 模板）。
 
 > [!WARNING]
 > Azure 应用程序网关当前仅支持与应用程序网关资源位于同一订阅中的密钥保管库帐户。 选择不包含你的应用程序网关的订阅中的密钥保管库会导致失败。

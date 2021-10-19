@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 546a7bfbda3f037f3ad40ca9c5d59353cc1de0eb
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 8b1947d9b78ef77644dd5df8aabe4298de90f9e8
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129349591"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754266"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -39,6 +39,7 @@ ms.locfileid: "129349591"
 - 将 Azure AD 服务 URL (`https://autologon.microsoftazuread-sso.com`) 添加到“受信任的站点”区域（而不是“本地 Intranet”区域）会阻止用户登录。
 - 无缝 SSO 支持的 Kerberos 加密类型为 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5。 建议将 AzureADSSOAcc$ 帐户的加密类型设置为 AES256_HMAC_SHA1 或 AES 类型与 RC4 的其中一个类型，以增强安全性。 加密类型存储在 Active Directory 帐户的 msDS-SupportedEncryptionTypes 属性中。  如果 AzureADSSOAcc$ 帐户加密类型设置为 RC4_HMAC_MD5，并且你要将其更改为 AES 加密类型之一，请确保先滚动更新 AzureADSSOAcc$ 帐户的 Kerberos 解密密钥，如 [FAQ 文档](how-to-connect-sso-faq.yml)中的相关问题下所述，否则无缝 SSO 不会运行。
 -  如果多个林中有林信任，那么在其中一个林中启用 SSO 将在所有受信任的林中启用 SSO。 如果在已启用 SSO 的林中启用 SSO，则会收到一条错误消息，指明林中已启用 SSO。
+-  启用无缝 SSO 的策略的字符上限为 25600。 此限制适用于策略中包含的所有内容，包括你希望启用无缝 SSO 的林名称。 如果环境中具有大量林，可能会达到字符上限。 如果林之间具有信任关系，则只需在一个林上启用无缝 SSO 即可。 例如，如果你具有 contoso.com 和 fabrikam.com 并且两者之间存在信任，则可以仅在 contoso.com 上启用无缝 SSO，这也适用于 fabrikam.com。 这样可以减少策略中启用的林数量并避免达到策略字符上限。
 
 ## <a name="check-status-of-feature"></a>检查功能状态
 

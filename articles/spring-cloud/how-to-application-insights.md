@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 3922b716a5537838be06f3fec6a9626e59fa929f
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: d4cb278fbfd6feb3fb2be0e2a113092ff24644cc
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129055092"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740258"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud"></a>Azure Spring Cloud 中的 Application Insights Java 进程内代理
 
@@ -54,6 +54,9 @@ Application Insights 提供许多可观察的视角，包括：
 3. 启用“Application Insights”后，可以配置一个可选采样率（默认值为 10.0%）。
 
    [ ![IPA 0](media/spring-cloud-application-insights/insights-process-agent-0.png)](media/spring-cloud-application-insights/insights-process-agent-0.png)
+
+> [!Note]
+> 不要在不同的 Azure Spring Cloud 实例中使用相同的 AI，否则会看到混合数据。
 
 ## <a name="using-the-application-insights-feature"></a>使用 Application Insights 功能
 

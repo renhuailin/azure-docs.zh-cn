@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 10/04/2021
 ms.author: normesta
-ms.openlocfilehash: b1f612ee189d47529033fdd9e6c7e7df0f523df9
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 025aa395fa6d2fd3a8fe98f4781a6b554e2b506d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129459015"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710533"
 ---
 #  <a name="upgrade-azure-blob-storage-with-azure-data-lake-storage-gen2-capabilities"></a>升级具有 Azure Data Lake Storage Gen2 功能的 Azure Blob 存储
 
@@ -41,7 +41,7 @@ ms.locfileid: "129459015"
 
 6. 展开“步骤 2: 升级之前验证帐户”部分，然后单击“开始验证”。
 
-   如果验证失败，请选择“查看错误”链接
+   如果验证失败，则页面中会出现错误。 在某些情况下，将显示“查看错误”链接。 如果出现该链接，请选中该链接。 
 
    > [!div class="mx-imgBorder"]
    > ![查看错误链接](./media/upgrade-to-data-lake-storage-gen2-how-to/validation-errors.png)
@@ -97,6 +97,6 @@ ms.locfileid: "129459015"
    与 Blob API 一样，许多脚本可能不需要修改即可工作。 但是，如果需要，可以升级脚本文件以使用 Data Lake Storage Gen2 [PowerShell cmdlet](data-lake-storage-directory-file-acl-powershell.md) 和 [Azure CLI 命令](data-lake-storage-directory-file-acl-cli.md)。
  
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [Azure Data Lake Storage Gen2 简介](data-lake-storage-introduction.md)

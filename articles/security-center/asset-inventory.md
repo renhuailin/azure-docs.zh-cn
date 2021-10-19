@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 02/10/2021
+ms.date: 10/07/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 0daf5cab1627819093514833667606758707f17a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4175476bc655aa0be1a5377f3fada83cb30ac37e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728676"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715929"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>使用资产清单浏览和管理资源
 
@@ -40,7 +40,7 @@ Azure 安全中心的资产清单页提供了一个页面，用于查看已连�
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布版 (GA)|
-|定价：|免费|
+|定价：|免费<br> 库存页的某些功能（例如[软件库存](#access-a-software-inventory)）需要付费解决方案到位|
 |所需角色和权限：|所有用户|
 |云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png":::国家/地区/主权（Azure 政府、Azure 中国世纪互联）|
 |||
@@ -130,6 +130,73 @@ ARG 用于提供高效资源探索，并具有大规模查询的功能。
     ![ARG 中的库存查询。](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
 
 1. 如果已经定义了一些筛选器并使页面保持打开状态，则安全中心不会自动更新结果。 除非手动重新加载页面或选择“刷新”，否则对资源的任何更改都不会影响显示的结果。
+
+## <a name="access-a-software-inventory"></a>访问软件清单
+
+如果已启用与 Microsoft Defender for Endpoint 的集成并为服务器启用了 Azure Defender，则将有权访问软件清单。
+
+:::image type="content" source="media/asset-inventory/software-inventory-filters.gif" alt-text="如果已启用威胁和漏洞解决方案，安全中心的资产清单会提供一个筛选器，用于按已安装的软件选择资源。":::
+
+> [!NOTE]
+> “空白”选项显示没有 Microsoft Defender for Endpoint（或没有适用于服务器的 Azure Defender）的计算机。
+
+除了资产清单页中的筛选器，还可从 Azure Resource Graph 资源管理器浏览软件清单数据。
+
+使用 Azure Resource Graph 资源管理器访问和浏览软件清单数据的示例：
+
+1. 打开“Azure Resource Graph 资源管理器”。
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="启动 Azure Resource Graph Explorer 建议页面" :::
+
+1. 选择以下订阅范围：securityresources/softwareinventories
+
+1. 输入以下任何查询（或自定义或编写你自己的查询！），然后选择“运行查询”。
+
+    - 生成已安装软件的基本列表：
+
+        ```kusto
+        securityresources
+        | where type == "microsoft.security/softwareinventories"
+        | project id, Vendor=properties.vendor, Software=properties.softwareName, Version=properties.version
+        ```
+
+    - 按版本号筛选：
+
+        ```kusto
+        securityresources
+        | where type == "microsoft.security/softwareinventories"
+        | project id, Vendor=properties.vendor, Software=properties.softwareName, Version=tostring(properties.    version)
+        | where Software=="windows_server_2019" and parse_version(Version)<=parse_version("10.0.17763.1999")
+        ```
+
+    - 使用软件产品组合查找计算机：
+
+        ```kusto
+        securityresources
+        | where type == "microsoft.security/softwareinventories"
+        | extend vmId = properties.azureVmId
+        | where properties.softwareName == "apache_http_server" or properties.softwareName == "mysql"
+        | summarize count() by tostring(vmId)
+        | where count_ > 1
+        ```
+
+    - 软件产品与其他 ASC 建议的组合：
+
+        （在本例中 - 安装了 MySQL 并公开管理端口的计算机）
+
+        ```kusto
+        securityresources
+        | where type == "microsoft.security/softwareinventories"
+        | extend vmId = tolower(properties.azureVmId)
+        | where properties.softwareName == "mysql"
+        | join (
+        securityresources
+        | where type == "microsoft.security/assessments"
+        | where properties.displayName == "Management ports should be closed on your virtual machines" and properties.status.code == "Unhealthy"
+        | extend vmId = tolower(properties.resourceDetails.Id)
+        ) on vmId
+        ```
+
 
 
 ## <a name="faq---inventory"></a>常见问题解答 - 库存

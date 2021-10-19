@@ -5,20 +5,37 @@ description: Azure Data Science Virtual Machine 的发行说明
 author: michalmar
 ms.service: data-science-vm
 ms.author: mimarusa
-ms.date: 07/16/2021
+ms.date: 10/11/2021
 ms.topic: reference
-ms.openlocfilehash: e256382b4d1e397be6d11a3660a4c4fe73eafb23
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: c20d7e93bdf507db7c6ac43634c06c20c79b1786
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122778321"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811194"
 ---
 # <a name="azure-data-science-virtual-machine-release-notes"></a>Azure Data Science Virtual Machine 发行说明
 
 本文介绍 Azure Data Science Virtual Machine 的发布。 如需获取随附工具的完整列表以及版本号，请查看[此页面](./tools-included.md)。
 
 如需了解已知 bug 和解决方法，请参阅[已知问题列表](reference-known-issues.md)。
+
+## <a name="2021-10-07"></a>2021-10-07
+
+[Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview) 的新映像。
+
+版本：21.10.07
+
+主要更改：
+ - 将 pytorch 更改为版本 1.9.1
+ - 将 Docker 更改为版本 20.10.9
+ - 将 Intellijidea 更改为版本 2021.2.2
+ - 将 Nodejs 更改为版本 v14.18.0
+ - 将 Pycharm 更改为版本 2021.2.2
+ - 将 VS Code 更改为版本 1.60.2
+ - 修复了 AutoML 环境 (azureml_py36_automl)
+ - 修复了 Azure 存储资源管理器稳定性
+ - 改进了稳定性和次要 bug 修补程序 
 
 
 ## <a name="2021-08-11"></a>2021-08-11

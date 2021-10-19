@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: b98695e9f7d91ae72ca13714814eeca3bde23c74
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0429c7a8308db9acecd4600d4925493222375ced
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736462"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857866"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支持矩阵
 
@@ -94,6 +94,7 @@ Canada | 加拿大中部或加拿大东部
 德国 | 德国中西部
 印度 | 印度中部或印度南部
 日本 |  日本东部或日本西部
+Jio 印度 | Jio 印度西部 
 韩国 | 韩国中部或韩国南部
 挪威 | 挪威东部
 瑞士 | 瑞士北部

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: c5232d9ed3e7ab7caec6134e4c5d3e553e2b543c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0c5321625f9963a15527d8fb0edef73f0701bd6e
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124818415"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856378"
 ---
 # <a name="dcsv2-series"></a>DCsv2 系列
 
@@ -22,7 +22,9 @@ DCsv2 系列虚拟机可以在公有云中处理数据和代码时帮助保护�
 
 这些计算机由采用 SGX 技术的 3.7 GHz Intel® Xeon E-2288G (Coffee Lake) 提供支持。 利用 Intel® Turbo Boost Max 3.0 技术，这些计算机最多可达 5.0 GHz。 
 
-示例用例包括：多方机密数据共享、欺诈检测、机密数据库、反洗钱、区块链、机密使用情况分析、情报分析和机密机器学习。
+[!NOTE] 为增加安全状况，禁用了超线程处理。 定价是基于物理内核与虚拟内核的卓越性能以及 DC 系列的独特安全功能。
+
+机密用例示例包括：数据库、区块链、多方数据分析、欺诈检测、反洗钱、使用情况分析、情报分析和机器学习。
 
 ## <a name="configuration"></a>配置
 
@@ -38,7 +40,7 @@ DCsv2 系列虚拟机可以在公有云中处理数据和代码时帮助保护�
 
 ## <a name="technical-specifications"></a>技术规范
 
-| 大小             | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大 NIC 数/预期网络带宽 (MBps) | EPC 内存 (MiB) |
+| 大小             | 物理核心 | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大 NIC 数/预期网络带宽 (MBps) | EPC 内存 (MiB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|
 | Standard_DC1s_v2 | 1    | 4           | 50                     | 1              | 2000/16                                                                                               | 2   | 28                                      |
 | Standard_DC2s_v2 | 2    | 8           | 100                    | 2              | 4000/32                                                                                               | 2  | 56                                          |
@@ -51,7 +53,6 @@ DCsv2 系列虚拟机可以在公有云中处理数据和代码时帮助保护�
 - 使用 [Azure 门户](./linux/quick-create-portal.md)或 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview)创建 DCsv2 VM
 - DCsv2 系列 VM 是[第 2 代 VM](./generation-2.md#creating-a-generation-2-vm)，仅支持 `Gen2` 映像。
 - 当前在 [Azure 产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)中列出的区域中可用。
-- 下一代 DC 系列 VM：[加入预览计划](https://aka.ms/intelgen3)
 
 ## <a name="more-sizes-and-information"></a>更多大小和信息
 

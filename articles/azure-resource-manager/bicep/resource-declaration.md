@@ -4,13 +4,13 @@ description: 介绍如何在 Bicep 中声明要部署的资源。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/16/2021
-ms.openlocfilehash: a540a30cd93d9f1dc54f77355f2f6560444131c1
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.date: 10/07/2021
+ms.openlocfilehash: 4b3b355016057af00c361a118aed2728948768dd
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228563"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659614"
 ---
 # <a name="resource-declaration-in-bicep"></a>Bicep 中的资源声明
 
@@ -28,7 +28,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 }
 ```
 
-设置资源的符号名称。 在前面的示例中，符号名称为 `stg`。 可对符号名称使用任意值，但该值不能与 Bicep 文件中的其他资源、参数或变量相同。 符号名称与资源名称不同。 使用符号名称可以引用 Bicep 文件其他部分中的资源。
+设置资源的符号名称。 在前面的示例中，符号名称为 `stg`。  符号名称与资源名称不同。 使用符号名称可以引用 Bicep 文件其他部分中的资源。 符号名称区分大小写。  符号名称可以包含字母、数字和 _；但不能以数字开头。
 
 Bicep 不支持在 [Azure 资源管理器模板（ARM 模板）JSON](../templates/syntax.md) 中可用的 `apiProfile`。
 
@@ -106,7 +106,7 @@ az provider show \
 
 ## <a name="set-managed-identities-for-azure-resources"></a>为 Azure 资源设置托管标识
 
-某些资源支持 [Azure 资源托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 这些资源在资源声明的根级别具有标识对象。 
+某些资源支持 [Azure 资源托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 这些资源在资源声明的根级别具有标识对象。
 
 可以使用系统分配的或用户分配的标识。
 
@@ -198,15 +198,15 @@ resource myParent 'My.Rp/parentType@2020-01-01' = {
 }
 ```
 
-当存在隐式依赖时，**不要添加显式依赖**。
+存在隐式依赖项时，请勿添加显式依赖项。
 
 有关嵌套资源的详细信息，请参阅[在 Bicep 中设置子资源的名称和类型](./child-resource-name-type.md)。
 
 ### <a name="explicit-dependency"></a>显式依赖关系
 
-使用 `dependsOn` 属性声明显式依赖项。 该属性接受一组资源标识符，因此你可以指定多个依赖项。 
+使用 `dependsOn` 属性声明显式依赖项。 该属性接受一组资源标识符，因此你可以指定多个依赖项。
 
-以下示例显示了一个名为 `otherZone` 的 DNS 区域，它依赖于名为 `dnsZone` 的 DNS 区域：
+以下示例显示了名为 `otherZone` 的 DNS 区域，该区域依赖于名为 `dnsZone` 的 DNS 区域：
 
 ```bicep
 resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = {
@@ -225,7 +225,7 @@ resource otherZone 'Microsoft.Network/dnszones@2018-05-01' = {
 
 尽管你可能倾向于使用 `dependsOn` 来映射资源之间的关系，但请务必了解这么做的理由。 例如，若要记录资源的互连方式，使用 `dependsOn` 并不是合适的方法。 部署之后，你无法查询 `dependsOn` 元素中定义了哪些资源。 设置不必要的依赖关系会减慢部署速度，因为资源管理器无法并行部署这些资源。
 
-尽管有时需要显式依赖关系，但这种情况非常罕见。 在大多数情况下，可以使用符号名称来暗示资源之间的依赖关系。 如果发现自己设置了显式依赖项，应考虑是否有办法将其删除。
+尽管有时需要显式依赖关系，但这种情况非常罕见。 在大多数情况下，你可以使用一个符号名称来隐式表示资源之间的依赖关系。 如果发现自己设置了显式依赖项，应考虑是否可以将其删除。
 
 ### <a name="visualize-dependencies"></a>可视化依赖项
 
@@ -235,9 +235,9 @@ Visual Studio Code 提供了一个用于可视化依赖关系的工具。 在 Vi
 
 ## <a name="reference-existing-resources"></a>引用现有资源
 
-要引用当前 Bicep 文件之外的资源，请在资源声明中使用 `existing` 关键字。
+若要引用当前 Bicep 文件之外的资源，请在资源声明中使用 `existing` 关键字。
 
-使用 `existing` 关键字时，请提供资源的 `name`。 以下示例获取与当前部署位于同一资源组中的现有存储帐户。
+使用 `existing` 关键字时，请提供资源的 `name`。 以下示例获取当前部署的资源组中的现有存储帐户。
 
 ```bicep
 resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
@@ -247,7 +247,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
 output blobEndpoint string = stg.properties.primaryEndpoints.blob
 ```
 
-或者，可以设置 `scope` 属性以访问不同范围内的资源。 以下示例引用不同资源组中的现有存储帐户。
+根据需要，可以设置 `scope` 属性以访问不同范围内的资源。 以下示例引用不同资源组中的现有存储帐户。
 
 ```bicep
 resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
@@ -260,7 +260,7 @@ output blobEndpoint string = stg.properties.primaryEndpoints.blob
 
 有关设置范围的详细信息，请参阅 [Bicep 的范围函数](bicep-functions-scope.md)。
 
-前面的示例不部署存储帐户。 相反，可以使用符号名称访问现有资源上的属性。
+上述示例不部署存储帐户。 相反，你可以使用符号名称访问现有资源上的属性。
 
 ## <a name="next-steps"></a>后续步骤
 

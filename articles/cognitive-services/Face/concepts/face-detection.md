@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 3fe90f5c9038c37e3ac3e9fba357ea27ca089679
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8e14e1fd97bbf3e0fe83c1b7e0eeae1cf446e74d
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747556"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811218"
 ---
 # <a name="face-detection-and-attributes"></a>人脸检测和属性
 
@@ -34,6 +34,8 @@ ms.locfileid: "121747556"
 ![标有所有 27 个特征点的人脸插图](../Images/landmarks.1.jpg)
 
 以像素为单位返回的点坐标。
+
+Detection_03 模型目前具有最准确的地标检测能力。 此模型返回的眼睛和瞳孔地标足够精确，可以对面部进行注视跟踪。
 
 ## <a name="attributes"></a>属性
 

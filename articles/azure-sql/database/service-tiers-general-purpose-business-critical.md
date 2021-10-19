@@ -12,12 +12,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
 ms.date: 7/7/2021
-ms.openlocfilehash: 56bd4dcc121b5ebd2ac48f772bd0793dffccd50d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 9fbcf03159e11aa9d2951f3f951290eb6e51b511
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289921"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670131"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL 数据库和 Azure SQL 托管实例服务层级
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -44,7 +44,7 @@ Azure SQL 数据库还提供“超大规模”服务层级：
 | | SQL 托管实例池 | 2、4、8、16、24、32、40、64、80 个 vCore | 不适用 | 不适用 |
 | **存储类型** | 全部 | 远程存储 | 分层的远程和本地 SSD 存储 | 本地 SSD 存储 |
 | **数据库大小** | SQL 数据库 | 1 GB – 4 TB | 40 GB - 100 TB | 1 GB – 4 TB |
-| | SQL 托管实例  | 32 GB – 8 TB | 不适用 | 32 GB – 4 TB |
+| | SQL 托管实例  | 32 GB – 8 TB </br> 16 TB（预览版）取决于内核数量，仅限 Gen5| 不适用 | 32 GB – 4 TB |
 | **存储大小** | SQL 数据库 | 1 GB – 4 TB | 40 GB - 100 TB | 1 GB – 4 TB |
 | | SQL 托管实例  | 32 GB – 8 TB | 不适用 | 32 GB – 4 TB |
 | **TempDB 大小** | SQL 数据库 | [每个 vCore 32 GB](resource-limits-vcore-single-databases.md) | [每个 vCore 32 GB](resource-limits-vcore-single-databases.md) | [每个 vCore 32 GB](resource-limits-vcore-single-databases.md) |
@@ -56,7 +56,7 @@ Azure SQL 数据库还提供“超大规模”服务层级：
 |**内存中 OLTP** | | 空值 | 部分支持。 支持内存优化表类型、表变量和原生编译模块。 | 可用 |
 |**只读副本**| | 0 内置 <br> 0 - 4 使用[异地复制](active-geo-replication-overview.md) | 0 - 4 内置 | 1 内置，包含在价格中 <br> 0 - 4 使用[异地复制](active-geo-replication-overview.md) |
 |**定价/计费** | SQL 数据库 | [vCore、保留存储和备份存储](https://azure.microsoft.com/pricing/details/sql-database/single/)收费。 <br/>IOPS 不收取费用。 | [每个副本的 vCore 和已用存储](https://azure.microsoft.com/pricing/details/sql-database/single/)收费。 <br/>尚未收费的 IOPS。 | [vCore、保留存储和备份存储](https://azure.microsoft.com/pricing/details/sql-database/single/)收费。 <br/>IOPS 不收取费用。 |
-|| SQL 托管实例 | [vCore、保留存储和备份存储](https://azure.microsoft.com/pricing/details/sql-database/managed/)收费。 <br/>IOPS 不收取费用| 不适用 | [vCore、保留存储和备份存储](https://azure.microsoft.com/pricing/details/sql-database/managed/)收费。 <br/>IOPS 不收取费用。| 
+|| SQL 托管实例 | [vCore、保留存储和备份存储](https://azure.microsoft.com/pricing/details/sql-database/managed/)收费。 <br/>IOPS 不收取费用| 空值 | [vCore、保留存储和备份存储](https://azure.microsoft.com/pricing/details/sql-database/managed/)收费。 <br/>IOPS 不收取费用。| 
 |**折扣模型**| | [预留实例](reserved-capacity-overview.md)<br/>[Azure 混合权益](../azure-hybrid-benefit.md)（在开发/测试订阅中不可用）<br/>[企业](https://azure.microsoft.com/offers/ms-azr-0148p/)和[即用即付](https://azure.microsoft.com/offers/ms-azr-0023p/)开发/测试订阅| [Azure 混合权益](../azure-hybrid-benefit.md)（在开发/测试订阅中不可用）<br/>[企业](https://azure.microsoft.com/offers/ms-azr-0148p/)和[即用即付](https://azure.microsoft.com/offers/ms-azr-0023p/)开发/测试订阅| [预留实例](reserved-capacity-overview.md)<br/>[Azure 混合权益](../azure-hybrid-benefit.md)（在开发/测试订阅中不可用）<br/>[企业](https://azure.microsoft.com/offers/ms-azr-0148p/)和[即用即付](https://azure.microsoft.com/offers/ms-azr-0023p/)开发/测试订阅|
 
 有关详细信息，请参阅 [Azure SQL 数据库 (vCore)](resource-limits-vcore-single-databases.md)、[单一 Azure SQL 数据库 (DTU)](resource-limits-dtu-single-databases.md)、[共用 Azure SQL 数据库 (DTU)](resource-limits-dtu-single-databases.md) 和 [Azure SQL 托管实例](../managed-instance/resource-limits.md)页，了解服务层级之间的详细差异。

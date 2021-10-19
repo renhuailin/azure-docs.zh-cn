@@ -3,14 +3,14 @@ title: 使用 Azure Functions Core Tools
 description: 了解如何通过本地计算机上的命令提示符或终端编写和测试 Azure 函数，然后在 Azure Functions 中运行这些函数。
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
-ms.date: 07/27/2021
+ms.date: 10/05/2021
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 5f2ea49df446c26453bb8cf54af52ab54b2c24b2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fa804ee911d8b810de391916f7ae92ff46efe0b1
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128669698"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613275"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -61,37 +61,27 @@ Azure Functions Core Tools 有四个版本。 使用的版本取决于本地开�
 
 ## <a name="install-the-azure-functions-core-tools"></a>安装 Azure Functions Core Tools
 
-[Azure Functions Core Tools] 包含同一运行时的另一版本，该版本为本地开发计算机上可运行的 Azure Functions 运行时提供支持。 它还提供用于创建函数、连接到 Azure 和部署函数项目的命令。
+[Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools) 包含同一运行时的另一版本，该版本为本地开发计算机上可运行的 Azure Functions 运行时提供支持。 它还提供用于创建函数、连接到 Azure 和部署函数项目的命令。
 
-从版本 2.x 开始，Core Tools 是在 .NET Core 基础上构建的。 这意味着，版本 2.x 及更高版本在 .NET Core 支持的所有平台（包括 [Windows](?tabs=windows#v2)、[macOS](?tabs=macos#v2) 和 [Linux](?tabs=linux#v2)）上运行。
-
-> [!IMPORTANT]
-> 对于非 .NET 语言，可以使用[扩展捆绑包]绕过安装 .NET Core SDK 的要求。
+从版本 2.x 开始，Core Tools 可以在 [Windows](?tabs=windows#v2)、[macOS](?tabs=macos#v2) 和 [Linux](?tabs=linux#v2) 上运行。
 
 # <a name="windows"></a>[Windows](#tab/windows/v4)
 
-安装 4.x 版 Core Tools 当前需要 npm。 如果使用不同的包管理器安装了以前版本的 Core Tools，请在安装版本 4.x 之前卸载它。
+以下步骤使用 Windows 安装程序 (MSI) 安装 Core Tools v4.x。 若要详细了解其他基于包的安装程序，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
-1. 如果尚未执行此操作，请[安装包含 npm 的 Node.js](https://nodejs.org/en/download/)。 
+基于Windows 版本下载并运行 Core Tools 安装程序：
 
-1. 运行以下 npm 命令以安装 Core Tools 包：
-
-    ```
-    npm i -g azure-functions-core-tools@4 --unsafe-perm true
-    ```
-
-1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Windows 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
+- [v4.x - Windows 64-bit](https://go.microsoft.com/fwlink/?linkid=2174087)（推荐。 [Visual Studio Code 调试](functions-develop-vs-code.md#debugging-functions-locally)需要 64 位。）
+- [v4.x - Windows 32 位](https://go.microsoft.com/fwlink/?linkid=2174159)
 
 # <a name="windows"></a>[Windows](#tab/windows/v3)
 
 以下步骤使用 Windows 安装程序 (MSI) 安装 Core Tools v3.x。 若要详细了解其他基于包的安装程序，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
-1. 基于Windows 版本下载并运行 Core Tools 安装程序：
+基于Windows 版本下载并运行 Core Tools 安装程序：
 
-    - [v3.x - Windows 64 位](https://go.microsoft.com/fwlink/?linkid=2135274)（推荐。 [Visual Studio Code 调试](functions-develop-vs-code.md#debugging-functions-locally)需要 64 位。）
-    - [v3.x - Windows 32 位](https://go.microsoft.com/fwlink/?linkid=2135275)
-
-1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Windows 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
+- [v3.x - Windows 64 位](https://go.microsoft.com/fwlink/?linkid=2135274)（推荐。 [Visual Studio Code 调试](functions-develop-vs-code.md#debugging-functions-locally)需要 64 位。）
+- [v3.x - Windows 32 位](https://go.microsoft.com/fwlink/?linkid=2135275)
 
 # <a name="windows"></a>[Windows](#tab/windows/v2)
 
@@ -104,8 +94,6 @@ Azure Functions Core Tools 有四个版本。 使用的版本取决于本地开�
     ```
     npm install -g azure-functions-core-tools@2 --unsafe-perm true
     ```
-
-1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Windows 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
 # <a name="windows"></a>[Windows](#tab/windows/v1)
 
@@ -125,8 +113,6 @@ Azure Functions Core Tools 有四个版本。 使用的版本取决于本地开�
     # if upgrading on a machine that has 2.x or 3.x installed:
     brew link --overwrite azure-functions-core-tools@4
     ```
-    
-1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 macOS 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
 # <a name="macos"></a>[macOS](#tab/macos/v3)
 
@@ -142,8 +128,6 @@ Azure Functions Core Tools 有四个版本。 使用的版本取决于本地开�
     # if upgrading on a machine that has 2.x installed:
     brew link --overwrite azure-functions-core-tools@3
     ```
-    
-1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 macOS 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
 # <a name="macos"></a>[macOS](#tab/macos/v2)
 
@@ -157,8 +141,6 @@ Azure Functions Core Tools 有四个版本。 使用的版本取决于本地开�
     brew tap azure/functions
     brew install azure-functions-core-tools@2
     ```
-    
-1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 macOS 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
 # <a name="macos"></a>[macOS](#tab/macos/v1)
 
@@ -175,9 +157,6 @@ macOS 不支持 1.x 版 Core Tools。 在 macOS 上使用版本 2.x 或更高版
     sudo apt-get install azure-functions-core-tools-4
     ```
 
-1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Linux 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
-
-
 # <a name="linux"></a>[Linux](#tab/linux/v3)
 
 [!INCLUDE [functions-core-tools-linux-install](../../includes/functions-core-tools-linux-install.md)]
@@ -189,8 +168,6 @@ macOS 不支持 1.x 版 Core Tools。 在 macOS 上使用版本 2.x 或更高版
     sudo apt-get install azure-functions-core-tools-3
     ```
 
-1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Linux 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
-
 # <a name="linux"></a>[Linux](#tab/linux/v2)
 
 [!INCLUDE [functions-core-tools-linux-install](../../includes/functions-core-tools-linux-install.md)]
@@ -201,9 +178,6 @@ macOS 不支持 1.x 版 Core Tools。 在 macOS 上使用版本 2.x 或更高版
     sudo apt-get update
     sudo apt-get install azure-functions-core-tools-2
     ```
-
-1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Linux 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
-
 
 # <a name="linux"></a>[Linux](#tab/linux/v1)
 
@@ -284,9 +258,9 @@ func init MyFunctionProj
 
 ## <a name="register-extensions"></a>注册扩展
 
-从运行时版本 2.x 开始，Functions 绑定作为 .NET 扩展 (NuGet) 包实现。 对于已编译的 C# 项目，只需引用所用的特定触发器和绑定的 NuGet 扩展包即可。 HTTP 绑定和计时器触发器不需要扩展。 
+从运行时版本 2.x 开始，Functions 触发器和绑定作为 .NET 扩展 (NuGet) 包实现。 对于已编译的 C# 项目，只需引用所用的特定触发器和绑定的 NuGet 扩展包即可。 HTTP 绑定和计时器触发器不需要扩展。 
 
-为了改进非 C# 项目的开发体验，Functions 允许在 host.json 项目文件中引用版本受控的扩展捆绑包。 [扩展捆绑包](functions-bindings-register.md#extension-bundles)使得所有扩展可供应用使用，并消除了扩展之间出现包兼容性问题的可能性。 扩展捆绑包还消除了安装 .NET Core 2.x SDK 以及处理 extensions.csproj 文件的要求。
+为了改进非 C# 项目的开发体验，Functions 允许在 host.json 项目文件中引用版本受控的扩展捆绑包。 [扩展捆绑包](functions-bindings-register.md#extension-bundles)使得所有扩展可供应用使用，并消除了扩展之间出现包兼容性问题的可能性。 扩展捆绑包还消除了安装 .NET Core 3.1 SDK 以及处理 extensions.csproj 文件的要求。
 
 对于除 C# 已编译项目以外的其他 Functions 项目，建议使用扩展捆绑包。 对于这些项目，在初始化期间将在 host.json 文件中生成扩展捆绑包设置。 如果你接受这种行为，则可以完全跳过本部分。  
 
@@ -629,6 +603,6 @@ func deploy --name <FUNCTION_APP> --platform kubernetes --registry <REGISTRY_USE
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
-[扩展捆绑包]: functions-bindings-register.md#extension-bundles
+[extension bundles]: functions-bindings-register.md#extension-bundles
 [func azure functionapp publish]: functions-core-tools-reference.md?tabs=v2#func-azure-functionapp-publish
 [func init]: functions-core-tools-reference.md?tabs=v2#func-init

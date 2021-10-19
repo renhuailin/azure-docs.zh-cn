@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/05/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 9e8b25e4cdfe9cb3b54968a524fe030872f2cd91
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 5ef21b7d66532adad450dadf0d6c0c57b73ae8c6
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123646450"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725710"
 ---
 <table class="tg">
 <thead>

@@ -1,16 +1,16 @@
 ---
-title: 在逻辑应用中支持非 Unicode 字符编码
-description: 在逻辑应用中处理非 Unicode 文本。 使用 base64 编码和 Azure Functions 将文本有效负载转换为 UTF-8 格式。
-ms.date: 04/29/2021
-ms.topic: conceptual
-ms.reviewer: logicappspm
+title: 转换非 Unicode 编码的文本以实现兼容性
+description: 通过使用 base64 编码和 Azure Functions 将文本有效负载转换为 UTF-8，以此来处理 Azure 逻辑应用程序中的非 Unicode 字符。
+ms.date: 10/05/2021
+ms.topic: how-to
+ms.reviewer: estfan, azla
 ms.service: logic-apps
-ms.openlocfilehash: cabdb2a644870d363265fa39290eb503f72730a9
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 1251a1622e62b7940c25ac810db10f70da560000
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326901"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618983"
 ---
 # <a name="support-non-unicode-character-encoding-in-logic-apps"></a>在逻辑应用中支持非 Unicode 字符编码
 
@@ -24,9 +24,17 @@ ms.locfileid: "108326901"
 
 首先，检查触发器能否正确识别内容类型。 此步骤可确保逻辑应用不再假定文本是 UTF-8 格式。 
 
-对于设置为“推断内容类型”的触发器，选择“否”。 如果触发器没有此选项，则根据传入消息设置内容类型。 
+在具有“推断内容类型”属性的触发器和操作中，选择“否”。   通常可以在操作的“添加参数”列表中找到此属性。 但是，如果操作不包括此属性，则内容类型由入站消息设置。
 
-如果对 `text/plain` 内容使用 HTTP 请求触发器，则必须在调用的 `Content-Type` 标头中设置 `charset` 参数。 如果未设置 `charset` 参数，或参数与有效负载的编码格式不匹配，则字符可能会被损坏。 有关详细信息，请参阅[如何处理 `text/plain` 内容类型](logic-apps-content-type.md#text-plain)。
+在下面的列表显示的连接器类型中，可以禁用自动推断内容类型这一功能：
+* [OneDrive](/connectors/onedrive/)
+* [Azure Blob 存储](/connectors/azureblob/)
+* [Azure 文件存储](/connectors/azurefile/)
+* [文件系统](/connectors/filesystem/)
+* [Google Drive](/connectors/googledrive/)
+* [SFTP - SSH](/connectors/sftpwithssh/)
+ 
+如果对 `text/plain` 内容使用请求触发器，则必须在调用的 `Content-Type` 标头中设置 `charset` 参数。 否则字符可能会被损坏，或者参数与有效负载的编码格式不匹配。 有关详细信息，请参阅[如何处理 `text/plain` 内容类型](logic-apps-content-type.md#text-plain)。
 
 例如，使用正确的 `charset` 参数设置 `Content-Type` 标头时，HTTP 触发器会将传入内容转换为 UTF-8 格式：
 

@@ -1,28 +1,28 @@
 ---
-title: 适用于已启用 Arc 的服务器的 Azure Automanage
-description: 了解适用于已启用 Arc 的服务器的 Azure Automanage
+title: 适用于已启用 Azure Arc 的服务器的 Azure Automanage
+description: 了解适用于已启用 Azure Arc 的服务器的 Azure Automanage
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.collection: linux
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 06/24/2021
-ms.openlocfilehash: ce12689548884d4c57363851f7de99b5fb067ef6
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: cb04cdd75815ecc0579d9e4efbda9c49f1a7ff1c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129456226"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713434"
 ---
-# <a name="azure-automanage-for-machines-best-practices---arc-enabled-servers"></a>适用于计算机的 Azure Automanage 最佳做法 - 已启用 Arc 的服务器
+# <a name="azure-automanage-for-machines-best-practices---azure-arc-enabled-servers"></a>适用于计算机的 Azure Automanage 最佳做法 - 已启用 Azure Arc 的服务器
 
-在已启用 Arc 的服务器 VM 上使用 Automanage 计算机最佳做法时，将自动为你加入这些 Azure 服务。 它们对于我们的最佳做法白皮书至关重要，你可以在我们的[云采用框架](/azure/cloud-adoption-framework/manage/azure-server-management)中找到这些最佳做法。
+在已启用 Azure Arc 的服务器 VM 上使用 Automanage 计算机最佳做法时，将自动为你加入这些 Azure 服务。 它们对于我们的最佳做法白皮书至关重要，你可以在我们的[云采用框架](/azure/cloud-adoption-framework/manage/azure-server-management)中找到这些最佳做法。
 
 对于所有这些服务，我们将自动加入、自动配置、监视有无偏移，并在检测到偏移时进行修复。 若要详细了解此过程，请参阅[适用于虚拟机的 Azure Automanage](automanage-virtual-machines.md)。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-对于已启用 Arc 的服务器，Automanage 支持以下操作系统
+对于已启用 Azure Arc 的服务器，Automanage 支持以下操作系统
 
 - Windows Server 2012/R2
 - Windows Server 2016

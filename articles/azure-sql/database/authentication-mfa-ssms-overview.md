@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 9afad44bcf67478a81e75c17d0ff8ffc6d8c65aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad29b24c6c79447a23e0b910583322107fa5af32
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94841121"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618584"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>使用多重 Azure Active Directory 身份验证
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -68,12 +68,11 @@ Azure AD MFA 可保护对数据和应用程序的访问，同时满足用户对�
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD 企业到企业支持
 
-> [!IMPORTANT]
-> 公共预览版目前不支持来宾用户在不成为某个组的成员的情况下连接到 Azure SQL 数据库、SQL 托管实例和 Azure Synapse。 有关详细信息，请参阅[创建 Azure AD 来宾用户并将其设置为 Azure AD 管理员](authentication-aad-guest-users.md)。
+作为来宾用户受 Azure AD B2B 方案支持的 Azure AD 用户（请参阅[什么是 Azure B2B 协作](../../active-directory/external-identities/what-is-b2b.md)）可以作为在关联的 Azure AD 中创建并使用给定数据库中的 [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) 语句手动映射的 Azure AD 组的用户或成员连接到 SQL 数据库和 Azure Synapse。 
 
-作为来宾用户受 Azure AD B2B 方案支持的 Azure AD 用户（请参阅[什么是 Azure B2B 协作](../../active-directory/external-identities/what-is-b2b.md)）只能作为在关联的 Azure AD 中创建并使用给定数据库中的 [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) 语句手动映射的组成员的一部分连接到 SQL 数据库和 Azure Synapse。 例如，如果 `steve@gmail.com` 受邀加入 Azure AD `contosotest`（具有 Azure Ad 域 `contosotest.onmicrosoft.com`），则必须在 Azure AD 中创建包含 `steve@gmail.com` 成员的 Azure AD 组（如 `usergroup`）。 随后，必须通过执行 Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` 语句，通过 Azure AD SQL 域或 Azure AD DBO 为特定数据库（例如，`MyDatabase`）创建此组。 
+例如，如果将 `steve@gmail.com` 邀请到 Azure AD `contosotest`（Azure AD 域名为 `contosotest.onmicrosoft.com`），则 Azure AD SQL 管理员或 Azure AD DBO 必须通过执行 Transact-SQL `create user [steve@gmail.com] FROM EXTERNAL PROVIDER` 语句为特定数据库（例如 MyDatabase）创建用户 `steve@gmail.com`。 例如，如果 `steve@gmail.com` 是 Azure AD 组（例如 `usergroup`）的一部分，则 Azure AD SQL 管理员或 Azure AD DBO 必须通过执行 Transact-SQL `create user [usergroup] FROM EXTERNAL PROVIDER` 语句为特定数据库（例如 MyDatabase）创建此组。 
 
-创建数据库用户后，用户 `steve@gmail.com` 随后可以使用 SSMS 身份验证选项 `Azure Active Directory – Universal with MFA` 登录 `MyDatabase`。 默认情况下，`usergroup` 仅具有连接权限。 任何进一步的数据访问权限需要由具有足够特权的用户在数据库中[授予](/sql/t-sql/statements/grant-transact-sql)。 
+创建数据库用户或用户组后，用户 `steve@gmail.com` 随后可以使用 SSMS 身份验证选项 `Azure Active Directory – Universal with MFA` 登录 `MyDatabase`。 默认情况下，用户或用户组只有连接权限。 任何进一步的数据访问权限需要由具有足够特权的用户在数据库中[授予](/sql/t-sql/statements/grant-transact-sql)。 
 
 > [!NOTE]
 > 对于 SSMS 17.x，如果使用 `steve@gmail.com` 作为来宾用户，则必须选中“AD 域名或租户 ID”框，然后在“连接属性”对话框中添加 AD 域名 `contosotest.onmicrosoft.com`。 “Azure Active Directory - 通用且具有 MFA 支持”身份验证仅支持“AD 域名或租户 ID”选项。 否则，该复选框会显示为灰色。

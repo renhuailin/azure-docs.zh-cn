@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/16/2021
-ms.openlocfilehash: 81c82152bf87944c7aed191c12e067567ec2b086
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 26aa625d7ada93c4524276ee195fd279d155e8c8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662243"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710312"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent"></a>为 Azure Monitor 代理配置数据收集
 
@@ -123,7 +123,7 @@ ms.locfileid: "122662243"
 > [!NOTE]
 > 如果要将数据发送到 Log Analytics，则必须在 Log Analytics 工作区所在的同一区域中创建数据收集规则。 该规则可关联到其他受支持的区域中的计算机。
 
-可以使用资源管理器模板为 Azure 虚拟机或启用了 Azure Arc 的服务器创建规则和关联。 请参阅[用于 Azure Monitor 中的数据收集规则的资源管理器模板示例](./resource-manager-data-collection-rules.md)以了解示例模板。
+可使用资源管理器模板为 Azure 虚拟机或已启用 Azure Arc 的服务器创建规则和关联。 请参阅[用于 Azure Monitor 中的数据收集规则的资源管理器模板示例](./resource-manager-data-collection-rules.md)以了解示例模板。
 
 
 ## <a name="manage-rules-and-association-using-powershell"></a>使用 PowerShell 管理规则和关联

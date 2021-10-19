@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2f95823dcea6488b8255a049cab1ea4dbaefc8b
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: cdf8798839eb71f652ae7b8a45ac317882887b9e
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112296780"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754589"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>针对 SAP ASCS/SCS 使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构
 
@@ -161,18 +161,12 @@ ms.locfileid: "112296780"
 
 > ![Windows OS][Logo_Windows] Windows
 
-
-本文介绍使用群集共享磁盘作为群集化 SAP ASCS 实例的选项，在 Windows 故障转移群集上安装和配置高可用性 SAP ASCS/SCS 实例之前准备 Azure 基础结构所要执行的步骤。
-文档中提供了两种群集共享磁盘备选方案：
+本文介绍使用群集共享磁盘作为群集化 SAP ASCS 实例的选项，在 Windows 故障转移群集上安装和配置高可用性 SAP ASCS/SCS 实例之前准备 Azure 基础结构所要执行的步骤。 文档中提供了两种群集共享磁盘备选方案：
 
 - [Azure 共享磁盘](../../disks-shared.md)
 - 使用 [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) 创建会模拟群集共享磁盘的镜像存储 
 
-所提供的配置依赖于 [Azure 邻近放置组 (PPG)](./sap-proximity-placement-scenarios.md) 来实现 SAP 工作负荷的最佳网络延迟。 本文档没有涵盖数据库层。  
-
-> [!NOTE]
-> Azure 邻近放置组是使用 Azure 共享磁盘的先决条件。
- 
+本文档没有涵盖数据库层。  
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -182,20 +176,37 @@ ms.locfileid: "112296780"
 
 ## <a name="create-the-ascs-vms"></a>创建 ASCS VM
 
-对于 SAP ASCS / SCS 群集，请在 Azure 可用性集中部署两个 VM。 将 VM 部署在同一个邻近放置组中。 在部署 VM 后，请执行以下操作：  
-- 为 SAP ASCS /SCS 实例创建 Azure 内部负载均衡器 
-- 将 Windows VM 添加到 AD 域
+对于 SAP ASCS/SCS 群集，根据部署的类型在 Azure 可用性集或 Azure 可用性区域中部署两个 VM。 如果使用 [Azure 邻近放置组 (PPG)](./sap-proximity-placement-scenarios.md)，请确保共享某个磁盘的所有虚拟机都必须属于同一 PPG 的一部分。 在部署 VM 后，请执行以下操作：
 
-提供的方案的主机名和 IP 地址为：
+- 为 SAP ASCS/SCS 实例创建 Azure 内部负载均衡器。
+- 将 Windows VM 添加到 AD 域。
 
-| 主机名角色 | 主机名 | 静态 IP 地址 | 可用性集 | 邻近放置组 |
-| --- | --- | --- |---| ---|
-| 第 1 个群集节点 ASCS/SCS 群集 |pr1-ascs-10 |10.0.0.4 |pr1-ascs-avset |PR1PPG |
-| 第 2 个群集节点 ASCS/SCS 群集 |pr1-ascs-11 |10.0.0.5 |pr1-ascs-avset |PR1PPG |
-| 群集网络名称 | pr1clust |10.0.0.42（仅适用于 Win 2016 群集） | 不适用 | 不适用 |
-| ASCS 群集网络名称 | pr1-ascscl |10.0.0.43 | 不适用 | 不适用 |
-| ERS 群集网络名称（仅适用于 ERS2） | pr1-erscl |10.0.0.44 | 不适用 | 不适用 |
+根据部署类型，方案的主机名和 IP 地址如下所示：
 
+Azure 可用性集中的 SAP 部署
+
+| 主机名角色                               | 主机名   | 静态 IP 地址                        | 可用性集 | 磁盘 SkuName |
+| -------------------------------------------- | ----------- | ---------------------------------------- | ---------------- | ------------ |
+| 第 1 个群集节点 ASCS/SCS 群集            | pr1-ascs-10 | 10.0.0.4                                 | pr1-ascs-avset   | Premium_LRS  |
+| 第 2 个群集节点 ASCS/SCS 群集            | pr1-ascs-11 | 10.0.0.5                                 | pr1-ascs-avset   |              |
+| 群集网络名称                         | pr1clust    | 10.0.0.42（仅适用于 Win 2016 群集） | 不适用              |              |
+| ASCS 群集网络名称                    | pr1-ascscl  | 10.0.0.43                                | 不适用              |              |
+| ERS 群集网络名称（仅适用于 ERS2） | pr1-erscl   | 10.0.0.44                                | 不适用              |              |
+
+Azure 可用性区域中的 SAP 部署
+
+| 主机名角色                               | 主机名   | 静态 IP 地址                        | 可用性区域 | 磁盘 SkuName |
+| -------------------------------------------- | ----------- | ---------------------------------------- | ----------------- | ------------ |
+| 第 1 个群集节点 ASCS/SCS 群集            | pr1-ascs-10 | 10.0.0.4                                 | AZ01              | Premium_ZRS  |
+| 第 2 个群集节点 ASCS/SCS 群集            | pr1-ascs-11 | 10.0.0.5                                 | AZ02              |              |
+| 群集网络名称                         | pr1clust    | 10.0.0.42（仅适用于 Win 2016 群集） | 不适用               |              |
+| ASCS 群集网络名称                    | pr1-ascscl  | 10.0.0.43                                | 不适用               |              |
+| ERS 群集网络名称（仅适用于 ERS2） | pr1-erscl   | 10.0.0.44                                | 不适用               |              |
+
+对于这两种部署类型，本文档中所述的步骤保持不变。 但如果群集在可用性集中运行，则需部署 Azure 高级共享磁盘的 LRS (Premium_LRS)；如果群集在可用性区域中运行，则需部署 Azure 高级共享磁盘的 ZRS (Premium_ZRS)。
+
+> [!Note]
+> 为 SAP 系统使用 [Azure 邻近放置组](../../windows/proximity-placement-groups.md)时，共享某个磁盘的所有虚拟机都必须属于同一 PPG 的一部分。
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> 创建 Azure 内部负载均衡器
 
@@ -203,7 +214,6 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 均使用虚拟主机名和虚拟 IP 地�
 
 > [!IMPORTANT]
 > 负载均衡方案中的 NIC 辅助 IP 配置不支持浮动 IP。 有关详细信息，请参阅 [Azure 负载均衡器限制](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。 如果你需要为 VM 提供其他 IP 地址，请部署第二个 NIC。    
-
 
 下面的列表显示了 (A)SCS/ERS 负载均衡器的配置。 SAP ASCS 和 ERS2 的配置在同一 Azure 负载均衡器中执行。  
 
@@ -281,16 +291,16 @@ ERS2
 
 在其中一个群集节点上运行以下命令：
 
-   ```powershell
-    # Hostnames of the Win cluster for SAP ASCS/SCS
-    $SAPSID = "PR1"
-    $ClusterNodes = ("pr1-ascs-10","pr1-ascs-11")
-    $ClusterName = $SAPSID.ToLower() + "clust"
-    
-    # Install Windows features.
-    # After the feature installs, manually reboot both nodes
-    Invoke-Command $ClusterNodes {Install-WindowsFeature Failover-Clustering, FS-FileServer -IncludeAllSubFeature -IncludeManagementTools }
-   ```
+```powershell
+# Hostnames of the Win cluster for SAP ASCS/SCS
+$SAPSID = "PR1"
+$ClusterNodes = ("pr1-ascs-10","pr1-ascs-11")
+$ClusterName = $SAPSID.ToLower() + "clust"
+
+# Install Windows features.
+# After the feature installs, manually reboot both nodes
+Invoke-Command $ClusterNodes {Install-WindowsFeature Failover-Clustering, FS-FileServer -IncludeAllSubFeature -IncludeManagementTools }
+```
 
 在功能安装完成后，重启两个群集节点。  
 
@@ -298,44 +308,44 @@ ERS2
 
 在 Windows 2019 上，群集会自动“认识”到它是在 Azure 中运行，并会使用分布式网络名称作为群集管理 IP 的默认选项。 因此，它会使用任何群集节点本地 IP 地址。 因此，不需要为群集使用专用（虚拟）网络名称，并且不需要在 Azure 内部负载均衡器上配置此 IP 地址。
 
-有关详细信息，请参阅 [Windows Server 2019 故障转移群集新功能](https://techcommunity.microsoft.com/t5/failover-clustering/windows-server-2019-failover-clustering-new-features/ba-p/544029) 在其中一个群集节点上运行以下命令：
+有关详细信息，请参阅 [Windows Server 2019 故障转移群集新功能](https://techcommunity.microsoft.com/t5/failover-clustering/windows-server-2019-failover-clustering-new-features/ba-p/544029)；在其中一个群集节点上运行以下命令：
 
-   ```powershell
-    # Hostnames of the Win cluster for SAP ASCS/SCS
-    $SAPSID = "PR1"
-    $ClusterNodes = ("pr1-ascs-10","pr1-ascs-11")
-    $ClusterName = $SAPSID.ToLower() + "clust"
-    
-    # IP adress for cluster network name is needed ONLY on Windows Server 2016 cluster
-    $ClusterStaticIPAddress = "10.0.0.42"
-        
-    # Test cluster
-    Test-Cluster –Node $ClusterNodes -Verbose
-    
-    $ComputerInfo = Get-ComputerInfo
-    
-    $WindowsVersion = $ComputerInfo.WindowsProductName
-    
-    if($WindowsVersion -eq "Windows Server 2019 Datacenter"){
-        write-host "Configuring Windows Failover Cluster on Windows Server 2019 Datacenter..."
-        New-Cluster –Name $ClusterName –Node  $ClusterNodes -Verbose
-    }elseif($WindowsVersion -eq "Windows Server 2016 Datacenter"){
-        write-host "Configuring Windows Failover Cluster on Windows Server 2016 Datacenter..."
-        New-Cluster –Name $ClusterName –Node  $ClusterNodes –StaticAddress $ClusterStaticIPAddress -Verbose 
-    }else{
-        Write-Error "Not supported Windows version!"
-    }
-   ```
+```powershell
+# Hostnames of the Win cluster for SAP ASCS/SCS
+$SAPSID = "PR1"
+$ClusterNodes = ("pr1-ascs-10","pr1-ascs-11")
+$ClusterName = $SAPSID.ToLower() + "clust"
+
+# IP adress for cluster network name is needed ONLY on Windows Server 2016 cluster
+$ClusterStaticIPAddress = "10.0.0.42"
+
+# Test cluster
+Test-Cluster –Node $ClusterNodes -Verbose
+
+$ComputerInfo = Get-ComputerInfo
+
+$WindowsVersion = $ComputerInfo.WindowsProductName
+
+if($WindowsVersion -eq "Windows Server 2019 Datacenter"){
+    write-host "Configuring Windows Failover Cluster on Windows Server 2019 Datacenter..."
+    New-Cluster –Name $ClusterName –Node  $ClusterNodes -Verbose
+}elseif($WindowsVersion -eq "Windows Server 2016 Datacenter"){
+    write-host "Configuring Windows Failover Cluster on Windows Server 2016 Datacenter..."
+    New-Cluster –Name $ClusterName –Node  $ClusterNodes –StaticAddress $ClusterStaticIPAddress -Verbose 
+}else{
+    Write-Error "Not supported Windows version!"
+}
+```
 
 ### <a name="configure-cluster-cloud-quorum"></a>配置群集云仲裁
 使用 Windows Server 2016 或 2019 时，建议配置 [Azure 云见证](/windows-server/failover-clustering/deploy-cloud-witness)作为群集仲裁。
 
 在其中一个群集节点上运行以下命令：
 
-   ```powershell
-    $AzureStorageAccountName = "cloudquorumwitness"
-    Set-ClusterQuorum –CloudWitness –AccountName $AzureStorageAccountName -AccessKey <YourAzureStorageAccessKey> -Verbose
-   ```
+```powershell
+$AzureStorageAccountName = "cloudquorumwitness"
+Set-ClusterQuorum –CloudWitness –AccountName $AzureStorageAccountName -AccessKey <YourAzureStorageAccessKey> -Verbose
+```
 
 ### <a name="tuning-the-windows-failover-cluster-thresholds"></a>优化 Windows 故障转移群集阈值
  
@@ -347,48 +357,53 @@ ERS2
 这些设置经过客户测试，已经进行了合理的折衷。 它们不仅具有足够的弹性，而且在发生 SAP 工作负荷或 VM 故障时，在实际出错的情况下，还可以提供足够快速的故障转移。  
 
 ## <a name="configure-azure-shared-disk"></a>配置 Azure 共享磁盘
-本部分仅适用于使用 Azure 共享磁盘的情况。 
+本部分仅适用于使用 Azure 共享磁盘的情况。
 
 ### <a name="create-and-attach-azure-shared-disk-with-powershell"></a>使用 PowerShell 创建并附加 Azure 共享磁盘
 在其中一个群集节点上运行以下命令。 需要调整资源组、Azure 区域、SAPSID 等的值。  
 
-   ```powershell
-    #############################
-    # Create Azure Shared Disk
-    #############################
-    
-    $ResourceGroupName = "MyResourceGroup"
-    $location = "MyAzureRegion"
-    $SAPSID = "PR1"
-    
-    $DiskSizeInGB = 512
-    $DiskName = "$($SAPSID)ASCSSharedDisk"
-    
-    # With parameter '-MaxSharesCount', we define the maximum number of cluster nodes to attach the shared disk
-    $NumberOfWindowsClusterNodes = 2
+```powershell
+#############################
+# Create Azure Shared Disk
+#############################
+
+$ResourceGroupName = "MyResourceGroup"
+$location = "MyAzureRegion"
+$SAPSID = "PR1"
+
+$DiskSizeInGB = 512
+$DiskName = "$($SAPSID)ASCSSharedDisk"
+
+# With parameter '-MaxSharesCount', we define the maximum number of cluster nodes to attach the shared disk
+$NumberOfWindowsClusterNodes = 2
+
+# For SAP deployment in availability set, use below storage SkuName
+$SkuName = "Premium_LRS"
+# For SAP deployment in availability zone, use below storage SkuName
+$SkuName = "Premium_ZRS"
             
-    $diskConfig = New-AzDiskConfig -Location $location -SkuName Premium_LRS  -CreateOption Empty  -DiskSizeGB $DiskSizeInGB -MaxSharesCount $NumberOfWindowsClusterNodes
-    $dataDisk = New-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName -Disk $diskConfig
-    
-    ##################################
-    ## Attach the disk to cluster VMs
-    ##################################
-    # ASCS Cluster VM1
-    $ASCSClusterVM1 = "$SAPSID-ascs-10"
-    
-    # ASCS Cluster VM2
-    $ASCSClusterVM2 = "$SAPSID-ascs-11"
-    
-    # Add the Azure Shared Disk to Cluster Node 1
-    $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM1 
-    $vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun 0
-    Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
-    
-    # Add the Azure Shared Disk to Cluster Node 2
-    $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM2
-    $vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun 0
-    Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
-   ```
+$diskConfig = New-AzDiskConfig -Location $location -SkuName $SkuName  -CreateOption Empty  -DiskSizeGB $DiskSizeInGB -MaxSharesCount $NumberOfWindowsClusterNodes
+$dataDisk = New-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName -Disk $diskConfig
+
+##################################
+## Attach the disk to cluster VMs
+##################################
+# ASCS Cluster VM1
+$ASCSClusterVM1 = "$SAPSID-ascs-10"
+
+# ASCS Cluster VM2
+$ASCSClusterVM2 = "$SAPSID-ascs-11"
+
+# Add the Azure Shared Disk to Cluster Node 1
+$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM1 
+$vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun 0
+Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
+
+# Add the Azure Shared Disk to Cluster Node 2
+$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM2
+$vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun 0
+Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
+```
 
 ### <a name="format-the-shared-disk-with-powershell"></a>用 PowerShell 格式化共享磁盘
 1. 获取磁盘编号。 在其中一个群集节点上运行以下 PowerShell 命令：
@@ -417,7 +432,7 @@ ERS2
     # S           PR1SAP          ReFS       Fixed     Healthy      OK                    504.98 GB 511.81 GB
    ```
 
-3. 验证磁盘现在是否作为群集磁盘显示。  
+3. 验证磁盘现在是否作为群集磁盘显示。
    ```powershell
     # List all disks
     Get-ClusterAvailableDisk -All
@@ -445,7 +460,7 @@ ERS2
 现在，Azure 中有一个有效的 Windows Server 故障转移群集配置。 若要安装 SAP ASCS/SCS 实例，需要一个共享磁盘资源。 其中一个选项是使用 SIOS DataKeeper Cluster Edition，它是可用于创建共享磁盘资源的第三方解决方案。  
 
 为 SAP ASCS/SCS 群集共享磁盘安装 SIOS DataKeeper Cluster Edition 的过程包括以下任务：
-- 添加 Microsoft .NET Framework（如果需要）。 有关最新的 .NET Framework 要求，请参阅 [SIOS 文档]((https://us.sios.com/products/datakeeper-cluster/) 
+- 添加 Microsoft .NET Framework（如果需要）。 有关最新的 .NET Framework 要求，请参阅 [SIOS 文档](https://us.sios.com/products/datakeeper-cluster/) 
 - 安装 SIOS DataKeeper
 - 配置 SIOS DataKeeper
 

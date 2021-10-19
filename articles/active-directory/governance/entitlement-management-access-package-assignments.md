@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/12/2021
+ms.date: 10/05/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ed289789576df7c81368b2b98001968c358c0e0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f944caecae6d35e680f5c5beb1a6e23fc422e698
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440194"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618076"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中查看、添加和删除访问包的分配
 
@@ -72,7 +72,7 @@ $assignments = Get-MgEntitlementManagementAccessPackageAssignment -AccessPackage
 $assignments | ft Id,AssignmentState,TargetId,{$_.Target.DisplayName}
 ```
 
-## <a name="directly-assign-a-user"></a>直接分配用户
+## <a name="directly-assign-a-user"></a>直接分配用户 
 
 在某些情况下，你可能希望直接将特定的用户分配到访问包，使其不必要完成请求访问包的过程。 若要直接分配用户，访问包必须有一个允许管理员直接分配的策略。
 
@@ -108,6 +108,38 @@ $assignments | ft Id,AssignmentState,TargetId,{$_.Target.DisplayName}
 1. 单击“添加”将所选用户直接分配到访问包。
 
     片刻之后，单击“刷新”查看“分配”列表中的用户。
+    
+> [!NOTE]
+> 将用户分配到访问包时，管理员需要根据现有策略要求验证用户是否有资格获得该访问包。 否则，用户将无法成功分配到该访问包。 如果访问包包含要求批准用户请求的策略，则未经指定审批者的必要批准，无法将用户直接分配到该包。
+
+## <a name="directly-assign-any-user-preview"></a>直接分配任何用户（预览版）
+Azure AD 权利管理还允许将外部用户直接分配到访问包，以便更轻松地与合作伙伴协作。 为此，访问包必须具有一个策略，该策略允许尚不在你目录中的用户请求访问权限。
+
+**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理员或访问包分配管理员
+
+1.  在 Azure 门户中，依次选择“Azure Active Directory”和“标识治理” 。
+
+1.  在左侧菜单中单击“访问包”，然后打开要向其添加用户的访问包。
+
+1.  在左侧菜单中单击“分配”。
+
+1.  选择“新建分配”打开“将用户添加到访问包”。 
+
+1.  在“选择策略”列表中，选择一个策略，该策略允许设置为“不在你目录中的用户”。
+
+1. 选择“任何用户”。 你可以指定要分配到此访问包的用户。
+    ![分配 - 将任何用户添加到访问包](./media/entitlement-management-access-package-assignments/assignments-add-any-user.png)
+
+1. 输入用户的“名称”（可选）和用户的“电子邮件地址”（必填）。 
+
+    > [!NOTE]
+    > - 要添加的用户必须在策略范围内。 例如，如果策略设置为“特定连接组织”，则用户的电子邮件地址必须来自所选组织的域。 如果尝试添加的用户的电子邮件地址为 jen@foo.com，但所选组织的域为 bar.com，则无法将该用户添加到访问包。
+    > - 同样，如果将策略设置为包括“所有配置连接组织”，则用户的电子邮件地址必须来自其中一个配置连接组织。 否则，无法将用户添加到访问包。
+    > - 如果要将任何用户添加到访问包，需要确保在配置策略时选择“所有用户(所有连接组织 + 任何外部用户)”。
+
+1.  设置所选用户的分配开始与结束日期和时间。 如果未提供结束日期，将使用该策略的生命周期设置。
+1.  单击“添加”将所选用户直接分配到访问包。
+1.  片刻之后，单击“刷新”查看“分配”列表中的用户。
 
 ## <a name="directly-assigning-users-programmatically"></a>以编程方式直接分配用户
 ### <a name="assign-a-user-to-an-access-package-with-microsoft-graph"></a>使用 Microsoft Graph 将用户分配到访问包
@@ -128,7 +160,7 @@ $policy = $accesspackage.AccessPackageAssignmentPolicies[0]
 $req = New-MgEntitlementManagementAccessPackageAssignmentRequest -AccessPackageId $accesspackage.Id -AssignmentPolicyId $policy.Id -TargetId "a43ee6df-3cc5-491a-ad9d-ea964ef8e464"
 ```
 
-你还可使用 [Microsoft Graph PowerShell cmdlet for Identity Governance](https://www.powershellgallery.com/packages/Microsoft.Graph.Identity.Governance/) 模块 1.6.1 或更高版本中的 `New-MgEntitlementManagementAccessPackageAssignment` cmdlet 在 PowerShell 中将多个用户分配到访问包。 该 cmdlet 作为多种参数
+还可使用 [Microsoft Graph PowerShell cmdlet for Identity Governance](https://www.powershellgallery.com/packages/Microsoft.Graph.Identity.Governance/) 模块 1.6.1 或更高版本中的 `New-MgEntitlementManagementAccessPackageAssignment` cmdlet 在 PowerShell 中将多个用户分配到访问包。 该 cmdlet 作为多种参数
 * 访问包 ID，包含在 `Get-MgEntitlementManagementAccessPackage` cmdlet 的响应中，
 * 访问包分配策略 ID，包含在 `Get-MgEntitlementManagementAccessPackageAssignmentPolicy` cmdlet 的响应中，
 * 目标用户的对象 ID，可以是字符串数组，或是从 `Get-MgGroupMember` cmdlet 返回的用户成员列表。

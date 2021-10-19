@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 6d92b7c2f01a7e9ef12bc2bb422cfb6ed0076f73
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ccc46073ef81977f5cd467c84dc96946980cc8c8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102039370"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714472"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>面向现有 Operations Manager 客户的 Azure Monitor
 本文为当前使用 [System Center Operations Manager](/system-center/scom/welcome) 并计划转换到 [Azure Monitor](overview.md) 的客户提供指导，告诉他们如何将商业应用程序和其他资源迁移到 Azure。 它假定你的最终目标是完全转换到云，并在不影响业务和 IT 操作要求的情况下，尽可能用 Azure Monitor 代替 Operations Manager 功能。 
@@ -115,7 +115,7 @@ Azure Monitor 也不衡量虚拟机上运行的不同应用程序和服务的运
 
 [![VM 见解映射](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
 
-除了 Azure 虚拟机，VM 见解还可以使用[启用了 Azure Arc 的服务器](../azure-arc/servers/overview.md)来监视本地和其他云中的计算机。 使用启用了 Arc 的服务器，你可以按照管理本机 Azure 虚拟机的方式，管理在 Azure 外部、在企业网络上或其他云提供商中托管的 Windows 和 Linux 计算机。
+除了 Azure 虚拟机，VM 见解还可以使用[启用了 Azure Arc 的服务器](../azure-arc/servers/overview.md)来监视本地和其他云中的计算机。 使用启用了 Azure Arc 的服务器，你可以按照管理本机 Azure 虚拟机的方式，管理在 Azure 外部、在企业网络上或其他云提供商中托管的 Windows 和 Linux 计算机。
 
 
 

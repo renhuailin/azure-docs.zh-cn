@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 08/09/2021
-ms.openlocfilehash: c99d3dde29edbd0e43f883ff9b31e054cea1a720
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/11/2021
+ms.openlocfilehash: 07e48fba8bfb554604d875f9f4a041fed466dbe7
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278873"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754703"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 中的新增功能
 
@@ -32,6 +32,43 @@ ms.locfileid: "129278873"
 >
 > 你也可贡献内容！ 加入我们的 [Azure Sentinel 威胁猎人 GitHub 社区](https://github.com/Azure/Azure-Sentinel/wiki)吧。
 >
+
+## <a name="october-2021"></a>2021 年 10 月
+
+- [playbook 模板和库现已可用（公共预览版）](#playbook-templates-and-gallery-now-available-public-preview)
+- [管理计划分析规则的模板版本（公共预览版）](#manage-template-versions-for-your-scheduled-analytics-rules-public-preview)
+- [DHCP 规范化架构（公共预览版）](#dhcp-normalization-schema-public-preview)
+
+### <a name="playbook-templates-and-gallery-now-available-public-preview"></a>playbook 模板和库现已可用（公共预览版）
+
+playbook 模板是预生成的、已经过测试且随时可用的工作流，你可以根据自己的需求对其进行自定义。 在从头开发 playbook 时，还可以将这些模板作为最佳做法参考；或者，可以通过模板获得灵感以实现新的自动化方案。
+
+Playbook 模板由 Azure Sentinel 社区、独立软件供应商 (ISV) 和 Microsoft 自己的专家开发，你可以在“Playbook 模板”选项卡（在“自动化”下面）、在 [Azure Sentinel 解决方案](sentinel-solutions.md)中或在 [Azure Sentinel GitHub 存储库](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)中找到这些模板。    
+
+有关从“自动化”下的“playbook 模板”选项卡部署 playbook 模板的更多信息，请参阅[从内置模板创建和自定义 playbook](use-playbook-templates.md)。 
+
+### <a name="manage-template-versions-for-your-scheduled-analytics-rules-public-preview"></a>管理计划分析规则的模板版本（公共预览版）
+
+从[内置 Azure Sentinel 规则模板](detect-threats-built-in.md)创建分析规则时，可以有效地创建模板的副本。 此后，活动规则 ***不会*** 动态更新来匹配对原始模板所做的任何更改。
+
+但是，从模板创建的规则确实会记住它们来自于哪些模板，因此可为你带来两项优势：
+
+- 如果在从模板创建规则时（或之后的任何时间）对该规则进行了更改，始终都可以将该规则还原为其原始版本（作为模板的副本）。
+
+- 你可以在模板更新时收到通知，并且可以选择将规则更新为其模板的新版本，或将其保持原样。
+
+[了解如何管理这些任务](manage-analytics-rule-templates.md)以及需要注意的事项。 这些过程适用于从模板创建的任何[计划](detect-threats-built-in.md#scheduled)分析规则。
+
+### <a name="dhcp-normalization-schema-public-preview"></a>DHCP 规范化架构（公共预览版）
+
+Azure Sentinel 信息模型 (ASIM) 现在支持 DHCP 规范化架构，该架构用于描述 DHCP 服务器报告的事件，并由 Azure Sentinel 用于启用与源无关的分析。 
+
+DHCP 规范化架构中描述的事件包括为从客户端系统租用的 DHCP IP 地址请求提供服务，以及使用授予的租用更新 DNS 服务器。
+
+有关详细信息，请参阅：
+
+- [Azure Sentinel DHCP 规范化架构参考（公共预览版）](dhcp-normalization-schema.md)
+- [规范化和 Azure Sentinel 信息模型 (ASIM)](normalization.md)
 
 ## <a name="september-2021"></a>2021 年 9 月
 

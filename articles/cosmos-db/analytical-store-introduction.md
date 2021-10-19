@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: b2501631c8ccdb6c61d4f31e9179a7e94c2276cb
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 09b5d7c1865020ba33a89e73b2ba39260f473e6a
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210395"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859335"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>什么是 Azure Cosmos DB 分析存储？
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -180,19 +180,21 @@ df = spark.read\
 
 ### <a name="schema-representation"></a>架构表示形式
 
-在分析存储中，架构表示形式有两种模式。 这些模式为数据库帐户中的所有容器定义架构表示方法，并在查询体验简单性与多态架构的更大包容性纵栏表示形式的方便性之间进行权衡。
+在分析存储中，架构表示形式有两种类型。 这些类型为数据库帐户中的所有容器定义架构表示方法，并在查询体验简单性与多态架构的更大包容性纵栏表示形式的方便性之间进行权衡。
 
 * 明确定义的架构表示形式，是 SQL (CORE) API 帐户的默认选项。 
 * 全保真架构表示形式，是 Azure Cosmos DB API for MongoDB 帐户的默认选项。
 
-可为 SQL (Core) API 帐户使用全保真架构。 下面是有关这种可行方案的注意事项：
+#### <a name="full-fidelity-schema-for-sql-api-accounts"></a>SQL API 帐户的全保真架构
+
+首次在 Cosmos DB 帐户上启用 Synapse Link 时，通过设置架构类型，可以使用 SQL (Core) API 帐户的全保真架构，而不是默认选项。 下面是有关更改默认架构表示形式类型的注意事项：
 
  * 此选项仅对未启用 Synapse Link 的帐户有效。
- * 无法通过关闭再打开 Synapse Link 来重置默认选项并从明确定义的表示形式更改为全保真表示形式。
- * 无法使用任何其他过程从明确定义的表示形式更改为全保真表示形式。
- * MongoDB 帐户与这种更改表示方法的可行方案不兼容。
- * 目前无法通过 Azure 门户做出此决策。
- * 应在对帐户启用 Synapse Link 的同时对此选项做出决策：
+ * 无法将架构表示形式类型从明确定义的架构重置为全保真架构，反之亦然。
+ * 目前，以这种方式更改架构表示形式会导致适用于 MongoDB 帐户的 Azure Cosmos DB API 出现不兼容的情况。 所有 MongoDB 帐户将始终具有全保真架构表示形式类型。
+ * 目前无法通过 Azure 门户进行此变更。 所有通过 Azure 门户启用了 Synapse LinK 的数据库帐户都将具有默认架构表示形式类型，即明确定义的架构。
+ 
+必须在帐户上启用 Synapse Link 时，使用 Azure CLI 或 PowerShell 决定架构表示形式类型。
  
  使用 Azure CLI：
  ```cli

@@ -9,12 +9,12 @@ ms.date: 07/31/2020
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 8327a1855de21c274a54f1bfa3750eab9aea8a8c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 05af03c7ac60e2f98471ace4d57a296a54cf8ce6
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128649335"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707350"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>如何使用 Docker 打包注册的模型
 
@@ -27,7 +27,7 @@ ms.locfileid: "128649335"
 
 ## <a name="package-models"></a>包模型
 
-在某些情况下，可能需要在不部署模型的情况下创建 Docker 映像（例如要[部署到 Azure 应用服务](how-to-deploy-app-service.md)）。 或者，你可能希望下载映像并在本地 Docker 安装上运行它。 甚至可能需要下载用于生成映像的文件、对其进行检查和修改并手动生成映像。
+在某些情况下，你可能希望在不部署模型的情况下创建 Docker 映像。 或者，你可能希望下载映像并在本地 Docker 安装上运行它。 甚至可能需要下载用于生成映像的文件、对其进行检查和修改并手动生成映像。
 
 这些工作都可以通过打包模型来完成。 此方法能对将模型作为 Web 服务托管所需的全部资产进行打包，让你能下载完整生成的 Docker 映像或生成该映像所需的文件。 可以通过两种方式使用模型打包：
 

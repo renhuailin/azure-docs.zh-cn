@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: c5fab8b856ff9c82a0de887dc9c322dbf541348b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4d82e0193d891f423245ce2743ad34ac7bcf5d1
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791401"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856480"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>排查 Azure 密钥保管库访问策略问题
 
@@ -39,7 +39,12 @@ ms.locfileid: "98791401"
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>如何为每个密钥保管库对象分配访问控制？ 
 
-将在此处通知每个机密/密钥/证书访问控制功能的可用性。[了解详细信息](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/32213176-per-secret-key-certificate-access-control)
+密钥保管库 RBAC 权限模型允许基于对象的权限。 单个密钥、机密和证书权限应仅用于特定场景：
+
+-   需要在层之间分离访问控制的多层应用程序
+
+-   在多个应用程序之间共享单个机密
+
 
 ### <a name="how-can-i-provide-key-vault-authenticate-using-access-control-policy"></a>如何使用访问控制策略提供密钥保管库身份验证？
 

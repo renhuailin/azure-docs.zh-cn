@@ -7,21 +7,21 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 2532b02247a85d180d7b1cccd504838b83a8f93f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: de526c46a9aace4a6740b8b9afaab5cc23f3f87d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591836"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711105"
 ---
 # <a name="troubleshoot-csp-billing-issues-with-usage-file-pivot-tables"></a>通过使用情况文件数据透视表排查 CSP 计费问题
 
 本文帮助你使用合作伙伴中心对帐（使用情况）文件中的数据透视表排查云解决方案提供商 (CSP) 计费问题。 Azure 使用情况文件包含所有 Azure 使用情况和使用量信息。 文件中的信息可帮助你了解：
 
 - 了解如何使用和应用了 Azure 预留
-- 核对 Azure 成本管理中的信息和帐单
+- 核对成本管理中的信息和帐单
 - 对成本高峰进行故障排除
 - 计算服务级别协议的退款金额
 
@@ -111,4 +111,4 @@ ms.locfileid: "128591836"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [面向合作伙伴的 Azure 成本管理入门](../costs/get-started-partners.md)。
+- [面向合作伙伴的成本管理入门](../costs/get-started-partners.md)。

@@ -1,6 +1,8 @@
 ---
 title: 使用 Azure AD 和 Silverfort 实现安全的混合访问
 description: 本教程介绍如何将 Silverfort 与 Azure AD 集成以实现安全的混合访问
+titleSuffix: Azure AD
+services: active-directory
 author: gargi-sinha
 manager: martinco
 ms.service: active-directory
@@ -10,12 +12,12 @@ ms.workload: identity
 ms.date: 9/13/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0429b00a03aaf39fa5eb5657253ee6ee51190049
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 1515bfe65a9a680a9331a5a4d2b13e4d3633fda0
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274551"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658246"
 ---
 # <a name="tutorial-configure-silverfort-with-azure-active-directory-for-secure-hybrid-access"></a>教程：为 Silverfort 配置 Azure Active Directory 以实现安全的混合访问
 

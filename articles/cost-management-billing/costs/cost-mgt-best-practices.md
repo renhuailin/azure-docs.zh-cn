@@ -3,22 +3,22 @@ title: 使用 Azure 成本管理优化云投资
 description: 本文有助于最大程度利用云投资、减少成本以及对资金使用情况进行评估。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/02/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 26b48e4f5ed50b547c8ec628fc534e24dfeb252e
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 5ea9f5a857c28195d0aa82a1314df839ab2236e8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609541"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705913"
 ---
-# <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
+# <a name="how-to-optimize-your-cloud-investment-with-cost-management"></a>如何通过成本管理优化云投资
 
-借助 Azure 成本管理所提供的工具，用户可以规划、分析和减少开支，最大程度利用云投资。 本文档提供成本管理的系统方法，重点介绍可用于解决组织成本难题的工具。 借助 Azure，可以轻松构建和部署云解决方案。 但是，重要的一点是，这些解决方案需要经过优化，以最大程度减少组织所承担的费用。 遵循本文档所述的原则并使用我们的工具，有助于确保组织已做好成功实施的准备。
+借助成本管理所提供的工具，用户可以规划、分析和减少开支，最大程度利用云投资。 本文档提供成本管理的系统方法，重点介绍可用于解决组织成本难题的工具。 借助 Azure，可以轻松构建和部署云解决方案。 但是，重要的一点是，这些解决方案需要经过优化，以最大程度减少组织所承担的费用。 遵循本文档所述的原则并使用我们的工具，有助于确保组织已做好成功实施的准备。
 
 ## <a name="methodology"></a>方法
 
@@ -162,7 +162,7 @@ Azure Migrate 服务可以评估本地数据中心中的组织当前工作负载
 
 同样，你拥有的 Web 应用或环境（如测试环境或生产环境）可能还会跨不同团队拥有的多个订阅使用资源。 为了更好地了解工作负载的全部成本，可标记他们使用的资源。 正确应用标记后，可以在成本分析中将标记作为筛选器，从而更好地理解趋势。
 
-规划资源标记后，你可以配置 Azure Policy 来强制对资源进行标记。 观看[如何使用 Azure 成本管理查看标记策略](https://www.youtube.com/watch?v=nHQYcYGKuyw)视频，了解有助于强制执行可缩放资源标记的可用工具。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
+规划资源标记后，你可以配置 Azure Policy 来强制对资源进行标记。 观看[如何使用成本管理查看标记策略](https://www.youtube.com/watch?v=nHQYcYGKuyw)视频，了解有助于强制执行可缩放资源标记的可用工具。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
 
@@ -231,4 +231,4 @@ Azure 提供许多折扣，组织应利用这些折扣节省成本。
 Azure 还提供一项服务，借助该服务，可以构建利用 Azure 中的富余容量（以优惠费率计费）的服务。 有关详细信息，请参阅[在 Batch 中使用低优先级 VM](../../batch/batch-low-pri-vms.md)。
 
 ## <a name="next-steps"></a>后续步骤
-- 如果不熟悉成本管理，请参阅[什么是 Azure 成本管理？](../cost-management-billing-overview.md)，了解成本管理如何监视和控制 Azure 支出并优化资源使用。
+- 如果不熟悉成本管理，请参阅[什么是成本管理？](../cost-management-billing-overview.md)，了解成本管理如何监视和控制 Azure 支出并优化资源使用。

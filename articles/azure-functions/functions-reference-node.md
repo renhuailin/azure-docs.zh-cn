@@ -3,14 +3,14 @@ title: Azure Functions JavaScript 开发者参考
 description: 了解如何使用 JavaScript 开发函数。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 03/07/2021
+ms.date: 10/07/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: e62e320e2fac2b34e970f983965f9809d62e2103
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fbd291494554c7bbb6e7f79a932717bf81a124c6
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741381"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667585"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -264,17 +264,15 @@ context.bindingData
 
 ### <a name="contextdone-method"></a>context.done 方法
 
-```js
-context.done([err],[propertyBag])
-```
+同步方法使用 context.done 方法。
 
-让运行时知道代码已完成。 如果函数使用 [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 声明，则你不需要使用 `context.done()`。 `context.done` 回调是隐式调用的。 异步函数在 Node 8 或更高版本（需要 Functions 运行时版本 2.x）中可用。
+|同步执行|[异步](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function)执行<br>（节点 8+，Functions 运行时 2+）|
+|--|--|
+|需要：`context.done([err],[propertyBag])`，通知运行时函数已完成。 如果缺少它，则执行将会超时。<br>使用 `context.done` 方法可向运行时传回用户定义的错误，以及传回包含输出绑定数据的 JSON 对象。 传递给 `context.done` 的属性将覆盖 `context.bindings` 对象上设置的任何内容。|不需要：`context.done` - 隐式调用。| 
 
-如果函数不是异步函数，则必须调用 `context.done` 来告知运行时函数是完整的。 如果缺少它，则执行将会超时。
-
-使用 `context.done` 方法可向运行时传回用户定义的错误，以及传回包含输出绑定数据的 JSON 对象。 传递给 `context.done` 的属性将覆盖 `context.bindings` 对象上设置的任何内容。
 
 ```javascript
+// Synchronous code only
 // Even though we set myOutput to have:
 //  -> text: 'hello world', number: 123
 context.bindings.myOutput = { text: 'hello world', number: 123 };
@@ -588,7 +586,7 @@ module.exports = function(context) {
 
 ### <a name="in-azure-cloud-environment"></a>在 Azure 云环境中
 
-在 Azure 中运行时，函数应用允许你使用[应用程序设置](functions-app-settings.md)（例如服务连接字符串），并在执行期间将这些设置作为环境变量公开。 
+在 Azure 中运行时，函数应用允许你设置和使用[应用程序设置](functions-app-settings.md)（例如服务连接字符串），并在执行期间将这些设置作为环境变量公开。 
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 

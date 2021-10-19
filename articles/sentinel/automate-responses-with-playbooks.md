@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/29/2021
+ms.date: 10/11/2021
 ms.author: yelevin
-ms.openlocfilehash: bddd27b29a1546f0c985f7a5b3aa15027be75d46
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d6afd8e1d4c70d818257007993aedfe3a48ce4f4
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726101"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129752106"
 ---
 # <a name="automate-threat-response-with-playbooks-in-azure-sentinel"></a>在 Azure Sentinel 中使用 playbook 实现威胁响应自动化
 
@@ -36,7 +36,29 @@ playbook 是可以作为例程从 Azure Sentinel 运行的修正操作的集合�
 
 例如，如果帐户和计算机受到损害，playbook 可以将计算机和网络隔离，并在 SOC 团队收到事件通知时阻止帐户。
 
-Playbook 在订阅级别创建和应用，但新的“自动化”边栏选项卡中的“Playbook”选项卡显示了所有选定订阅上可用的所有 playbook。
+paybook 可以在它们所属的订阅中使用，但 Playbook 选项卡（在“自动化”边栏选项卡中）显示所有选定订阅中可用的所有 paybook。 
+
+### <a name="playbook-templates"></a>paybook 模板
+
+> [!IMPORTANT]
+>
+> playbook 模板目前以预览版提供 。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+
+playbook 模板是预先生成的、已经过测试且随时可用的工作流，你可以根据自己的需求对其进行自定义。 在从头开发 playbook 时，还可以参考这些模板以运用最佳做法，或者，可以在新的自动化方案中通过模板获得灵感。
+
+除非从 playbook 模板创建了一个 playbook（模板的可编辑副本），否则这些模板本身并非活动 playbook。
+
+可以从以下来源获取 playbook 模板：
+
+- “Playbook 模板”选项卡（在“自动化”下）显示了 Azure Sentinel 社区贡献的主流方案 。 可以从同一个模板创建多个活动 playbook。
+
+    发布新版模板后，（在“Playbook”选项卡中）从该模板创建的活动 playbook 将标有一则通知，其中指出有可用的更新。
+
+- 还可以在特定产品的上下文中作为 [Azure Sentinel 解决方案](sentinel-solutions.md)的一部分获取 playbook 模板。 部署该解决方案会生成活动 playbook。
+
+- [Azure Sentinel GitHub 存储库](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)包含许多 playbook 模板。 可以选择“部署到 Azure”按钮将这些模板部署到 Azure 订阅。 
+
+从技术上讲，playbook 模板是一个 [ARM 模板](../azure-resource-manager/templates/index.yml)，它由多个资源组成：Azure 逻辑应用工作流，以及每个相关连接的 API 连接。 
 
 ### <a name="azure-logic-apps-basic-concepts"></a>Azure 逻辑应用的基本概念
 
@@ -62,7 +84,7 @@ Azure 逻辑应用使用连接器与其他系统和服务通信。 下面是连�
 
     > [!IMPORTANT]
     >
-    > - playbook 的“事件触发器”功能目前提供“预览版”。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+    > playbook 的“事件触发器”功能目前提供“预览版”。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
 - **操作：** 操作是在触发器之后发生的所有步骤。 它们可以按顺序排列、并行排列或以复杂条件矩阵排列。
 

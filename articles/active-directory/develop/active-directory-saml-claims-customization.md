@@ -13,12 +13,12 @@ ms.date: 07/20/2021
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f7d3b52f5f2cac470c8833a22a67f2324f7be705
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 77d564cb54910391b0a0eb9f2492bfa74a044512
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033856"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619021"
 ---
 # <a name="customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -58,8 +58,9 @@ ms.locfileid: "123033856"
 |---------------|-------------|
 | **Default** | Microsoft 标识平台将使用默认的源格式。 |
 | **Persistent** | Microsoft 标识平台将使用 Persistent 作为 NameID 格式。 |
-| **EmailAddress** | Microsoft 标识平台将使用 EmailAddress 作为 NameID 格式。 |
+| **电子邮件地址** | Microsoft 标识平台将使用 EmailAddress 作为 NameID 格式。 |
 | **Unspecified** | Microsoft 标识平台将使用 Unspecified 作为 NameID 格式。 |
+|**Windows 域限定名**| Microsoft 标识平台将使用 WindowsDomainQualifiedName 格式。|
 
 还支持临时 NameID，但在下拉列表中不可用，并且不能在 Azure 端进行配置。 若要了解有关 NameIDPolicy 属性的详细信息，请参阅 [单一登录 SAML 协议](single-sign-on-saml-protocol.md)。
 

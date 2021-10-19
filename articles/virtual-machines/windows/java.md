@@ -6,21 +6,21 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 07/17/2017
+ms.date: 10/09/2021
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: ec738d2f2765cd97c518b79081675c197ead6466
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: fa4d2f5dc33553cb92a5733e5946c055d6a12941
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697202"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129810881"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
 适用于：:heavy_check_mark: Windows VM 
 
-[Azure 虚拟机](overview.md) (VM) 需要多个支持性 Azure 资源。 本文介绍如何使用 Java 创建、管理和删除 VM 资源。 学习如何：
+[Azure 虚拟机](overview.md) (VM) 需要多个支持性 Azure 资源。 本文介绍如何使用 Java 创建、管理和删除 VM 资源。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Maven 项目
@@ -68,74 +68,24 @@ ms.locfileid: "122697202"
 
     ```xml
     <dependency>
-      <groupId>com.microsoft.azure</groupId>
-      <artifactId>azure</artifactId>
-      <version>1.1.0</version>
+      <groupId>com.azure</groupId>
+      <artifactId>azure-identity</artifactId>
+      <version>1.3.6</version>
     </dependency>
     <dependency>
-      <groupId>com.microsoft.azure</groupId>
-      <artifactId>azure-mgmt-compute</artifactId>
-      <version>1.1.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.microsoft.azure</groupId>
-      <artifactId>azure-mgmt-resources</artifactId>
-      <version>1.1.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.microsoft.azure</groupId>
-      <artifactId>azure-mgmt-network</artifactId>
-      <version>1.1.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.squareup.okio</groupId>
-      <artifactId>okio</artifactId>
-      <version>1.13.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.nimbusds</groupId>
-      <artifactId>nimbus-jose-jwt</artifactId>
-      <version>3.6</version>
-    </dependency>
-    <dependency>
-      <groupId>net.minidev</groupId>
-      <artifactId>json-smart</artifactId>
-      <version>1.0.6.3</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.mail</groupId>
-      <artifactId>mail</artifactId>
-      <version>1.4.5</version>
+      <groupId>com.azure.resourcemanager</groupId>
+      <artifactId>azure-resourcemanager</artifactId>
+      <version>2.8.0</version>
     </dependency>
     ```
 
 3. 保存文件。
 
-## <a name="create-credentials"></a>创建凭据
+## <a name="set-up-authentication"></a>设置身份验证
 
-在开始此步骤之前，请确保能够访问 [Active Directory 服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 此外，应记下应用程序 ID、身份验证密钥和租户 ID，以便在后面的步骤中使用。
+了解如何[设置身份验证](/azure/developer/java/sdk/get-started#set-up-authentication)。
 
-### <a name="create-the-authorization-file"></a>创建授权文件
-
-1. 创建名为 `azureauth.properties` 的文件并将以下属性添加到该文件：
-
-    ```
-    subscription=<subscription-id>
-    client=<application-id>
-    key=<authentication-key>
-    tenant=<tenant-id>
-    managementURI=https://management.core.windows.net/
-    baseURL=https://management.azure.com/
-    authURL=https://login.windows.net/
-    graphURL=https://graph.microsoft.com/
-    ```
-
-    将 &lt;subscription-id&gt; 替换为订阅标识符，将 &lt;application-id&gt; 替换为 Active Directory 应用程序标识符，将 &lt;authentication-key&gt; 替换为应用程序密钥，将 &lt;tenant-id&gt; 替换为租户标识符   。
-
-2. 保存文件。
-3. 在 shell 中将包含完整路径的环境变量 AZURE_AUTH_LOCATION 设置为身份验证文件。
-
-### <a name="create-the-management-client"></a>创建管理客户端
+## <a name="create-the-management-client"></a>创建管理客户端
 
 1. 打开 `src\main\java\com\fabrikam` 下的 `App.java` 文件，确保此包语句处于顶部：
 
@@ -143,42 +93,20 @@ ms.locfileid: "122697202"
     package com.fabrikam.testAzureApp;
     ```
 
-2. 在包语句下，添加这些 import 语句：
+2. 创建 AzureResourceManager：
    
     ```java
-    import com.microsoft.azure.management.Azure;
-    import com.microsoft.azure.management.compute.AvailabilitySet;
-    import com.microsoft.azure.management.compute.AvailabilitySetSkuTypes;
-    import com.microsoft.azure.management.compute.CachingTypes;
-    import com.microsoft.azure.management.compute.InstanceViewStatus;
-    import com.microsoft.azure.management.compute.DiskInstanceView;
-    import com.microsoft.azure.management.compute.VirtualMachine;
-    import com.microsoft.azure.management.compute.VirtualMachineSizeTypes;
-    import com.microsoft.azure.management.network.PublicIPAddress;
-    import com.microsoft.azure.management.network.Network;
-    import com.microsoft.azure.management.network.NetworkInterface;
-    import com.microsoft.azure.management.resources.ResourceGroup;
-    import com.microsoft.azure.management.resources.fluentcore.arm.Region;
-    import com.microsoft.azure.management.resources.fluentcore.model.Creatable;
-    import com.microsoft.rest.LogLevel;
-    import java.io.File;
-    import java.util.Scanner;
-    ```
+    TokenCredential credential = new EnvironmentCredentialBuilder()
+                .authorityHost(AzureAuthorityHosts.AZURE_PUBLIC_CLOUD)
+                .build();
 
-2. 若要创建发出请求所需的 Active Directory 凭据，请将此代码添加到 App 类的 main 方法：
-   
-    ```java
-    try {
-        final File credFile = new File(System.getenv("AZURE_AUTH_LOCATION"));
-        Azure azure = Azure.configure()
-            .withLogLevel(LogLevel.BASIC)
-            .authenticate(credFile)
+    // Please finish 'Set up authentication' step first to set the four environment variables: AZURE_SUBSCRIPTION_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET, AZURE_TENANT_ID
+    AzureProfile profile = new AzureProfile(AzureEnvironment.AZURE);
+
+    AzureResourceManager azureResourceManager = AzureResourceManager.configure()
+            .withLogLevel(HttpLogDetailLevel.BASIC)
+            .authenticate(credential, profile)
             .withDefaultSubscription();
-    } catch (Exception e) {
-        System.out.println(e.getMessage());
-        e.printStackTrace();
-    }
-
     ```
 
 ## <a name="create-resources"></a>创建资源
@@ -209,7 +137,6 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
     .define("myAvailabilitySet")
     .withRegion(Region.US_EAST)
     .withExistingResourceGroup("myResourceGroup")
-    .withSku(AvailabilitySetSkuTypes.MANAGED)
     .create();
 ```
 ### <a name="create-the-public-ip-address"></a>创建公共 IP 地址
@@ -220,7 +147,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 
 ```java
 System.out.println("Creating public IP address...");
-PublicIPAddress publicIPAddress = azure.publicIPAddresses()
+PublicIpAddress publicIPAddress = azure.publicIpAddresses()
     .define("myPublicIP")
     .withRegion(Region.US_EAST)
     .withExistingResourceGroup("myResourceGroup")
@@ -241,7 +168,7 @@ Network network = azure.networks()
     .withRegion(Region.US_EAST)
     .withExistingResourceGroup("myResourceGroup")
     .withAddressSpace("10.0.0.0/16")
-    .withSubnet("mySubnet","10.0.0.0/24")
+    .withSubnet("mySubnet", "10.0.0.0/24")
     .create();
 ```
 
@@ -297,21 +224,22 @@ input.nextLine();
 如果要使用现有磁盘而不是市场映像，请使用以下代码： 
 
 ```java
-ManagedDisk managedDisk = azure.disks.define("myosdisk")
+Disk managedDisk = azure.disks().define("myosdisk")
     .withRegion(Region.US_EAST)
     .withExistingResourceGroup("myResourceGroup")
     .withWindowsFromVhd("https://mystorage.blob.core.windows.net/vhds/myosdisk.vhd")
+    .withStorageAccountName("mystorage")
     .withSizeInGB(128)
-    .withSku(DiskSkuTypes.PremiumLRS)
+    .withSku(DiskSkuTypes.PREMIUM_LRS)
     .create();
 
-azure.virtualMachines.define("myVM")
+azure.virtualMachines().define("myVM")
     .withRegion(Region.US_EAST)
     .withExistingResourceGroup("myResourceGroup")
     .withExistingPrimaryNetworkInterface(networkInterface)
-    .withSpecializedOSDisk(managedDisk, OperatingSystemTypes.Windows)
+    .withSpecializedOSDisk(managedDisk, OperatingSystemTypes.WINDOWS)
     .withExistingAvailabilitySet(availabilitySet)
-    .withSize(VirtualMachineSizeTypes.StandardDS1)
+    .withSize(VirtualMachineSizeTypes.STANDARD_DS1)
     .create();
 ```
 
@@ -347,23 +275,24 @@ System.out.println("osProfile");
 System.out.println("    computerName: " + vm.osProfile().computerName());
 System.out.println("    adminUserName: " + vm.osProfile().adminUsername());
 System.out.println("    provisionVMAgent: " + vm.osProfile().windowsConfiguration().provisionVMAgent());
-System.out.println("    enableAutomaticUpdates: " + vm.osProfile().windowsConfiguration().enableAutomaticUpdates());
+System.out.println(
+        "    enableAutomaticUpdates: " + vm.osProfile().windowsConfiguration().enableAutomaticUpdates());
 System.out.println("networkProfile");
 System.out.println("    networkInterface: " + vm.primaryNetworkInterfaceId());
 System.out.println("vmAgent");
 System.out.println("  vmAgentVersion: " + vm.instanceView().vmAgent().vmAgentVersion());
 System.out.println("    statuses");
-for(InstanceViewStatus status : vm.instanceView().vmAgent().statuses()) {
+for (InstanceViewStatus status : vm.instanceView().vmAgent().statuses()) {
     System.out.println("    code: " + status.code());
     System.out.println("    displayStatus: " + status.displayStatus());
     System.out.println("    message: " + status.message());
     System.out.println("    time: " + status.time());
 }
 System.out.println("disks");
-for(DiskInstanceView disk : vm.instanceView().disks()) {
+for (DiskInstanceView disk : vm.instanceView().disks()) {
     System.out.println("  name: " + disk.name());
     System.out.println("  statuses");
-    for(InstanceViewStatus status : disk.statuses()) {
+    for (InstanceViewStatus status : disk.statuses()) {
         System.out.println("    code: " + status.code());
         System.out.println("    displayStatus: " + status.displayStatus());
         System.out.println("    time: " + status.time());
@@ -375,7 +304,7 @@ System.out.println("  id: " + vm.id());
 System.out.println("  name: " + vm.name());
 System.out.println("  type: " + vm.type());
 System.out.println("VM instance status");
-for(InstanceViewStatus status : vm.instanceView().statuses()) {
+for (InstanceViewStatus status : vm.instanceView().statuses()) {
     System.out.println("  code: " + status.code());
     System.out.println("  displayStatus: " + status.displayStatus());
 }

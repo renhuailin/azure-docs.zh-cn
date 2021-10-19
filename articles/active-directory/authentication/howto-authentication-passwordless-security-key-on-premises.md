@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49963f7c2625a0aa454d8a1bac5ff001cb4debe9
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: ac53f16e80904216a4e19b03772dcd2820882f94
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230905"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657885"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>使用 Azure Active Directory 启用无密码安全密钥登录到本地资源 
 
@@ -88,15 +88,35 @@ $domain = "contoso.corp.com"
 # Enter an Azure Active Directory global administrator username and password.
 $cloudCred = Get-Credential
 
-If you have MFA enabled for Global administrator, Please remove "-Cloudcredential $cloudCred"
-you will see web-based popup and complete the U/P and MFA there
-
 # Enter a domain administrator username and password.
 $domainCred = Get-Credential
 
 # Create the new Azure AD Kerberos Server object in Active Directory
 # and then publish it to Azure Active Directory.
 Set-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCredential $domainCred
+```
+
+> [!NOTE]
+> 如果你的组织保护基于密码的登录并强制实施现代身份验证方法（例如 MFA、FIDO2 或智能卡），则必须将“-UserPrincipalName”参数与全局管理员的用户主体名称一起使用。
+>    - 在以下示例中，将 `contoso.corp.com` 替换为本地 Active Directory 域名。
+>    - 在以下示例中的 `administrator@contoso.onmicrosoft.com` 替换为全局管理员的用户主体名称。
+
+```powerShell
+Import-Module ".\AzureAdKerberos.psd1"
+
+# Specify the on-premises Active Directory domain. A new Azure AD
+# Kerberos Server object will be created in this Active Directory domain.
+$domain = "contoso.corp.com"
+
+# Enter a User Principal Name of Azure Active Directory global administrator
+$userPrincipalName = "administrator@contoso.onmicrosoft.com"
+
+# Enter a domain administrator username and password.
+$domainCred = Get-Credential
+
+# Create the new Azure AD Kerberos Server object in Active Directory
+# and then publish it to Azure Active Directory.
+Set-AzureADKerberosServer -Domain $domain -UserPrincipalName $userPrincipalName -DomainCredential $domainCred
 ```
 
 ### <a name="viewing-and-verifying-the-azure-ad-kerberos-server"></a>查看并验证 Azure AD Kerberos 服务器

@@ -7,20 +7,20 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 4a21ede66501832512530513423bed018c92f1aa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5b712ad275ece9293aca5f4fbe01bbc590958aff
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128646941"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711065"
 ---
 # <a name="troubleshoot-viewing-your-billing-account-in-the-azure-portal"></a>在 Azure 门户中查看计费帐户时遇到问题
 
 当你注册使用 Azure 时，系统将为你创建计费帐户。 可以使用计费帐户管理发票、付款并跟踪成本。 可以访问多个计费帐户。 例如，可以注册 Azure 供个人使用。 也可通过组织的企业协议或 Microsoft 客户协议访问 Azure。 每个这样的方案都会有单独的计费帐户。 本文将帮助你解决尝试在 Azure 门户中查看计费帐户时遇到的问题。
 
-可以在 [Azure 成本管理 + 计费](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade)页中查看你的计费帐户。
+可以在[成本管理 + 计费](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade)页中查看你的计费帐户。
 
 若要详细了解计费帐户并确定自己的计费帐户类型，请参阅[在 Azure 门户中查看计费帐户](view-all-accounts.md)。
 

@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: f0951415bba22a226dadb7f2a115cede451399bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 377e35b3107195841f49ecc8b1e5fb18fe38ed87
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92205636"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658531"
 ---
 # <a name="late-stage-reprojection"></a>后期阶段重新投影
 
@@ -30,11 +30,55 @@ ms.locfileid: "92205636"
 
 如果已选中，则你的应用将使用深度 LSR，否则将使用平面 LSR。
 
+使用 OpenXR 时，应始终提交深度缓冲区。 可在 :::no-loc text="XR Plug-in Management > OpenXR"::: 中查找设置。 然后，可通过 OpenXR 插件中的扩展更改重新投影模式：
+
+```cs
+using Microsoft.MixedReality.OpenXR;
+
+public class OverrideReprojection : MonoBehaviour
+{
+    void OnEnable()
+    {
+        RenderPipelineManager.endCameraRendering += RenderPipelineManager_endCameraRendering;
+    }
+    void OnDisable()
+    {
+        RenderPipelineManager.endCameraRendering -= RenderPipelineManager_endCameraRendering;
+    }
+
+    // When using the Universal Render Pipeline, OnPostRender has to be called manually.
+    private void RenderPipelineManager_endCameraRendering(ScriptableRenderContext context, Camera camera)
+    {
+        OnPostRender();
+    }
+
+    // Called directly when using Unity's legacy renderer.
+    private void OnPostRender()
+    {
+        ReprojectionSettings reprojectionSettings = default;
+        reprojectionSettings.ReprojectionMode = ReprojectionMode.PlanarManual; // Or your favorite reprojection mode.
+        
+        // In case of PlanarManual you also need to provide a focus point here.
+        reprojectionSettings.ReprojectionPlaneOverridePosition = ...;
+        reprojectionSettings.ReprojectionPlaneOverrideNormal = ...;
+        reprojectionSettings.ReprojectionPlaneOverrideVelocity = ...;
+
+        foreach (ViewConfiguration viewConfiguration in ViewConfiguration.EnabledViewConfigurations)
+        {
+            if (viewConfiguration.IsActive && viewConfiguration.SupportedReprojectionModes.Contains(reprojectionSettings.ReprojectionMode))
+            {
+                viewConfiguration.SetReprojectionSettings(reprojectionSettings);
+            }
+        }
+    }
+}
+```
+
 ## <a name="depth-lsr"></a>深度 LSR
 
 要使深度 LSR 正常工作，客户端应用程序必须提供一个有效的深度缓冲区，其中包含要在 LSR 期间考虑的所有相关几何体。
 
-深度 LSR 会尝试根据提供的深度缓冲区的内容来稳定视频帧。 因此，没有呈现给它的内容（例如透明对象）无法通过 LSR 进行调整，可能会显示不稳定和重新投影伪影。 
+深度 LSR 会尝试根据提供的深度缓冲区的内容来稳定视频帧。 因此，没有呈现给它的内容（例如透明对象）无法通过 LSR 进行调整，可能会显示不稳定和重新投影伪影。
 
 若要降低透明对象的重新投影不稳定性，可以强制执行深度缓冲区写入。 至于[有色](color-materials.md)材料和 [PBR](pbr-materials.md) 材料，请参阅材料标志 TransparencyWritesDepth。 但请注意，当启用此标志时，透明/不透明对象交互的视觉对象质量可能会受到影响。
 
@@ -46,9 +90,10 @@ ms.locfileid: "92205636"
 
 ### <a name="configure-planar-lsr-in-unity"></a>在 Unity 中配置平面 LSR
 
-平面参数派生自所谓的“焦点”，你必须通过 `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` 为每一帧提供一个焦点。 有关详细信息，请参阅 [Unity 焦点 API](/windows/mixed-reality/focus-point-in-unity)。 如果你未设置焦点，系统会为你选择一个回退。 但是，自动回退通常会导致不理想的结果。
+平面参数源自所谓的焦点。 使用 WMR 时，必须通过 `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` 设置每一帧的焦点。 有关详细信息，请参阅 [Unity 焦点 API](/windows/mixed-reality/focus-point-in-unity)。 对于 OpenXR，需要通过上一部分中所示的 `ReprojectionSettings` 设置焦点。
+如果你未设置焦点，系统会为你选择一个回退。 但是，自动回退通常会导致不理想的结果。
 
-你可以自己计算焦点，虽然也可以基于远程渲染主机算出的焦点进行操作。 请调用 `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` 来获取该焦点。 你需要提供一个坐标框架来表示焦点。 在大多数情况下，只需在此处提供 `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` 中的结果。
+你可以自己计算焦点，虽然也可以基于远程渲染主机算出的焦点进行操作。 请调用 `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` 来获取该焦点。
 
 通常情况下，客户端和主机都会呈现另一方不知道的内容，例如客户端上的 UI 元素。 因此，可以将远程焦点与本地算出的焦点结合使用。
 

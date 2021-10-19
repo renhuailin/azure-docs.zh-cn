@@ -6,14 +6,14 @@ ms.reviewer: amberb
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 71a3ce7a33f920c361dfe1e7d0004b52e8211336
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 62156836a37cff8e209fe8f97847b8a8c7889272
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128559604"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710940"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft 合作伙伴协议计费帐户入门
 
@@ -84,4 +84,4 @@ Microsoft 合作伙伴协议的计费帐户包含开展业务时使用的每种�
 
 - [为 Microsoft 合作伙伴协议创建其他 Azure 订阅](../manage/create-subscription.md)
 - 使用 [Azure 计费 API](/rest/api/billing/) 将计费数据与你自己的报表系统集成
-- [适用于合作伙伴的 Azure 成本管理快速入门指南](../costs/get-started-partners.md)
+- [适用于合作伙伴的成本管理快速入门指南](../costs/get-started-partners.md)

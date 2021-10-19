@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 138b6f1b0b20ac85c9800daf40d3c82e81e24d0a
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 9a69750da0ae64fc1467785e174fef14a22ab396
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539042"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725881"
 ---
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
@@ -77,6 +77,7 @@ main();
 * 使用该构造函数创建 `ConversationTranscriber`。
 * 为对话添加参与者。 字符串 `voiceSignatureStringUser1` 和 `voiceSignatureStringUser2` 应来自上述步骤的输出。
 * 注册到事件并开始听录。
+* 如果要在不提供语音示例的情况下区分说话人，请启用[对话听录概览](../../../conversation-transcription.md)中的 `DifferentiateGuestSpeakers` 功能。 
 
 ```javascript
 (function() {
@@ -98,6 +99,9 @@ main();
     
     var speechTranslationConfig = sdk.SpeechTranslationConfig.fromSubscription(subscriptionKey, region);
     var audioConfig = sdk.AudioConfig.fromStreamInput(pushStream);
+    speechTranslationConfig.setProperty("ConversationTranscriptionInRoomAndOnline", "true");
+
+    // en-us by default. Adding this code to specify other languages, like zh-cn.
     speechTranslationConfig.speechRecognitionLanguage = "en-US";
     
     // create conversation and transcriber

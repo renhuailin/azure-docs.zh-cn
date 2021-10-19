@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/24/2021
+ms.date: 10/05/2021
 ms.author: tisande
-ms.openlocfilehash: b9eea7016da1e96e51e17d513ccbc3ca240c6e3d
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 13d667327fde6f55072f40dd6d1f9b7eb07d1214
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236928"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615194"
 ---
 # <a name="indexing-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引指标
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -93,6 +93,9 @@ Index Utilization Information
 可能的单一索引和已利用的组合索引分别显示查询可能利用的包含路径和组合索引（如果已添加）。 如果你看到可能的索引路径，应考虑将它们添加到索引策略，并观察它们是否会提高查询性能。
 
 将可能的索引路径的列表视为建议，而不是查询将使用特定索引路径的最终证据。 可能的索引路径不是查询可以使用的索引路径的详尽列表。 此外，某些可能的索引路径可能不会影响查询性能。 [添加建议的索引路径](how-to-manage-indexing-policy.md)并确认它们会提高查询性能。
+
+> [!NOTE]
+> 你对指标的索引有何反馈？ 我们想听一听！ 欢迎直接与 Azure Cosmos DB 工程团队分享反馈：cosmosdbindexing@microsoft.com
 
 ## <a name="index-impact-score"></a>索引影响分数
 

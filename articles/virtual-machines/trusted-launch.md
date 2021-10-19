@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 0e86c503fb016f79097d9ddde1d30f4314942870
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 9b2dfe8d4ae7bb17eee4d875178ff059080cb4e0
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695287"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728886"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Azure 虚拟机的受信任启动（预览版）
 
@@ -57,24 +57,20 @@ Azure 提供受信任启动作为一种无缝提高[第 2 代](generation-2.md) 
 - SUSE 15 SP2
 - Ubuntu 20.04 LTS
 - Ubuntu 18.04 LTS
+- Debian 11
+- CentOS 8.4
+- Oracle Linux 8.3
 - Windows Server 2019
 - Windows Server 2016
+- Windows 11 专业版
+- Windows 11 企业版
+- Windows 11 企业版多会话
 - Windows 10 专业版
 - Windows 10 企业版
 - Windows 10 Enterprise 多会话
 
 **区域**： 
-- 美国中部
-- 美国东部
-- 美国东部 2
-- 美国中北部
-- 美国中南部
-- 美国西部
-- 美国西部 2
-- 北欧
-- 西欧
-- 日本东部
-- 东南亚
+- 所有公共区域
 
 **定价**：按现有 VM 定价收费，无额外费用。
 

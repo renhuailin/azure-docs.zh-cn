@@ -6,15 +6,15 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: afdbcd6dd0e00f6829a82c136ba495a7097f5bb2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: de7787ab9b36bee5bce2f29f79260682289419c7
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662013"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705789"
 ---
 # <a name="analyze-unexpected-charges"></a>分析意外费用
 
@@ -35,7 +35,7 @@ Azure 帐单按计量器聚合了每月的费用。  计量器用于跟踪某个
 
 根据要分析的帐单上显示的“计量器名称”筛选使用情况 CSV 文件，可以查看适用于该计量器的所有细目。  细目的“实例 ID”对应于生成了费用的实际 Azure 资源。 
 
-识别相关的资源后，可以使用 Azure 成本管理中的成本分析进一步分析与该资源相关的成本。 若要详细了解如何使用成本分析，请参阅[开始分析成本](../costs/quick-acm-cost-analysis.md)。
+识别相关的资源后，可以使用成本管理中的成本分析进一步分析与该资源相关的成本。 若要详细了解如何使用成本分析，请参阅[开始分析成本](../costs/quick-acm-cost-analysis.md)。
 
 ## <a name="review-invoiced-charges-in-cost-analysis"></a>在成本分析中查看已开票费用
 
@@ -88,4 +88,4 @@ Azure 帐单按计量器聚合了每月的费用。  计量器用于跟踪某个
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[如何通过 Azure 成本管理优化云投资](../costs/cost-mgt-best-practices.md)。
+- 了解如何[通过成本管理优化云投资](../costs/cost-mgt-best-practices.md)。

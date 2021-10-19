@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: dc89bfcd3d89e6987c2c8b742f5fe2453c273fc7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8aac6f90880775c5a1d7002048c79257b4e5ab85
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746281"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855890"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features"></a>索引器访问受 Azure 网络安全功能保护的内容
 
@@ -31,7 +31,7 @@ ms.locfileid: "121746281"
 | Azure 存储（Blob、表、ADLS Gen 2） | 数据源 |
 | Azure 存储（Blob、表） | 技能组（缓存已扩充的文档，存储知识存储投影） |
 | Azure Cosmos DB（各种 API） | 数据源 |
-| Azure SQL 数据库 | 数据源 |
+| Azure SQL Database | 数据源 |
 | Azure 虚拟机上的 SQL Server | 数据源 |
 | SQL 托管实例 | 数据源 |
 | Azure Functions | 自定义 Web API 技能的主机 |
@@ -48,7 +48,7 @@ ms.locfileid: "121746281"
 | Azure Cosmos DB - SQL API | 支持 | 支持 |
 | Azure Cosmos DB - MongoDB 和 Gremlin API | 支持 | 不支持 |
 | Azure SQL 数据库 | 支持 | 支持 |
-| Azure 虚拟机上的 SQL Server | 支持 | 不适用 |
+| Azure 虚拟机上的 SQL Server | 支持 | 空值 |
 | SQL 托管实例 | 支持 | 空值 |
 | Azure Functions | 支持 | 支持，但仅适用于特定的 Azure Functions 层 |
 
@@ -76,7 +76,7 @@ Azure 认知搜索索引器能够有效地从数据源提取内容，将扩充�
 如果索引器尝试访问的资源仅限特定的 IP 范围集访问，则你需要扩展该集，以包括可从中发起索引器请求的可能性 IP 范围。 如前所述，可以在两个可能的环境中运行索引器和发起访问请求。 需要添加这两个环境的 IP 地址，索引器访问才能正常进行。
 
 - 若要获取搜索服务特定的专用环境的 IP 地址，请对搜索服务的完全限定域名 (FQDN) 运行 `nslookup`（或 `ping`）。 例如，公有云中搜索服务的 FQDN 为 `<service-name>.search.windows.net`。 可以在 Azure 门户中获取此信息。
-- 可通过 `AzureCognitiveSearch` 服务标记获取多租户环境的 IP 地址。 [Azure 服务标记](../virtual-network/service-tags-overview.md)提供每个服务的已发布 IP 地址范围 - 可以通过[发现 API（预览版）](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)或[可下载的 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)获取此范围。 无论使用哪种方法，IP 范围都是按区域划分的 - 只能选取分配给预配了你的搜索服务的区域的 IP 范围。
+- 可通过 `AzureCognitiveSearch` 服务标记获取多租户环境的 IP 地址。 [Azure 服务标记](../virtual-network/service-tags-overview.md)提供每个服务的已发布 IP 地址范围 - 可以通过[发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) 或[可下载的 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)获取此范围。 无论使用哪种方法，IP 范围都是按区域划分的 - 只能选取分配给预配了你的搜索服务的区域的 IP 范围。
 
 对于某些数据源，服务标记本身可直接使用，而无需枚举 IP 范围列表（仍需显式使用搜索服务的 IP 地址）。 这些数据源通过设置一个[网络安全组规则](../virtual-network/network-security-groups-overview.md)来限制访问。与 Azure 存储、Cosmos DB、Azure SQL 等提供的 IP 规则不同，该规则原生支持添加服务标记。 除了支持搜索服务 IP 地址外，还支持直接利用 `AzureCognitiveSearch` 服务标记的数据源包括：
 

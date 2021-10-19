@@ -5,17 +5,21 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 10/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d84f26b2764a103a9b504c1480e88b58fed3c201
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1768c506928642ec7742ea8713b98ad4f154ed1
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98706241"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709231"
 ---
 # <a name="repairing-an-export-job"></a>修复导出作业
+
+> [!IMPORTANT]
+> Azure 导入/导出工具不再支持作业修复。 在版本 1.5.0.300 及更高版本中，需修复 blob 导出中的问题，然后[创建新的导出作业](storage-import-export-data-from-blobs.md?tabs=azure-portal#step-1-create-an-export-job)。
+
 在完成导出作业后，可以在本地运行 Microsoft Azure 导入/导出工具来执行以下操作：  
   
 1.  下载 Azure 导入/导出服务无法导出的任何文件。  
@@ -152,7 +156,7 @@ G:\pictures\wild\canyon.jpg.properties
   
 ## <a name="next-steps"></a>后续步骤
  
-* [设置 Azure 导入/导出工具](storage-import-export-tool-setup-v1.md)   
+<!--* [Setting Up the Azure Import/Export Tool](storage-import-export-tool-setup-v1.md)-->
 * [为导入作业准备硬盘驱动器](storage-import-export-data-to-blobs.md#step-1-prepare-the-drives)   
 * [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)   
-* [修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)
+<!--* [Repairing an import job](storage-import-export-tool-repairing-an-import-job-v1.md)-->

@@ -4,15 +4,15 @@ description: 了解 Azure Database for MySQL - 灵活服务器（Microsoft 云�
 author: hjtoland3
 ms.service: mysql
 ms.author: jtoland
-ms.custom: mvc
+ms.custom: mvc, references_regions
 ms.topic: conceptual
 ms.date: 09/29/2021
-ms.openlocfilehash: 377c9fc994c4d26b67791e3eb525c7fba75a9d78
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 4a74fb34eb750924f9d8c08225edd10a5a220084
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129388881"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657847"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - 灵活服务器（预览版）有哪些新增功能？
 
@@ -21,10 +21,12 @@ ms.locfileid: "129388881"
 [Azure Database for MySQL - 灵活服务器](./overview.md#azure-database-for-mysql---flexible-server-preview)是一种部署模式，已设计为在数据库管理功能和配置设置方面提供比单一服务器部署模式更高的控制粒度和灵活性。 该服务目前支持 MySQL 5.7 和 8.0 的社区版本。
 
 本文汇总了自 2021 年 1 月至今 Azure Database for MySQL - 灵活服务器的新版本和功能。 列表按时间倒序排列，最新更新排在最前。
+
 ## <a name="october-2021"></a>2021 年 10 月
+
 - **创建只读副本时的可用性区域选择**
 
-    创建只读副本时，可以选择所选的可用性区域位置。 可用性区域是一种高可用性产品/服务，在数据中心发生故障时可以保护应用程序和数据。 可用性区域是 Azure 区域中独特的物理位置。 [了解详细信息](../flexible-server/concepts-read-replicas.md)
+    创建只读副本时，可以选择所选的可用性区域位置。 可用性区域是一种高可用性产品/服务，在数据中心发生故障时可以保护应用程序和数据。 可用性区域是 Azure 区域中独特的物理位置。 [了解详细信息](../flexible-server/concepts-read-replicas.md)。
 
 - **Azure Database for MySQL 中的只读副本 - 可突发 SKU 将不再提供灵活服务器**
     
@@ -32,7 +34,11 @@ ms.locfileid: "129388881"
 
     如果现有的 Azure Database for MySQL - 灵活服务器已启用只读副本，则必须将服务器扩展到“常规用途”或“内存优化”定价层，或者在 60 天内删除只读副本。 在 60 天后，虽然你可以继续使用主服务器进行读写操作，但将停止复制到只读副本服务器。 对于新创建的服务器，只读副本选项仅适用于“常规用途”和“内存优化”定价层。  
 
+ - **使用 Azure Monitor 工作簿监视 Azure Database for MySQL 灵活服务器**
  
+     Azure Database for MySQL 灵活服务器现已与 Azure Monitor 工作簿集成。 工作簿提供了一块灵活的画布，以用于分析数据以及在 Azure 门户中创建丰富的视觉报告。 通过这种集成，服务器将具备指向工作簿和少量示例模板的链接，这有助于大规模监视服务。 这些模板可以根据客户要求进行编辑、自定义并固定到仪表板，以创建重点突出、条理清晰的 Azure 资源视图。 目前提供了[“查询性能见解”](./tutorial-query-performance-insights.md)、[“审核”](./tutorial-configure-audit.md)和“实例概述”模板。 [了解详细信息](./concepts-workbooks.md)。
+
+- **为包含预留实例的 Azure Database for MySQL 计算资源预付费** Azure Database for MySQL - 灵活服务器支持预先支付计算资源的费用，与即用即付价格相比，这可以节省资金。 使用 Azure Database for MySQL 预留实例，你可以提前承诺为期一年或三年的 MySQL 服务器使用量，以获得可观的计算资源价格折扣。 还可以将 Azure Database for MySQL - 单一服务器中的预留与灵活服务器预留交换。 [了解详细信息](../concept-reserved-pricing.md)。
 
 ## <a name="september-2021"></a>2021 年 9 月
 
@@ -40,21 +46,21 @@ ms.locfileid: "129388881"
 
 - **另外三个 Azure 区域中的可用性**
 
-  公共预览版的 Azure Database for MySQL - 灵活服务器现已在以下 Azure 区域推出：
+   公共预览版的 Azure Database for MySQL - 灵活服务器现已在以下 Azure 区域推出：
 
-  - 英国西部
-  - 加拿大东部
-  - 日本西部
+   - 英国西部
+   - 加拿大东部
+   - 日本西部
 
 - **Bug 修复**
 
-  在以下区域中修复了同区域高可用性创建：
+   在以下区域中修复了同区域高可用性创建：
 
-  - 印度中部
-  - 东亚
-  - 韩国中部
-  - 南非北部
-  - 瑞士北部
+   - 印度中部
+   - 东亚
+   - 韩国中部
+   - 南非北部
+   - 瑞士北部
 
 ## <a name="august-2021"></a>2021 年 8 月
 
@@ -86,19 +92,21 @@ ms.locfileid: "129388881"
 
 - **另外四个 Azure 区域中的可用性**
 
-  公共预览版的 Azure Database for MySQL - 灵活服务器现已在以下 Azure 区域推出，[了解详细信息](overview.md#azure-regions)：
+   公共预览版的 Azure Database for MySQL - 灵活服务器现已在以下 Azure 区域推出：
 
-  - Australia Southeast
-  - 南非北部
-  - 东亚（香港）
-  - 印度中部
+   - Australia Southeast
+   - 南非北部
+   - 东亚（香港）
+   - 印度中部
+
+   [了解详细信息](overview.md#azure-regions)。
 
 - **已知问题**
 
-  - 在区域冗余高可用性服务器故障转移之后，如果使用 SSL 和 ssl_mode VERIFY_IDENTITY，客户端将无法连接到服务器。 可以通过将 ssl_mode 用作 VERIFY_CA 来缓解此问题。
-  - 无法在以下区域创建相同区域高可用性服务器：印度中部、东亚、韩国中部、南非北部、瑞士北部。
-  - 在极少数情况下和高可用性故障转移后，主服务器将处于 read_only 模式。 在“服务器参数”边栏选项卡中将“read_only”更新为“OFF”可解决此问题。
-  - 在“计算+存储”边栏选项卡中成功缩放计算后，IOPS 将重置为 SKU 默认值。 客户可以在计算部署和随后的 IOPS 重置后，在“计算+存储”边栏选项卡中将 IOPS 重新缩放为所需值（先前设置），从而解决此问题。
+   - 在区域冗余高可用性服务器故障转移之后，如果使用 SSL 和 ssl_mode VERIFY_IDENTITY，客户端将无法连接到服务器。 可以通过将 ssl_mode 用作 VERIFY_CA 来缓解此问题。
+   - 无法在以下区域创建相同区域高可用性服务器：印度中部、东亚、韩国中部、南非北部、瑞士北部。
+   - 在极少数情况下和高可用性故障转移后，主服务器将处于 read_only 模式。 在“服务器参数”边栏选项卡中将“read_only”更新为“OFF”可解决此问题。
+   - 在“计算+存储”边栏选项卡中成功缩放计算后，IOPS 将重置为 SKU 默认值。 客户可以在计算部署和随后的 IOPS 重置后，在“计算+存储”边栏选项卡中将 IOPS 重新缩放为所需值（先前设置），从而解决此问题。
 
 ## <a name="july-2021"></a>2021 年 7 月
 
@@ -147,7 +155,7 @@ ms.locfileid: "129388881"
 
 - **已知问题**
 
-  - 如果尝试在预配的存储小于 20 GB 的现有服务器上执行计算纵向扩展或纵向缩减操作，则不会成功完成。 通过将预配的存储纵向扩展为 20 GB 并重试计算缩放操作来解决此问题。
+   - 如果尝试在预配的存储小于 20 GB 的现有服务器上执行计算纵向扩展或纵向缩减操作，则不会成功完成。 通过将预配的存储纵向扩展为 20 GB 并重试计算缩放操作来解决此问题。
 
 ## <a name="may-2021"></a>2021 年 5 月
 
@@ -167,9 +175,9 @@ ms.locfileid: "129388881"
 
 - **已知问题**
 
-  - 其他 IOPS 更改不会在启用了区域冗余高可用性的服务器中生效。 客户可以通过禁用高可用性、缩放 IOPS 和重新启用区域冗余高可用性来绕过此问题。
-  - 强制执行故障转移后，门户中不会准确反映备用可用性区域。 （无变通方法）
-  - 强制执行故障转移后，服务器参数更改不会在启用了区域冗余高可用性的服务器中生效。 （无变通方法）
+   - 其他 IOPS 更改不会在启用了区域冗余高可用性的服务器中生效。 客户可以通过禁用高可用性、缩放 IOPS 和重新启用区域冗余高可用性来绕过此问题。
+   - 强制执行故障转移后，门户中不会准确反映备用可用性区域。 （无变通方法）
+   - 强制执行故障转移后，服务器参数更改不会在启用了区域冗余高可用性的服务器中生效。 （无变通方法）
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -209,8 +217,8 @@ ms.locfileid: "129388881"
 
 - **已知问题**
 
-  - SSL\TLS 1.2 是强制实施的，且无法禁用。 （无解决方法）
-  - 在 VNet 中预配的服务器会发生间歇性的预配失败。 解决方法是重试服务器预配，直到成功为止。
+   - SSL\TLS 1.2 是强制实施的，且无法禁用。 （无解决方法）
+   - 在 VNet 中预配的服务器会发生间歇性的预配失败。 解决方法是重试服务器预配，直到成功为止。
 
 ## <a name="february-2021"></a>2021 年 2 月
 

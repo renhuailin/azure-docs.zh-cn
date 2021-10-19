@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: 39a89fbaf72a78bad1c9a0ebca4ce068f6c65cae
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: b42b3c9146b99ee6e65dc83968ba8e97c8f209fb
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272883"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730482"
 ---
 # <a name="design-your-private-link-setup"></a>设计专用链接设置
 
@@ -66,8 +66,9 @@ ms.locfileid: "129272883"
 * 开放式 - 允许 VNet 访问专用链接资源和不在 AMPLS 中的资源（如果这些资源[接受来自公共网络的流量](./private-link-design.md#control-network-access-to-your-resources)）。 虽然开放式访问模式不能防止数据外泄，但它仍具有专用链接的其他好处：到专用链接资源的流量通过专用终结点发送、经过验证并通过 Microsoft 主干发送。 开放式模式适用于混合工作模式（公开访问某些资源，通过专用链接访问其他资源），或适用于逐步加入的过程。
 ![AMPLS“开放式”访问模式的示意图](./media/private-link-security/ampls-open-access-mode.png)为引入和查询分别设置各访问模式。 例如，可以为引入设置“仅专用”模式，为查询设置“开放式”模式。
 
-
 选择访问模式时请小心。 如果使用“仅专用”访问模式，则将阻止流向以下资源的流量：在所有共享同一 DNS 的网络中不属于 AMPLS，无论订阅或租户如何（Log Analytics 引入请求除外，在下文中有所介绍）。 如果无法将所有 Azure Monitor 资源添加到 AMPLS，请首先添加选定资源并应用开放访问模式。 只有在将所有 Azure Monitor 资源添加到 AMPLS 后，才能切换到“仅专用”模式以获得最大安全性。
+
+有关配置详细信息和示例，请参阅[使用 API 和命令行](./private-link-configure.md#use-apis-and-command-line)。
 
 > [!NOTE]
 > Log Analytics 引入操作使用资源特定的终结点。 因此，它不遵循 AMPLS 访问模式。 若要确保 Log Analytics 引入请求无法访问 AMPLS 外部的工作区，请将网络防火墙设置为阻止流量发送到公共终结点，不管 AMPLS 访问模式如何。
@@ -103,6 +104,8 @@ Log Analytics 工作区或 Application Insights 组件可以设置为：
 根据这一粒度，你可以按需设置每个工作区的访问权限。 例如，你只能通过专用链接连接的网络（即特定 VNet）接受引入，但仍可以选择接受来自所有网络（公用网络和专用网络）的查询。 
 
 阻止来自公用网络的查询意味着连接的 AMPLS 之外的客户端（计算机、SDK 等）无法查询资源中的数据。 这些数据包括日志、指标和实时指标流。 阻止来自公共网络的查询会影响运行这些查询的所有体验，如工作簿、仪表板、Azure 门户中的见解以及从 Azure 门户外部运行的查询。
+
+有关配置详细信息，请参阅[设置资源访问标志](./private-link-configure.md#set-resource-access-flags)。
 
 ### <a name="exceptions"></a>例外
 
@@ -166,6 +169,11 @@ Log Analytics 代理需要访问全局存储帐户才能下载解决方案包。
 > * 容器见解
 
 ## <a name="requirements"></a>要求
+
+### <a name="network-subnet-size"></a>网络子网大小
+支持的最小 IPv4 子网为 /27（使用 CIDR 子网定义）。 虽然 Azure VNet [最小可以为 /29](../../virtual-network/virtual-networks-faq.md#how-small-and-how-large-can-vnets-and-subnets-be)，但 Azure [保留了 5 个 IP 地址](../../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)，并且 Azure Monitor 专用链接设置至少需要 11 个额外的 IP 地址，即使连接到单个工作区也是如此。 [查看终结点的 DNS 设置](./private-link-configure.md#reviewing-your-endpoints-dns-settings)以获取 Azure Monitor 专用链接终结点的详细列表。
+
+
 ### <a name="agents"></a>代理
 必须使用最新版本的 Windows 和 Linux 代理，以支持安全引入到 Log Analytics 工作区。 旧版本无法通过专用网络加载监视数据。
 

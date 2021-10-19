@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
-ms.openlocfilehash: 6acab9618566766b12b4b236c75aa58386100513
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: f8ff057f818999a9d170fe6f58101c99cd931f7e
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961058"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129809693"
 ---
 # <a name="troubleshooting-metrics-charts"></a>排查指标图表问题
 
@@ -43,7 +43,7 @@ ms.locfileid: "105961058"
 
 [Azure 中的大多数指标将存储 93 天](../essentials/data-platform-metrics.md#retention-of-metrics)。 但是，在任何单个图表中，只能查询不超过 30 天的数据。 此限制不适用于[基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)。
 
-**解决方案：** 如果你看到空白图表或者图表仅显示一部分指标数据，请确认时间选取器中的开始日期与结束日期之差是否不超过 30 天间隔。 选择 30 天间隔后，你可以[平移](metrics-charts.md#pan)图表以查看完整的保持期窗口。
+**解决方案：** 如果你看到空白图表或者图表仅显示一部分指标数据，请确认时间选取器中的开始日期与结束日期之差是否不超过 30 天间隔。 选择 30 天间隔后，你可以[平移](metrics-charts.md#pan)图表以查看完整的保留期。
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>所有指标值超过了已锁定的 y 轴范围
 
@@ -51,11 +51,11 @@ ms.locfileid: "105961058"
 
 **解决方案：** 确认图表的 y 轴边界是否未锁定在指标值的范围以外。 如果 y 轴边界已锁定，你可以暂时将其重置，以确保指标值不超过图表范围。 不建议使用 **sum**、**min** 和 **max** 聚合以自动粒度锁定图表的 y 轴范围，因为在调整浏览器窗口大小或者更改不同的屏幕分辨率时，图表值会随着粒度而变化。 切换粒度可能会使图表显示区域保持空白。
 
-### <a name="you-are-looking-at-a-guest-os-metric-but-didnt-enable-azure-diagnostic-extension"></a>你正在查看来宾 OS 指标，但未启用 Azure 诊断扩展
+### <a name="you-are-looking-at-a-guest-classic-metric-but-didnt-enable-azure-diagnostic-extension"></a>你正在查看来宾（经典）指标，但未启用 Azure 诊断扩展
 
-收集 **来宾 OS** 指标需要配置 Azure 诊断扩展，或使用资源的“诊断设置”面板来启用该扩展。 
+收集来宾（经典）指标需要配置 Azure 诊断扩展，或使用资源的“诊断设置”面板启用 Azure 诊断扩展 。
 
-**解决方案：** 如果 Azure 诊断扩展已启用，但你仍然无法看到指标，请遵循 [Azure 诊断扩展故障排除指南](../agents/diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)中所述的步骤。 另请参阅[无法选取来宾 OS 命名空间和指标](#cannot-pick-guest-os-namespace-and-metrics)的故障排除步骤
+**解决方案：** 如果 Azure 诊断扩展已启用，但你仍然无法看到指标，请遵循 [Azure 诊断扩展故障排除指南](../agents/diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)中所述的步骤。 另请参阅[无法挑选来宾（经典）命名空间和指标](#cannot-pick-guest-namespace-and-metrics)的故障排除步骤
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>仪表板上显示“检索数据时出错”消息
 
@@ -79,19 +79,19 @@ Azure 指标图表使用虚线样式来指示两个已知时间粒度数据点�
 
 **解决方案：** 此行为是设计使然。 我们相信，即使数据是部分性的或者不完整的，在收到数据后立即显示数据比较有利。   这样，就可以更快地做出重要结论，并立即开始调查。 例如，对于显示失败次数的指标，查看部分值 X 可以判断，在给定的分钟内至少发生了 X 次失败。 然后可以立即开始调查问题，而不是等到图表中显示此分钟内发生的确切失败次数，确切的数字可能不如立即调查那么重要。 收到整个数据集后，图表将会更新，但此时，它可能还会显示更近时间内发生的新的不完整数据点。
 
-## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>无法选取来宾 OS 命名空间和指标
+## <a name="cannot-pick-guest-namespace-and-metrics"></a>无法选取来宾命名空间和指标
 
-虚拟机和虚拟机规模集有两种类别的指标：Azure 托管环境收集的虚拟机主机指标，以及虚拟机上运行的[监视代理](../agents/agents-overview.md)所收集的来宾 OS（经典）指标   。 启用 [Azure 诊断扩展](../agents/diagnostics-extension-overview.md)即可安装监视代理。
+虚拟机和虚拟机规模集有两种类别的指标：Azure 托管环境收集的虚拟机主机指标，以及虚拟机上运行的[监视代理](../agents/agents-overview.md)所收集的来宾（经典）指标。 启用 [Azure 诊断扩展](../agents/diagnostics-extension-overview.md)即可安装监视代理。
 
-默认情况下，来宾 OS 指标存储在 Azure 存储帐户中，可通过资源的“诊断设置”选项卡选取这些指标。  如果未收集来宾 OS 指标或者指标资源管理器无法访问这些指标，则你只会看到“虚拟机主机”指标命名空间： 
+来宾（经典）指标默认存储在 Azure 存储帐户中，并可从资源的“诊断设置”选项卡中进行选择。 如果未收集来宾指标或指标资源管理器无法访问来宾指标，你将只能看到虚拟机主机指标命名空间：
 
-![图表上的](./media/metrics-troubleshoot/vm.png)
+![图表上的](./media/metrics-troubleshoot/vm-metrics.png)
 
-**解决方案：** 如果在指标资源管理器中未看到“来宾 OS (经典)”命名空间和指标： 
+解决方案：如果指标资源管理器中未显示来宾（经典）命名空间和指标：
 
 1. 确认 [Azure 诊断扩展](../agents/diagnostics-extension-overview.md)已启用并配置为收集指标。
     > [!WARNING]
-    > 无法使用 [Log Analytics 代理](../agents/agents-overview.md#log-analytics-agent)（也称为 Microsoft Monitoring Agent 或“MMA”）将“来宾 OS”指标发送到存储帐户。 
+    > 无法使用 [Log Analytics 代理](../agents/agents-overview.md#log-analytics-agent)（也称为 Microsoft Monitoring Agent 或“MMA”）将来宾（经典）发送到存储帐户。
 
 1. 请确保已[为订阅注册](#microsoftinsights-resource-provider-isnt-registered-for-your-subscription) Microsoft.Insights 资源提供程序  。
 

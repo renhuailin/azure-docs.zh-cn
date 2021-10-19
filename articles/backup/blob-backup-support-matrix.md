@@ -2,14 +2,14 @@
 title: Azure Blob 备份的支持矩阵
 description: 汇总了备份 Azure Blob 时的支持设置和限制
 ms.topic: conceptual
-ms.date: 10/01/2021
+ms.date: 10/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 921f08a80511766f55e179fccde38a061800061e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: d0b524ba2865aa72f6fce88e326fffde435f71c3
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533184"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714168"
 ---
 # <a name="support-matrix-for-azure-blobs-backup"></a>Azure Blob 备份的支持矩阵
 
@@ -23,7 +23,7 @@ Blob 操作备份适用于除法国南部和南非西部以外的所有公有云
 
 Blob 的操作备份使用 blob 时点恢复、blob 版本控制、blob 的软删除、blob 的更改源以及删除锁定来提供本地备份解决方案。 因此，适用于这些功能的限制也适用于操作备份。
 
-**支持的方案：** 操作备份仅支持标准常规用途 v2 存储帐户中的块 blob。 因此 ADLS Gen2 帐户不受支持。 此外，存储帐户中的任何页 blob、追加 blob 和高级 blob 都不会还原，并且只会还原块 blob。
+**支持的方案：** 操作备份仅支持标准常规用途 v2 存储帐户中的块 blob。 不支持启用了分层命名空间的存储帐户（即 ADLS Gen2 帐户）。   <br><br>   此外，存储帐户中的任何页 blob、追加 blob 和高级 blob 都不会还原，并且只会还原块 blob。
 
 **其他限制：**
 

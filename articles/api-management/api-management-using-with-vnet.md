@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/10/2021
 ms.author: danlep
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 008e3874961af2c3e8ff8dfe3f162254fb9d5f5e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1d3abd6da011a0147c3e9cee06f8e60800263e63
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128669239"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612002"
 ---
 # <a name="connect-to-a-virtual-network-using-azure-api-management"></a>使用 Azure API 管理连接到虚拟网络
 
@@ -162,7 +162,7 @@ ms.locfileid: "128669239"
 | * / 1433                     | 出站           | TCP                | VIRTUAL_NETWORK / SQL                 | **访问 Azure SQL 终结点**                           | 外部和内部  |
 | * / 5671, 5672, 443          | 出站           | TCP                | VIRTUAL_NETWORK / Event Hub            | [事件中心策略日志](api-management-howto-log-event-hubs.md)和监视代理的依赖项 | 外部和内部  |
 | * / 445                      | 出站           | TCP                | VIRTUAL_NETWORK / Storage             | 与适用于 [GIT](api-management-configuration-repository-git.md) 的 Azure 文件共享的依赖关系                      | 外部和内部  |
-| * / 443, 12000                     | 出站           | TCP                | VIRTUAL_NETWORK / AzureCloud            | 运行状况和监视扩展         | 外部和内部  |
+| * / 443, 12000                     | 出站           | TCP                | VIRTUAL_NETWORK / AzureCloud            | 运行状况和监控扩展以及对事件网格的依赖（如果事件通知已激活）        | 外部和内部  |
 | * / 1886、443                     | 出站           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | 发布[诊断日志和指标](api-management-howto-use-azure-monitor.md)、[资源运行状况](../service-health/resource-health-overview.md)和 [Application Insights](api-management-howto-app-insights.md)                   | 外部和内部  |
 | * / 25、587、25028                       | 出站           | TCP                | VIRTUAL_NETWORK/INTERNET            | 连接到 SMTP 中继以发送电子邮件                    | 外部和内部  |
 | * / 6381 - 6383              | 入站和出站 | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | 访问 Redis 服务以获取计算机之间的[缓存](api-management-caching-policies.md)策略         | 外部和内部  |
@@ -323,7 +323,7 @@ ms.locfileid: "128669239"
   * 将虚拟机部署到相同子网。 
   * 连接到虚拟机，并验证与 Azure 订阅中以下其中一项资源的连接：
     * Azure 存储 Blob
-    * Azure SQL 数据库
+    * Azure SQL Database
     * Azure 存储表
     * Azure 密钥保管库（适用于 [`stv2` 平台](compute-infrastructure.md)上托管的 API 管理实例）
 

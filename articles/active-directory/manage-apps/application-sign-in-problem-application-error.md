@@ -1,5 +1,6 @@
 ---
-title: 登录后应用页面上显示的错误消息 | Microsoft Docs
+title: 登录后应用页面上显示的错误消息
+titleSuffix: Azure AD
 description: 如何解决应用返回错误消息时的 Azure AD 登录问题。
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c1910eb106e7a3e405f58ba672c38fa108544d2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 499ce4c7875a1805b5845614221ffef0641816d6
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738897"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617770"
 ---
-# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>用户登录后，应用页面上会显示错误消息
+# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in-azure-active-directory"></a>用户登录 Azure Active Directory 后，应用页面上会显示错误消息
 
 在此场景中，Azure Active Directory (Azure AD) 会使用户登录。 但是应用程序会显示错误消息，并且不允许用户完成登录流程。 问题在于应用不接受 Azure AD 发出的响应。
 

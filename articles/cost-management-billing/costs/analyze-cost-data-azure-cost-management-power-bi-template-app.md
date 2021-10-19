@@ -1,27 +1,27 @@
 ---
 title: 使用 Power BI 应用分析 Azure 成本
-description: 本文介绍如何安装和使用 Azure 成本管理 Power BI 应用。
+description: 本文介绍如何安装和使用成本管理 Power BI 应用。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/19/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: b500bd2b97c262739902c5e1b8af51b013ad4ecb
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: b854d3ca7bc7cde060bb78e5ad94dc2a6fbbc2c1
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515061"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706338"
 ---
-# <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>使用适用于企业协议 (EA) 的 Azure 成本管理 Power BI 应用分析成本
+# <a name="analyze-cost-with-the-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>使用适用于企业协议 (EA) 的成本管理 Power BI 应用分析成本
 
-本文介绍如何安装和使用 Azure 成本管理 Power BI 应用。 该应用可帮助你在 Power BI 中分析和管理 Azure 成本。 可以使用该应用来监视成本和使用趋势，并确定可用于减少支出的成本优化选项。
+本文介绍如何安装和使用成本管理 Power BI 应用。 该应用可帮助你在 Power BI 中分析和管理 Azure 成本。 可以使用该应用来监视成本和使用趋势，并确定可用于减少支出的成本优化选项。
 
-Azure 成本管理 Power BI 应用目前仅支持已签署[企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)的客户。
+成本管理 Power BI 应用目前仅支持已签署[企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)的客户。
 
-该应用在可自定义方面存在限制。 如果要修改和扩展默认的筛选器、视图和可视化效果来根据需要进行自定义，请改用 [Power BI Desktop 中的 Azure 成本管理连接器](/power-bi/connect-data/desktop-connect-azure-cost-management)。 借助 Azure 成本管理连接器，可联接来自其他源的其他数据以创建自定义报表，从而全面了解整体业务成本。 该连接器还支持 Microsoft 客户协议。
+该应用在可自定义方面存在限制。 如果要修改和扩展默认的筛选器、视图和可视化效果来根据需要进行自定义，请改用 [Power BI Desktop 中的成本管理连接器](/power-bi/connect-data/desktop-connect-azure-cost-management)。 借助成本管理连接器，可联接来自其他源的其他数据以创建自定义报表，从而全面了解整体业务成本。 该连接器还支持 Microsoft 客户协议。
 
 > [!NOTE]
 > Power BI 模板应用不支持下载 PBIX 文件。
@@ -35,7 +35,7 @@ Azure 成本管理 Power BI 应用目前仅支持已签署[企业协议](https:/
 
 若要安装应用：
 
-1. 打开 [Azure 成本管理 Power BI 应用](https://aka.ms/costmgmt/ACMApp)。
+1. 打开[成本管理 Power BI 应用](https://aka.ms/costmgmt/ACMApp)。
 1. 在 Power BI 的“AppSource”页上，选择“立即获取”。
 1. 选择“继续”以同意使用条款和隐私策略。
 1. 在“安装此 Power BI 应用”框中，选择“安装”。
@@ -50,14 +50,14 @@ Azure 成本管理 Power BI 应用目前仅支持已签署[企业协议](https:/
 
     :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" alt-text="显示 EA 注册信息输入位置的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" :::
 1. 下一个安装步骤是连接到 EA 注册，并要求使用[企业管理员](../manage/understand-ea-roles.md)帐户。 保留所有默认值。 选择“登录并继续”。  
-    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" alt-text="显示“连接到 Azure 成本管理应用”对话框以及用于连接的默认值的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" :::
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" alt-text="显示“连接到成本管理应用”对话框以及用于连接的默认值的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" :::
 1. 最后一个对话框将连接到 Azure 并获取数据。 保留配置的默认值，然后选择“登录并继续”。  
-    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" alt-text="显示“连接到 Azure 成本管理应用”对话框及其默认值的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" :::
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" alt-text="显示“连接到成本管理应用”对话框及其默认值的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" :::
 1. 系统会提示你使用EA 注册进行身份验证。 请使用 Power BI 进行身份验证。 完成身份验证后，将开始刷新 Power BI 数据。
     > [!NOTE]
     > 数据刷新过程可能需要相当长的时间才能完成。 具体的时长取决于指定的月数以及需要同步的数据量。
 
-完成数据刷新后，选择 Azure 成本管理应用来查看预先创建的报表。
+完成数据刷新后，选择成本管理应用来查看预先创建的报表。
 
 ## <a name="reports-available-with-the-app"></a>应用中提供的报表
 
@@ -190,7 +190,7 @@ Failed to update data source credentials: The credentials provided for the Azure
 
 1. 连接到数据。
 1. 输入 EA 注册和月数后，请务必保留“匿名”作为“身份验证方法”的默认值，并保留“无”作为隐私级别设置。  
-  :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png" alt-text="屏幕截图显示了已输入“匿名”和“无”这两个值的“连接到 Azure 成本管理应用”对话框。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png" :::
+  :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png" alt-text="屏幕截图显示了已输入“匿名”和“无”这两个值的“连接到成本管理应用”对话框。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png" :::
 1. 在下一页上，设置 **OAuth2** 作为“身份验证方法”，设置“无”作为“隐私级别”。 然后登录，以便对注册进行身份验证。 此步骤还启动 Power BI 数据刷新。
 
 ## <a name="data-reference"></a>数据参考

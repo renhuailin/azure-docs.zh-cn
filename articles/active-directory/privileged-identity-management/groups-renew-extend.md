@@ -1,27 +1,27 @@
 ---
-title: 续订“特权身份管理”中“成员分配”的过期组所有者 - Azure AD | Microsoft Docs
+title: 续订 Privileged Identity Management 中的过期组所有者或成员分配 - Azure AD | Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中延期或续订可分配角色的组分配。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
-editor: markwahl-msft
+manager: KarenH444
+ms.reviewer: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 06/30/2020
+ms.date: 10/07/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cfbb0be22dee4550050d6af10314f3a3bb1f583
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 791da880607de6e2e3c7ad9a9e94e41c50e5a4be
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87505986"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667661"
 ---
 # <a name="extend-or-renew-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>在 Privileged Identity Management 中延期或续订特权访问组分配（预览版）
 

@@ -1,26 +1,25 @@
 ---
 title: 对虚拟网络的 Azure IoT 设备预配服务 (DPS) 支持
 description: 如何将虚拟网络连接模式与 Azure IoT 设备预配服务 (DPS) 一起使用
-services: iot-hub
-author: wesmc7777
+services: iot-dps
+author: anastasia-ms
 ms.service: iot-dps
+manager: lizross
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.author: wesmc
-ms.openlocfilehash: f5b1947a8d037dbdd20a3335a79f90ebf10b2ca6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 10/06/2021
+ms.author: v-stharr
+ms.openlocfilehash: 8d90a033f5af5afb55be9585756a7235dc6d89d7
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749890"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659310"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>对虚拟网络的 Azure IoT 中心设备预配服务 (DPS) 支持
 
 本文介绍了通过使用 DPS 的 IoT 中心进行 IoT 设备预配时，所适用的虚拟网络 (VNET) 连接模式。 此模式在客户拥有的 Azure VNET 内的设备、DPS 和 IoT 中心之间提供专用连接。 
 
 在大多数情况下，使用 VNET 配置了 DPS 后，还将在同一 VNET 中配置 IoT 中心。 有关对 IoT 中心的 VNET 支持和配置的更多特定信息，请参阅 [IoT 中心虚拟网络支持](../iot-hub/virtual-network-support.md)。
-
-
 
 ## <a name="introduction"></a>简介
 
@@ -41,7 +40,6 @@ ms.locfileid: "108749890"
 在本地网络中运行的设备可以使用[虚拟专用网络 (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 专用对等互连来连接到 Azure 中的 VNET，并通过专用终结点访问 DPS 资源。 
 
 专用终结点是在客户拥有的 VNET 内部分配的专用 IP 地址，可通过该地址访问 Azure 资源。 当 DPS 资源有了专用终结点时，流量无需经过公共终结点，在 VNET 中运行的设备就能请求 DPS 资源进行预配。
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -65,6 +63,11 @@ ms.locfileid: "108749890"
 
 * 使用最短延迟分配策略，将设备分配到具有最低延迟的 IoT 中心。 此分配策略在虚拟网络环境中不可靠。 
 
+>[!NOTE]
+>**数据驻留注意事项：**
+>
+>DPS 提供全局设备终结点 (`global.azure-devices-provisioning.net`)。 但是，使用全局终结点时，数据可能会重定向到最初创建 DPS 实例的区域之外。 若要确保数据驻留在初始 DPS 区域，请使用专用终结点。
+
 ## <a name="set-up-a-private-endpoint"></a>设置专用终结点
 
 若要设置专用终结点，请执行以下步骤：
@@ -77,7 +80,7 @@ ms.locfileid: "108749890"
 
     ![创建专用终结点基本信息](./media/virtual-network-support/create-private-endpoint-basics.png)
 
-    | 字段 | 值 |
+    | 字段 | Value |
     | :---- | :-----|
     | **订阅** | 选择要包含专用终结点的所需 Azure 订阅。  |
     | **资源组** | 选择或创建一个要包含专用终结点的资源组 |
@@ -104,13 +107,12 @@ ms.locfileid: "108749890"
     单击“下一步:配置”，为专用终结点配置 VNET。
 
 4. 在“创建专用终结点”的“配置”页上，选择要在其中创建专用终结点的虚拟网络和子网。
- 
+
     单击“下一步:标记”，为资源提供标记（可选）。
 
     ![配置专用终结点](./media/virtual-network-support/create-private-endpoint-configuration.png)
 
-6. 依次单击“查看 + 创建”和“创建”，以创建专用终结点资源。
-
+5. 依次单击“查看 + 创建”和“创建”，以创建专用终结点资源。
 
 ## <a name="use-private-endpoints-with-devices"></a>对设备使用专用终结点
 
@@ -118,7 +120,7 @@ ms.locfileid: "108749890"
 
 `<Your DPS Tenant Name>.azure-devices-provisioning.net`
 
-文档和 SDK 中演示的大多数示例代码使用全局设备终结点 (`global.azure-devices-provisioning.net`) 和 ID 范围来解析特定的 DPS 资源。 使用专用链接连接到 DPS 资源来预配设备时，使用服务终结点来代替全局设备终结点。
+文档和 SDK 中演示的大多数示例代码使用全局设备终结点 (`global.azure-devices-provisioning.net`) 和 ID 范围来解析特定的 DPS 资源。 使用专用终结点连接到 DPS 资源来预配设备时，使用服务终结点来代替全局设备终结点。
 
 例如，[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 中的预配设备客户端示例 ([pro_dev_client_sample](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/prov_dev_client_sample)) 旨在使用全局设备终结点作为 [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) 中的全局预配 URI (`global_prov_uri`)
 
@@ -126,7 +128,7 @@ ms.locfileid: "108749890"
 
 :::code language="c" source="~/iot-samples-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c" range="138-144" highlight="3":::
 
-若要将示例与专用链接一起使用，上述突出显示的代码将更改为使用 DPS 资源的服务终结点。 例如，如果服务终结点为 `mydps.azure-devices-provisioning.net`，则代码将如下所示。
+若要将示例与专用终结点一起使用，上述突出显示的代码将更改为使用 DPS 资源的服务终结点。 例如，如果服务终结点为 `mydps.azure-devices-provisioning.net`，则代码将如下所示。
 
 ```C
 static const char* global_prov_uri = "global.azure-devices-provisioning.net";

@@ -11,12 +11,12 @@ ms.subservice: automl
 ms.date: 12/09/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2, automl
-ms.openlocfilehash: db8d9a8130db868a53fefd4e72967657f272f8fe
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 91c620a68d375084f8a4be6c5a8bf30b92d016c1
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129423455"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129812194"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>评估自动化机器学习试验结果
 
@@ -74,25 +74,27 @@ ms.locfileid: "129423455"
 
 |指标|说明|计算|
 |--|--|---|
-|AUC | AUC 是[接收方操作特性曲线](#roc-curve)下面的区域。<br><br> **目的：** 越接近 1 越好 <br> **范围：** [0, 1]<br> <br>支持的指标名称包括， <li>`AUC_macro`，每个类的 AUC 算术平均值。<li> `AUC_micro`，通过组合每个类中的真正和假正来计算 Micro。 <li> `AUC_weighted`，每个类的评分算术平均值，按每个类中的真实实例数加权。<br><br>注意：如果只有两个类，由自动 ML 报告的 AUC 值可能与 ROC 图表不匹配。 对于二元分类，AUC 的基础 scikit-learn 实现实际上不应用宏平均/微平均/加权平均。 相反，将返回最可能为正类的 AUC。 对于二元分类，ROC 图表继续应用类平均，就像对多类执行的一样。  |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | 
-|accuracy| Accuracy 是与真实类标签完全匹配的预测比率。 <br> <br>**目的：** 越接近 1 越好 <br> **范围：** [0, 1]|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
-|average_precision|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 <br><br> **目的：** 越接近 1 越好 <br> **范围：** [0, 1]<br> <br>支持的指标名称包括，<li>`average_precision_score_macro`，每个类的平均精度评分算术平均值。<li> `average_precision_score_micro`，通过组合每个交接中的真正和假正来计算。<li>`average_precision_score_weighted`，每个类的平均精度评分算术平均值，按每个类中的真实实例数加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|
-balanced_accuracy|平衡准确度是每个类的召回率算术平均值。<br> <br>**目的：** 越接近 1 越好 <br> **范围：** [0, 1]|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
-f1_score|F1 评分是精度和召回率的调和平均值。 这是一个很好的衡量假正和假负的平衡。 然而，它没有考虑到真负。 <br> <br>**目的：** 越接近 1 越好 <br> **范围：** [0, 1]<br> <br>支持的指标名称包括，<li>  `f1_score_macro`：每个类的 F1 评分算术平均值。 <li> `f1_score_micro`：通过统计真正、假负和假正总值来计算得出。 <li> `f1_score_weighted`：按每个类的 F1 评分类频率计算的加权平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|
-log_loss|这是（多项式） 逻辑回归及其扩展（例如神经网络）中使用的损失函数，在给定概率分类器的预测的情况下，定义为真实标签的负对数可能性。 <br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf)|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|
+|AUC | AUC 是[接收方操作特性曲线](#roc-curve)下面的区域。<br><br> **目的：** 越接近 1 越好 <br> **范围：** [0, 1]<br> <br>支持的指标名称包括， <li>`AUC_macro`，每个类的 AUC 算术平均值。<li> `AUC_micro`，以多标签方式计算。 每个示例的每一个不同的类都将被视为独立的 `0/1` 预测。 正确的类将变为 `true` 类，其余将为 `false` 类。 然后，系统将为新的二元分类任务计算 AUC，并将所有示例组合在一起。 <li> `AUC_weighted`，每个类的评分算术平均值，按每个类中的真实实例数加权。 <li> `AUC_binary`，将一个特定类视为 `true` 类并将所有其他类合并为 `false` 类的 AUC 值。<br><br>|[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.roc_auc_score.html) | 
+|accuracy| Accuracy 是与真实类标签完全匹配的预测比率。 <br> <br>**目的：** 越接近 1 越好 <br> **范围：** [0, 1]|[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.accuracy_score.html)|
+|average_precision|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 <br><br> **目的：** 越接近 1 越好 <br> **范围：** [0, 1]<br> <br>支持的指标名称包括，<li>`average_precision_score_macro`，每个类的平均精度评分算术平均值。<li> `average_precision_score_micro`，以多标签方式计算。 每个示例的每一个不同的类都将被视为独立的 `0/1` 预测。 正确的类将变为 `true` 类，其余将为 `false` 类。 然后，系统将为新的二元分类任务计算平均精度，并将所有示例组合在一起。<li>`average_precision_score_weighted`，每个类的平均精度评分算术平均值，按每个类中的真实实例数加权。 <li> `average_precision_score_binary`，将一个特定类视为 `true` 类并将所有其他类合并为 `false` 类的平均精度值。|[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.average_precision_score.html)|
+balanced_accuracy|平衡准确度是每个类的召回率算术平均值。<br> <br>**目的：** 越接近 1 越好 <br> **范围：** [0, 1]|[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.recall_score.html)|
+f1_score|F1 评分是精度和召回率的调和平均值。 这是一个很好的衡量假正和假负的平衡。 然而，它没有考虑到真负。 <br> <br>**目的：** 越接近 1 越好 <br> **范围：** [0, 1]<br> <br>支持的指标名称包括，<li>  `f1_score_macro`：每个类的 F1 评分算术平均值。 <li> `f1_score_micro`：通过统计真正、假负和假正总值来计算得出。 <li> `f1_score_weighted`：按每个类的 F1 评分类频率计算的加权平均值。 <li> `f1_score_binary`，将一个特定类视为 `true` 类并将所有其他类合并为 `false` 类的 f1 值。|[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.f1_score.html)|
+log_loss|这是（多项式） 逻辑回归及其扩展（例如神经网络）中使用的损失函数，在给定概率分类器的预测的情况下，定义为真实标签的负对数可能性。 <br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf)|[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.log_loss.html)|
 norm_macro_recall| 规范化宏召回率是对宏召回率进行规范化和平均化，因此，随机性能的评分为 0，完美性能的评分为 1。 <br> <br>**目的：** 越接近 1 越好 <br> **范围：** [0, 1] |`(recall_score_macro - R)`&nbsp;/&nbsp;`(1 - R)` <br><br>其中，`R` 是随机预测的 `recall_score_macro` 期望值。<br><br>`R = 0.5`&nbsp; 表示&nbsp;二进制&nbsp;分类。 <br>`R = (1 / C)` 表示 C 类分类问题。|
-matthews_correlation | Matthews 关联系数是一种平衡准确性度量值，即使一个类比另一个类有更多的样本，也可以使用它。 系数 1 表示完美预测、0 表示随机预测以及 -1 表示反向预测。<br><br> **目的：** 越接近 1 越好 <br> **范围：** [-1, 1]|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
-精准率|精准率是模型避免将负样本标记为正样本的能力。 <br><br> **目的：** 越接近 1 越好 <br> **范围：** [0, 1]<br> <br>支持的指标名称包括， <li> `precision_score_macro`，每个类的精度算术平均值。 <li> `precision_score_micro`，通过统计真正和假正总值来全局计算 Micro。 <li> `precision_score_weighted`，每个类的精度算术平均值，按每个类中的真实实例数加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|
-召回率| 召回率是模型检测所有正的样本。 <br><br> **目的：** 越接近 1 越好 <br> **范围：** [0, 1]<br> <br>支持的指标名称包括， <li>`recall_score_macro`，每个类的召回率算术平均值。 <li> `recall_score_micro`：通过统计真正、假负和假正总值来全局计算。<li> `recall_score_weighted`：每个类的召回率算术平均值，按每个类中的真实实例数加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
-weighted_accuracy|加权准确性是指每个样本按属于同一类别的样本总数加权的准确性。 <br><br>**目的：** 越接近 1 越好 <br>**范围：** [0, 1]|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
+matthews_correlation | Matthews 关联系数是一种平衡准确性度量值，即使一个类比另一个类有更多的样本，也可以使用它。 系数 1 表示完美预测、0 表示随机预测以及 -1 表示反向预测。<br><br> **目的：** 越接近 1 越好 <br> **范围：** [-1, 1]|[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
+精准率|精准率是模型避免将负样本标记为正样本的能力。 <br><br> **目的：** 越接近 1 越好 <br> **范围：** [0, 1]<br> <br>支持的指标名称包括， <li> `precision_score_macro`，每个类的精度算术平均值。 <li> `precision_score_micro`，通过统计真正和假正总值来全局计算 Micro。 <li> `precision_score_weighted`，每个类的精度算术平均值，按每个类中的真实实例数加权。 <li> `precision_score_binary`，将一个特定类视为 `true` 类并将所有其他类合并为 `false` 类的精度值。|[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.precision_score.html)|
+召回率| 召回率是模型检测所有正的样本。 <br><br> **目的：** 越接近 1 越好 <br> **范围：** [0, 1]<br> <br>支持的指标名称包括， <li>`recall_score_macro`，每个类的召回率算术平均值。 <li> `recall_score_micro`：通过统计真正、假负和假正总值来全局计算。<li> `recall_score_weighted`：每个类的召回率算术平均值，按每个类中的真实实例数加权。 <li> `recall_score_binary`，将一个特定类视为 `true` 类并将所有其他类合并为 `false` 类的召回值。|[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.recall_score.html)|
+weighted_accuracy|加权准确性是指每个样本按属于同一类别的样本总数加权的准确性。 <br><br>**目的：** 越接近 1 越好 <br>**范围：** [0, 1]|[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.accuracy_score.html)|
 
 ### <a name="binary-vs-multiclass-classification-metrics"></a>二进制与多类分类指标
 
-自动化 ML 不区分二元分类指标与多类指标。 不管数据集有两个类还是两个以上的类，都会报告相同的验证指标。 但是，某些指标旨在用于多类分类。 正如你所期望的那样，这些指标在应用于二元分类数据集时不会将任何类视为 `true` 类。 明确用于多类的指标以 `micro`、`macro` 或 `weighted` 为后缀。 示例包括 `average_precision_score`、`f1_score`、`precision_score`、`recall_score`、`AUC`。
+自动 ML 会自动检测数据是否为二进制数据，还允许用户通过指定 `true` 类来激活二元分类指标（即使数据属于多类）。 无论数据集有两个类或两个以上类，系统都会报告多类分类指标。 只有在数据为二进制或用户激活选项时，才报告二元分类指标。 
 
-例如，多类平均召回率（`micro`、`macro` 或 `weighted`）不按 `tp / (tp + fn)` 计算召回率，而是对二进制分类数据集的两个类进行平均。 这相当于分别计算 `true` 类和 `false` 类的召回率，然后取二者的平均值。
+请注意，多类分类指标适用于多类分类。 正如你所期望的那样，这些指标在应用于二元分类数据集时不会将任何类视为 `true` 类。 明确用于多类的指标以 `micro`、`macro` 或 `weighted` 为后缀。 示例包括 `average_precision_score`、`f1_score`、`precision_score`、`recall_score`、`AUC`。 例如，多类平均召回率（`micro`、`macro` 或 `weighted`）不按 `tp / (tp + fn)` 计算召回率，而是对二进制分类数据集的两个类进行平均。 这相当于分别计算 `true` 类和 `false` 类的召回率，然后取二者的平均值。
 
-自动化 ML 不会计算二进制指标（即二进制分类数据集的指标）。 但是，可以使用自动 ML 为该特定运行生成的[混淆矩阵](#confusion-matrix)手动计算这些指标。 例如，可以使用 2x2 混淆矩阵图中显示的真正值和假正值来计算精度，即 `tp / (tp + fp)`。
+此外，尽管支持自动检测二元分类，但仍建议一律手动指定 `true` 类，以确保为正确的类计算二元分类指标。
+
+若要在数据集本身为多类时激活二元分类数据集的指标，用户只需指定要视为 `true` 类的类，即可计算这些指标。
 
 ## <a name="confusion-matrix"></a>混淆矩阵
 
@@ -143,7 +145,7 @@ weighted_accuracy|加权准确性是指每个样本按属于同一类别的样�
 
 理想的模型将所有正样本的排名高于所有负样本，给出由两个直线段组成的累积增益曲线。 第一条是斜率为 `1 / x` 的线，从 `(0, 0)` 到 `(x, 1)`，其中 `x` 是属于正类的样本分数（如果类是平衡的，则为 `1 / num_classes`）。 第二条是从 `(x, 1)` 到 `(1, 1)` 的水平线。 在第一段中，所有正样本都已正确分类，累积增益在考虑的样本的第一个 `x%` 内到达 `100%`。
 
-基线随机模型在 `y = x` 之后有一个累积增益曲线，其中在所考虑的 `x%` 的样本中仅检测到 `x%` 的总正样本。 完美模型会有一条触及左上角的微平均曲线和一条斜率 `1 / num_classes` 的宏平均线，直到累积增益达到 100%，然后水平延伸，直到数据百分比达到 100。
+基线随机模型在 `y = x` 之后有一个累积增益曲线，其中在所考虑的 `x%` 的样本中仅检测到 `x%` 的总正样本。 均衡数据集的完美模型包含一条微平均曲线和一条斜率 `num_classes` 的宏平均线，直到累积增益达到 100%，然后水平延伸，直到数据百分比达到 100。
 > [!TIP]
 > 对于分类实验，为自动化 ML 模型生成的每个折线图都可以用于评估每个类的模型或所有类的平均值。 通过单击图表右侧图例中的类标签，可以在这些不同的视图之间切换。
 ### <a name="cumulative-gains-curve-for-a-good-model"></a>良好模型的累积增益曲线
@@ -154,7 +156,7 @@ weighted_accuracy|加权准确性是指每个样本按属于同一类别的样�
 
 ## <a name="lift-curve"></a>提升曲线
 
-提升曲线显示某个模型的表现优于随机模型的次数。 提升定义为随机模型的累积增益与累积增益之比。
+提升曲线显示某个模型的表现优于随机模型的次数。 提升定义为随机模型的累积增益与累积增益之比（应始终为 `1`）。
 
 这种相对表现考虑到类的数量越多，分类越困难。 （与具有两个类的数据集相比，随机模型对具有 10 个类的数据集中的样本进行预测时，错误率更高）
 
@@ -191,14 +193,14 @@ weighted_accuracy|加权准确性是指每个样本按属于同一类别的样�
 
 |指标|说明|计算|
 --|--|--|
-explained_variance|解释的方差衡量模型对目标变量变化的解释程度。 它是原始数据方差与误差方差之间的递减百分比。 当误差的平均值为 0 时，它等于确定系数（请参见下面的 r2_score）。 <br> <br> **目的：** 越接近 1 越好 <br> **范围：** (-inf, 1]|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|
-mean_absolute_error|平均绝对误差是目标与预测之间的差的预期绝对值。<br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf) <br><br> 类型： <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`，mean_absolute_error 除以数据范围。 | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
+explained_variance|解释的方差衡量模型对目标变量变化的解释程度。 它是原始数据方差与误差方差之间的递减百分比。 当误差的平均值为 0 时，它等于确定系数（请参见下面的 r2_score）。 <br> <br> **目的：** 越接近 1 越好 <br> **范围：** (-inf, 1]|[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.explained_variance_score.html)|
+mean_absolute_error|平均绝对误差是目标与预测之间的差的预期绝对值。<br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf) <br><br> 类型： <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`，mean_absolute_error 除以数据范围。 | [计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.mean_absolute_error.html)|
 mean_absolute_percentage_error|平均绝对百分比误差 (MAPE) 是预测值和实际值之间平均差值的度量值。<br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf) ||
-median_absolute_error|平均绝对误差是目标与预测之间的所有绝对差的中间值。 此损失值可靠地反映离群值。<br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf)<br><br>类型： <br> `median_absolute_error`<br> `normalized_median_absolute_error`median_absolute_error 除以数据范围。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
-r2_score|R<sup>2</sup>（决定系数）衡量均方误差 (MSE) 相对于观察到的数据的总方差的按比例的降低程度。 <br> <br> **目的：** 越接近 1 越好 <br> **范围：** [-1, 1]<br><br>注意：R<sup>2</sup> 的范围通常为 (-inf, 1]。 MSE 可以大于观察到的方差，因此 R<sup>2</sup> 可以有任意大的负值，具体取决于数据和模型预测。 自动化 ML 剪辑报告的 R<sup>2</sup> 分数为 -1，因此 R<sup>2</sup> 的值为 -1 可能表示实际的 R<sup>2</sup> 分数小于 -1。 在解释负 R<sup>2</sup> 分数时，请考虑其他指标值和数据的属性。|[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
-root_mean_squared_error |均方根误差 (RMSE) 是目标与预测之间的预期平方差的平方根。 对于无偏差估算器，RMSE 等于标准偏差。<br> <br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf)<br><br>类型：<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`：root_mean_squared_error 除以数据范围。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|
-root_mean_squared_log_error|均方根对数误差是预期平方对数误差的平方根。<br><br>**目的：** 越接近 0 越好 <br> **范围：** [0, inf) <br> <br>类型： <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`，root_mean_squared_log_error 除以数据范围。  |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
-spearman_correlation| 斯皮尔曼相关是两个数据集之间的关系单一性的非参数测量法。 与皮尔逊相关不同，斯皮尔曼相关不假设两个数据集呈正态分布。 与其他相关系数一样，斯皮尔曼在 -1 和 +1 之间变化，0 表示不相关。 -1 或 1 相关表示确切的单一关系。 <br><br> 斯皮尔曼是一个秩相关指标，这意味着，如果预测值或实际值的变化不改变预测值或实际值的秩序，则不会改变斯皮尔曼结果。<br> <br> **目的：** 越接近 1 越好 <br> **范围：** [-1, 1]|[计算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|
+median_absolute_error|平均绝对误差是目标与预测之间的所有绝对差的中间值。 此损失值可靠地反映离群值。<br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf)<br><br>类型： <br> `median_absolute_error`<br> `normalized_median_absolute_error`median_absolute_error 除以数据范围。 |[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.median_absolute_error.html)|
+r2_score|R<sup>2</sup>（决定系数）衡量均方误差 (MSE) 相对于观察到的数据的总方差的按比例的降低程度。 <br> <br> **目的：** 越接近 1 越好 <br> **范围：** [-1, 1]<br><br>注意：R<sup>2</sup> 的范围通常为 (-inf, 1]。 MSE 可以大于观察到的方差，因此 R<sup>2</sup> 可以有任意大的负值，具体取决于数据和模型预测。 自动化 ML 剪辑报告的 R<sup>2</sup> 分数为 -1，因此 R<sup>2</sup> 的值为 -1 可能表示实际的 R<sup>2</sup> 分数小于 -1。 在解释负 R<sup>2</sup> 分数时，请考虑其他指标值和数据的属性。|[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.r2_score.html)|
+root_mean_squared_error |均方根误差 (RMSE) 是目标与预测之间的预期平方差的平方根。 对于无偏差估算器，RMSE 等于标准偏差。<br> <br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf)<br><br>类型：<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`：root_mean_squared_error 除以数据范围。 |[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.mean_squared_error.html)|
+root_mean_squared_log_error|均方根对数误差是预期平方对数误差的平方根。<br><br>**目的：** 越接近 0 越好 <br> **范围：** [0, inf) <br> <br>类型： <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`，root_mean_squared_log_error 除以数据范围。  |[计算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
+spearman_correlation| 斯皮尔曼相关是两个数据集之间的关系单一性的非参数测量法。 与皮尔逊相关不同，斯皮尔曼相关不假设两个数据集呈正态分布。 与其他相关系数一样，斯皮尔曼在 -1 和 +1 之间变化，0 表示不相关。 -1 或 1 相关表示确切的单一关系。 <br><br> 斯皮尔曼是一个秩相关指标，这意味着，如果预测值或实际值的变化不改变预测值或实际值的秩序，则不会改变斯皮尔曼结果。<br> <br> **目的：** 越接近 1 越好 <br> **范围：** [-1, 1]|[计算](https://docs.scipy.org/doc/scipy-1.5.2/reference/generated/scipy.stats.spearmanr.html)|
 
 ### <a name="metric-normalization"></a>指标规范化
 

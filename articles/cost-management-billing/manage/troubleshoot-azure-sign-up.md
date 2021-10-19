@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 05/13/2021
+ms.date: 10/07/2021
 ms.author: v-miegge
-ms.openlocfilehash: 6e9c3d09c5dbf9ddae779f585425f8317b41ab46
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0000d49d9e434a4fd07f4c3a05be60f20ebca3be
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467508"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711002"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal"></a>排查在 Azure 门户注册新帐户时遇到的问题
 
@@ -176,6 +176,6 @@ Azure 计费和订阅的其他疑难解答文章
 
 如有任何疑问或需要帮助，请[创建支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
-## <a name="find-out-more-about-azure-cost-management"></a>详细了解 Azure 成本管理
+## <a name="next-steps"></a>后续步骤
 
-- [Azure 成本管理和计费文档](../index.yml)
+- 请参阅[成本管理和计费文档](../index.yml)

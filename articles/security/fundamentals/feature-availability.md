@@ -6,12 +6,12 @@ ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 09/13/2021
-ms.openlocfilehash: 3f2559ca573ed9fedf5a15fce454cf406f8f6b0b
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 918743544aeaf60932f14d1d1eed609775b29efd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210737"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710563"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>适用于美国政府客户的云功能可用性
 
@@ -107,7 +107,7 @@ Azure 安全中心是一个统一的基础结构安全管理系统，可以增�
 
 <sup><a name="footnote3" /></a>3</sup> 需要适用于容器注册表的 Azure Defender。
 
-<sup><a name="footnote4" /></a>4</sup> 部分 GA：对启用了 Arc 的群集的支持处于公开预览状态，在 Azure 政府中不可用。
+<sup><a name="footnote4" /></a>4</sup> 部分正式发布：对启用了 Azure Arc 的群集的支持处于公开预览状态，但在 Azure 政府中不可用。
 
 <sup><a name="footnote5" /></a>5</sup> 需要 Azure Defender for Kubernetes。
 
@@ -304,23 +304,36 @@ Azure Defender for IoT 使你可以通过在所有 IoT/OT 设备上提供全面�
 | [本地设备发现和清单](../../defender-for-iot/how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md) | GA | GA |
 | [漏洞管理](../../defender-for-iot/how-to-create-risk-assessment-reports.md) | GA | GA |
 | [通过 IoT 和 OT 行为分析进行威胁检测](../../defender-for-iot/how-to-work-with-alerts-on-your-sensor.md) | GA | GA |
-| [自动威胁情报更新](../../defender-for-iot/how-to-work-with-threat-intelligence-packages.md) | GA | GA |
+| [手动和自动威胁情报更新](../../defender-for-iot/how-to-work-with-threat-intelligence-packages.md) | GA | GA |
 | 通过 SIEM、SOAR 和 XDR 统一 IT 和 OT 安全性 |  |  |
-| - [转发警报信息](../../defender-for-iot/how-to-forward-alert-information-to-partners.md) | GA | GA |
-| - [使用 Azure Defender for IoT 配置 Sentinel](../../defender-for-iot/how-to-configure-with-sentinel.md) | 公共预览版 | 不可用 |
-| - [SOC 系统](../../defender-for-iot/integration-splunk.md) | GA | GA |
-| - [票证系统和 CMDB（立即服务）](../../defender-for-iot/integration-servicenow.md) | GA | GA |
-| - [传感器预配](../../defender-for-iot/how-to-manage-sensors-on-the-cloud.md) | GA | GA |
+| [Active Directory](../../defender-for-iot/organizations/how-to-create-and-manage-users.md#integrate-with-active-directory-servers) | GA | GA |
+| [ArcSight](../../defender-for-iot/organizations/how-to-accelerate-alert-incident-response.md#accelerate-incident-workflows-by-using-alert-groups) | GA | GA |
+| [ClearPass（警报和清单）](../../defender-for-iot/organizations/how-to-install-software.md#attach-a-span-virtual-interface-to-the-virtual-switch) | GA | GA |
+| [CyberArk PSM](../../defender-for-iot/organizations/concept-key-concepts.md#integrations) | GA | GA |
+| [电子邮件](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#email-address-action) | GA | GA |
+| [FortiGate](../../defender-for-iot/organizations/tutorial-fortinet.md) | GA | GA |
+| [FortiSIEM](../../defender-for-iot/organizations/tutorial-fortinet.md) | GA | GA |
+| [Microsoft Sentinel](../../defender-for-iot/organizations/how-to-configure-with-sentinel.md) | 公共预览版 | 公共预览版 |
+| [NetWitness](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#netwitness-action) | GA | GA |
+| [Palo Alto NGFW](../../defender-for-iot/organizations/tutorial-palo-alto.md) | GA | GA |
+| [Palo Alto Panorama](../../defender-for-iot/organizations/tutorial-palo-alto.md) | GA | GA |
+| [ServiceNow（警报和清单）](../../defender-for-iot/organizations/tutorial-servicenow.md) | GA | GA |
+| [SNMP MIB 监视](../../defender-for-iot/organizations/how-to-set-up-snmp-mib-monitoring.md) | GA | GA |
+| [Splunk](../../defender-for-iot/organizations/tutorial-splunk.md) | GA | GA |
+| [SYSLOG 服务器（CEF 格式）](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#syslog-server-actions) | GA | GA |
+| [SYSLOG 服务器（LEEF 格式）](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#syslog-server-actions) | GA | GA |
+| [SYSLOG 服务器（对象）](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#syslog-server-actions) | GA | GA |
+| [SYSLOG 服务器（文本消息）](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#syslog-server-actions) | GA | GA |
+| [Web 回调 (Webhook)](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#webhook-server-action) | GA | GA |
 
 ### <a name="for-device-builders"></a>对于设备构建者
 
 | 功能 | Azure | Azure Government |
 |--|--|--|
 | [适用于 Azure RTOS 的微代理](../../defender-for-iot/iot-security-azure-rtos.md) | GA | GA |
-| - [使用 Azure Defender for IoT 配置 Sentinel](../../defender-for-iot/how-to-configure-with-sentinel.md) | GA | 不可用 |
+| [使用 Azure Defender for IoT 配置 Sentinel](../../defender-for-iot/how-to-configure-with-sentinel.md) | 公共预览版 | 公共预览版 |
 | **适用于 Linux 的独立微代理概述** |  |  |
-| - [独立微代理概述](../../defender-for-iot/concept-standalone-micro-agent-overview.md) | 公共预览版 | 公共预览版 |
-| - [独立代理二进制安装](../../defender-for-iot/quickstart-standalone-agent-binary-installation.md) | 公共预览版 | 公共预览版 |
+| [独立代理二进制安装](../../defender-for-iot/quickstart-standalone-agent-binary-installation.md) | 公共预览版 | 公共预览版 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: fa656b974a89924a2ce029a7c5e38b4d9f68f6b7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1a4c872e5df50e2874053ad460cb50ecfabfeed9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440082"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713379"
 ---
 # <a name="enable-vm-insights-overview"></a>启用 VM 见解概述
 

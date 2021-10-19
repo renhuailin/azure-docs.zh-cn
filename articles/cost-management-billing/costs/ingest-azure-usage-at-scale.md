@@ -1,23 +1,23 @@
 ---
-title: 使用导出功能定期检索大型成本数据集
-description: 本文帮助你使用 Azure 成本管理中的导出功能定期导出大量数据。
+title: 通过 Azure 成本管理的导出项来定期检索高成本的数据集
+description: 本文帮助你使用成本管理中的导出功能定期导出大量数据。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/08/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 465225341bdffc984ac6cbc82ba94eb656ad60df
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a27e64e7b5c94d033529c08ea02e757ba8857549
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102509618"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705848"
 ---
 # <a name="retrieve-large-cost-datasets-recurringly-with-exports"></a>使用导出功能定期检索大型成本数据集
 
-本文帮助你使用 Azure 成本管理中的导出功能定期导出大量数据。 建议通过导出的方式来检索未聚合的成本数据。 特别是当使用情况文件太大而无法使用“使用情况详细信息 API”可靠地调用和下载时。 导出的数据置于你所选择的 Azure 存储帐户中。 因此，可以将其加载到你自己的系统中，并按需对其进行分析。 若要在 Azure 门户中配置导出，请参阅[导出数据](tutorial-export-acm-data.md)。
+本文帮助你使用成本管理中的导出功能定期导出大量数据。 建议通过导出的方式来检索未聚合的成本数据。 特别是当使用情况文件太大而无法使用“使用情况详细信息 API”可靠地调用和下载时。 导出的数据置于你所选择的 Azure 存储帐户中。 因此，可以将其加载到你自己的系统中，并按需对其进行分析。 若要在 Azure 门户中配置导出，请参阅[导出数据](tutorial-export-acm-data.md)。
 
 如果要在不同范围自动执行导出，可以首先了解下一部分的示例 API 请求。 可以使用导出 API 创建自动导出，作为常规环境配置的一部分。 自动导出有助于确保你拥有所需的数据。 扩展 Azure 用途时，可以在自己组织的系统中使用。
 
@@ -79,7 +79,7 @@ ms.locfileid: "102509618"
 
 ## <a name="copy-large-azure-storage-blobs"></a>复制大型 Azure 存储 Blob
 
-可以使用成本管理在 Azure 存储帐户中计划以 Blob 形式导出 Azure 使用情况详细信息。 生成的 Blob 大小可能超过数 GB。 Azure 成本管理团队已与 Azure 存储团队协作测试了大型 Azure 存储 Blob 的复制。 以下部分说明了这些结果。 将存储 Blob 从一个 Azure 区域复制到另一个 Azure 区域预期会产生类似的结果。
+可以使用成本管理在 Azure 存储帐户中计划以 Blob 形式导出 Azure 使用情况详细信息。 生成的 Blob 大小可能超过数 GB。 成本管理团队已与 Azure 存储团队协作测试了大型 Azure 存储 Blob 的复制。 以下部分说明了这些结果。 将存储 Blob 从一个 Azure 区域复制到另一个 Azure 区域预期会产生类似的结果。
 
 为了测试复制性能，该团队已将位于“美国西部”区域的存储帐户中的 Blob 传输到同一区域和其他区域。 该团队测得的速度为：在同一区域中复制速度为每秒 2 GB，复制到“东南亚”区域中存储帐户的速度为每秒 150 MB。
 

@@ -9,12 +9,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sashan, moslake
 ms.date: 05/18/2021
-ms.openlocfilehash: 16782538918c0477b969f95b7730b38221f97f82
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 2fa7a60b4f0cbc7e72304c1b01444bf9a9f6a842
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111414755"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667623"
 ---
 # <a name="azure-sql-managed-instance---compute-hardware-in-the-vcore-service-tier"></a>Azure SQL 托管实例 - vCore 服务层级中的计算硬件
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,9 +35,9 @@ vCore 购买模型中的服务层级选项包括“常规用途”和“业务�
 |**用例**|**常规用途**|**业务关键**|
 |---|---|---|
 |最适用于|大多数业务工作负荷。 提供预算导向的、均衡且可缩放的计算和存储选项。 |它使用多个独立副本为商业应用程序提供最高级别的故障恢复能力，并提供最高的 I/O 性能。|
-|存储|使用远程存储。 32 GB - 8 TB |使用本地 SSD 存储。 32 GB - 4 TB |
+|存储|使用远程存储。 32 GB - 8 TB </br> 16 TB（预览版）取决于内核数量，仅限 Gen5 |使用本地 SSD 存储。 32 GB - 4 TB |
 |IOPS 和吞吐量（近似值）|请参阅 [Azure SQL 托管实例资源限制概述](../managed-instance/resource-limits.md#service-tier-characteristics)。|请参阅 [Azure SQL 托管实例资源限制概述](../managed-instance/resource-limits.md#service-tier-characteristics)。|
-|可用性|1 个副本，无读取缩放副本|3 个副本，1 个[读取缩放副本](../database/read-scale-out.md)，<br/>区域冗余高可用性 (HA)|
+|可用性|1 个副本，无读取缩放副本|总共 4 个副本，1 个[读取缩放副本](../database/read-scale-out.md)，<br/> 2 个高可用性副本 (HA)|
 |备份|[读取访问异地冗余存储 (RA-GRS)](../../storage/common/geo-redundant-design.md)，1-35 天（默认为 7 天）|[RA-GRS](../../storage/common/geo-redundant-design.md)，1-35 天（默认为 7 天）|
 |内存中|不支持|支持|
 ||||

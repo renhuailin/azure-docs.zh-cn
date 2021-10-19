@@ -1,5 +1,6 @@
 ---
-title: 使用 F5 VPN 实现 Azure AD 安全混合访问 | Microsoft Docs
+title: 使用 F5 VPN 保护混合访问
+titleSuffix: Azure AD
 description: 关于将 Azure Active Directory 单一登录 (SSO) 与 F5 BIG-IP 集成以实现无密码 VPN 的教程
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 10/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: 34175414cd5203438de76a94de7896e3bf175355
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 068fe4e98b3beb3f365cd16070fd134fda7c48b9
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744165"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617732"
 ---
-# <a name="tutorial-for-azure-active-directory-single-sign-on-integration-with-f5-big-ip-for-password-less-vpn"></a>关于将 Azure Active Directory 单一登录与 F5 BIG-IP 集成以实现无密码 VPN 的教程
+# <a name="integrate-f5-big-ip-for-password-less-vpn-with-azure-active-directory"></a>将 F5 BIG-IP for Password-less VPN 与 Azure Active Directory 集成
 
 在本教程中，了解如何将 F5 基于 BIG-IP 的安全套接字层虚拟专用网 (SSL-VPN) 解决方案与 Azure Active Directory (AD) 集成，以实现安全混合访问 (SHA)。
 
@@ -85,13 +86,13 @@ ms.locfileid: "121744165"
 
 3. 在“设置 SAML 单一登录”菜单上，选择“基本 SAML 配置”的笔形图标以提供以下详细信息：
 
-   - 将预定义的“标识符 URL”替换为 BIG-IP 已发布服务的 URL。 例如，`https://ssl-vpn.contoso.com`
+   - 将预定义的“标识符 URL”替换为 BIG-IP 已发布服务的 URL。 例如： `https://ssl-vpn.contoso.com`
 
-   - 对“回复 URL”文本框（包括 SAML 终结点路径）执行相同的操作。 例如，`https://ssl-vpn.contoso.com/saml/sp/profile/post/acs`
+   - 对“回复 URL”文本框（包括 SAML 终结点路径）执行相同的操作。 例如： `https://ssl-vpn.contoso.com/saml/sp/profile/post/acs`
 
    - 仅在此配置中，应用程序会在 IDP 发起的模式下运行，在该模式下，Azure AD 会先向用户颁发 SAML 断言，然后再重定向到 BIG-IP SAML 服务。 对于不支持 IDP 发起模式的应用，请为 BIG-IP SAML 服务指定“登录 URL”。 例如 `https://ssl-vpn.contoso.com`。
 
-   - 对于“注销 URL”，输入将要发布的服务的主机头设为前缀的 BIG-IP APM 单一注销 (SLO) 终结点。 例如，`https://ssl-vpn.contoso.com/saml/sp/profile/redirect/slr`
+   - 对于“注销 URL”，输入将要发布的服务的主机头设为前缀的 BIG-IP APM 单一注销 (SLO) 终结点。 例如： `https://ssl-vpn.contoso.com/saml/sp/profile/redirect/slr`
 
    提供 SLO URL 可确保用户注销后，在 BIG-IP 和 Azure AD 这两端同时终止用户会话。BIG-IP APM 还提供一个[选项](https://support.f5.com/csp/article/K12056)，用于在调用特定的应用程序 URL 时终止所有会话。
 
@@ -300,7 +301,7 @@ F5 [文档](https://techdocs.f5.com/kb/en-us/bigip-edge-apps.html)提供有关�
 
 - [密码身份验证的时代已结束，请改用无密码方式](https://www.microsoft.com/security/business/identity/passwordless)
 
-- [什么是条件访问？](../conditional-access/overview.md)
+- [What is Conditional Access?](../conditional-access/overview.md)（什么是条件访问？）
 
 - [用于实现远程办公的 Microsoft 零信任框架](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)
 

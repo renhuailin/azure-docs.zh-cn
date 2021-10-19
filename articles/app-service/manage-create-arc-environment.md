@@ -3,14 +3,14 @@ title: 为 Azure Arc 设置应用服务、Functions 和逻辑应用
 description: 对于启用了 Azure Arc 的 Kubernetes 群集，请了解如何启用应用服务应用、函数应用和逻辑应用。
 ms.topic: article
 ms.date: 08/17/2021
-ms.openlocfilehash: 7fbdae7b5e8b3bda94c1f1ddbb2a70720596d1fd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f0594458f65fbd14bc50540148d5ea68d15fbdbd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639026"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707125"
 ---
-# <a name="set-up-an-azure-arc-enabled-kubernetes-cluster-to-run-app-service-functions-and-logic-apps-preview"></a>设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、函数和逻辑应用（预览）
+# <a name="set-up-an-azure-arc-enabled-kubernetes-cluster-to-run-app-service-functions-and-logic-apps-preview"></a>设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、Functions 和逻辑应用（预览版）
 
 如果有[启用了 Azure Arc 的 Kubernetes 群集](../azure-arc/kubernetes/overview.md)，可使用它创建[启用了应用服务的自定义位置](overview-arc-integration.md)，并部署 Web 应用、函数应用和逻辑应用。
 

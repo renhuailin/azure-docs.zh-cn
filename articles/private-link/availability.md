@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: aaa013a25e9131ec55f002db089de0d353f13f7c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 175b940995ed4e68e1358989e8c9b09c201f3ce4
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128585759"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711809"
 ---
 # <a name="azure-private-link-availability"></a>Azure 专用链接可用性
 
@@ -39,6 +39,7 @@ ms.locfileid: "128585759"
 |Azure 事件中心 | 所有公共区域<br/>所有政府区域      |   | GA   <br/> [了解如何为 Azure 事件中心创建专用终结点。](../event-hubs/private-link-service.md)  |
 | Azure Monitor <br/>（Log Analytics 和 Application Insights） | 所有公共区域      |  | GA   <br/> [了解如何为 AAzure Monitor 创建专用终结点。](../azure-monitor/logs/private-link-security.md)   |
 |Azure 数据工厂 | 所有公共区域<br/> 所有政府区域<br/>所有中国区域    | 凭据需要存储在某个 Azure 密钥保管库中| GA   <br/> [了解如何为 Azure 数据工厂创建专用终结点。](../data-factory/data-factory-private-link.md)   |
+|Azure HDInsight | 所有公共区域<br/>所有政府区域      |   | GA   <br/> [了解如何为 Azure HDInsight 创建专用终结点。](../hdinsight/hdinsight-private-link.md)  |
 
 ### <a name="compute"></a>计算
 
