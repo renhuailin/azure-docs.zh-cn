@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: tutorial
 ms.date: 05/18/2021
-ms.openlocfilehash: d70100acae25913a3cbee5bf688c954c2bb072d3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 85e652a5619ebbdae8503f77cb4699ec95848906
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638950"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619440"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>映射数据流视频教程
 
@@ -175,6 +175,8 @@ ms.locfileid: "122638950"
 [检测源数据更改](http://youtu.be/CaxIlI7oXfI?hd=1)
 
 [泛型类型 2 渐变维度](http://youtu.be/tc283k8CWh8)
+
+[在源中不存在时删除目标中的行](https://www.youtube.com/watch?v=9i7qf1vczUw)
 
 ## <a name="data-flow-expressions"></a>数据流表达式
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: a2c4cce492c48ebe6e09ad142f97bc6377a8a5e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 851c717ad313c32137235704f7cbdca9544d2605
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94334591"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129716125"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box 的布线选项
 
@@ -117,7 +117,7 @@ ms.locfileid: "94334591"
 
 在开始之前，请确保：
 
-- 如果希望连接 DATA 1，则必须有 RJ45 电缆。
+- 有一根 RJ45 数据线（用于连接 DATA 3）。
 - 对于每个要连接的 10-GbE 数据端口，请使用 10-GbE SFP+ 双绞线铜缆。
 - 一个或多个运行[支持的 OS](data-box-system-requirements.md#supported-operating-systems-for-clients) 的数据源。 这些数据源可以位于不同的网络（例如 1 GbE 或 10-GbE 网络）中。
 

@@ -14,14 +14,14 @@ ms.author: davidmu
 ms.reviewer: saumadan
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c44d2a346dcd77352715b63937e5bad5274f2d1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b3d1ccac8fa8ac0deddb8a581c583779b1fb2386
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738866"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611793"
 ---
-# <a name="advanced-certificate-signing-options-in-a-saml-token"></a>SAML 令牌中的高级证书签名选项
+# <a name="advanced-certificate-signing-options-in-a-saml-token-in-azure-active-directory"></a>Azure Active Directory 中的 SAML 令牌中的高级证书签名选项
 
 Azure Active Directory (Azure AD) 目前支持 Azure Active Directory 应用库中的数千个预先集成应用程序。 超过 500 个应用程序通过使用 [安全断言标记语言](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML) 2.0 协议（如 [NetSuite](https://azuremarketplace.microsoft.com/marketplace/apps/aad.netsuite) 应用程序）支持单一登录。 当用户通过 Azure AD 使用 SAML 对应用程序进行身份验证时，Azure AD 会将令牌发送到应用程序（通过 HTTP POST）。 然后，应用程序验证并使用该令牌来登录用户账号，而不是提示输入用户名和密码。 这些 SAML 令牌已使用 Azure AD 中生成的唯一证书根据特定的标准算法签名。
 

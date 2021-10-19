@@ -1,5 +1,5 @@
 ---
-title: 功能概述
+title: 功能说明
 titleSuffix: Azure Cognitive Search
 description: 了解 Azure 认知搜索的功能类别。
 manager: nitinme
@@ -7,17 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: f25f67839c0bf859e020859db60027d9a5b2db91
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.date: 10/06/2021
+ms.openlocfilehash: 714dc6ac27f466c98e5c74bc16a9cfa3c5cd30cf
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114729132"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620272"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure 认知搜索的功能
 
-Azure 认知搜索提供了全文搜索引擎、持久的搜索索引存储、在编制索引期间用来提取更多文本和结构的集成 AI，以及 API 和工具。 下表按类别汇总了功能。 若要详细了解认知搜索与其他搜索技术的对比情况，请参阅[什么是 Azure 认知搜索？](search-what-is-azure-search.md)。
+Azure 认知搜索提供了全文搜索引擎、持久的搜索索引存储、在编制索引期间用来提取更多文本和结构的集成 AI，以及 API 和工具。 
+
+下表按类别汇总了功能。 若要详细了解认知搜索与其他搜索技术的对比情况，请参阅[搜索选项](search-what-is-azure-search.md#compare-search-options)。
 
 ## <a name="indexing-features"></a>索引编制功能
 

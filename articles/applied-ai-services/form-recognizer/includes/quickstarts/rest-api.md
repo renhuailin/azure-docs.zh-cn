@@ -8,12 +8,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 6c768f18aa8e58ee82519a1b42c078685db25b0e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 48d8747883bfb3d47368d96cc2d4e52d07c599d9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652495"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715444"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -38,7 +38,7 @@ ms.locfileid: "128652495"
 * 收据图像的 URL。 在本快速入门中，可以使用[示例图像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg)。
 * 名片图像的 URL。 在本快速入门中，可以使用[示例图像](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/business_cards/business-card-english.jpg)。
 * 发票图像的 URL。 在本快速入门中，可使用[示例文档](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf)。
-* 身份证文档图像的 URL。 可以使用一个[示例图像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg)
+* ID 文档图像的 URL。 可以使用一个[示例图像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg)
 
 ## <a name="analyze-layout"></a>分析布局
 
@@ -970,7 +970,7 @@ curl -v -X GET "https://{endpoint}/formrecognizer/v2.1/prebuilt/invoice/analyzeR
 
 ## <a name="analyze-identity-id-documents"></a>分析身份证 (ID) 文档
 
-若要开始分析标识文档，请使用下面的 cURL 命令。 有关标识文档分析的详细信息，请参阅[标识文档概念指南](../../concept-identification-cards.md)。 若要开始分析身份证文档，请使用以下 cURL 命令调用[分析 ID 文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707) API。 运行该命令之前，请进行以下更改：
+若要开始分析标识文档，请使用下面的 cURL 命令。 有关 ID 文档分析的详细信息，请参阅[ID 文档概念指南](../../concept-identification-cards.md)。 若要开始分析 ID 文档，请使用以下 cURL 命令调用[分析 ID 文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707) API。 运行该命令之前，请进行以下更改：
 
 1. 将 `{endpoint}` 替换为从表单识别器订阅中获取的终结点。
 1. 将 `{your ID document URL}` 替换为回执图像的 URL 地址。
@@ -979,7 +979,7 @@ curl -v -X GET "https://{endpoint}/formrecognizer/v2.1/prebuilt/invoice/analyzeR
 #### <a name="request"></a>请求
 
 ```bash
-curl -i -X POST "https://{endpoint}/formrecognizer/v2.1/prebuilt/idDocument/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your identity document URL}'}"
+curl -i -X POST "https://{endpoint}/formrecognizer/v2.1/prebuilt/idDocument/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your ID document URL}'}"
 ```
 
 #### <a name="operation-location"></a>Operation-Location
@@ -1012,10 +1012,10 @@ curl -X GET "https://{endpoint}/formrecognizer/v2.1/prebuilt/businessCard/analyz
 
 你将收到包含 JSON 输出的 `200 (Success)` 响应。 第一个字段 `"status"` 指示操作的状态。 如果操作未完成，`"status"` 的值将为 `"running"` 或 `"notStarted"`，你应当采用手动方式或通过脚本再次调用该 API，直到接收到 `succeeded` 值。 我们建议两次调用间隔一秒或更长时间。
 
-* `"readResults"` 字段包含从标识文档中提取的每行文本。
+* `"readResults"` 字段包含从 ID 文档提取的每行文本。
 * `"documentResults"` 字段包含对象数组，每个对象表示在输入文档中检测到的 ID 文档。
 
-下面是一个示例标识文档及其相应的 JSON 输出
+下面是一个示例 ID 文档及其相应的 JSON 输出
 
 * :::image type="content" source="https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg" alt-text="驾照示例":::
 
@@ -1572,7 +1572,7 @@ curl -v -X DELETE "https://{endpoint}/formrecognizer/v2.1/custom/models/{modelId
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已使用表单识别器 REST API 以不同的方式训练模型和分析表单。 接下来，请浏览参考文档来深入了解表单识别器 API。
+在本快速入门中，你使用表单识别器 REST API 以不同的方式分析了表单。 接下来，请浏览参考文档来深入了解表单识别器 API。
 
 > [!div class="nextstepaction"]
 > [REST API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)

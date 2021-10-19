@@ -3,16 +3,94 @@ title: Azure Monitor 文档中的新增内容
 description: Azure Monitor 文档中的新增内容
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: ff893ade0664df13c8e849957cb7d7877d91a910
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f6827ac33585a22eabd31cc79126f9fe0e6c56f8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124788413"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713775"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中的新增内容
 
 本文列出了对 Azure Monitor 文档的重大更改。
+
+## <a name="september-2021"></a>2021 年 9 月
+### <a name="general"></a>常规
+
+**更新的文章**
+
+- [使用 Azure Policy 大规模部署 Azure Monitor](deploy-scale.md)
+- [Azure 监视器合作伙伴集成](partners.md)
+- [用于 Azure Monitor 的资源管理器模板示例](resource-manager-samples.md)
+- [Azure Monitor 中的角色、权限和安全性](roles-permissions-security.md)
+- [在 Azure Monitor 中监视使用情况和估算成本](usage-estimated-costs.md)
+- [可视化 Azure Monitor 中的数据](visualizations.md)
+### <a name="agents"></a>代理
+
+**更新的文章**
+
+- [Azure Monitor 代理概述](agents/azure-monitor-agent-overview.md)
+
+### <a name="application-insights"></a>Application Insights
+
+**新文章**
+
+- [为 Azure 应用服务和 ASP.NET 进行应用程序监视](app/azure-web-apps-net.md)
+- [Azure 应用服务的应用程序监视和 Java](app/azure-web-apps-java.md)
+- [为 Azure 应用服务和 ASP.NET Core 进行应用程序监视](app/azure-web-apps-net-core.md)
+- [Azure 应用服务的应用程序监视和 Node.js](app/azure-web-apps-nodejs.md)
+
+**更新的文章**
+
+- [为 Azure 应用服务和 ASP.NET 进行应用程序监视](app/azure-web-apps-net.md)
+- [Application Insights SDK 中的筛选和预处理遥测](app/api-filtering-sampling.md)
+- [Microsoft.ApplicationInsights.SnapshotCollector 的发行说明](app/snapshot-collector-release-notes.md)
+- [什么是 Azure Monitor 应用程序洞察自动检测？](app/codeless-overview.md)
+- [Azure 应用服务的应用程序监视概述](app/azure-web-apps.md)
+
+### <a name="containers"></a>容器
+
+**更新的文章**
+
+- [启用容器见解](containers/container-insights-onboard.md)
+
+### <a name="essentials"></a>Essentials
+
+**更新的文章**
+
+- [Azure Monitor 支持的指标](essentials/metrics-supported.md)
+- [Azure 资源日志支持的类别](essentials/resource-logs-categories.md)
+- [Azure 活动日志](essentials/activity-log.md)
+- [Azure 监视 REST API 演练](essentials/rest-api-walkthrough.md)
+
+
+### <a name="insights"></a>洞察力
+
+**新文章**
+
+- [使用 Azure CLI 管理 Application Insights 组件](insights/azure-cli-application-insights-component.md)
+
+**更新的文章**
+
+- [Azure 数据资源管理器数据分析](insights/data-explorer.md)
+- [Azure Monitor 中的代理运行状况解决方案](insights/solution-agenthealth.md)
+- [Azure Monitor 中的监视解决方案](insights/solutions.md)
+- [通过 SQL 见解监视 SQL 部署（预览版）](insights/sql-insights-overview.md)
+- [排查 SQL 见解（预览版）问题](insights/sql-insights-troubleshoot.md)
+
+### <a name="logs"></a>日志
+
+**新文章**
+
+- [用于 Azure Monitor 中的 Log Analytics 群集的资源管理器模板示例](logs/resource-manager-cluster.md)
+
+**更新的文章**
+
+- [配置专用链接](logs/private-link-configure.md)
+- [Azure Monitor 客户管理的密钥](logs/customer-managed-keys.md)
+- [Azure Monitor 日志专用群集](logs/logs-dedicated-clusters.md)
+- [Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）](logs/logs-data-export.md)
+- [使用 Azure 门户将 Log Analytics 工作区移到另一个区域](logs/move-workspace-region.md)
 
 ## <a name="august-2021"></a>2021 年 8 月
 

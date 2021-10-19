@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: security
 author: nabhishek
 ms.author: abnarain
-ms.openlocfilehash: 285b4c4fb9fae46ed7549352a93553b15a518e36
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 2138c1947fd6d068bfc4d171595cf818ecf5dd77
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419303"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708056"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure 数据工厂的角色和权限
 
@@ -27,6 +27,10 @@ ms.locfileid: "122419303"
 
 若要为数据工厂创建和管理子资源（包括数据集、链接服务、管道、触发器和集成运行时），以下要求适用：
 - 若要在 Azure 门户中创建和管理子资源，你必须属于“资源组”级别或更高级别的“数据工厂参与者”角色 。
+  
+  > [!NOTE]
+  > 如果已在资源组级别或更高级别分配了“参与者”角色，则不需要“数据工厂参与者”角色  。 [参与者角色](../role-based-access-control/built-in-roles.md#contributor)是一个超集角色，它包含授予“[数据工厂参与者角色](../role-based-access-control/built-in-roles.md#data-factory-contributor)”的所有权限。
+
 - 若要使用 PowerShell 或 SDK 创建和管理子资源，资源级别或更高级别的 **参与者** 角色已足够。
 
 有关如何将用户添加到角色的示例说明，请参阅[添加角色](../cost-management-billing/manage/add-change-subscription-administrator.md)一文。

@@ -3,29 +3,30 @@ title: 快速入门：Azure Blob 存储库 v12 - .NET
 description: 本快速入门介绍如何使用适用于 .NET 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 Blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
 author: normesta
 ms.author: normesta
-ms.date: 03/03/2021
+ms.date: 10/06/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c71a362c7e8e3073929967abce4bcdc4566b8ce9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f695d344401598256d89dee83a69b886768e2774
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652901"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659576"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12
 
 适用于 .NET 的 Azure Blob 存储客户端库 v12 入门。 Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
 
-使用适用于 .NET 的 Azure Blob 存储客户端库 v12 完成以下操作：
+本快速入门中的示例显示如何使用适用于 .NET 的 Azure Blob 存储客户端库 v12 来完成以下操作：
 
-- 创建容器
-- 将 blob 上传到 Azure 存储
-- 列出容器中所有的 blob
-- 将 blob 下载到本地计算机
-- 删除容器
+- [获取连接字符串](#get-the-connection-string)
+- [创建容器](#create-a-container)
+- [将 Blob 上传到容器中](#upload-a-blob-to-a-container)
+- [列出容器中的 Blob](#list-blobs-in-a-container)
+- [下载 Blob](#download-a-blob)
+- [删除容器](#delete-a-container)
 
 其他资源：
 
@@ -109,14 +110,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 ## <a name="code-examples"></a>代码示例
 
-这些示例代码片段演示如何使用适用于 .NET 的 Azure Blob 存储客户端库执行以下步骤：
-
-- [获取连接字符串](#get-the-connection-string)
-- [创建容器](#create-a-container)
-- [将 blob 上传到容器中](#upload-blobs-to-a-container)
-- [列出容器中的 blob](#list-the-blobs-in-a-container)
-- [下载 blob](#download-blobs)
-- [删除容器](#delete-a-container)
+以下部分中的示例代码片段显示如何使用适用于 .NET 的 Azure Blob 存储客户端库执行基本数据操作。
 
 ### <a name="get-the-connection-string"></a>获取连接字符串
 
@@ -139,7 +133,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_CreateContainer":::
 
-### <a name="upload-blobs-to-a-container"></a>将 blob 上传到容器中
+### <a name="upload-a-blob-to-a-container"></a>将 Blob 上传到容器中
 
 以下代码片段：
 
@@ -151,7 +145,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_UploadBlobs":::
 
-### <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
+### <a name="list-blobs-in-a-container"></a>列出容器中的 Blob
 
 通过调用 [GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) 方法，列出容器中的 blob。 在这种情况下，只向容器添加了一个 blob，因此列表操作只返回那个 blob。
 
@@ -159,7 +153,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_ListBlobs":::
 
-### <a name="download-blobs"></a>下载 Blob
+### <a name="download-a-blob"></a>下载 blob
 
 通过调用 [DownloadToAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) 方法，下载以前创建的 blob。 示例代码将向文件名添加后缀“DOWNLOADED”，这样你就可以在本地文件系统中看到这两个文件。
 

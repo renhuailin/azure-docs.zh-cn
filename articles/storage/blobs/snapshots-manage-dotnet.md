@@ -10,12 +10,12 @@ ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cf0a84d97a291850b6e89164befce8e4da2308b3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a9a7c822d6a88d9108a3d933ac3b8321eb856f05
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477665"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855396"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中创建和管理 blob 快照
 
@@ -32,7 +32,7 @@ ms.locfileid: "110477665"
 - [CreateSnapshot](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.createsnapshot)
 - [CreateSnapshotAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.createsnapshotasync)
 
-以下代码示例演示如何在版本 12.x 中创建快照。 包含对 [Azure.Identity](https://www.nuget.org/packages/azure.identity) 库的引用，以使用 Azure AD 凭据授权对服务的请求。
+以下代码示例演示如何在版本 12.x 中创建快照。 包含对 [Azure.Identity](https://www.nuget.org/packages/azure.identity) 库的引用，以使用 Azure AD 凭据授权对服务的请求。 若要详细了解如何使用 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 类来授权托管标识访问 Azure 存储，请参阅[适用于 .NET 的 Azure 标识客户端库](/dotnet/api/overview/azure/identity-readme)。
 
 ```csharp
 private static async Task CreateBlockBlobSnapshot(string accountName, string containerName, string blobName, Stream data)

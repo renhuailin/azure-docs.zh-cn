@@ -1,6 +1,7 @@
 ---
-title: 计划 Azure Active Directory 我的应用配置
+title: 计划“我的应用”配置
 description: 在组织中有效使用“我的应用”的计划指南。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/02/2021
 ms.author: davidmu
 ms.reviewer: lenalepa
-ms.openlocfilehash: 6d77f3d93ad3b69f6cc8842e8a320221e533c4c7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: eb85784ff37e78557a510c1b09f5656294d50696
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791472"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615821"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>计划 Azure Active Directory 我的应用配置
 

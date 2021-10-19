@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 2404d8af682f119b68c78d6dc5cacc3d30201c17
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 61253ab7360253e1c6902b6a7b38c9fb53faa3eb
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397094"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611741"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>将应用服务或 Azure Functions 应用配置为使用 Azure AD 登录
 
@@ -26,7 +26,7 @@ ms.locfileid: "122397094"
 > [!NOTE]
 > 用于创建新注册的选项不适用于政府云。 可以[单独定义注册](#advanced)。
 
-## <a name="create-a-new-app-registration-automatically"></a><a name="express"></a>自动创建新的应用注册
+## <a name="option-1-create-a-new-app-registration-automatically"></a><a name="express"> </a>选项 1：自动创建新的应用注册
 
 此选项旨在使身份验证的启用变得简单，只需单击几下鼠标即可。
 
@@ -47,7 +47,7 @@ ms.locfileid: "122397094"
 
 有关为访问 Azure 存储和 Microsoft Graph 的 Web 应用配置 Azure AD 登录的示例，请参阅[此教程](scenario-secure-app-authentication-app-service.md)。
 
-## <a name="use-an-existing-registration-created-separately"></a><a name="advanced"></a>使用单独创建的现有注册
+## <a name="option-2-use-an-existing-registration-created-separately"></a><a name="advanced"> </a>选项 2：使用单独创建的现有注册
 
 你也可以为 Microsoft 标识平台手动注册应用程序，并通过注册详细信息自定义注册和配置应用服务身份验证。 例如，如果你要使用的应用注册来自其他 Azure AD 租户，而不是你的应用程序所在的租户，则此选项很有用。
 
@@ -116,11 +116,11 @@ ms.locfileid: "122397094"
 
 1. 在 [Azure 门户]中，选择“Active Directory” > “应用注册” > “新建注册”。
 1. 在“注册应用”页上的“名称”中，输入应用注册的名称。
-1. 在“重定向 URI”中选择“公共客户端(移动和桌面)”，然后键入 URL `<app-url>/.auth/login/aad/callback`。  例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback` 。
+1. 在“重定向 URI”中选择“公共客户端(移动和桌面)”，然后键入 URL `<app-url>/.auth/login/aad/callback`。  例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback`。
 
     > [!NOTE]
     > 对于Microsoft Store 应用程序，请改用[包 SID](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid) 作为 URI。
-1. 选择“创建”  。
+1. 选择“创建”。
 1. 创建应用注册后，复制“应用程序(客户端) ID”的值。
 1. 选择“API 权限” > “添加权限” > “我的 API”。  
 1. 选择前面为应用服务应用创建的应用注册。 如果未看到该应用注册，请确保在 [在 Azure AD 中为应用服务应用创建应用注册](#register)部分已添加 **user_impersonation** 范围。

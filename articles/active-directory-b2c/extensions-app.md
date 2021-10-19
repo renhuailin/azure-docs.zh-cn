@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dc536fa4292d794e8d89a2564ad10a3c10dd0a3d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 044ea1f160fb2e8e5f119a9046ef6989440e346c
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94560848"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728544"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C：扩展应用
 
@@ -36,11 +36,11 @@ ms.locfileid: "94560848"
 
 如果将此 b2c-extensions-app 意外删除，则你有 30 天的时间可以恢复它。 可以使用 Graph API 还原此应用：
 
-1. 浏览到 [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/)。
+1. 浏览到 [https://developer.microsoft.com/en-us/graph/graph-explorer](https://developer.microsoft.com/en-us/graph/graph-explorer)。
 1. 以要还原的已删除应用所在的 Azure AD B2C 目录的全局管理员身份登录到此网站。 此全局管理员必须具有类似于以下形式的电子邮件地址：`username@{yourTenant}.onmicrosoft.com`。
-1. 对 URL `https://graph.windows.net/myorganization/deletedApplications` 发出 HTTP GET，其中 api-version=1.6。 此操作将列出过去 30 天内删除的所有应用程序。
+1. 对 URL `https://graph.microsoft.com/beta/directory/deleteditems/microsoft.graph.application` 发出 HTTP GET。 此操作将列出过去 30 天内删除的所有应用程序。
 1. 在列表中找到名称以“b2c-extensions-app”开头的应用程序，并复制其 `objectid` 属性值。
-1. 对 URL `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore` 发出 HTTP POST。 将此 URL 的 `{OBJECTID}` 部分替换为之前步骤中的 `objectid`。
+1. 对 URL `https://graph.microsoft.com/beta/directory/deleteditems/{id}/restore` 发出 HTTP POST。 将此 URL 的 `{id}` 部分替换为之前步骤中的 `objectid`。
 
 现在应该可以在 Azure 门户中[查看还原的应用](#verifying-that-the-extensions-app-is-present)。
 

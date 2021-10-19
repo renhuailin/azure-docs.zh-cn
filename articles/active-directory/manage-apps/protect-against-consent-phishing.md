@@ -1,5 +1,6 @@
 ---
-title: 防范同意钓鱼 | Azure AD 应用管理
+title: 防范同意钓鱼
+titleSuffix: Azure AD
 description: 了解如何使用 Azure AD 缓解基于应用的同意钓鱼攻击。
 services: active-directory
 author: Chrispine-Chiedo
@@ -12,14 +13,14 @@ ms.date: 08/09/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: tilarso
-ms.openlocfilehash: 6d2a6afe4555bc9324241616ae6c22494216a146
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dc860dce0f75648488ff692a0024a850bf4c76ad
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791434"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615688"
 ---
-# <a name="protecting-against-consent-phishing"></a>防范同意钓鱼
+# <a name="protecting-against-consent-phishing-in-azure-active-directory"></a>防范 Azure Active Directory 中的同意钓鱼
 
 工作效率不再局限于专用网络，并且工作已急剧转向云服务。 虽然使用云应用程序可以使员工通过远程方式保证工作效率，但攻击者还可以使用基于应用程序的攻击来获取重要的组织数据。 你可能熟悉以用户为中心的攻击，如电子邮件钓鱼或凭据泄露。 同意钓鱼是另一个需要注意的威胁媒介。
 本文介绍什么是同意钓鱼，Microsoft 采取哪些措施来保护你的安全，以及组织可以执行哪些步骤来保持安全。

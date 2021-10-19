@@ -3,19 +3,19 @@ title: 快速入门：在自定义容器中创建基于 Azure Arc 的函数应�
 description: 通过在自定义 Linux 容器中部署第一个函数应用，开始在 Azure Arc 上使用 Azure Functions。
 ms.topic: quickstart
 ms.date: 05/11/2021
-ms.openlocfilehash: 48940e70e1678e4426efb34e40b3b16b742e4f5c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a22907387a647ca46a5784661324d3f6edcc3594
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746739"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706931"
 ---
 # <a name="create-your-first-function-on-azure-arc-using-a-custom-container-preview"></a>使用自定义容器创建第一个基于 Azure Arc 的函数（预览版）
 
 在本快速入门中，你将创建一个在自定义容器中运行的 Azure Functions 项目，并从 Docker Hub 帐户将其部署到[支持 Azure Arc 的 Kubernetes 群集](../azure-arc/kubernetes/overview.md)。 若要了解详细信息，请参阅 [Azure Arc 上的应用服务、Functions 和逻辑应用](../app-service/overview-arc-integration.md)。此方案仅支持在 Linux 上运行的函数应用。   
 
 > [!NOTE]
-> 对在支持 Arc 的 Kubernetes 群集上运行函数的支持目前处于预览阶段。  
+> 现支持在已启用 Azure Arc 的 Kubernetes 群集上运行函数 - 该项支持现为预览版。  
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -223,7 +223,7 @@ az functionapp config appsettings set --name <app_name> --resource-group AzureFu
 
 ## <a name="next-steps"></a>后续步骤
 
-你的函数应用已在支持 Arc 的应用服务 Kubernetes 环境的容器中运行，现在可以通过添加队列存储输出绑定来将其连接到 Azure 存储。
+既然你的函数应用在容器中运行已启用 Azure Arc 的应用服务 Kubernetes 环境，你可通过添加队列存储输出绑定来将其连接到 Azure 存储。
 
 # <a name="c"></a>[C\#](#tab/csharp)  
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: 442400754d4c103a4f26724ff2ca731c8ae5250f
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 0781d627052eaef14583739bba612d6c56aca56c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178547"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715798"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
 
@@ -83,14 +83,14 @@ Linux 和 Windows 的代理不只是用于连接到 Azure Monitor。 其他服�
 
 ### <a name="windows-virtual-machine-on-premises-or-in-another-cloud"></a>本地或其他云中的 Windows 虚拟机
 
-- 使用[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来部署和管理 Log Analytics VM 扩展。
+- 使用[已启用 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来部署和管理 Log Analytics VM 扩展。
 - 从命令行[手动安装](../agents/agent-windows.md)代理。
 - 使用 [Azure Automation DSC](../agents/agent-windows.md#install-agent-using-dsc-in-azure-automation) 自动执行安装。
 - [配合 Azure Stack 使用资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win)
 
 ### <a name="linux-virtual-machine-on-premises-or-in-another-cloud"></a>本地或其他云中的 Linux 虚拟机
 
-- 使用[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来部署和管理 Log Analytics VM 扩展。
+- 使用[已启用 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来部署和管理 Log Analytics VM 扩展。
 - 通过调用 GitHub 上托管的包装器脚本来[手动安装](../vm/monitor-virtual-machine.md)该代理。
 - 将 [System Center Operations Manager](./om-agents.md) 与 Azure Monitor 集成，以便从向管理组报告的 Windows 计算机转发收集的数据。
 

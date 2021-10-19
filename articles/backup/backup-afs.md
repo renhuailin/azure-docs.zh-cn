@@ -2,13 +2,13 @@
 title: 在 Azure 门户中备份 Azure 文件共享
 description: 了解如何使用 Azure 门户在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
-ms.date: 05/07/2021
-ms.openlocfilehash: 807a173112d0bb85c008403028ab76000a3096db
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/08/2021
+ms.openlocfilehash: 8e50cee7e177375fae41ef6fb3a27f871427342c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427956"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714399"
 ---
 # <a name="back-up-azure-file-shares"></a>备份 Azure 文件共享
 
@@ -85,9 +85,9 @@ ms.locfileid: "129427956"
 
          ![创建新策略](./media/backup-afs/create-new-policy.png)
 
-      1. 此时会在右侧打开“备份策略”上下文窗格。 在文本框中指定策略名称，并根据需要选择保持期。 默认情况下，只启用每日保留选项。 如果希望每周、每月或每年保留，请选择相应的复选框，并提供所需的保留值。
+      1. 按照[创建新策略](manage-afs-backup.md#create-a-new-policy)部分中的步骤 3-7 进行操作。
 
-      1. 指定保留值和有效策略名称后，请选择“确定”。<br>
+      1. 定义策略的所有属性后，单击“确定”。
 
          ![提供策略名称和保留值](./media/backup-afs/policy-name.png)
 
@@ -147,9 +147,9 @@ ms.locfileid: "129427956"
 
          1. 选择“新建策略”链接文本。
 
-         2. 此时会在右侧打开“备份策略”上下文窗格。 在文本框中指定策略名称，并根据需要选择保持期。 默认情况下，只启用每日保留选项。 如果希望每周、每月或每年保留，请选择相应的复选框，并提供所需的保留值。
+         2. 按照[创建新策略](manage-afs-backup.md#create-a-new-policy)部分中的步骤 3-7 进行操作。
 
-         3. 指定保留值和有效策略名称后，请选择“确定”。
+         3. 定义策略的所有属性后，单击“确定”。
 
             ![创建新的备份策略](./media/backup-afs/create-new-backup-policy.png)
 

@@ -3,18 +3,18 @@ title: 了解和使用 Azure 成本管理范围
 description: 本文帮助你了解 Azure 中提供的计费和资源管理范围，以及如何在成本管理和 API 中使用范围。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/05/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 67d8ef5bf6960ca03d8d2d36efbe4461e1124190
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 55c2d19ee2e80915cc1c4393aa5a25326a5e9d0e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695248"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711274"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
@@ -68,7 +68,7 @@ Azure 支持用于资源管理的三个范围。 每个范围支持管理访问�
 
 成本管理参与者是建议的最低特权角色。 此角色允许创建和管理预算和导出，以便更有效地监视和报告成本。 成本管理参与者还可能需要其他角色才能支持复杂的成本管理方案。 请考虑下列情形：
 
-- **报告资源使用情况** - Azure 成本管理在 Azure 门户中显示成本。 它包括使用情况，因为它与完整使用模式的成本有关。 此报表还可以显示 API 和下载费用，但你可能还想要深入了解 Azure Monitor 中的详细使用情况指标，以便更深入理解前者。 请考虑针对还需要报告详细使用指标的任何适用范围授予[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)权限。
+- **报告资源使用情况** - 成本管理会在 Azure 门户中显示成本。 它包括使用情况，因为它与完整使用模式的成本有关。 此报表还可以显示 API 和下载费用，但你可能还想要深入了解 Azure Monitor 中的详细使用情况指标，以便更深入理解前者。 请考虑针对还需要报告详细使用指标的任何适用范围授予[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)权限。
 - **超出预算时采取措施** - 成本管理参与者还需要拥有创建和管理操作组的权限才能自动对超额问题做出反应。 请考虑将[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)授予某个资源组，该资源组包含超出预算阈值时要使用的操作组。 自动执行特定的操作需要所用特定服务（例如自动化和 Azure Functions）的其他角色。
 - **计划成本数据导出** – 成本管理参与者还需要以下访问权限：管理存储帐户，以计划通过导出将数据复制到存储帐户。 请考虑将[存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)授予某个资源组，该资源组包含要将成本数据导出到的存储帐户。
 - **查看成本节省建议** – 默认情况下，成本管理读取者和成本管理参与者拥有查看成本建议的访问权限。 但是，需要访问各个资源才能获得处理成本建议的访问权限。 若要处理基于成本的建议，请考虑授予[服务特定的角色](../../role-based-access-control/built-in-roles.md#all)。
@@ -267,7 +267,7 @@ Azure 订阅嵌套在发票科目下，就如同嵌套在 EA 注册帐户下一�
 
 只有具有“全局管理员”和“管理员代理”角色的用户才能直接在合作伙伴的 Azure 租户中管理和查看计费帐户、计费配置文件与客户的成本。  有关合作伙伴中心角色的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。
 
-仅当 CSP 合作伙伴客户签署了 Microsoft 客户协议时，Azure 成本管理才支持这些客户。 对于 CSP 支持的但尚未签署 Microsoft 客户协议的客户，请参阅[合作伙伴中心](/azure/cloud-solution-provider/overview/partner-center-overview)。
+仅当 CSP 合作伙伴客户签署了 Microsoft 客户协议时，成本管理才支持这些客户。 对于 CSP 支持的但尚未签署 Microsoft 客户协议的客户，请参阅[合作伙伴中心](/azure/cloud-solution-provider/overview/partner-center-overview)。
 
 成本管理不支持 CSP 范围中的管理组。 如果你有 CSP 订阅，并在成本分析中将范围设置为管理组，则会看到如下错误：
 

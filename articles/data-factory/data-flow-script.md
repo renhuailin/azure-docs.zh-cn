@@ -8,12 +8,12 @@ ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/22/2021
-ms.openlocfilehash: 73fe862475b866e625d4bf2bdce3c044b6dcc87b
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: b599fbd2d41eacceed29d0d72432809507d3a7bc
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061573"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707988"
 ---
 # <a name="data-flow-script-dfs"></a>数据流脚本 (DFS)
 
@@ -103,7 +103,7 @@ deriveTransformationName sink(allowSchemaDrift: true,
 ```
 
 ## <a name="dfs-fundamentals"></a>DFS 基础知识
-DFS 由一系列连接的转换组成，其中包括源、接收器，以及各种其他转换（可添加新列、筛选数据、联接数据以及执行其他操作）。 通常情况下，脚本以一个或多个源开始，后跟许多转换，以一个或多个接收器结束。
+DFS 由一系列连接的转换组成，其中包括源、接收器，以及各种其他转换（可添加新列、筛选数据、联接数据以及执行其他操作）。 通常，脚本以一个或多个源开头，后跟多个转换，并以一个或多个接收器结束。
 
 所有源都具有相同的基本构造：
 ```

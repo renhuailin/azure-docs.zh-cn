@@ -5,13 +5,13 @@ author: ekpgh
 ms.author: v-erkel
 ms.service: fxt-edge-filer
 ms.topic: tutorial
-ms.date: 06/20/2019
-ms.openlocfilehash: 8d349a0faa2cfc97f029e496b9bd92b1e5057018
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 10/07/2021
+ms.openlocfilehash: c723214962e67ef04f9cf7659f63d29af87a4732
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867496"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670038"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>教程：配置群集的网络设置
 
@@ -102,42 +102,46 @@ FXT Edge Filer 群集使用 X.509 证书执行以下功能：
 
 ### <a name="round-robin-dns-configuration-details"></a>轮循 DNS 配置详细信息
 
-当客户端访问群集时，RRDNS 会自动在所有可用接口之间平衡其请求。
+循环 DNS (RRDNS) 系统将自动在多个地址之间路由客户端请求。
 
-为获得最佳性能，请配置 DNS 服务器以处理面向客户端的群集地址，如下图所示。
+要设置此系统，需要自定义 DNS 服务器的配置文件，使其在收到对 FXT Edge Filer 主域地址的装载请求时，在所有群集的装入点之间分配流量。 客户端使用其域名作为服务器参数来装载群集，并自动路由到下一个装载 IP。
 
-左侧显示群集虚拟服务器，IP 地址显示在右侧中间。 如图所示，使用 A 记录和指针配置每个客户端接入点。
+配置 RRDNS 有两个主要步骤：
 
-:::image type="complex" source="media/fxt-cluster-config/fxt-rrdns-diagram.png" alt-text="显示群集轮循机制 DNS 配置的关系图。":::
-   <关系图显示了三类元素之间的连接：单个 vserver（左侧）、三个 IP 地址（中间列）和三个客户端接口（右侧列）。 左侧标记为“vserver1”的单个圆圈通过箭头连接，箭头指向标有 IP 地址 10.0.0.10、10.0.0.11 和 10.0.0.12 的三个圆圈。 从 vserver 圆圈到三个 IP 圆圈的箭头具有标题“A”。 每个 IP 地址圆圈都通过两个箭头连接到标记为客户端接口的圆圈 - IP 为 10.0.0.10 的圆圈连接到“vs1-client-IP-10”，IP 为“10.0.0.11”的圆圈连接到“vs1-client-IP-11”，IP 为 10.0.0.12 的圆圈连接到“vs1-client-IP-11”。 IP 地址圆圈和客户端接口圆圈之间的连接是两个箭头：一个箭头标记为“PTR”，从 IP 地址圆圈指向客户端接口圆圈，另一个箭头标记为“A”，从客户端接口圆圈指向 IP 地址圆圈。>:::image-end:::
+1. 修改 DNS 服务器的 ``named.conf`` 文件，以设置对 FXT 群集的查询的循环顺序。 此选项会导致服务器循环使用所有可用 IP 值。 添加如下语句：
 
-每个面向客户端的 IP 地址必须具有唯一的名称供群集内部使用。 （在此图中，为了清楚起见，将客户端 IP 命名为 vs1-client-IP- *，但在生产中，应使用更简洁的名称，如 client*。）
+   ```bash
+   options {
+       rrset-order {
+           class IN A name "fxt.contoso.com" order cyclic;
+       };
+   };
+   ```
 
-客户端使用 vserver 名称作为服务器参数来装载群集。
+1. 为每个可用 IP 地址配置 A 记录和指针 (PTR) 记录，如下例所示。
 
-修改 DNS 服务器的 ``named.conf`` 文件，以设置查询到 vserver 的循环顺序。 此选项可确保循环显示所有可用值。 添加如下语句：
+   这些 ``nsupdate`` 命令提供了一个示例，演示如何为具有域名 fxt.contoso.com 和三个装载地址（10.0.0.10、10.0.0.11 和 10.0.0.12）的 Azure FXT Edge Filer 群集正确配置 DNS：
 
-```
-options {
-    rrset-order {
-        class IN A name "vserver1.example.com" order cyclic;
-    };
-};
-```
+   ```bash
+   update add fxt.contoso.com. 86400 A 10.0.0.10
+   update add fxt.contoso.com. 86400 A 10.0.0.11
+   update add fxt.contoso.com. 86400 A 10.0.0.12
+   update add client-IP-10.contoso.com. 86400 A 10.0.0.10
+   update add client-IP-11.contoso.com. 86400 A 10.0.0.11
+   update add client-IP-12.contoso.com. 86400 A 10.0.0.12
+   update add 10.0.0.10.in-addr.arpa. 86400 PTR client-IP-10.contoso.com
+   update add 11.0.0.10.in-addr.arpa. 86400 PTR client-IP-11.contoso.com
+   update add 12.0.0.10.in-addr.arpa. 86400 PTR client-IP-12.contoso.com
+   ```
 
-以下 ``nsupdate`` 命令提供了正确配置 DNS 的示例：
+   这些命令为每个群集的装载地址创建一个 A 记录，并设置指针记录以适当支持反向 DNS 检查。
 
-```
-update add vserver1.example.com. 86400 A 10.0.0.10
-update add vserver1.example.com. 86400 A 10.0.0.11
-update add vserver1.example.com. 86400 A 10.0.0.12
-update add vs1-client-IP-10.example.com. 86400 A 10.0.0.10
-update add vs1-client-IP-11.example.com. 86400 A 10.0.0.11
-update add vs1-client-IP-12.example.com. 86400 A 10.0.0.12
-update add 10.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-10.example.com
-update add 11.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-11.example.com
-update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
-```
+   下图显示了此配置的基本结构。
+
+   :::image type="complex" source="media/round-robin-dns-diagram-fxt.png" alt-text="显示客户端装载点 DNS 配置的关系图。":::
+   <该关系图显示了三类元素之间的连接：单个 FXT Edge Filer 群集域名（左侧）、三个 IP 地址（中间列）和三个内部使用反向 DNS 客户端接口（右侧列）。 左侧标记为“fxt.contoso.com”的单个椭圆通过箭头连接，箭头指向标有 IP 地址 10.0.0.10、10.0.0.11 和 10.0.0.12 的三个椭圆。 从 fxt.contoso.com 椭圆到三个 IP 椭圆的箭头标记为“A”。 每个 IP 地址椭圆都通过两个箭头连接到标记为客户端接口的椭圆 - IP 为 10.0.0.10 的椭圆连接到“client-IP-10.contoso.com”，IP 为“10.0.0.11”的椭圆连接到“client-IP-11.contoso.com”，IP 为 10.0.0.12 的椭圆连接到“client-IP-11.contoso.com”。 IP 地址椭圆和客户端接口椭圆之间的连接是两个箭头：一个箭头标记为“PTR”，从 IP 地址椭圆指向客户端接口椭圆，另一个箭头标记为“A”，从客户端接口椭圆指向 IP 地址椭圆。>:::image-end:::
+
+配置完 RRDNS 系统后，告知你的客户端计算机使用该系统来解析其装载命令中的 FXT 群集地址。
 
 ### <a name="enable-dns-in-the-cluster"></a>在群集中启用 DNS
 

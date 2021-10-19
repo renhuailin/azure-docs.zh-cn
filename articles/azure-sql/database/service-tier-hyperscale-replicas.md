@@ -9,12 +9,12 @@ author: yorek
 ms.author: damauri
 ms.reviewer: ''
 ms.date: 9/24/2021
-ms.openlocfilehash: e2785f965cdbb94af081e937f0b2290578c04796
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 38dd0f42b8c318d94c266b4837f2b67eda1f9ed9
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129059523"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667851"
 ---
 # <a name="hyperscale-secondary-replicas"></a>“超大规模”次要副本
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -62,6 +62,11 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 - 具有自身的服务级别目标，该目标可以独立于主要副本进行设置和更改;
 - 最多支持 30 个命名副本（对于每个主要副本而言）;
 - 支持通过在托管命名副本的逻辑服务器上创建不同的登录名，对每个命名副本使用不同的身份验证和授权方法。
+
+因此对于只读工作负载而言，命名副本与 HA 副本相比有诸多优势：
+
+- 如果主副本纵向扩展或纵向缩减，连接到命名副本的用户不会断开连接；同时连接到主副本的用户将不受命名副本纵向扩展或纵向缩减的影响
+-   在任何副本（主副本或命名副本）上运行的工作负载不受在其他副本上运行的长期运行的查询影响
 
 命名副本的主要目标是支持大规模的 OLTP [读取扩展](read-scale-out.md)场景，并改进混合事务和分析处理 (HTAP) 工作负载。 下面提供了有关如何创建此类解决方案的示例：
 

@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure AD 配置组所有者对应用访问组数据的同意
+title: 配置组所有者对应用访问组数据的同意
+titleSuffix: Azure AD
 description: 了解如何管理组和团队所有者是否同意应用程序访问组或团队的数据。
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 94c3280731f40839f462632fedaa30ebc916466e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0613875ad8ecfb12590ac7c2ec51924c0523162d
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754189"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619759"
 ---
-# <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>配置组所有者对应用访问组数据的同意
+# <a name="configure-group-owner-consent-to-applications-in-azure-active-directory"></a>在 Azure Active Directory 中配置组所有者对应用程序的同意
 
 组和团队所有者可授权应用程序（如第三方供应商发布的应用程序）访问你的组织中与组关联的数据。 例如，Microsoft Teams 中的团队所有者可允许应用读取团队中的所有 Teams 消息，或允许列出组成员的基本个人资料。 若要了解详细信息，请参阅 [Microsoft Teams 中的资源特定同意](/microsoftteams/resource-specific-consent)。
 
@@ -29,7 +30,7 @@ ms.locfileid: "124754189"
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 全局管理员角色。
-- 安装 Azure AD PowerShell。 请参阅 [Azure AD PowerShell](/powershell/azure/)
+- 设置 Azure AD PowerShell。 请参阅 [Azure AD PowerShell](/powershell/azure/)
 
 ## <a name="manage-group-owner-consent-to-apps"></a>管理组所有者对应用的同意
 

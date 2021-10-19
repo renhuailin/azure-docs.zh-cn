@@ -1,5 +1,6 @@
 ---
-title: 配合 F5 的 Azure AD 安全混合访问部署指南 | Microsoft Docs
+title: 使用 F5 部署指南保护混合访问
+titleSuffix: Azure AD
 description: 在 Azure IaaS 中部署 F5 BIG-IP 虚拟版本 (VE) VM 以实现安全混合访问的教程
 services: active-directory
 author: davidmu1
@@ -13,14 +14,14 @@ ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.reviewer: miccohen
-ms.openlocfilehash: f33e9a8207e3b8e6986999b7ea19aedbcb19b4da
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2bc309ed4d4fcfcc205ff3b464d23769d1e2182c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749210"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611850"
 ---
-# <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>关于在 Azure IaaS 中部署 F5 BIG-IP 虚拟版 VM 以实现安全混合访问的教程
+# <a name="deploy-an-f5-big-ip-virtual-edition-vm-to-azure-active-directory"></a>将 F5 BIG-IP Virtual Edition VM 部署到 Azure Active Directory
 
 本教程将指导你完成在 Azure IaaS 中部署 BIG-IP 虚拟版本 (VE) 的端到端过程。 在完成本教程后，你应该会获得：
 
@@ -214,7 +215,7 @@ VM 部署和基本系统配置会需要大约 30 分钟，然后，你的 BIG-IP
 
 6. 请使用以下详细信息来创建第一个 DNS 别名记录：
 
- | 字段 | 值 |
+ | 字段 | Value |
  |:-------|:-----------|
  |订阅| 与 BIG-IP-VM 相同的订阅|
  |DNS 区域| 对已发布网站将使用的已验证域后缀而言具有权威性的 DNS 区域，例如， www.contoso.com |
@@ -331,7 +332,7 @@ BIG-IP 系统必须先激活并预配 APM 模块，然后才能配置该系统�
 
 6. 从左侧导航栏中转到“系统” > “配置” > “设备” > “NTP”   
 
-7. 指定可靠的 NTP 源，并选择“添加”，然后选择“更新” 。 例如，`time.windows.com`
+7. 指定可靠的 NTP 源，并选择“添加”，然后选择“更新” 。 例如： `time.windows.com`
 
 你现在需要 DNS 记录，以将前面步骤中指定的 BIG-IP FQDN 解析到其主专用 IP。 应将一条记录添加到你的环境的内部 DNS，或添加到将用于连接到 BIG-IP 的 Web 配置的 PC 的 localhost 文件中。无论采用哪种方式，在直接连接到 Web 配置时，都不会再出现浏览器警告。 也就是说，不通过应用程序代理或任何其他反向代理。
 

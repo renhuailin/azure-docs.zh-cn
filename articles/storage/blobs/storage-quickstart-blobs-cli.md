@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure CLI 创建 blob
+title: 快速入门：上传、下载和列出 Blob - Azure CLI
 titleSuffix: Azure Storage
 description: 在本快速入门中，你将了解如何使用 Azure CLI 将 blob 上传到 Azure 存储、下载 blob 以及在容器中列出 blob。
 services: storage
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 68797d8b158e7ff56d609f0d59c174b72277e98b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8f4726088a49bfe5da7fdea088df76da3356162e
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128674578"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616543"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入门：使用 Azure CLI 创建、下载和列出 blob
 

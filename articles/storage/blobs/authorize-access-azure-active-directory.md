@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: aefbd7c64ba243166a2122426a31f8a3996dd97d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: fe6397b79ff37074342b40880aa5284e020cd8a1
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361357"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859164"
 ---
 # <a name="authorize-access-to-blobs-using-azure-active-directory"></a>使用 Azure Active Directory 授权访问 Blob
 
@@ -30,7 +30,7 @@ Blob 存储还支持创建通过 Azure AD 凭据签名的共享访问签名 (SAS
 
 当某个安全主体（用户、组或应用程序）尝试访问 Blob 资源时，除非该 Blob 可供匿名访问，否则必须为请求授权。 使用 Azure AD 是，访问资源的过程包括两个步骤。 首先，验证安全主体的身份并返回 OAuth 2.0 令牌。 接下来，将该令牌作为请求的一部分传递给 Blob 服务，服务将使用它来授权访问指定的资源。
 
-身份验证步骤要求应用程序在运行时请求 OAuth 2.0 访问令牌。 如果应用程序在 Azure 实体（如 Azure VM、虚拟机规模集或 Azure Functions 应用）中运行，则可以使用[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)访问 Blob 数据。 若要了解如何授权托管标识向 Azure Blob 服务发出的请求，请参阅[使用 Azure Active Directory 和 Azure 资源的托管标识授权访问 Blob](../common/storage-auth-aad-msi.md)。
+身份验证步骤要求应用程序在运行时请求 OAuth 2.0 访问令牌。 如果应用程序在 Azure 实体（如 Azure VM、虚拟机规模集或 Azure Functions 应用）中运行，则可以使用[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)访问 Blob 数据。 若要了解如何授权托管标识向 Azure Blob 服务发出的请求，请参阅[使用 Azure 资源的托管标识授权访问 Blob 数据](authorize-managed-identity.md)。
 
 授权步骤要求将一个或多个 Azure 角色分配给安全主体。 Azure 存储提供包含用于 Blob 数据的通用权限集的 Azure 角色。 分配给安全主体的角色确定了该主体拥有的权限。 若要详细了解如何分配 Azure 角色用于访问 Blob，请参阅[分配用于访问 Blob 数据的 Azure 角色](../blobs/assign-azure-role-data-access.md)。
 
@@ -103,7 +103,7 @@ Azure CLI 和 PowerShell 支持使用 Azure AD 凭据登录。 登录后，会�
 
 ## <a name="feature-support"></a>功能支持
 
-下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。
+此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
 
 | 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|

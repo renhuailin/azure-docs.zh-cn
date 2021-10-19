@@ -3,19 +3,19 @@ title: 快速入门：在 Azure Arc 上创建函数应用
 description: 通过部署第一个函数应用，开始在 Azure Arc 上使用 Azure Functions。
 ms.topic: quickstart
 ms.date: 05/10/2021
-ms.openlocfilehash: 3a9c92e500e79b68688ec526baa2a77b8df2ccef
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4fd5a7a2792e6e90748c60336d92d5ed80388267
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723013"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706992"
 ---
 # <a name="create-your-first-function-on-azure-arc-preview"></a>在 Azure Arc 上创建第一个函数（预览版）
 
 在本快速入门中，你将创建一个 Azure Functions 项目，并将其部署到在[支持 Azure Arc 的 Kubernetes 群集](../azure-arc/kubernetes/overview.md)上运行的函数应用。 若要了解详细信息，请参阅 [Azure Arc 上的应用服务、Functions 和逻辑应用](../app-service/overview-arc-integration.md)。此方案仅支持在 Linux 上运行的函数应用。   
 
 > [!NOTE]
-> 对在支持 Arc 的 Kubernetes 群集上运行函数的支持目前处于预览阶段。  
+> 现支持在已启用 Azure Arc 的 Kubernetes 群集上运行函数 - 该项支持现为预览版。  
 >  
 > 目前不支持将 PowerShell 函数项目发布到支持 Azure Arc 的 Kubernetes 群集。 如果需要将 PowerShell 函数部署到支持 Azure Arc 的 Kubernetes 群集，请[在容器中创建函数应用](create-first-function-arc-custom-container.md)。 
 
@@ -164,7 +164,7 @@ func azure functionapp list-functions
 
 ## <a name="next-steps"></a>后续步骤
 
-你的函数应用已在支持 Arc 的应用服务 Kubernetes 环境的容器中运行，现在可以通过添加队列存储输出绑定来将其连接到 Azure 存储。
+既然你的函数应用在容器中运行已启用 Azure Arc 的应用服务 Kubernetes 环境，你可通过添加队列存储输出绑定来将其连接到 Azure 存储。
 
 # <a name="c"></a>[C\#](#tab/csharp)  
 

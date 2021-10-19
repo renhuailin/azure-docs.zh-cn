@@ -1,5 +1,6 @@
 ---
-title: 查看使用 Azure Active Directory 租户进行标识管理的应用
+title: 查看使用租户进行标识管理的应用
+titleSuffix: Azure AD
 description: 了解如何查看使用 Azure Active Directory 租户进行标识管理的所有应用程序。
 services: active-directory
 author: davidmu1
@@ -11,14 +12,14 @@ ms.topic: reference
 ms.date: 01/07/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 3f106a7153f9fd61c289516d129e31c9239b97fd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a2030df0bd70781f299ee7db60df0e3ae49b8568
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738872"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620709"
 ---
-# <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>查看使用 Azure AD 租户进行标识管理的应用
+# <a name="viewing-apps-using-your-azure-active-directory-tenant-for-identity-management"></a>查看使用 Azure Active Directory 租户进行标识管理的应用
 
 [应用程序管理快速入门系列](view-applications-portal.md)介绍了基础知识。 其中介绍了如何查看使用 Azure AD 租户进行标识管理的所有应用。 本文将更深入地介绍你会找到的应用类型。
 
@@ -33,7 +34,7 @@ ms.locfileid: "121738872"
   - **应用程序代理应用程序** - 要从外部向其提供单一登录且在本地环境中运行的应用程序
 - 注册或登录与 Azure Active Directory 集成的第三方应用程序时。 [Smartsheet](https://app.smartsheet.com/b/home) 或 [DocuSign](https://www.docusign.net/member/MemberLogin.aspx) 就是一个示例。
 - Microsoft 应用，如 Microsoft 365。
-- 使用 Azure 资源托管标识源时。 有关详细信息，请参阅[托管标识类型](../managed-identities-azure-resources/overview.md#managed-identity-types)。
+- 使用 Azure 资源托管标识时。 有关详细信息，请参阅[托管标识类型](../managed-identities-azure-resources/overview.md#managed-identity-types)。
 - 当通过使用[应用程序注册表](../develop/quickstart-register-app.md)创建以自定义方式开发的应用程序，来添加新应用程序注册之时
 - 当通过使用 [V2.0 应用程序注册门户](../develop/quickstart-register-app.md)创建以自定义方式开发的应用程序，来添加新应用程序注册之时
 - 添加使用 Visual Studio 的 [ASP.NET 身份验证方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)或[连接的服务](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/)开发的应用程序时

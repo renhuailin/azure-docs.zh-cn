@@ -12,12 +12,12 @@ author: vladai78
 ms.author: vladiv
 ms.reviewer: mathoma, vladiv, sachinp
 ms.date: 09/28/2021
-ms.openlocfilehash: 7fba2ede931375d310b64bf7800b2adf43b2a24e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 86b823ca368223c2d789ff651fe831b76bbd5c58
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212772"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613370"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 托管实例资源限制概述
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -37,7 +37,7 @@ SQL 托管实例的某些特征和资源限制取决于底层基础结构和体�
 | **vCore 数目** | 8、16、24 个 vCore | 4、8、16、24、32、40、64、80 个 vCore |
 | **最大内存（内存/核心比）** | 每个 vCore 7 GB<br/>添加更多 vCore 以获得更多内存。 | 每个 vCore 5.1 GB<br/>添加更多 vCore 以获得更多内存。 |
 | **最大内存中 OLTP 存储** | 实例限制：每个 vCore 1 - 1.5 GB| 实例限制：每个 vCore 0.8 - 1.65 GB |
-| **最大实例保留存储** |  常规用途：8 TB<br/>业务关键：1 TB | 常规用途：8 TB<br/> 业务关键型 1 TB、2 TB 或 4 TB，具体取决于核心数 |
+| **最大实例保留存储** |  常规用途：8 TB <br/>业务关键：1 TB | 常规用途：8 TB、16 TB（预览版），具体取决于核心数<br/> 业务关键型 1 TB、2 TB 或 4 TB，具体取决于核心数 |
 
 > [!IMPORTANT]
 > - Gen4 硬件正在逐步淘汰，不能再用于新部署。 SQL 托管实例的所有新实例都必须部署在 Gen5 硬件上。
@@ -69,12 +69,12 @@ SQL 托管实例有两个服务层级：[常规用途](../database/service-tier-
 | --- | --- | --- |
 | vCore 数目\* | Gen4：8、16、24<br/>Gen5：4、8、16、24、32、40、64、80 | Gen4：8、16、24 <br/> Gen5：4、8、16、24、32、40、64、80 <br/>\*相同数量的 vCore 专用于只读查询。 |
 | 最大内存 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：20.4 GB - 408 GB (5.1GB/vCore)<br/>添加更多 vCore 以获得更多内存。 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：20.4 GB - 408 GB (5.1GB/vCore) 用于读/写查询<br/>为只读查询额外提供 20.4 GB - 408 GB (5.1GB/vCore)。<br/>添加更多 vCore 以获得更多内存。 |
-| 最大实例存储大小（预留） | - 4 个 vCore 2 TB（仅限 Gen5）<br/>- 8 TB，适用于其他大小 | Gen4：1 TB <br/> Gen5： <br/>- 1 TB，适用于 4、8、16 个 vCore<br/>- 2 TB（适用于 24 个 vCore）<br/>- 32、40、64、80 个 vCore 4 TB |
-| 最大数据库大小 | 不超过当前可用的实例大小（最大为 2 TB - 8 TB，具体取决于 vCore 数）。 | 不超过当前可用的实例大小（最大为 1 TB - 4 TB，具体取决于 vCore 数）。 |
+| 最大实例存储大小（预留） | - 4 个 vCore 2 TB（仅限 Gen5）<br/>- 8 TB，适用于其他大小 <br/>- 16 TB（预览版），适用于 16 个 vCore（仅限 Gen5） | Gen4：1 TB <br/> Gen5： <br/>- 1 TB，适用于 4、8、16 个 vCore<br/>- 2 TB（适用于 24 个 vCore）<br/>- 32、40、64、80 个 vCore 4 TB |
+| 最大数据库大小 | 最大为当前可用实例大小（最大 2 TB - 8 TB、16 TB (预览版)，具体取决于 vCore 数）。 | 不超过当前可用的实例大小（最大为 1 TB - 4 TB，具体取决于 vCore 数）。 |
 | 最大 tempDB 大小 | 限制为 24 GB/vCore (96 - 1,920 GB) 和当前可用的实例存储大小。<br/>添加更多 Vcore 以获得更多 TempDB 空间。<br/> 日志文件大小限制为 120 GB。| 不超过当前可用的实例存储大小。 |
 | 每个实例的数据库数目上限 | 提供 100 个用户数据库，除非已达到实例存储大小限制。 | 提供 100 个用户数据库，除非已达到实例存储大小限制。 |
 | 每个实例的数据库文件数上限 | 除非已达到实例存储大小或 [Azure 高级磁盘存储分配空间](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files)限制，否则最大为 280。 | 除非已达到实例存储大小限制，否则为每个数据库 32,767 个文件。 |
-| 最大数据文件大小 | 限制为当前可用的实例存储大小（最大 2 TB - 8 TB）和 [Azure 高级磁盘存储分配空间](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files)。 | 限制为当前可用的实例存储大小（最大为 1 TB - 4 TB）。 |
+| 最大数据文件大小 | 限制为当前可用的实例存储大小（最大 2 TB - 8 TB）和 [Azure 高级磁盘存储分配空间](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files)。 对于大于 8 TB 的数据库，请至少使用两个数据文件。 | 限制为当前可用的实例存储大小（最大为 1 TB - 4 TB）。 |
 | 最大日志文件大小 | 限制为 2 TB 和当前可用的实例存储大小。 | 限制为 2 TB 和当前可用的实例存储大小。 |
 | 数据/日志 IOPS（近似值） | 每个实例最多 30-40 K IOPS*，每个文件 500 - 7500<br/>\*[增加文件大小以获得更多 IOPS](#file-io-characteristics-in-general-purpose-tier)| 16 K - 320 K (4000 IOPS/vCore)<br/>添加更多 Vcore 以获得更好的 IO 性能。 |
 | 日志写入吞吐量限制（每个实例） | 3 MB/s（每个 vCore）<br/>最大为 120 MB/秒（每个实例）<br/>22 - 65 MB/秒（每个数据库）<br/>\*[增加文件大小以获得更好的 IO 性能](#file-io-characteristics-in-general-purpose-tier) | 4 MB/s（每个 vCore）<br/>最大为 96 MB/秒 |

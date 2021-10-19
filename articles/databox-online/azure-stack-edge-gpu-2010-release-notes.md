@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 651b67b95a127aeafd8e9f7efbbb167680cc372e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6f08e9c33a0e5b97e27993519b1d0f471622cb9b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460816"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705508"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>带有 GPU 的 Azure Stack Edge Pro 正式发布 (GA) 版本发行说明
 
@@ -31,7 +31,7 @@ Azure Stack Edge 2010 版中提供了以下新功能。
 
 - **存储类** - 在此版本中，可以使用存储类动态预配存储。 有关详细信息，请参阅 [Azure Stack Edge Pro GPU 设备上的 Kubernetes 存储管理](azure-stack-edge-gpu-kubernetes-storage.md#dynamicprovisioning)。 
 - **利用指标服务器的 Kubernetes 仪表板** - 在此版本中，通过指标服务器加载项添加了 Kubernetes 仪表板。 你可以使用仪表板大致了解在 Azure Stack Edge Pro 设备上运行的应用程序，查看 Kubernetes 群集资源的状态，并查看设备上发生的任何错误。 指标服务器聚合设备上的 Kubernetes 资源中的 CPU 和内存使用情况。 有关详细信息，请参阅[使用 Kubernetes 仪表板监视 Azure Stack Edge Pro GPU 设备](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)。
-- **Azure Stack Edge Pro 上已启用 Azure Arc 的 Kubernetes** - 从此版本开始，你可以通过已启用 Azure Arc 的 Kubernetes 在 Azure Stack Edge Pro 设备上部署应用程序工作负载。 Azure Arc 是一种混合管理工具，可实现在 Kubernetes 群集上部署应用程序。 有关详细信息，请参阅[在 Azure Stack Edge Pro 设备上通过 Azure Arc 部署工作负载](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)。  
+- **Azure Stack Edge Pro 上已启用 Azure Arc 的 Kubernetes** - 从此版本开始，你可通过已启用 Azure Arc 的 Kubernetes 在 Azure Stack Edge Pro 设备上部署应用程序工作负载。 Azure Arc 是一种混合管理工具，可实现在 Kubernetes 群集上部署应用程序。 有关详细信息，请参阅[在 Azure Stack Edge Pro 设备上通过 Azure Arc 部署工作负载](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)。  
 
 ## <a name="known-issues"></a>已知问题 
 
@@ -48,7 +48,7 @@ Azure Stack Edge 2010 版中提供了以下新功能。
 |**7.**|NFS 共享连接|如果将多个进程复制到相同的共享，并且未使用 `nolock` 属性，则在复制过程中可能会出现错误。|必须将 `nolock` 属性传递给 mount 命令，才能将文件复制到 NFS 共享。 例如：`C:\Users\aseuser mount -o anon \\10.1.1.211\mnt\vms Z:`。|
 |**8.**|Kubernetes 群集|在运行 kubernetes 群集的设备上应用更新时，kubernetes 虚拟机将重新启动并重新引导。 在这种情况下，更新后只会自动还原使用指定副本部署的 pod。  |如果在未指定副本集的情况下在复制控制器之外创建了单独的 pod，则设备更新后不会自动还原这些 pod。 你需要还原这些 pod。<br>系统会使用副本集替换因任何原因被删除或终止的 pod（例如节点故障或中断性节点升级）。 由此，即使你的应用程序只需要一个 pod，仍建议使用副本集。|
 |**9.**|Kubernetes 群集|只有 Helm v3 或更高版本支持 Azure Stack Edge Pro 上的 Kubernetes。 有关详细信息，请参阅[常见问题解答：删除 Tiller](https://v3.helm.sh/docs/faq/)。|
-|**10.**|已启用 Azure Arc 的 Kubernetes |对于正式发布版，启用了 Azure Arc 的 Kubernetes 已从版本 0.1.18 更新为 0.2.9。 由于 Azure Stack Edge 设备上不支持 Azure Arc 启用的 Kubernetes 更新，因此需要重新部署启用了 Azure Arc 的 Kubernetes。|按照以下步骤操作：<ol><li>[应用设备软件和 Kubernetes 更新](azure-stack-edge-gpu-install-update.md)。</li><li>连接到[设备的 PowerShell 界面](azure-stack-edge-gpu-connect-powershell-interface.md)。</li><li>删除现有的 Azure Arc 代理。 键入：`Remove-HcsKubernetesAzureArcAgent`。</li><li>[将 Azure Arc 部署到新资源](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)。 请勿使用现有的 Azure Arc 资源。</li></ol>|
+|**10.**|已启用 Azure Arc 的 Kubernetes |对于正式发布版，已启用 Azure Arc 的 Kubernetes 已从版本 0.1.18 更新为 0.2.9。 由于 Azure Stack Edge 设备上不支持已启用 Azure Arc 的 Kubernetes 更新，因此需要重新部署已启用 Azure Arc 的 Kubernetes。|按照以下步骤操作：<ol><li>[应用设备软件和 Kubernetes 更新](azure-stack-edge-gpu-install-update.md)。</li><li>连接到[设备的 PowerShell 界面](azure-stack-edge-gpu-connect-powershell-interface.md)。</li><li>删除现有的 Azure Arc 代理。 键入：`Remove-HcsKubernetesAzureArcAgent`。</li><li>[将 Azure Arc 部署到新资源](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)。 请勿使用现有的 Azure Arc 资源。</li></ol>|
 |**11.**|已启用 Azure Arc 的 Kubernetes|如果在 Azure Stack Edge Pro 设备上配置 Web 代理，则不支持 Azure Arc 部署。||
 |**12.**|Kubernetes |将端口 31000 保留给 Kubernetes 仪表板。 同样，在默认配置中，IP 地址 172.28.0.1 和 172.28.0.10 分别保留用于 Kubernetes 服务和核心 DNS 服务。|不要使用保留的 IP。|
 |**13.**|Kubernetes |Kubernetes 当前不允许多协议 LoadBalancer 服务。 例如，需要同时侦听 TCP 和 UDP 的 DNS 服务。 |若要解决 Kubernetes 与 MetalLB 的这一限制，可以在同一 pod 选择器上创建两个服务（一个用于 TCP，一个用于 UDP）。 这些服务使用相同的共享密钥和 loadBalancerIP 来共享相同的 IP 地址。 如果服务数多于可用 IP 地址，则还可以共享 IP。 <br> 有关详细信息，请参阅 [IP 地址共享](https://metallb.universe.tf/usage/#ip-address-sharing)。|

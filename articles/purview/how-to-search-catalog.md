@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/01/2021
-ms.openlocfilehash: 0473c75678631fee158cfabd33406b863971bf97
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 329213fc37edae93d3871c1a52b6d5b73f8f76ed
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455707"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659557"
 ---
 # <a name="search-the-azure-purview-data-catalog"></a>搜索 Azure Purview 数据目录
 
@@ -63,7 +63,9 @@ Purview 相关性引擎会整理所有匹配项，基于它认为对用户有用
 
 ## <a name="search-query-syntax"></a>搜索查询语法
 
-所有搜索查询都由关键字和运算符组成。 关键字是资产属性的一部分。 可能的关键字可以是分类、术语表术语、资产说明或资产名称。 关键字可以只是要匹配的属性的一部分。 使用下面列出的关键字和运算符来确保 Azure Purview 返回正在查找的资产。 
+所有搜索查询都由关键字和运算符组成。 关键字是资产属性的一部分。 可能的关键字可以是分类、术语表术语、资产说明或资产名称。 关键字可以只是要匹配的属性的一部分。 使用下面列出的关键字和运算符来确保 Azure Purview 返回正在查找的资产。
+
+某些字符（包括空格、短划线和逗号）被解释为分隔符。 搜索 `hive-database` 之类的字符串如同搜索 `hive database` 这两个关键字。 
 
 下面是可用于构成搜索查询的运算符。 可以在单个查询中根据需要多次组合运算符。
 

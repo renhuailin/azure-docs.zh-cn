@@ -1,6 +1,7 @@
 ---
-title: 向应用程序授予租户范围的管理员许可 - Azure AD
+title: 向应用程序授予租户范围的管理员许可
 description: 了解如何向应用程序授予租户范围的许可，以便在最终用户登录到该应用程序时不提示他们授予许可。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 08/21/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee3ff6fc063de5eebd4a7cc300fdc0a5ceeba560
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 439a24c0e33cf33eaa758d91f516a435a2d2cb53
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123038378"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617618"
 ---
-# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>向应用程序授予租户范围的管理员许可
+# <a name="grant-tenant-wide-admin-consent-to-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中向应用程序授予租户范围的管理员同意
 
   了解如何向应用程序授予租户范围的管理员同意。 本文提供实现此目的的不同方式。
 

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 991306a115fdfe88f9646d1c65059bfe2699cb8d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fe61b971dbe1a3a82a085228ff8723f3cf47df20
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128613254"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638448"
 ---
 本文档介绍了将用户从 Azure Active Directory (Azure AD) 自动预配和取消设置到 SQL 数据库中所需执行的步骤。  其中介绍了如何在 Azure AD ECMA 连接器主机上设置和使用通用 SQL 连接器。 
  
@@ -32,6 +32,8 @@ ms.locfileid: "128613254"
 * Oracle 10 和 11g
 * Oracle 12c 和 18c
 * MySQL 5.x
+
+注意：通用 SQL 连接器要求列名区分大小写。 MySQL 在 Linux 上区分大小写，而 Postgres 跨平台区分大小写。 因此，当前不支持它们。 
 
 ### <a name="cloud-requirements"></a>云要求
 
@@ -119,7 +121,7 @@ ms.locfileid: "128613254"
  3. 在“属性”页的文本框中填入图片下表格中的数值，选择“下一步”。 
      ![显示输入属性的屏幕截图。](.\media\active-directory-app-provisioning-sql\conn-1.png)
 
-     |属性|值|
+     |属性|Value|
      |-----|-----|
      |名称|SQL|
      |自动同步计时器（分钟）|120|

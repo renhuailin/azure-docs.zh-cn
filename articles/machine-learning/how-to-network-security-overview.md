@@ -8,15 +8,15 @@ ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/24/2021
+ms.date: 09/29/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: 1d1389b5627f18c8772a55300a89dca9d0de4917
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: c478744bc960a90d8d84d3e51bd1cd9d8bb3719e
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129423512"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657866"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>使用虚拟网络 (VNet) 保护 Azure 机器学习工作区资源
@@ -78,7 +78,7 @@ ms.locfileid: "129423512"
     | 服务 | 终结点信息 | 允许受信任的信息 |
     | ----- | ----- | ----- |
     | __Azure Key Vault__| [服务终结点](../key-vault/general/overview-vnet-service-endpoints.md)</br>[专用终结点](../key-vault/general/private-link-service.md) | [允许受信任的 Microsoft 服务绕过此防火墙](how-to-secure-workspace-vnet.md#secure-azure-key-vault) |
-    | __Azure 存储帐户__ | [服务和专用终结点](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)</br>[专用终结点](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) | [授予对受信任的 Azure 服务的访问权限](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
+    | __Azure 存储帐户__ | [服务和专用终结点](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)</br>[专用终结点](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) | [允许从 Azure 资源实例进行访问](../storage/common/storage-network-security.md#grant-access-from-azure-resource-instances-preview)</br>**or**</br>[授予对受信任的 Azure 服务的访问权限](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
     | __Azure 容器注册表__ | [专用终结点](../container-registry/container-registry-private-link.md) | [允许受信任的服务](../container-registry/allow-access-trusted-services.md) |
 
 

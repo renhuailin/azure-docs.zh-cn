@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: b1dc3b61c73894d7792835000f0e13e0bc8b412b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bbfd426c67d09ca8632c3ab665b1242d27c6ad58
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728640"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711689"
 ---
 # <a name="enable-azure-defender-for-sql-servers-on-machines"></a>启用计算机上的 Azure Defender for SQL 服务器 
 
@@ -33,7 +33,7 @@ ms.locfileid: "121728640"
 |发布状态：|正式发布版 (GA)|
 |定价：|计算机上的 Azure Defender for SQL 服务器按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中显示的定价计费|
 |受保护的 SQL 版本：|Azure SQL Server（Microsoft 支持涵盖的所有版本）|
-|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png":::Azure 政府<br>:::image type="icon" source="./media/icons/no-icon.png":::Azure 中国世纪互联|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure 政府<br>:::image type="icon" source="./media/icons/no-icon.png":::Azure 中国世纪互联|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>设置计算机上的 Azure Defender for SQL 服务器
@@ -110,7 +110,7 @@ ms.locfileid: "121728640"
 
 ### <a name="if-i-enable-this-azure-defender-plan-on-my-subscription-are-all-sql-servers-on-the-subscription-protected"></a>如果在我的订阅上启用此 Azure Defender 计划，则订阅上的所有 SQL 服务器是否均受保护？ 
 
-否。 若要在 Azure 虚拟机上保护 SQL Server 部署，或在启用了 Azure Arc 的计算机上运行 SQL Server，Azure Defender 需要以下两项内容：
+否。 若要在 Azure 虚拟机上保护 SQL Server 部署，或者在已启用 Azure Arc 的计算机上运行 SQL Server，Azure Defender 需要以下两项内容：
 
 - 计算机上的 Log Analytics 代理 
 - 相关的 Log Analytics 工作区，用于启用 Azure Defender for SQL 解决方案 

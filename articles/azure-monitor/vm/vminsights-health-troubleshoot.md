@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: a02b7d6fa5ef8369578f89a452df95a50ca34204
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 13de7b055820ac680e8b513198224bcfd6421e11
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425169"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708865"
 ---
 # <a name="troubleshoot-vm-insights-guest-health-preview"></a>VM 见解来宾运行状况疑难解答（预览）
 本文介绍了在 VM 见解运行状况出现问题时可以采取的故障排除步骤。
@@ -62,7 +62,7 @@ Exiting with the following error: "Failed to install VM Guest Health Agent: exit
 
 ### <a name="upgrade-available-message-is-still-displayed-after-upgrading-guest-health"></a>升级来宾运行状况后，仍显示升级可用信息 
 
-- 验证 VM 是否正在全局 Azure 中运行。 目前尚不支持已启用 Arc 的服务器。
+- 验证 VM 是否正在全局 Azure 中运行。 目前尚不支持已启用 Azure Arc 的服务器。
 - 验证是否如[启用用于 VM 的 Azure Monitor 来宾运行状况（预览）](vminsights-health-enable.md)中所述，支持虚拟机的区域和操作系统版本。
 - 验证是否已成功安装来宾运行状况扩展（退出代码为 0）。
 - 验证是否已成功安装 Azure Monitor 代理扩展。

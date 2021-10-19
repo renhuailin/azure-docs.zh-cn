@@ -1,5 +1,5 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: vpn-gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7205fa7095608084140f7ac6e1c3965b1296a8fe
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: bebedbcd2c36203ec122ebf597ac8a0c64fb1ae4
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122336067"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129679823"
 ---
 |VPN<br>网关 **<br>代系** |**SKU**   | **S2S/VNet 到 VNet<br>隧道** | **P2S<br> SSTP 连接** | **P2S<br> IKEv2/OpenVPN 连接** | **聚合<br>吞吐量基准** | **BGP** | **区域冗余** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
@@ -36,7 +36,7 @@ ms.locfileid: "122336067"
 
 (*) 如果需要 30 个以上 S2S VPN 隧道，请使用[虚拟 WAN](../articles/virtual-wan/virtual-wan-about.md)。
 
-* 在同一代中允许调整 VpnGw SKU 的大小，但基本 SKU 的大小调整除外。 基本 SKU 是旧版 SKU，并且具有功能限制。 若要从基本 VpnGw SKU 移到其他 VpnGw SKU，必须删除基本 SKU VPN 网关，并使用所需代系和 SKU 大小组合来创建新网关。
+* 在同一代中允许调整 VpnGw SKU 的大小，但基本 SKU 的大小调整除外。 基本 SKU 是旧版 SKU，并且具有功能限制。 若要从基本 VpnGw SKU 移到其他 VpnGw SKU，必须删除基本 SKU VPN 网关，并使用所需代系和 SKU 大小组合来创建新网关。 只能将基本网关的大小重设为另一个旧 SKU大小（请参阅[使用旧 SKU](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md)）。
 
 * 这些连接限制是独立的。 例如，在 VpnGw1 SKU 上可以有 128 个 SSTP 连接，还可以有 250 个 IKEv2 连接。
 

@@ -7,68 +7,26 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: how-to
-ms.date: 09/20/2021
+ms.topic: tutorial
+ms.date: 10/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3851f9893799902c9cdcda71db67a9152de028ec
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7e364b3ce5231370643f9c9ea730dec22ab9022a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595800"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615935"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>管理你的 Azure Active Directory B2C 租户
 
 在 Azure Active Directory B2C (Azure AD B2C) 中，租户表示使用者用户的目录。 每个 Azure AD B2C 租户都是独特的，独立于任何其他 Azure AD B2C 租户。 Azure AD B2C 租户不同于你可能已有的 Azure Active Directory 租户。 本文介绍如何管理你的 Azure AD B2C 租户。
 
-## <a name="supported-azure-ad-features"></a>支持的 Azure AD 功能
-
-Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD B2C 租户中使用。
-
-|功能  |Azure AD  | Azure AD B2C |
-|---------|---------|---------|
-| [组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) | 组可用于管理管理帐户和用户帐户。| 组可用于管理管理帐户。 [使用者帐户](user-overview.md#consumer-user)不能是任何组的成员。 |
-| [邀请外部标识来宾](../active-directory//external-identities/add-users-administrator.md)| 你可以邀请来宾用户并配置外部标识功能（如联合身份验证），以及使用 Facebook 和 Google 帐户登录。 | 你只能邀请 Microsoft 帐户或 Azure AD 用户作为来宾访问你的 Azure AD 租户，以访问应用程序或管理租户。 对于[使用者帐户](user-overview.md#consumer-user)，你可以使用 Azure AD B2C 用户流和自定义策略来管理用户，并使用外部标识提供程序（如 Google 或 Facebook）注册或登录。 |
-| [角色和管理员](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)| 完全支持管理帐户和用户帐户。 | [使用者帐户](user-overview.md#consumer-user)不支持角色。 使用者帐户无权访问任何 Azure 资源。|
-| [自定义域名](../active-directory/fundamentals/add-custom-domain.md) |  只能对管理帐户使用 Azure AD 自定义域。 | [使用者帐户](user-overview.md#consumer-user)可以使用用户名、电话号码或任何电子邮件地址登录。 可以在重定向 URL 中使用[自定义域](custom-domain.md)。|
-| [条件访问](../active-directory/conditional-access/overview.md) | 完全支持管理帐户和用户帐户。 | [使用者帐户](user-overview.md#consumer-user)支持一部分 Azure AD 条件访问功能。了解如何配置 Azure AD B2C [条件访问](conditional-access-user-flow.md)。|
-| [高级 P1](https://azure.microsoft.com/pricing/details/active-directory) | 充分支持 Azure AD 高级 P1 功能。 例如，[密码保护](../active-directory/authentication/concept-password-ban-bad.md)、[混合标识](../active-directory/hybrid/whatis-hybrid-identity.md)、[条件访问](../active-directory/roles/permissions-reference.md#)、[动态组](../active-directory/enterprise-users/groups-create-rule.md)等。 | [使用者帐户](user-overview.md#consumer-user)支持一部分 Azure AD 条件访问功能。 了解如何配置 Azure AD B2C [条件访问](conditional-access-user-flow.md)。|
-| [高级 P2](https://azure.microsoft.com/pricing/details/active-directory/) | 充分支持 Azure AD 高级 P2 功能。 例如，[标识保护](../active-directory/identity-protection/overview-identity-protection.md)和[标识治理](../active-directory/governance/identity-governance-overview.md)。  | [使用者帐户](user-overview.md#consumer-user)支持一部分 Azure AD 标识保护功能。 了解如何[使用标识保护调查风险](identity-protection-investigate-risk.md)，并配置 Azure AD B2C [条件访问](conditional-access-user-flow.md)。 |
-
-## <a name="other-azure-resources-in-your-tenant"></a>租户中的其他 Azure 资源
-
-在 Azure AD B2C 租户中，无法预配其他 Azure 资源，如虚拟机、Azure Web 应用或 Azure 功能。 必须在 Azure AD 租户中创建这些资源。
-
-## <a name="azure-ad-b2c-accounts-overview"></a>Azure AD B2C 帐户概述
-
-可以在 Azure AD B2C 租户中创建以下类型的帐户：
-
-在 Azure AD B2C 租户中，可以创建几种类型的帐户，如 [Azure Active Directory B2C 中的用户帐户概述](user-overview.md)一文中所述。
-
-- 工作帐户 - 工作帐户可以访问租户中的资源，并且通过管理员角色可以管理租户。
-- 来宾帐户 - 来宾帐户只能是一个 Microsoft 帐户或可用于访问应用程序或管理租户的 Azure Active Directory 用户。
-- **使用者帐户** - 使用者帐户由已向 Azure AD B2C 注册的应用程序的用户使用。
-
-有关这些帐户类型的详细信息，请参阅 [Azure Active Directory B2C 中的用户帐户概述](user-overview.md)。 受分派管理 Azure AD B2C 租户的任何用户都必须具有 Azure AD 用户帐户，以便他们能够访问与 Azure 相关的服务。 可以通过在 Azure AD B2C 租户中[创建帐户](#add-an-administrator-work-account)（工作帐户），或通过[邀请他们](#invite-an-administrator-guest-account)作为来宾用户访问 Azure AD B2C 租户来添加此类用户。
-
-## <a name="use-roles-to-control-resource-access"></a>使用角色控制资源访问
-
-在规划访问控制策略时，最好为用户分配访问资源所需的最低特权角色。 下表介绍了 Azure AD B2C 租户中的主要资源，以及最适合管理这些资源的用户的管理角色。
-
-|资源  |说明  |角色  |
-|---------|---------|---------|
-|[应用程序注册](tutorial-register-applications.md) | 在 Azure AD B2C 中创建和管理 Web、移动和本机应用程序注册的所有方面。|[应用程序管理员](../active-directory/roles/permissions-reference.md#application-administrator)|
-|[标识提供者](add-identity-provider.md)| 配置[本地标识提供者](identity-provider-local.md)和外部社交或企业标识提供者。 | [外部标识提供者管理员](../active-directory/roles/permissions-reference.md#external-identity-provider-administrator)|
-|[API 连接器](add-api-connector.md)| 将用户流与 Web API 集成，以自定义用户体验，并与外部系统集成。|[外部 ID 用户流管理员](../active-directory/roles/permissions-reference.md#external-id-user-flow-administrator)|
-|[公司品牌](customize-ui.md#configure-company-branding)| 自定义用户流页面。| [全局管理员](../active-directory/roles/permissions-reference.md#global-administrator)|
-|[用户属性](user-flow-custom-attributes.md)| 添加或删除适用于所有用户流的自定义属性。| [外部 ID 用户流属性管理员](../active-directory/roles/permissions-reference.md#external-id-user-flow-attribute-administrator)|
-|管理用户| 管理[使用者帐户](manage-users-portal.md)和管理帐户，如本文中所述。| [用户管理员](../active-directory/roles/permissions-reference.md#user-administrator)|
-|角色和管理员| 管理 Azure AD B2C 目录中的角色分配。 创建和管理可被分配给 Azure AD B2C 角色的组。 |[全局管理员](../active-directory/roles/permissions-reference.md#global-administrator)、[特权角色管理员](../active-directory/roles/permissions-reference.md#privileged-role-administrator)|
-|[用户流](user-flow-overview.md)|可以快速配置和启用常见标识任务，例如注册、登录和配置文件编辑。| [外部 ID 用户流管理员](../active-directory/roles/permissions-reference.md#external-id-user-flow-administrator)|
-|[自定义策略](user-flow-overview.md)| 在 Azure AD B2C 中创建、读取、更新和删除所有自定义策略。| [B2C IEF 策略管理员](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)|
-|[策略密钥](policy-keys-overview.md)|添加和管理用于签名和验证自定义策略中使用的令牌、客户端密码、证书和密码的加密密钥。|[B2C IEF 密钥集管理员](../active-directory/roles/permissions-reference.md#b2c-ief-keyset-administrator)|
+## <a name="prerequisites"></a>先决条件
+- 如果尚未创建自己的 [Azure AD B2C 租户](tutorial-create-tenant.md)，请立即创建一个。 可以使用现有的 Azure AD B2C 租户。
+- 了解 [Azure AD B2C 中的用户帐户](user-overview.md)。
+- 了解[控制资源访问的用户角色](roles-resource-access-control.md)。
 
 
 ## <a name="add-an-administrator-work-account"></a>添加管理员（工作帐户）
@@ -87,7 +45,7 @@ Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD 
    - **用户名**。 必需。 新用户的用户名。 例如，`mary@contoso.com`。
      用户名的域部分必须是初始默认域名“\<yourdomainname>.onmicrosoft.com”。
    - **组**。 （可选）可以将用户添加到一个或多个现有组。 也可以在以后将用户添加到组中。 
-   - **目录角色**：如果需要用户的 Azure AD 管理权限，则可以将其添加到 Azure AD 角色。 可以将用户分配为全局管理员，或者分配为 Azure AD 中有限的管理员角色中的一个或多个。 有关分配角色的详细信息，请参阅[使用角色控制资源访问](#use-roles-to-control-resource-access)。
+   - **目录角色**：如果需要用户的 Azure AD 管理权限，则可以将其添加到 Azure AD 角色。 可以将用户分配为全局管理员，或者分配为 Azure AD 中有限的管理员角色中的一个或多个。 有关分配角色的详细信息，请参阅[使用角色控制资源访问](roles-resource-access-control.md)。
    - **工作信息**：可在此处添加有关用户的详细信息，或者以后再添加。 
 
 1. 复制“密码”框中提供的自动生成的密码。  需将此密码提供给用户，供其在首次登录时使用。
@@ -113,7 +71,7 @@ Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD 
    - 电子邮件地址。 必需。 你要邀请的用户的电子邮件地址。 例如，`mary@contoso.com`。   
    - 个人消息：添加将包含在邀请电子邮件中的个人消息。
    - **组**。 （可选）可以将用户添加到一个或多个现有组。 也可以在以后将用户添加到组中。
-   - **目录角色**：如果需要用户的 Azure AD 管理权限，则可以将其添加到 Azure AD 角色。 可以将用户分配为全局管理员，或者分配为 Azure AD 中有限的管理员角色中的一个或多个。 有关分配角色的详细信息，请参阅[使用角色控制资源访问](#use-roles-to-control-resource-access)。
+   - **目录角色**：如果需要用户的 Azure AD 管理权限，则可以将其添加到 Azure AD 角色。 可以将用户分配为全局管理员，或者分配为 Azure AD 中有限的管理员角色中的一个或多个。 有关分配角色的详细信息，请参阅[使用角色控制资源访问](roles-resource-access-control.md)。
    - **工作信息**：可在此处添加有关用户的详细信息，或者以后再添加。
 
 1. 选择“创建”。
@@ -211,4 +169,4 @@ Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Azure 门户中创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)
+- [清理资源并删除租户](tutorial-delete-tenant.md)

@@ -16,34 +16,45 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86546995e0b5481daeff32f2fcdae61a4a69524b
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 6b37cdba3f5b95f1e6ecc6b4dab02b5c9d69f109
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112284772"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754367"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>使用 Windows Server 故障转移群集和 Azure 共享磁盘实现 SAP ASCS/SCS 实例多 SID 高可用性
 
 > ![Windows OS][Logo_Windows] Windows
->
 
 本文重点介绍如何通过使用 Azure 共享磁盘在现有 Windows Server 故障转移群集 (WSFC) 群集中安装附加的 SAP ASCS/SCS 群集实例，从单一 ASCS/SCS 安装转移到 SAP 多 SID 配置。 完成此过程后，即已配置 SAP 多 SID 群集。
 
 ## <a name="prerequisites-and-limitations"></a>先决条件和限制
 
-目前，可以使用 Azure 高级 SSD 盘作为 SAP ASCS/SCS 实例的 Azure 共享磁盘。 存在以下限制：
+目前，可以使用 Azure 高级 SSD 盘作为 SAP ASCS/SCS 实例的 Azure 共享磁盘。 目前存在以下限制：
 
--  对于 SAP 工作负载，不支持将 [Azure 超级磁盘](../../disks-types.md#ultra-disk)作为 Azure 共享磁盘。 目前，不能在可用性集中使用 Azure 超级磁盘来放置 Azure VM
--  只有可用性集中的 VM 支持带有高级 SSD 盘的 [Azure 共享磁盘](../../disks-shared.md)。 它在可用性区域部署中不受支持。 
+-  不支持将 [Azure 超级磁盘](../../disks-types.md#ultra-disk)和[标准 SSD 磁盘](../../disks-types.md#standard-ssd)用作 SAP 工作负载的 Azure 共享磁盘。
+-  可用性集和可用性区域中的 SAP 部署支持具有[高级 SSD 磁盘](../../disks-types.md#premium-ssd)的 [Azure 共享磁盘](../../disks-shared.md)。
+-  具有高级 SSD 磁盘的 Azure 共享磁盘附带两个存储 SKU。
+   - 可用性集中的部署支持高级共享磁盘 (skuName - Premium_LRS) 的本地冗余存储 (LRS)。
+   - 可用性区域中的部署支持高级共享磁盘 (skuName - Premium_ZRS) 的区域冗余存储 (ZRS)。
 -  Azure 共享磁盘值 [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) 确定可以使用共享磁盘的群集节点数。 通常，对于 SAP ASCS/SCS 实例，你将在 Windows 故障转移群集中配置两个节点，因此 `maxShares` 的值必须设置为“2”。
--  所有 SAP ASCS/SCS 群集 VM 都必须部署在同一 [Azure 邻近位置组](../../windows/proximity-placement-groups.md)中。   
-   尽管可以在没有 PPG 的情况下通过 Azure 共享磁盘在可用性集中部署 Windows 群集 VM，但 PPG 可以确保 Azure 共享磁盘与群集 VM 在物理上接近，从而降低 VM 与存储层之间的延迟。    
+-  为 SAP 系统使用 [Azure 邻近放置组](../../windows/proximity-placement-groups.md)时，共享某个磁盘的所有虚拟机必须是同一个 PPG 的一部分。
 
-有关 Azure 共享磁盘限制的更多详细信息，请仔细阅读 Azure 共享磁盘文档的[限制](../../disks-shared.md#limitations)部分。  
+有关 Azure 共享磁盘限制的更多详细信息，请仔细阅读 Azure 共享磁盘文档的[限制](../../disks-shared.md#limitations)部分。
 
-> [!IMPORTANT]
-> 使用 Azure 共享磁盘部署 SAP ASCS/SCS Windows 故障转移群集时，请注意，部署将在一个存储群集中使用单个共享磁盘运行。 如果部署 Azure 共享磁盘的存储群集出现问题，SAP ASCS/SCS 实例将受到影响。  
+#### <a name="important-consideration-for-premium-shared-disk"></a>高级共享磁盘的重要注意事项
+
+下面是有关 Azure 高级共享磁盘的一些重要注意事项：
+
+- 高级共享磁盘的 LRS
+  - 具有高级共享磁盘 LRS 的 SAP 部署将使用一个存储群集上的单个 Azure 共享磁盘来运行。 如果部署 Azure 共享磁盘的存储群集出现问题，SAP ASCS/SCS 实例将受到影响。
+
+- 高级共享磁盘的 ZRS
+  - 由于需要跨区域复制数据，ZRS 的写入延迟高于 LRS。
+  - 不同区域中的可用性区域之间的距离不同，因此可用性区域之间的 ZRS 磁盘延迟也不相同。 请[对磁盘进行基准测试](../../disks-benchmarks.md)，以确定你所在区域的 ZRS 磁盘延迟。
+  - 高级共享磁盘的 ZRS 在区域中的三个可用性区域之间同步复制数据。 如果其中一个存储群集出现任何问题，SAP ASCS/SCS 将继续运行，因为存储故障转移对于应用程序层是透明的。
+  - 有关更多详细信息，请查看托管磁盘的 ZRS 的[限制](../../disks-redundancy.md#limitations)部分。
 
 > [!IMPORTANT]
 > 该设置必须满足以下条件：
@@ -99,15 +110,33 @@ ms.locfileid: "112284772"
 
 ### <a name="host-names-and-ip-addresses"></a>主机名和 IP 地址
 
-| 主机名角色 | 主机名 | 静态 IP 地址 | 可用性集 | 邻近放置组 |
-| --- | --- | --- |---| ---|
-| 第 1 个群集节点 ASCS/SCS 群集 |pr1-ascs-10 |10.0.0.4 |pr1-ascs-avset |PR1PPG |
-| 第 2 个群集节点 ASCS/SCS 群集 |pr1-ascs-11 |10.0.0.5 |pr1-ascs-avset |PR1PPG |
-| 群集网络名称 | pr1clust |10.0.0.42（仅适用于 Win 2016 群集） | 不适用 | 不适用 |
-| SID1 ASCS 群集网络名称 | pr1-ascscl |10.0.0.43 | 不适用 | 不适用 |
-| SID1 ERS 群集网络名称（仅 适用于 ERS2） | pr1-erscl |10.0.0.44 | 不适用 | 不适用 |
-| SID2 ASCS 群集网络名称 | pr2-ascscl |10.0.0.45 | 不适用 | 不适用 |
-| SID2 ERS 群集网络名称（仅 适用于 ERS2） | pr1-erscl |10.0.0.46 | 不适用 | 不适用 |
+根据部署类型，方案的主机名和 IP 地址如下所示：
+
+**Azure 可用性集中的 SAP 部署**
+
+| 主机名角色                                        | 主机名   | 静态 IP 地址                        | 可用性集 | 磁盘 SkuName |
+| ----------------------------------------------------- | ----------- | ---------------------------------------- | ---------------- | ------------ |
+| 第 1 个群集节点 ASCS/SCS 群集                     | pr1-ascs-10 | 10.0.0.4                                 | pr1-ascs-avset   | Premium_LRS  |
+| 第 2 个群集节点 ASCS/SCS 群集                     | pr1-ascs-11 | 10.0.0.5                                 | pr1-ascs-avset   |              |
+| 群集网络名称                                  | pr1clust    | 10.0.0.42（仅适用于 Win 2016 群集） | 不适用              |              |
+| SID1 ASCS 群集网络名称                    | pr1-ascscl  | 10.0.0.43                                | 不适用              |              |
+| SID1 ERS 群集网络名称（仅 适用于 ERS2） | pr1-erscl   | 10.0.0.44                                | 不适用              |              |
+| SID2 ASCS 群集网络名称                    | pr2-ascscl  | 10.0.0.45                                | 不适用              |              |
+| SID2 ERS 群集网络名称（仅 适用于 ERS2） | pr1-erscl   | 10.0.0.46                                | 不适用              |              |
+
+**Azure 可用性区域中的 SAP 部署**
+
+| 主机名角色                                        | 主机名   | 静态 IP 地址                        | 可用性区域 | 磁盘 SkuName |
+| ----------------------------------------------------- | ----------- | ---------------------------------------- | ----------------- | ------------ |
+| 第 1 个群集节点 ASCS/SCS 群集                     | pr1-ascs-10 | 10.0.0.4                                 | AZ01              | Premium_ZRS  |
+| 第 2 个群集节点 ASCS/SCS 群集                     | pr1-ascs-11 | 10.0.0.5                                 | AZ02              |              |
+| 群集网络名称                                  | pr1clust    | 10.0.0.42（仅适用于 Win 2016 群集） | 不适用               |              |
+| SID1 ASCS 群集网络名称                    | pr1-ascscl  | 10.0.0.43                                | 不适用               |              |
+| SID2 ERS 群集网络名称（仅 适用于 ERS2） | pr1-erscl   | 10.0.0.44                                | 不适用               |              |
+| SID2 ASCS 群集网络名称                    | pr2-ascscl  | 10.0.0.45                                | 不适用               |              |
+| SID2 ERS 群集网络名称（仅 适用于 ERS2） | pr1-erscl   | 10.0.0.46                                | 不适用               |              |
+
+本文档中所述的步骤对于这两种部署类型是相同的。 但如果群集在可用性集中运行，则你需要部署 Azure 高级共享磁盘的 LRS (Premium_LRS)；如果群集在可用性区域中运行，则需要部署 Azure 高级共享磁盘的 ZRS (Premium_ZRS)。 
 
 ### <a name="create-azure-internal-load-balancer"></a>创建 Azure 内部负载均衡器
 
@@ -166,33 +195,42 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 均使用虚拟主机名和虚拟 IP 地�
 在其中一个群集节点上运行以下命令。 需要调整资源组、Azure 区域、SAPSID 等的值。  
 
 ```powershell
-    $ResourceGroupName = "MyResourceGroup"
-    $location = "MyRegion"
-    $SAPSID = "PR2"
-    $DiskSizeInGB = 512
-    $DiskName = "$($SAPSID)ASCSSharedDisk"
-    $NumberOfWindowsClusterNodes = 2
-    $diskConfig = New-AzDiskConfig -Location $location -SkuName Premium_LRS  -CreateOption Empty  -DiskSizeGB $DiskSizeInGB -MaxSharesCount $NumberOfWindowsClusterNodes
+$ResourceGroupName = "MyResourceGroup"
+$location = "MyRegion"
+$SAPSID = "PR2"
+$DiskSizeInGB = 512
+$DiskName = "$($SAPSID)ASCSSharedDisk"
+$NumberOfWindowsClusterNodes = 2
+
+# For SAP deployment in availability set, use below storage SkuName
+$SkuName = "Premium_LRS"
+# For SAP deployment in availability zone, use below storage SkuName
+$SkuName = "Premium_ZRS"
+
+$diskConfig = New-AzDiskConfig -Location $location -SkuName $SkuName  -CreateOption Empty  -DiskSizeGB $DiskSizeInGB -MaxSharesCount $NumberOfWindowsClusterNodes
     
-    $dataDisk = New-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName -Disk $diskConfig
-    ##################################
-    ## Attach the disk to cluster VMs
-    ##################################
-    # ASCS Cluster VM1
-    $ASCSClusterVM1 = "pr1-ascs-10"
-    # ASCS Cluster VM2
-    $ASCSClusterVM2 = "pr1-ascs-11"
-    # next free LUN number
-    $LUNNumber = 1
-    # Add the Azure Shared Disk to Cluster Node 1
-    $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM1 
-    $vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun $LUNNumber
-    Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
-    # Add the Azure Shared Disk to Cluster Node 2
-    $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM2
-    $vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun $LUNNumber
-    Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
-   ```
+$dataDisk = New-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName -Disk $diskConfig
+##################################
+## Attach the disk to cluster VMs
+##################################
+# ASCS Cluster VM1
+$ASCSClusterVM1 = "pr1-ascs-10"
+# ASCS Cluster VM2
+$ASCSClusterVM2 = "pr1-ascs-11"
+# next free LUN number
+$LUNNumber = 1
+
+# Add the Azure Shared Disk to Cluster Node 1
+$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM1 
+$vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun $LUNNumber
+Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
+
+# Add the Azure Shared Disk to Cluster Node 2
+$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM2
+$vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun $LUNNumber
+Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
+```
+
 ### <a name="format-the-shared-disk-with-powershell"></a>用 PowerShell 格式化共享磁盘
 1. 获取磁盘编号。 在其中一个群集节点上运行 PowerShell 命令：
 
@@ -204,7 +242,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 均使用虚拟主机名和虚拟 IP 地�
     # 3      Msft Virtual Disk               Healthy      Online                512 GB RAW            
 
    ```
-2. 格式化磁盘。 本例中的磁盘编号为 3。 
+2. 格式化磁盘。 在此示例中，磁盘编号为 3。 
 
    ```powershell
     # Format SAP ASCS Disk number '3', with drive letter 'S'
@@ -235,7 +273,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 均使用虚拟主机名和虚拟 IP 地�
 
 4. 在群集中注册磁盘。  
    ```powershell
-     # Add the disk to cluster 
+    # Add the disk to cluster 
     Get-ClusterAvailableDisk -All | Add-ClusterDisk
     # Example output 
     # Name           State  OwnerGroup        ResourceType 
@@ -461,7 +499,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 均使用虚拟主机名和虚拟 IP 地�
 ## <a name="test-the-sap-ascsscs-instance-failover"></a>测试 SAP ASCS/SCS 实例故障转移
 对于概述的故障转移测试，假设 SAP ASCS 在节点 A 上处于活动状态。  
 
-1. 验证 SAP 系统是否可以成功从节点 A 故障转移到节点 B。在本例中，针对 SAPSID PR2 执行此测试。  
+1. 验证 SAP 系统是否可以成功从节点 A 故障转移到节点 B。此示例针对 SAPSID PR2 执行测试。  
    请确保每个 SAPSID 都可以成功转移到另一个群集节点。   
    选择以下选项之一，启动 SAP \<SID\> 群集组从群集节点 A 到群集节点 B 的故障转移：
     - 故障转移群集管理器  
@@ -624,8 +662,8 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 均使用虚拟主机名和虚拟 IP 地�
 [sap-ha-guide-figure-6005]:media/virtual-machines-shared-sap-high-availability-guide/6005-sap-multi-sid-azure-portal.png
 [sap-ha-guide-figure-6006]:media/virtual-machines-shared-sap-high-availability-guide/6006-sap-multi-sid-sios-replication.png
 
-[sap-ha-guide-figure-6007]:media/virtual-machines-shared-sap-high-availability-guide/6007-sap-multi-sid-ascs-azure-shared-disk-sid1.png
-[sap-ha-guide-figure-6008]:media/virtual-machines-shared-sap-high-availability-guide/6008-sap-multi-sid-ascs-azure-shared-disk-sid2.png
+[sap-ha-guide-figure-6007]:media/virtual-machines-shared-sap-high-availability-guide/6007-sap-multi-sid-ascs-azure-shared-disk-sid-1.png
+[sap-ha-guide-figure-6008]:media/virtual-machines-shared-sap-high-availability-guide/6008-sap-multi-sid-ascs-azure-shared-disk-sid-2.png
 [sap-ha-guide-figure-6009]:media/virtual-machines-shared-sap-high-availability-guide/6009-sap-multi-sid-ascs-azure-shared-disk-dns1.png
 [sap-ha-guide-figure-6010]:media/virtual-machines-shared-sap-high-availability-guide/6010-sap-multi-sid-ascs-azure-shared-disk-dns2.png
 [sap-ha-guide-figure-6011]:media/virtual-machines-shared-sap-high-availability-guide/6011-sap-multi-sid-ascs-azure-shared-disk-dns3.png

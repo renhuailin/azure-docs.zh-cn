@@ -4,14 +4,14 @@ description: 在本教程中，你将了解如何使用虚拟传感器在虚拟�
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 10/05/2021
+ms.date: 10/07/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 717b65b78d177e277922687c4c290035b57ab6ab
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: e509b3a1c12c7c7d118eca0b3a2adabe01bdc977
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537036"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660298"
 ---
 # <a name="tutorial-azure-defender-for-iot-trial-setup"></a>教程：Azure Defender for IoT 试用版设置
 
@@ -246,7 +246,7 @@ ms.locfileid: "129537036"
 
 ## <a name="configure-a-span-port"></a>配置 SPAN 端口
 
-vSwitch 没有镜像功能，但你可以使用一种解决方法来实现 SPAN 端口。 可以通过 ESXi 或 Hyper-V 实现此变通方法。
+虚拟交换机没有镜像功能。 不过，你可在虚拟交换机环境中使用混杂模式。 混杂模式是一种操作模式，也是一种在虚拟交换机或端口组级别定义的安全、监视和管理方法。 混杂模式默认处于禁用状态。 启用混杂模式后，同一端口组中的虚拟机网络接口将使用混杂模式来查看通过该虚拟交换机的所有网络流量。 可通过 ESXi 或 Hyper-V 实现此变通方法。
 
 :::image type="content" source="media/tutorial-onboarding/purdue-model.png" alt-text="体系结构中传感器应放置位置的屏幕截图。":::
 

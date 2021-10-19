@@ -12,12 +12,12 @@ metadata:
   ms.date: 04/27/2021
   ms.author: kenwith
   ms.reviewer: japere
-  ms.openlocfilehash: f0d27693bcf378988d70bae2ad45babedea4b858
-  ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+  ms.openlocfilehash: d144b160a940132bdab71362b6322b1e51679006
+  ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129234312"
+  ms.lasthandoff: 10/06/2021
+  ms.locfileid: "129619155"
 title: Active Directory (Azure AD) 应用程序代理常见问题解答
 summary: 本页解答有关 Azure Active Directory (Azure AD) 应用程序代理的常见问题。
 sections:
@@ -43,7 +43,7 @@ sections:
     answer: ''
   - question: >
       为何我的连接器仍使用旧版本，而不自动升级到最新版本？
-    answer: "原因可能是更新服务未正常工作，或者没有新的更新可供该服务安装。\n\n如果更新服务正在运行，且事件日志（“应用程序和服务日志”->“Microsoft”->“AadApplicationProxy”->“更新服务”->“管理员”）中未记录任何错误，则表示该服务处于正常状态。 \n\n> [!IMPORTANT]\n> 只会发布主版本供自动升级。 建议仅在必要时手动更新连接器。 例如，不能等待主要版本，因为你必须修复已知问题或想要使用新功能。 有关新发行版、发布类型（下载、自动升级）、bug 修复和新功能的详细信息，请参阅 [Azure AD 应用程序代理：版本发布历史记录](./application-proxy-release-version-history.md)。\n\n若要手动升级连接器：\n\n- 下载最新版本的连接器。 （在 Azure 门户上的“应用程序代理”下可以找到）。 还可以在 [Azure AD 应用程序代理：版本发布历史记录](./application-proxy-release-version-history.md)中找到链接。\n-   安装程序将重启 Azure AD 应用程序代理连接器服务。 在某些情况下，如果安装程序无法替换所有文件，则可能需要重新启动服务器。 因此，我们建议在开始升级之前关闭所有应用程序（例如事件查看器）。\n-   运行安装程序。 升级过程很快就能完成，且不需要提供任何凭据，连接器不会重新注册。\n"
+    answer: "原因可能是更新服务未正常工作，或者没有新的更新可供该服务安装。\n\n如果更新服务正在运行，且事件日志（“应用程序和服务日志”->“Microsoft”->“AadApplicationProxy”->“更新服务”->“管理员”）中未记录任何错误，则表示该服务处于正常状态。 \n\n> [!IMPORTANT]\n> 只会发布主版本供自动升级。 建议仅在必要时手动更新连接器。 例如，不能等待主要版本，因为你必须修复已知问题或想要使用新功能。 有关新发行版、发布类型（下载、自动升级）、bug 修复和新功能的详细信息，请参阅 [Azure AD 应用程序代理：版本发布历史记录](./application-proxy-release-version-history.md)。\n\n若要手动升级连接器：\n\n- 下载最新版本的连接器。 （在 Azure 门户上的“应用程序代理”下可以找到。 还可以在 [Azure AD 应用程序代理：版本发布历史记录](./application-proxy-release-version-history.md)中找到链接。\n-   安装程序将重启 Azure AD 应用程序代理连接器服务。 在某些情况下，如果安装程序无法替换所有文件，则可能需要重新启动服务器。 因此，我们建议在开始升级之前关闭所有应用程序（例如事件查看器）。\n-   运行安装程序。 升级过程很快就能完成，且不需要提供任何凭据，连接器不会重新注册。\n"
   - question: >
       应用程序代理连接器服务是否可以在非默认的用户上下文中运行？
     answer: >
@@ -118,13 +118,29 @@ sections:
     answer: >
       在“应用程序注册”页中，可将主页 URL 更改为登陆页的所需外部 URL。 从“我的应用”或 Office 365 门户启动应用程序时，将加载指定的页。 有关配置步骤，请参阅[使用 Azure AD 应用程序代理为发布的应用设置自定义主页](application-proxy-configure-custom-home-page.md)
   - question: >
+      为什么当尝试访问已发布的应用程序且 URL 包含“#”（井号标签）字符时，我都会被重定向到截断的 URL？
+    answer: >
+      如果已配置 Azure AD 预身份验证，并且在第一次尝试访问应用程序时应用程序 URL 包含“#”字符，则你会被重定向到 Azure AD (login.microsoftonline.com) 进行身份验证。 完成身份验证后，你会被重定向到“#”字符之前的 URL 部分，而“#”之后的所有内容都将被忽略/删除。 例如，如果 URL 为 `https://www.contoso.com/#/home/index.html`，则在完成 Azure AD 身份验证后，用户将被重定向到 `https://www.contoso.com/`。
+
+      此行为是设计使然，取决于浏览器处理“#”字符的方式。
+
+
+      可能的解决方案/替代方法：
+
+
+      - 设置从 `https://www.contoso.com` 到 `https://contoso.com/#/home/index.html` 的重定向。 用户必须先访问 `https://www.contoso.com`。
+
+      - 用于首次访问尝试的 URL 必须包含编码格式 (%23) 的“#”字符。 已发布的服务器可能不接受这一点。
+
+      - 配置直通预身份验证类型（不推荐）。
+  - question: >
       是否只能发布基于 IIS 的应用程序？ 可以发布非 Windows Web 服务器上运行的 Web 应用程序吗？ 连接器是否必须安装在装有 IIS 的服务器上？
     answer: >
       不是，对于发布的应用程序没有 IIS 方面的要求。 可以发布不是 Windows Server 的服务器上运行的 Web 应用程序。 但是，可能无法对非 Windows Server 使用预身份验证，具体取决于 Web 服务器是否支持“协商”（Kerberos 身份验证）。 在安装连接器的服务器上不需要 IIS。
   - question: >
       是否可以配置应用程序代理来添加 HSTS 标头？
     answer: >
-      应用程序代理不会自动在 HTTPS 响应中添加 HTTP 严格传输安全性标头，但如果标头位于所发布的应用程序发送的原始响应中，则应用程序代理会保留标头。 我们正在开发一项可靠的设置来启用此功能，此项工作已纳入路线图。 如果你对用于在响应中添加此标头的预览版功能感兴趣，请联系 aadapfeedback@microsoft.com 获取详细信息。
+      应用程序代理不会自动在 HTTPS 响应中添加 HTTP 严格传输安全性标头，但如果标头位于所发布的应用程序发送的原始响应中，则应用程序代理会保留标头。 我们正在开发一项可靠的设置来启用此功能，此项工作已纳入路线图。
   - question: >
       Windows 集成身份验证
     answer: ''
@@ -210,7 +226,7 @@ sections:
   - question: >
       WebSocket 支持是否适用于除 QlikSense 和远程桌面 Web 客户端 (HTML5) 以外的应用程序？
     answer: >
-      目前，WebSocket 协议支持仍为公共预览版，可能不适用于其他应用程序。 有些客户可以在其他应用程序中成功使用 WebSocket 协议，但顺利程度各不相同。 如果你要测试此类方案，我们很乐意听取你的结果。 请将反馈发送到 aadapfeedback@microsoft.com。
+      目前，WebSocket 协议支持仍为公共预览版，可能不适用于其他应用程序。 有些客户可以在其他应用程序中成功使用 WebSocket 协议，但顺利程度各不相同。
 
 
       目前无法通过 Azure AD 应用程序代理使用 Windows 管理中心 (WAC) 内的功能（事件日志、PowerShell 和远程桌面服务）。

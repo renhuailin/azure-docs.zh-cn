@@ -2,16 +2,16 @@
 title: 创建和部署模板规格
 description: 介绍如何创建模板规格并与组织中的其他用户共享。
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 10/05/2021
 ms.author: tomfitz
 ms.custom: devx-track-azurepowershell
 author: tfitzmac
-ms.openlocfilehash: bf417b6ca70012a3cf4bce17640aa4bc9ab9fd08
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8d8b582cdae8b387774402869eccf903a1b394b2
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128611199"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613427"
 ---
 # <a name="azure-resource-manager-template-specs"></a>Azure 资源管理器模板规格
 
@@ -24,9 +24,11 @@ Microsoft.Resources/templateSpecs 是模板规格的资源类型。 它包含一
 > [!NOTE]
 > 若要将模板规格与 Azure PowerShell 一起使用，必须安装[版本 5.0.0 或更高版本](/powershell/azure/install-az-ps)。 若要将其与 Azure CLI 一起使用，请使用[版本 2.14.2 或更高版本](/cli/azure/install-azure-cli)。
 
+设计部署时，应始终考虑资源的生命周期，并将具有相似生命周期的资源分组到单个模板规范。例如，你的部署包括多个 Cosmos DB 实例，其中每个实例都包含自己的数据库和容器。 如果数据库和容器不经常发生变化，则需要创建一个模板规范，使其包括 Cosmo DB 实例及其基础数据库和容器。 然后，便可以在模板中使用条件语句以及复制循环来创建这些资源的多个实例。
+
 ### <a name="microsoft-learn"></a>Microsoft Learn
 
-若要详细了解模板规格和实际操作指南，请参阅 **Microsoft Learn** 中的[使用模板规格发布可重用基础结构代码库](/learn/modules/arm-template-specs)。
+若要详细了解模板规格和实际操作指南，请参阅 **Microsoft Learn** 中的 [使用模板规格发布可重用基础结构代码库](/learn/modules/arm-template-specs)。
 
 ## <a name="why-use-template-specs"></a>为什么使用模板规格？
 

@@ -8,23 +8,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
-ms.date: 09/13/2021
+ms.date: 10/06/2021
 ms.author: rolyon
 ms.reviewer: abhijeetsinha
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21e1b91c10d687b0b82626372510dcaf2a0611ef
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 083b0da0152f82d75df2ca83a451b5672dc09002
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601780"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667889"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory 中基于角色的访问控制概述
 
 本文介绍如何理解 Azure Active Directory (Azure AD) 基于角色的访问控制。 可通过 Azure AD 角色向管理员授予精细的权限，遵循最低权限原则。 Azure AD 内置和自定义角色的运作原理与[针对 Azure 资源的基于角色的访问控制系统](../../role-based-access-control/overview.md)（Azure 角色）中描述的类似。 [这两个基于角色的访问控制系统的区别](../../role-based-access-control/rbac-and-directory-admin-roles.md)在于：
 
-- Azure AD 角色使用图形 API 控制对 Azure AD 资源（例如用户、组和应用程序）的访问
+- Azure AD 角色使用 Microsoft Graph API 控制对 Azure AD 资源（例如用户、组和应用程序）的访问
 - Azure 角色使用 Azure 资源管理控制对 Azure 资源（例如虚拟机或存储）的访问
 
 这两个系统都包含角色定义和角色分配，且其用途相似。 但是，Azure AD 角色权限不能用于 Azure 自定义角色，反之亦然。
@@ -58,7 +58,7 @@ Azure AD 支持两种类型的角色定义：
 - 角色定义 - 权限的集合。 
 - 范围 - 一种限制这些权限的适用范围的方法。
 
-可以使用 Azure 门户、Azure AD PowerShell 或图形 API 创建[角色分配](manage-roles-portal.md)。 还可以[列出角色分配](view-assignments.md)。
+可使用 Azure 门户、Azure AD PowerShell 或 Microsoft Graph API [创建角色分配](manage-roles-portal.md)并[列出角色分配](view-assignments.md)。 Azure AD 角色分配不支持 Azure CLI。
 
 下图显示了角色分配的示例。 在此示例中，在 Contoso Widget Builder 应用注册范围为 Chris 分配了“应用注册管理员”自定义角色。 此分配仅授予 Chris 对此特定应用注册的“应用注册管理员”角色权限。
 

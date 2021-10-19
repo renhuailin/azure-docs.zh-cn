@@ -5,24 +5,27 @@ author: mksuni
 ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/01/2021
-ms.openlocfilehash: 9d8c0a4f550442b59a65993aceba37a1672ce078
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.date: 10/06/2021
+ms.openlocfilehash: 02c8e93603672f18c456911a99503f05c78bd323
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389487"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658097"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>使用预留容量为 Azure Database for PostgreSQL 计算资源预付费用
 
+[!INCLUDE[applies-to-postgres-single-flexible-server-hyperscale](includes/applies-to-postgres-single-flexible-server-hyperscale.md)]
+
 Azure Database for PostgreSQL 现在可以让你通过预付计算资源费用来节省资金（与即用即付价格相比）。 使用 Azure Database for PostgreSQL 预留容量，你可以提前承诺为期一年或三年的 PostgreSQL 服务器使用量，以获得可观的计算资源价格折扣。 若要购买 Azure Database for PostgreSQL 预留容量，需要指定 Azure 区域、部署类型、性能层和期限。 </br>
 
+## <a name="how-does-the-instance-reservation-work"></a>实例预留如何工作？
 不需要将预留容量分配到特定 Azure Database for PostgreSQL 服务器。 已在运行的或新部署的 Azure Database for PostgreSQL 会自动获得预留定价的权益。 购买预留容量便会预付为期一年或三年的计算资源费用。 购买预留容量后，与预留属性匹配的 Azure Database for PostgreSQL 计算资源费用不再按照即用即付的费率计收。 预留容量不包括与 PostgreSQL 数据库服务器关联的软件、网络或存储费用。 预留期限结束时，计费权益随即过期，Azure Database for PostgreSQL 将按即用即付价格计费。 虚拟机预留实例不自动续订。 有关定价信息，请参阅 [Azure Database for PostgreSQL 预留容量产品/服务](https://azure.microsoft.com/pricing/details/postgresql/)。 </br>
 
 > [!IMPORTANT]
 > 预留容量定价适用于[单一服务器](./overview.md#azure-database-for-postgresql---single-server)、[灵活服务器](flexible-server/overview.md)和[超大规模 Citus](./overview.md#azure-database-for-postgresql--hyperscale-citus) 部署选项中的 Azure Database for PostgreSQL。 有关超大规模 (Citus) RI 定价的信息，请参阅[此页面](concepts-hyperscale-reserved-pricing.md)。
 
-可在 [Azure 门户](https://portal.azure.com/)中购买 Azure Database for PostgreSQL 预留容量。 通过[提前付款或按月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。 若要购买预留容量：
+可在 [Azure 门户](https://portal.azure.com/)中购买 Azure Database for PostgreSQL 预留容量。 通过[提前付款或按月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。 购买预留容量：
 
 * 必须具有至少一个采用即用即付费率的企业或个人订阅的所有者角色。
 * 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
@@ -30,6 +33,13 @@ Azure Database for PostgreSQL 现在可以让你通过预付计算资源费用�
 
 有关预留购买如何针对企业客户和即用即付客户进行计费的详细信息，请参阅[了解适用于企业合约的 Azure 预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)和[了解即用即付订阅的 Azure 预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
 
+## <a name="reservation-exchanges-and-refunds"></a>预留交换和退款
+
+可以将预留交换为同一类型的另一个预留，也可以从具有灵活服务器的 Azure Database for PostgreSQL 单一服务器交换预留。 如果不再需要某个预留，还可以请求对它进行退款。 Azure 门户可用于预留的交换或退款。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
+
+## <a name="reservation-discount"></a>预留折扣
+
+使用预留实例，可以节省高达 65% 的计算成本。 若要查找针对用例的折扣，请访问 [Azure 门户上的“预留”边栏选项卡](https://aka.ms/reservations)，并查看每个定价层和每个区域的节省量。 预留实例可帮助你通过预付一年或三年的费用，更好地管理工作负载、做预算和执行预测。 还可以随业务需求的变化交换或取消预留。
 
 ## <a name="determine-the-right-server-size-before-purchase"></a>在购买之前确定正确的服务器大小
 
@@ -61,14 +71,30 @@ Azure Database for PostgreSQL 现在可以让你通过预付计算资源费用�
 | 术语 | 一年
 | 数量 | 在 Azure Database for PostgreSQL 预留容量预订中购买的计算资源量。 数量是要预留并将享受计费折扣的所选 Azure 区域和性能层中 vCores 的数量。 例如，如果在“美国东部”区域运行或计划运行总计算容量为 Gen5 16 vCore 的 Azure Database for PostgreSQL 服务器，则将数量指定为 16，以将所有服务器的权益最大化。
 
-## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
+## <a name="reserved-instances-api-support"></a>预留实例 API 支持
 
-可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
+使用 Azure API 以编程方式为组织获取有关 Azure 服务或软件预留的信息。 例如，使用 API 可：
+
+- 查找要购买的预留
+- 购买预留项
+- 查看购买的预留
+- 查看和管理预留访问权限
+- 拆分或合并预留
+- 更改预留范围
+ 
+有关详细信息，请参阅[适用于 Azure 预留自动化的 API](../cost-management-billing/reservations/reservation-apis.md)。
 
 ## <a name="vcore-size-flexibility"></a>vCore 大小灵活性
 
 vCore 大小灵活性有助于在同一性能层和区域内纵向扩展或收缩，且不会丢失预留容量权益。 如果缩放到比预留容量更高的 vCore，则使用即用即付定价为额外的 vCore 计费。
 
+## <a name="how-to-view-reserved-instance-purchase-details"></a>如何查看预留实例购买详细信息
+
+可通过 [Azure 门户左侧的“预留”菜单](https://aka.ms/reservations)查看预留实例购买详细信息。 有关详细信息，请参阅[如何对 Azure Database for PostgreSQL 应用预留折扣](../cost-management-billing/reservations/understand-reservation-charges-postgresql.md)。
+
+## <a name="reserved-instance-expiration"></a>预留实例到期
+
+你将收到电子邮件通知，第一封是在预留到期前 30 天收到，另一封是在到期时收到。 预留到期时，所部署的 VM 会继续运行，并按即用即付费率计费。 有关详细信息，请参阅 [Azure Database for PostgreSQL 预留实例](../cost-management-billing/reservations/understand-reservation-charges-postgresql.md)。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 

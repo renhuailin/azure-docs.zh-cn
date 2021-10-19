@@ -4,12 +4,12 @@ description: 本文介绍如何更新容器见解以启用自定义指标功能�
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cff5933db1d74e9853120a07444e399005b2e498
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0d48ae48c667422b68c39570eb0003ff2e648267
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620818"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706881"
 ---
 # <a name="how-to-update-container-insights-to-enable-metrics"></a>如何更新容器见解以启用指标
 
@@ -23,10 +23,10 @@ ms.locfileid: "128620818"
 
 | 指标命名空间 | 指标 | 说明 |
 |------------------|--------|-------------|
-| Insights.container/nodes | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、nodesCount、diskUsedPercentage， | 作为节点指标，它们包含主机作为维度 。 它们还包含<br> 节点名称作为主机维度的值。 |
+| Insights.container/nodes | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、cpuUsageAllocatablePercentage、memoryWorkingSetAllocatablePercentage、memoryRssAllocatablePercentage、nodesCount、diskUsedPercentage   | 作为节点指标，它们包含主机作为维度 。 它们还包含<br> 节点名称作为主机维度的值。 |
 | Insights.container/pods | podCount、completedJobsCount、restartingContainerCount、oomKilledContainerCount、podReadyPercentage | 作为 Pod 指标，他们包含以下对象作为维度 - ControllerName、Kubernetes 命名空间、名称、阶段。 |
-| Insights.container/containers | cpuExceededPercentage、memoryRssExceededPercentage、memoryWorkingSetExceededPercentage | |
-| Insights.container/persistentvolumes | pvUsageExceededPercentage | |
+| Insights.container/containers | cpuExceededPercentage、memoryRssExceededPercentage、memoryWorkingSetExceededPercentage、cpuThresholdViolated、memoryRssThresholdViolated、memoryWorkingSetThresholdViolated   | |
+| Insights.container/persistentvolumes | pvUsageExceededPercentage、pvUsageThresholdViolated | |
 
 为了支持这些新功能，发行版中包含了新的容器化代理，AKS 包含版本 microsoft/oms:ciprod05262020，已启用 Azure Arc 的 Kubernetes 群集包含版本 microsoft/oms:ciprod09252020 。 AKS 的新部署将自动包含此配置更改和功能。 可以通过 Azure 门户、Azure PowerShell 或 Azure CLI 更新群集以支持此功能。 使用 Azure PowerShell 和 CLI。 你可以为每个群集或订阅中的所有群集启用此功能。
 

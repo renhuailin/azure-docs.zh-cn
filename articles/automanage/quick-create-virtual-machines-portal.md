@@ -10,12 +10,12 @@ ms.subservice: automanage
 ms.workload: infrastructure
 ms.custom:
 - mode-portal
-ms.openlocfilehash: faf51735ae6805f0ff7db98416e9b05731c08642
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 7836e15c307a0dcfcf4bfa4b8c56fbeea869d315
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426447"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709765"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>快速入门：在 Azure 门户中启用适用于虚拟机的 Azure 自动管理
 
@@ -50,7 +50,7 @@ ms.locfileid: "123426447"
     1. 选中要加入的每个虚拟机的复选框。
     1. 单击“选择”按钮。
     > [!NOTE]
-    > 可以同时选择 Azure VM 和启用了 Arc 的服务器。
+    > 可同时选择 Azure VM 和已启用 Azure Arc 的服务器。
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="从可用 VM 列表中选择现有 VM。":::
 

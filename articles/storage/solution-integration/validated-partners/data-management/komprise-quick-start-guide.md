@@ -8,25 +8,27 @@ ms.date: 05/20/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 97ad7067b598ad4aa03f46cc7124dcc05d7f2b42
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: a6333ef4385439afa2e2f0000ae3f452357aa958
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115684"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856774"
 ---
 # <a name="analyze-and-migrate-to-azure-with-komprise"></a>使用 Komprise 分析数据并将其迁移到 Azure
 
 本文帮助你将 Komprise 智能数据管理器基础结构与 Azure 存储服务集成。 文中包括有关如何分析和迁移数据的注意事项和实现指南。
 
-Komprise 提供对网络连接存储系统的分析和见解。 通过它可将数据迁移到 Azure 文件存储、Azure NetApp 文件、Azure Blob 存储或 ISV NAS 解决方案等 Azure 存储服务。 详细了解[经验证的主存储和辅助存储合作伙伴解决方案](../primary-secondary-storage/partner-overview.md)。
+通过 Komprise，用户可以分析和洞察文件、存储在网络附加存储系统 (NAS) 中的对象数据以及本地和云中的对象存储。  通过它可将数据迁移到 Azure 文件存储、Azure NetApp 文件、Azure Blob 存储或其他 ISV NAS 解决方案等 Azure 存储服务。 详细了解[经验证的主存储和辅助存储合作伙伴解决方案](../primary-secondary-storage/partner-overview.md)。
 
-Komprise 将在许多不同的用例中中提供帮助，例如：
+Komprise 的常见用例包括：
 
-- 分析本地非结构化数据，获取对数据管理、移动、定位、存档、保护和限制的见解。
-- 将本地非结构化数据迁移到 Azure 文件存储、Azure NetApp 文件或 ISV NAS 解决方案
-- 使用本机访问将本地非结构化数据复制或存档到 Azure Blob 存储
-- 将对象存储解决方案迁移到 Azure Blob 存储
+- 分析非结构化文件和对象数据，获取对数据管理、移动、定位、存档、保护和限制的见解，
+- 将文件数据迁移到 Azure 文件存储、Azure NetApp 文件或 ISV NAS 解决方案，
+- 根据策略将文件数据分层和存档到 Azure Blob 存储，同时保留原始 NAS 解决方案的透明访问权限，并允许 Azure 中的本机对象访问权限，
+- 按可配置的计划将文件数据复制到 Azure Blob 存储，同时保留 Azure 中的本机对象访问权限
+- 将对象数据迁移到 Azure Blob 存储，
+- 基于上次访问时间跨 Azure Blob 存储的热存储层、冷存储层和存档层对对象进行分层和数据生命周期管理
 
 ## <a name="reference-architecture"></a>参考体系结构
 
@@ -34,9 +36,13 @@ Komprise 将在许多不同的用例中中提供帮助，例如：
 
 :::image type="content" source="./media/komprise-quick-start-guide/komprise-architecture.png" alt-text="参考体系结构介绍了 Komprise 智能数据管理器的基本设置":::
 
+下图提供了用于将云和本地对象工作负荷迁移到 Azure Blob 存储的参考体系结构。
+
+:::image type="content" source="./media/komprise-quick-start-guide/komprise-architecture-blob.png" alt-text="参考体系结构描述了将云和本地对象工作负荷迁移到 Azure Blob 存储的设置":::
+
 Komprise 是一种软件解决方案，可轻松部署在虚拟环境中。 解决方案包括：
 - 控制器 - Komprise 网格的管理控制台。 它用于配置环境、监视活动、查看报表和图形，以及设置策略。
-- 观察器 - 管理和分析共享、汇总报表、与控制器通信，以及处理 NFS 数据流量。
+- 观察器 - 管理和分析共享、汇总报表、与控制器通信，以及处理对象和 NFS 数据流量。
 - 代理 - 简化和加速 SMB/CIFS 数据流；易于扩展，可满足不断发展的环境的性能要求。
 
 ## <a name="before-you-begin"></a>在开始之前
@@ -77,7 +83,7 @@ Microsoft 提供一个框架来帮助你开始使用 Azure。 [云采用框架](
 
 Komprise 易于设置，且只需三步即可实现多个迁移的同时运行：
 
-1.  分析数据以确定要迁移或存档的文件；
+1.  分析数据以确定要迁移或存档的文件和对象，
 1.  定义策略，用于将非结构化数据迁移、移动或复制到 Azure 存储；
 1.  激活自动移动数据的策略。
 
@@ -87,14 +93,15 @@ Komprise 易于设置，且只需三步即可实现多个迁移的同时运行�
   - 可在本地缓存或存储到快速文件服务上的不经常访问的文件
   - 可存档到 Blob 存储的冷数据
 - 关于主要用户、组或共享的信息，用于确定迁移顺序和对组织内受影响最大的组以评估业务影响
-- 文件数量或每个文件类型的容量，用于确定存储文件的类型，以及是否有任何清理内容的可能性。 清理会减少迁移工作量，并降低目标存储的成本
-- 文件数量或每个文件大小的容量，用于确定迁移时长。 与少量的大型文件相比，大量小型文件的迁移需更长时间
+- 文件数量或每个文件类型的容量，用于确定存储文件的类型，以及是否有任何清理内容的可能性。 清理会减少迁移工作量，并降低目标存储的成本。 可以对对象数据执行类似的分析。
+- 文件数量或每个文件大小的容量，用于确定迁移时长。 与少量的大型文件相比，大量小型文件的迁移需更长时间。 可以对对象数据执行类似的分析。
+- 按存储层划分的对象成本，用于确定冷数据是否错误地放置在价格昂贵的层中，或者热数据错误地放置价格低廉但访问成本较高的层中。 基于访问模式正确布置数据可以优化总体云存储成本。
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-analyze-1.png" alt-text="按文件类型和访问时间分析":::
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-analyze-shares.png" alt-text="共享分析的示例":::
 
-- 自定义查询功能筛选器，用于针对特定需求筛选精确文件集
+- 自定义查询功能筛选器，用于针对特定需求筛选精确文件和对象的集合
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-analyze-custom.png" alt-text="自定义查询分析":::
 
@@ -156,6 +163,8 @@ Komprise 网格部署在虚拟环境中（Hyper-V、VMware、KVM），以提高�
 
    4.  配置其他[安全性最佳做法](../../../blobs/security-recommendations.md)。
 
+### <a name="deployment-instructions-for-managing-file-data"></a>用于管理文件数据的部署说明
+
 1.  从控制器下载 Komprise 观察器虚拟设备，将其部署到虚拟机监控程序，并为其配置网络和域。 控制器以一项由 Komprise 管理的云服务的形式提供。 购买解决方案后，访问控制器所需的信息将随“欢迎使用”电子邮件一起发送。
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-setup-1.png" alt-text="从控制器下载 Komprise 观察器的相应图片":::
@@ -184,9 +193,37 @@ Komprise 网格部署在虚拟环境中（Hyper-V、VMware、KVM），以提高�
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-azure-files-2.png" alt-text="输入 Azure 文件存储的详细信息":::
 
+### <a name="deployment-instructions-for-managing-object-data"></a>用于管理对象数据的部署说明
+
+用户可以体验到不同的对象管理方式。 控制器和观察者以云服务的形式提供，由 Komprise 管理。 如果只需要分析和存档 Azure Blob 存储中的数据，则无需进一步部署。 如果需要迁移到 Azure Blob 存储，请获取随欢迎电子邮件一起发送的 Komprise Observer 虚拟设备，并将其部署在 Azure 云基础结构中的 Linux 虚拟机中。 部署后，请按照 Komprise Director 上的步骤进行操作。
+
+1. 导航到“数据存储”并选择“添加新对象存储”。  选择“Microsoft Azure”作为提供程序。
+
+    :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-object-store.png" alt-text="显示添加新对象存储的屏幕截图":::
+
+1. 添加共享以进行分析和迁移。 必须对每个源、目标共享或容器重复这些步骤。 有两个选项可以执行相同的操作：
+    1. 通过输入以下命令来发现所有容器：
+        - 存储帐户名称
+        - 主访问密钥
+        - 显示名称
+    
+        :::image type="content" source="./media/komprise-quick-start-guide/komprise-discover-storage-account.png" alt-text="显示如何在存储帐户中发现容器的屏幕截图":::
+
+        通过导航到存储帐户的“设置”下的“访问密钥”项，可以在 [Azure 门户](https://portal.azure.com/)中找到所需的信息。   如果未显示密钥，请单击“显示密钥”。
+
+    1. 通过输入以下命令来指定容器：
+        - 容器名称
+        - 存储帐户名称
+        - 主访问密钥
+        - 显示名称
+
+        :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-container.png" alt-text="显示如何在存储帐户中添加容器的屏幕截图":::
+
+        容器名称代表迁移的目标容器，需要在迁移前创建。 通过导航到存储帐户的“设置”下的“访问密钥”项，可以在 [Azure 门户](https://portal.azure.com/)中找到其他必需信息。   如果未显示密钥，请单击“显示密钥”。
+
 ## <a name="migration-guide"></a>迁移指南
 
-Komprise 提供实时迁移，在迁移过程中，最终用户和应用程序不会受干扰，可持续访问数据。 迁移过程会自动将目录、文件和链接从源迁移到目标。 数据完整性在每个步骤都会进行检查。 源的所有属性、权限和访问控制都会应用。
+Komprise 提供实时迁移，在迁移过程中，最终用户和应用程序不会受干扰，可持续访问数据。 迁移过程会自动将目录、文件和链接从源迁移到目标。 数据完整性在每个步骤都会进行检查。 源的所有属性、权限和访问控制都会应用。 在对象迁移中，将迁移每个对象的对象、前缀和元数据。
 
 若要配置和运行迁移，请执行以下步骤：
 
@@ -195,11 +232,19 @@ Komprise 提供实时迁移，在迁移过程中，最终用户和应用程序�
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-new-migrate.png" alt-text="添加新的迁移作业":::
 
-1. 选择适当的源共享和目标共享，以添加迁移任务。 提供迁移名称。 配置后，单击“开始迁移”。 
+1. 选择适当的源共享和目标共享，以添加迁移任务。 提供迁移名称。 配置后，单击“开始迁移”。 对于文件和对象数据迁移，此步骤略有不同。
    
-   :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-migration.png" alt-text="指定迁移作业的详细信息":::
+    1. 文件迁移
 
-   （可选）定义是否需要保留目标上的访问时间和 SMB ACL。 此选项取决于所选的源和目标文件服务及协议。
+       :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-migration.png" alt-text="指定迁移作业的详细信息":::
+
+       文件迁移提供了在目标上保留访问时间和 SMB ACL 的选项。 此选项取决于所选的源和目标文件服务及协议。
+
+    1. 对象迁移
+
+        :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-object-migration.png" alt-text="显示添加对象迁移的屏幕截图":::
+
+        对象迁移提供了选择目标 Azure 存储层（热存储层、冷存储层、存档）的选项。 还可以选择使用 MD5 校验和来验证每个数据传输。 MD5 校验和可能会产生出口成本，因为必须检索云对象才能计算 MD5 校验和。
 
 2. 开始迁移后，可转到“迁移”来监视进度。
 
@@ -223,7 +268,7 @@ Komprise 提供实时迁移，在迁移过程中，最终用户和应用程序�
 
 ## <a name="next-steps"></a>后续步骤
 
-提供以下各种资源供了解详细信息：
+提供以下各种资源以帮助你了解更多信息：
 
 - [Azure 存储迁移概述](../../../common/storage-migration-overview.md)
 - Komprise 智能数据管理在[迁移工具比较矩阵](./migration-tools-comparison.md)中支持的功能

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
-ms.openlocfilehash: b40144079304b6981ff8faf251a345dbb163ecac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a77414e794073771f7bf5fe9346e4196b6b4b836
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96459308"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715766"
 ---
 # <a name="how-to-configure-your-consulting-service-offer-properties"></a>如何配置咨询服务产品的属性
 
@@ -23,27 +23,28 @@ ms.locfileid: "96459308"
 
 ## <a name="select-the-primary-product"></a>选择主要产品
 
-在“主要产品”下拉列表中，选择将成为咨询服务产品的重点的 Microsoft 产品。 你选择的产品将决定你的产品是否将发布到 Microsoft AppSource 或 Azure 市场。
+在“主要产品”下拉列表中，选择将成为咨询服务产品的重点的 Microsoft 产品。 你选择的产品将决定你的产品是否将发布到 Microsoft AppSource 或 Azure 市场。 准确地表示产品/服务能够使客户更轻松地找到你的产品/服务。 请记住，必须符合所选产品的[资格要求](https://aka.ms/AAacrbv)。 
 
-* 如果选择 Azure，产品将在 Azure 市场中列出。 最多可选择三个“解决方案区域”。 这些区域会使客户更轻松地找到你的产品。
-* 如果主要产品不是 Azure，产品将发布到 AppSource 上。 选择至少一个且最多三个“适用产品”。 这些区域会使客户更轻松地找到你的产品。
+- 如果选择 Azure，产品将在 Azure 市场中列出。 最多选择三个最能代表你的产品/服务的解决方案领域。
+- 如果选择“Microsoft 365”，请另外选择最多三个最能代表你的产品/服务的解决方案领域。 产品/服务将在 Microsoft AppSource 中列出。
+-   如果选择任何 Dynamics 365 或 Power Platform 产品，则还可以额外选择两个适用产品。 产品/服务将在 Microsoft AppSource 中列出。
 
 ## <a name="select-the-consulting-service-type"></a>选择咨询服务类型
 
 在“咨询服务类型”下拉列表中，选择提供给客户的咨询服务的类型。 可用类型如下：
 
-* 评估：评估客户的环境，以确定解决方案的适用性，并估算实施的成本和时间线。
-* 简介：使用框架、演示和客户示例介绍解决方案或服务。
-* **实施**：进行完整安装，以实施完全正常运行的解决方案。
-* 概念证明：进行有限范围的实施，以确定解决方案是否满足客户的要求。
-* 研讨会：在客户场地开展的交互式活动。 可以涉及到培训、简报、评估，或根据客户数据或环境制作的演示。
+- 评估：评估客户的环境，以确定解决方案的适用性，并估算实施的成本和时间线。
+- 简介：使用框架、演示和客户示例介绍解决方案或服务。
+- **实施**：进行完整安装，以实施完全正常运行的解决方案。
+- 概念证明：进行有限范围的实施，以确定解决方案是否满足客户的要求。
+- 研讨会：在客户场地开展的交互式活动。 可以涉及到培训、简报、评估，或根据客户数据或环境制作的演示。
 
 ## <a name="select-relevant-industries"></a>选择相关行业
 
 本部分中的信息可帮助我们对你的产品进行分类，以便客户轻松地在 Microsoft 在线商店中找到它。
 
-* 如果选择了 Azure 作为主要产品，则最多选择六个“行业”。 请在[产品列表最佳做法](./gtm-offer-listing-best-practices.md)中查看行业的完整列表。
-* 如果选择了除 Azure 之外的主要产品，则可以最多选择两个“行业”以及为每个行业最多选择两个“子行业”。 请在[产品列表最佳做法](./gtm-offer-listing-best-practices.md)中查看行业和子行业的完整列表。
+- 如果选择了 Azure 作为主要产品，则最多选择六个“行业”。 请在[产品列表最佳做法](./gtm-offer-listing-best-practices.md)中查看行业的完整列表。
+- 如果选择了除 Azure 之外的主要产品，则可以最多选择两个“行业”以及为每个行业最多选择两个“子行业”。 请在[产品列表最佳做法](./gtm-offer-listing-best-practices.md)中查看行业和子行业的完整列表。
 
 ## <a name="select-your-competencies"></a>选择你的能力
 

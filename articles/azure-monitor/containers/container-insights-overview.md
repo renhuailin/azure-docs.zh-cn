@@ -3,12 +3,12 @@ title: 容器见解概述 | Microsoft Docs
 description: 本文介绍容器见解，它通过监视 AKS 群集和 Azure 中容器实例的运行状况监视 AKS 容器见解解决方案及其提供的值。
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 56222eb90534537df237ec2c5d29a5969f150e60
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b1e7b3e6d3c72dbc65169c48f1d12de6ca712a45
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738494"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708900"
 ---
 # <a name="container-insights-overview"></a>容器见解概述
 
@@ -19,7 +19,7 @@ ms.locfileid: "121738494"
 - [Azure 容器实例](../../container-instances/container-instances-overview.md)
 - [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) 上或本地托管的自托管 Kubernetes 群集
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
-- [启用了 Azure Arc 的 Kubernetes](../../azure-arc/kubernetes/overview.md)（预览版）
+- [已启用 Azure Arc 的 Kubernetes](../../azure-arc/kubernetes/overview.md)（预览版）
 
 容器见解支持运行 Linux 和 Windows Server 2019 操作系统的群集。 它支持的容器运行时为 Docker、Moby 和任何 CRI 兼容的运行时（如 CRI-O 和 ContainerD）。
 

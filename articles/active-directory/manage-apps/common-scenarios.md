@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory 的常见应用程序管理方案 | Microsoft Docs
+title: 常见应用程序管理方案
+titleSuffix: Azure AD
 description: 使用 Azure AD 集中应用程序管理
 author: davidmu1
 manager: CelesteDG
@@ -11,14 +12,14 @@ ms.date: 03/02/2019
 ms.author: davidmu
 ms.reviewer: napuri
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa4856b95de671cf74905db9c5503def1c36b360
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 3f307cf9e25b3e6e0a3cc00279f9e43f4bca39b4
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824288"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619816"
 ---
-# <a name="centralize-application-management-with-azure-ad"></a>使用 Azure AD 集中应用程序管理
+# <a name="centralize-application-management-with-azure-active-directory"></a>使用 Azure Active Directory 集中管理应用程序
 
 密码对于 IT 人员和世界各地的员工而言都是一大难题。 正因如此，越来越多的公司转向使用 Azure Active Directory（Microsoft 的标识和访问管理解决方案）来处理云端和所有其他资源的作业。 无需输入每个应用程序的密码，即可从一个应用程序跳转到另一个应用程序。 从 Outlook 跳转到 Workday、再跳转到 ADP 的速度就像打开它们一样快，既迅速又安全。 然后，无需通过 IT 人员的协助，即可与合作伙伴甚至组织外部的其他人进行协作。 此外，Azure AD 可使用多重身份验证之类的机制来验证你的身份，以保护你所使用的应用，并使用持续自适应机器学习和安全智能来检测可疑的登录，让你随时随地都可安全地访问所需的应用，从而帮助你管理风险。 它不仅对用户有益，对 IT 人员也是如此。 借助实时访问评审和完整规模的治理套件，Azure AD 可帮助你保持合规性并强制执行策略。 借此，你甚至可以自动预配用户帐户，让访问管理变得轻而易举。 请查看客户使用 Azure Active Directory 应用程序管理功能的一些常见方案。
 

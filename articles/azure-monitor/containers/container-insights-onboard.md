@@ -3,19 +3,19 @@ title: 启用容器见解 | Microsoft Docs
 description: 本文介绍如何启用和配置容器见解，以便你能够了解容器的性能以及已经发现了哪些与性能相关的问题。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 04bc88034c3537431c4c1972611d0c4d93e4cda4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: de7475ddb5a8057ef1b58d4ed21c55a1d10a4dd8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128631393"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708942"
 ---
 # <a name="enable-container-insights"></a>启用容器见解
 
 本文概述了可用于设置容器见解的选项，这些选项用于监视部署到 Kubernetes 环境并托管在以下位置的工作负荷的性能：
 
 - [Azure Kubernetes 服务 (AKS)](../../aks/index.yml)  
-- [已启用 Arc 的 Kubernetes 群集](../../azure-arc/kubernetes/overview.md)
+- [已启用 Azure Arc 的 Kubernetes 群集](../../azure-arc/kubernetes/overview.md)
    - [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) 或本地
    - [AKS 引擎](https://github.com/Azure/aks-engine)
    - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) 版本 4.x  

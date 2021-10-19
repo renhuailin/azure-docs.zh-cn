@@ -6,12 +6,12 @@ ms.service: private-multi-access-edge-compute-mec
 ms.topic: overview
 ms.date: 06/16/2021
 ms.author: kumud
-ms.openlocfilehash: d5c5c579ecc60e561d34b305468913d0a8635d81
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 1875a2cfaa89a6eeeb45ae2efe84959ff6771268
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114286898"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707329"
 ---
 # <a name="what-is-azure-private-multi-access-edge-compute"></a>什么是 Azure 专用多接入边缘计算？
 
@@ -54,7 +54,7 @@ Fusion Core 使 ISV 能够在 IoT Edge 应用程序所在的同一 Azure Stack E
 
 Azure 网络功能管理器 (NFM)：借助 Azure NFM，可以使用一致的 Azure 工具和界面将网络功能部署到边缘。 使用此服务可将数据包核心和 SD-WAN 网络功能部署到 Azure Stack Edge。 有关详细信息，请参阅 [Azure 网络功能管理器](../network-function-manager/overview.md)。
 
-已启用 Arc 的 Kubernetes：通过已启用 Azure Arc 的 Kubernetes，可以在 Azure 内部或外部附加和配置 Kubernetes 群集。 可以使用基于策略的部署进行大规模监视和管理，并大规模应用一致的安全配置。 已启用 Azure Arc 的 Kubernetes 适用于任何经云原生计算基础 (CNCF) 认证的 Kubernetes 群集。 有关详细信息，请参阅 [Azure Arc](https://azure.microsoft.com/services/azure-arc/)。
+**已启用 Arc 的 Kubernetes**：通过已启用 Azure Arc 的 Kubernetes，可以在 Azure 内部或外部附加和配置 Kubernetes 群集。 可以使用基于策略的部署进行大规模监视和管理，并大规模应用一致的安全配置。 已启用 Azure Arc 的 Kubernetes 适用于任何经云原生计算基础 (CNCF) 认证的 Kubernetes 群集。 有关详细信息，请参阅 [Azure Arc](https://azure.microsoft.com/services/azure-arc/)。
 
 ### <a name="azure-stack-hardware-and-services"></a>Azure Stack 硬件和服务
 Azure Stack Edge：Azure Stack Edge 提供可将计算、存储和智能融合到创建数据的边缘的设备组合。 设备可装入 1U 机架空间，搭载 1-2 个 NVIDIA T4 GPU。 使用 Azure IoT Edge，可以从 IoT 中心部署和管理容器，并与 Azure Stack Edge 上的 Azure IoT 解决方案集成。 Azure Stack Edge Pro SKU 已经过认证，可在边缘上运行网络功能。 有关详细信息，请参阅 [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/)。

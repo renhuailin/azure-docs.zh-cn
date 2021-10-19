@@ -1,5 +1,5 @@
 ---
-title: Azure CDN 终结点多原点（预览版）
+title: Azure CDN 终结点多原点
 description: Azure CDN 终结点多原点入门。
 services: cdn
 author: asudbring
@@ -8,12 +8,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.author: allensu
-ms.openlocfilehash: 06d0e35534db97f1de48c55f9cc6f46f979514fa
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 1e17c747c87a5abb184ae4b7b263a8b5bd1a3a49
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444838"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855985"
 ---
 # <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN 终结点多原点
 
@@ -22,6 +22,8 @@ ms.locfileid: "122444838"
 通过选择 Azure CDN 终结点内的多个原点，多原点提供的冗余会探测每个原点的运行状况并在必要时进行故障转移，从而分散风险。
 
 设置一个或多个原点组，并选择默认原点组。 每个原点组都是一个或多个原点的集合，可以承担类似的工作负荷。
+
+第一个源组设置为默认源组。 为 CDN 终结点选择默认源组时，将启用多源功能。 启用多源功能后，无法禁用该功能，并且无法删除默认源组。 默认源组用于将请求路由到源。 可以更新源组配置并切换到单个源配置。 还可以将指定的默认源组更改为另一个源组。
 
 > [!NOTE]
 > 目前，只有 Microsoft 的 Azure CDN 提供此功能。 
@@ -64,7 +66,7 @@ ms.locfileid: "122444838"
 
 2. 在“添加原点”配置中，输入或选择以下信息：
 
-   | 设置           | 值                                                                 |
+   | 设置           | Value                                                                 |
    |-------------------|-----------------------------------------------------------------------|
    | 名称        | 输入原点名称。        |
    | 原点类型 | 选择“存储”、“云服务”、“Web 应用”或“自定义原点”。                                   |

@@ -7,12 +7,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 9fd07c6a5ec49d2251173d68c28cf18806312a36
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 44aa20dcdf4cc4d87fa868ce38855b525caa8a98
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356835"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707497"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 发行说明
 
@@ -43,7 +43,7 @@ Azure Stack Edge 2101 版中提供了以下新功能。
 
 | 不是。 | 功能 | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
-|**1.**|预览功能 |在此版本中提供以下功能的预览版：本地 Azure 资源管理器、VM、VM 的云管理、启用了 Azure Arc 的 Kubernetes、用于 Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 的 VPN、用于 Azure Stack Edge Pro GPU 的多进程服务 (MPS)。  |将在以后的版本中正式推出这些功能。 |
+|**1.**|预览功能 |在此版本中提供了以下功能的预览版：本地 Azure 资源管理器、VM、VM 的云管理、已启用 Azure Arc 的 Kubernetes、用于 Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 的 VPN、用于 Azure Stack Edge Pro GPU 的多进程服务 (MPS)。  |将在以后的版本中正式推出这些功能。 |
 |**2.**|Kubernetes 仪表板 | 不支持带 SSL 证书的 Kubernetes 仪表板的 Https 终结点。 | |
 |**3.**|Kubernetes |启用 Web 代理时，Edge 容器注册表不起作用。|未来的版本中将提供该功能。 |
 |**4.**|Kubernetes |Edge 容器注册表不适用于 IoT Edge 模块。| |
@@ -60,15 +60,15 @@ Azure Stack Edge 2101 版中提供了以下新功能。
 
 | 不是。 | 功能 | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
-| **1.** |Azure Stack Edge Pro + Azure SQL | 创建 SQL 数据库需要管理员访问权限。   |执行以下步骤，而不是[教程：使用 SQL Server 数据库在 Edge 存储数据](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database)中的步骤 1-2。 <ul><li>在设备的本地 UI 中，启用计算接口。 选择“计算”>“端口 #”>“启用计算”>“应用”。</li><li>从 [sqlcmd 实用工具](/sql/tools/sqlcmd-utility)中将 `sqlcmd` 下载到客户端计算机 </li><li>连接到计算机接口 IP 地址（已启用的端口），并在该地址的末尾添加“1401”。</li><li>最终命令如下所示：sqlcmd -S {Interface IP},1401 -U SA -P "Strong!Passw0rd"。</li>完成此操作后，当前文档中的步骤 3-4 应相同。 </li></ul> |
-| **2.** |刷新| 不支持对通过“刷新”还原的 blob 进行增量更改 |对于 Blob 终结点，刷新后对 blob 进行部分更新可能导致更新不会上载到云中。 例如类似于以下的操作序列：<ul><li>在云中创建 blob。 或从设备中删除之前上传的 blob。</li><li>使用刷新功能，将 blob 从云中刷新到设备中。</li><li>使用 Azure SDK REST API 仅更新部分 blob。</li></ul>这些操作可能导致 blob 的更新部分不在云中更新。 <br>**解决方法**：使用 robocopy 等工具或通过资源管理器或命令行执行的常规文件复制操作来替换整个 blob。|
+|**1.**|Azure Stack Edge Pro + Azure SQL | 创建 SQL 数据库需要管理员访问权限。 |执行以下步骤，而不是[教程：使用 SQL Server 数据库在 Edge 存储数据](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database)中的步骤 1-2。 <ul><li>在设备的本地 UI 中，启用计算接口。 选择“计算”>“端口 #”>“启用计算”>“应用”。</li><li>从 [sqlcmd 实用工具](/sql/tools/sqlcmd-utility)中将 `sqlcmd` 下载到客户端计算机 </li><li>连接到计算接口 IP 地址（已启用的端口），在地址末尾添加 `,1401`。</li><li>最终命令如下所示：`sqlcmd -S {Interface IP},1401 -U SA -P "Strong!Passw0rd"`。</li>完成此操作后，当前文档中的步骤 3-4 应相同。 </li></ul> |
+|**2.**|刷新| 不支持对通过“刷新”还原的 blob 进行增量更改 |对于 Blob 终结点，刷新后对 blob 进行部分更新可能导致更新不会上载到云中。 例如类似于以下的操作序列：<ul><li>在云中创建 blob。 或从设备中删除之前上传的 blob。</li><li>使用刷新功能，将 blob 从云中刷新到设备中。</li><li>使用 Azure SDK REST API 仅更新部分 blob。</li></ul>这些操作可能导致 blob 的更新部分不在云中更新。 <br>**解决方法**：使用 robocopy 等工具或通过资源管理器或命令行执行的常规文件复制操作来替换整个 blob。|
 |**3.**|限制|在限制期间，如果不允许对设备执行新写入，NFS 客户端写入会失败并出现“权限被拒绝”错误。| 错误如下所示：<br>`hcsuser@ubuntu-vm:~/nfstest$ mkdir test`<br>mkdir：无法创建目录“test”：权限被拒绝|
 |**4.**|Blob 存储引入|使用 AzCopy 版本 10 进行 Blob 存储引入时，请使用以下参数运行 AzCopy：`Azcopy <other arguments> --cap-mbps 2000`| 如果没有为 AzCopy 提供这些限制，前者可能会将大量请求发送到设备，导致服务出现问题。|
 |**5.**|分层存储帐户|使用分层存储帐户时，以下内容适用：<ul><li> 仅支持块 blob。 页 blob 不受支持。</li><li>不提供快照或复制 API 支持。</li><li> 不支持通过 `distcp` 引入 Hadoop 工作负载，因为前者会大量使用复制操作。</li></ul>||
 |**6.**|NFS 共享连接|如果将多个进程复制到相同的共享，并且未使用 `nolock` 属性，则在复制过程中可能会出现错误。|必须将 `nolock` 属性传递给 mount 命令，才能将文件复制到 NFS 共享。 例如：`C:\Users\aseuser mount -o anon \\10.1.1.211\mnt\vms Z:`。|
 |**7.**|Kubernetes 群集|在运行 kubernetes 群集的设备上应用更新时，kubernetes 虚拟机将重新启动并重新引导。 在这种情况下，只会在更新后自动还原使用指定副本部署的 pod。  |如果在未指定副本集的情况下在复制控制器之外创建了单独的 pod，则在设备更新后，不会自动还原这些 pod。 需要还原这些 pod。<br>系统会使用副本集替换因任何原因被删除或终止的 pod（例如节点故障或中断性节点升级）。 出于此原因，建议使用副本集，即使你的应用程序只需要一个 Pod。|
 |**8.**|Kubernetes 群集|只有 Helm v3 或更高版本支持 Azure Stack Edge Pro 上的 Kubernetes。 有关详细信息，请参阅[常见问题解答：删除 Tiller](https://v3.helm.sh/docs/faq/)。|
-|**9.**|已启用 Azure Arc 的 Kubernetes |对于正式发布版，启用了 Azure Arc 的 Kubernetes 已从版本 0.1.18 更新为 0.2.9。 由于 Azure Stack Edge 设备上不支持 Azure Arc 启用的 Kubernetes 更新，因此需要重新部署启用了 Azure Arc 的 Kubernetes。|按照以下步骤操作：<ol><li>[应用设备软件和 Kubernetes 更新](azure-stack-edge-gpu-install-update.md)。</li><li>连接到[设备的 PowerShell 界面](azure-stack-edge-gpu-connect-powershell-interface.md)。</li><li>删除现有的 Azure Arc 代理。 键入：`Remove-HcsKubernetesAzureArcAgent`。</li><li>[将 Azure Arc 部署到新资源](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)。 不要使用现有的 Azure Arc 资源。</li></ol>|
+|**9.**|已启用 Azure Arc 的 Kubernetes |对于正式发布版，已启用 Azure Arc 的 Kubernetes 已从版本 0.1.18 更新为 0.2.9。 由于 Azure Stack Edge 设备上不支持已启用 Azure Arc 的 Kubernetes 更新，因此需要重新部署已启用 Azure Arc 的 Kubernetes。|按照以下步骤操作：<ol><li>[应用设备软件和 Kubernetes 更新](azure-stack-edge-gpu-install-update.md)。</li><li>连接到[设备的 PowerShell 界面](azure-stack-edge-gpu-connect-powershell-interface.md)。</li><li>删除现有的 Azure Arc 代理。 键入：`Remove-HcsKubernetesAzureArcAgent`。</li><li>[将 Azure Arc 部署到新资源](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)。 不要使用现有的 Azure Arc 资源。</li></ol>|
 |**10.**|已启用 Azure Arc 的 Kubernetes|如果在 Azure Stack Edge Pro 设备上配置了 web 代理，则不支持 Azure Arc 部署。||
 |**11.**|Kubernetes |端口 31000 保留给 Kubernetes 仪表板。 端口 31001 保留给 Edge 容器注册表。 同样，在默认配置中，保留了 IP 地址 172.28.0.1 和172.28.0.10，分别用于 Kubernetes 服务和核心 DNS 服务。|不要使用保留 IP。|
 |**12.**|Kubernetes |Kubernetes 当前不允许多协议 LoadBalancer 服务。 例如，需要同时侦听 TCP 和 UDP 的 DNS 服务。 |若要解决 Kubernetes 与 MetalLB 的这一限制，可以在同一 pod 选择器上创建两个服务（一个用于 TCP，一个用于 UDP）。 这些服务使用相同的共享密钥和 loadBalancerIP 来共享相同的 IP 地址。 如果服务数多于可用 IP 地址，则还可以共享 IP。 <br> 有关详细信息，请参阅 [IP 地址共享](https://metallb.universe.tf/usage/#ip-address-sharing)|

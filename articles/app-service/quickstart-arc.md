@@ -3,12 +3,12 @@ title: 快速入门：在 Azure Arc 上创建 Web 应用
 description: 开始使用 Azure Arc 上的应用服务部署第一个 Web 应用。
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: 4002ef3d66eaae05881da0dd8d95cc82ffeb916d
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 30d310aa1170cf4c28d76e0299b23a90a3f599d9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112377001"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709790"
 ---
 # <a name="create-an-app-service-app-on-azure-arc-preview"></a>在 Azure Arc 上创建应用服务应用（预览版）
 

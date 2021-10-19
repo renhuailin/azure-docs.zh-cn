@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: davidmu
 ms.reviewer: hirsin
-ms.openlocfilehash: 9f8608330d5f74ef2e1262b7c3dff82be746c884
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: db874b82a8d0c966dbe6cdbecd14cf3c5fe521d2
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129059165"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615726"
 ---
-# <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>在用户使用主领域发现策略登录过程中禁用到联合 IDP 的自动加速
+# <a name="disable-auto-acceleration-sign-in-in-azure-active-directory"></a>在 Azure Active Directory 中禁用自动加速登录
 
 [主领域发现策略](/graph/api/resources/homeRealmDiscoveryPolicy) (HRD) 为管理员提供多种方式来控制对用户进行身份验证的方式和位置。 HRD 策略的 `domainHintPolicy` 部分用于帮助将联合用户迁移到云托管凭据（如 [FIDO](../authentication/howto-authentication-passwordless-security-key.md)），方法是确保它们始终访问 Azure AD 登录页，且不会因域提示而自动加速到联合 IDP。
 

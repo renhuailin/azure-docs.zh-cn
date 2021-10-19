@@ -6,12 +6,12 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 05ccdc3613141e7b04c3255a6035c7a03ad25995
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ee81fa18ac0f6bae6a3aefbfef60333991001dff
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128579722"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129812142"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-flexible-server-data-in-replication"></a>如何配置 Azure Database for MySQL 灵活服务器数据传入复制
 
@@ -164,6 +164,8 @@ ms.locfileid: "128579722"
 
    将转储文件还原到在 Azure Database for MySQL 灵活服务器服务中创建的服务器。 请参阅[转储和还原](../concepts-migrate-dump-restore.md)，了解如何将转储文件还原到 MySQL 服务器。 如果转储文件较大，请将它上传到副本服务器所在区域的 Azure 中的虚拟机。 将转储文件从虚拟机还原到 Azure Database for MySQL 灵活服务器服务器。
 
+>[!Note]
+>* 如果你想要避免在转储和还原时将数据库设置为只读，可以使用 [mydumper/myloader](../concepts-migrate-mydumper-myloader.md)。
 
 ## <a name="link-source-and-replica-servers-to-start-data-in-replication"></a>链接源服务器和副本服务器以启动数据传入复制
 
@@ -189,7 +191,8 @@ ms.locfileid: "128579722"
      建议以变量形式传入此参数。 有关详细信息，请参阅以下示例。
 
    > [!NOTE]
-   > 如果源服务器托管在 Azure VM 中，请将“允许访问 Azure 服务”设置为“启用”，以允许源服务器和副本服务器相互通信。 从“连接安全性”选项可更改此设置。 有关详细信息，请参阅[使用门户管理防火墙规则](how-to-manage-firewall-portal.md)。
+   > * 如果源服务器托管在 Azure VM 中，请将“允许访问 Azure 服务”设置为“启用”，以允许源服务器和副本服务器相互通信。 从“连接安全性”选项可更改此设置。 有关详细信息，请参阅[使用门户管理防火墙规则](how-to-manage-firewall-portal.md)。
+   > * 如果已使用 mydumper/myloader 转储了数据库，则可以从 /backup/metadata 文件获取 master_log_file 和 master_log_pos。 
 
    **示例**
 

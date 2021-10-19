@@ -6,18 +6,18 @@ ms.author: danlep
 ms.service: api-management
 ms.topic: article
 ms.date: 05/25/2021
-ms.openlocfilehash: bfcb6e738c480281361d544c4aa7a8dd355d92de
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ee2b0fc20111fddd55a987bef4d454d5b63b8e4e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590696"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708496"
 ---
 # <a name="deploy-an-azure-api-management-gateway-on-azure-arc-preview"></a>在 Azure Arc 上部署 Azure API 管理网关（预览版）
 
 通过 Azure API 管理与 [Kubernetes 上的 Azure Arc](../azure-arc/kubernetes/overview.md) 之间的集成，可以将 API 管理网关组件部署为[已启用 Azure Arc 的 Kubernetes 群集中的扩展](../azure-arc/kubernetes/extensions.md)。 
 
-在已启用 Arc 的 Kubernetes 群集上部署 API 管理网关扩展了对混合和多云环境的 API 管理支持。 使用群集扩展启用部署，使对已启用 Arc 的群集进行管理和应用策略成为一致体验。
+在已启用 Azure Arc 的 Kubernetes 群集上部署 API 管理网关扩展了对混合和多云环境的 API 管理支持。 使用群集扩展启用部署，使对已启用 Azure Arc 的群集进行管理和应用策略成为一致体验。
 
 [!INCLUDE [preview](./includes/preview/preview-callout-self-hosted-gateway-azure-arc.md)]
 
@@ -113,5 +113,5 @@ ms.locfileid: "128590696"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要详细了解自承载网关，请参阅 [Azure API 管理自承载网关概述](self-hosted-gateway-overview.md)。
-* 发现所有[已启用 Azure Arc 的 Kubernetes 扩展](../azure-arc/kubernetes/extensions.md)。 
+* 探索所有[已启用 Azure Arc 的 Kubernetes 扩展](../azure-arc/kubernetes/extensions.md)。 
 * 详细了解[已启用 Azure Arc 的 Kubernetes](../azure-arc/kubernetes/overview.md)。

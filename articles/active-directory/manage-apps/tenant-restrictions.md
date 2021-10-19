@@ -1,6 +1,7 @@
 ---
-title: 使用租户限制管理对 SaaS 应用的访问 - Azure AD
+title: 使用租户限制管理对 SaaS 应用的访问
 description: 如何使用租户限制来根据用户的 Azure AD 租户管理可访问应用的用户。
+titleSuffix: Azure AD
 author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
@@ -11,14 +12,14 @@ ms.date: 7/30/2021
 ms.author: davidmu
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19f3017aafdf15905d4418213fd1020545e57880
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 029328313ac58a5177f5a5e3c75b86fdc3587b43
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644289"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613731"
 ---
-# <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
+# <a name="restrict-access-to-a-tenant-in-azure-active-directory"></a>在 Azure Active Directory 中限制对租户的访问权限
 
 重视安全的大型组织都希望迁移到 Microsoft 365 等云服务，但需要知道，其用户只能访问已批准的资源。 在传统上，公司在想要管理访问权限时，会限制域名或 IP 地址。 如果软件即服务 (SaaS) 应用在公有云中托管并在类似于 [outlook.office.com](https://outlook.office.com/) 和 [login.microsoftonline.com](https://login.microsoftonline.com/) 的共享域名中运行，则这种做法会失败。 阻止这些地址会导致用户完全无法访问 Web 上的 Outlook，而不只是将他们能够访问的内容局限于批准的标识和资源。
 

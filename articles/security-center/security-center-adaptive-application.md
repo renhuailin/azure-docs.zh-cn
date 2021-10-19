@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/09/2021
 ms.author: memildin
-ms.openlocfilehash: ef37d84d2fcef851e13837ae40da14db9fb2412f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f2ab2dfeec7522599cfb8b3eccdf9b498fdfff32
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124777443"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713706"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控制来减少计算机的攻击面
 
@@ -244,7 +244,7 @@ REST API 提供的一些函数：
 目前无强制选项可用。 自适应应用程序控制旨在提供安全警报，前提是运行的任何应用程序不是你定义为安全的应用程序。 如本页所示，它具有一系列的优势（[自适应应用程序控制的优势是什么？](#what-are-the-benefits-of-adaptive-application-controls)）并且具有良好的可定制性。
 
 ### <a name="why-do-i-see-a-qualys-app-in-my-recommended-applications"></a>为什么我会在我的推荐应用程序中看到 Qualys 应用？
-[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 可为你的计算机提供漏洞扫描服务，无需额外付费。 你无需具备 Qualys 许可证，甚至还不需要 Qualys 帐户 - 所有操作都在安全中心内无缝执行。 有关此扫描器的详细信息以及如何部署它的说明，请参阅[Defender 的集成漏洞评估解决方案](deploy-vulnerability-assessment-vm.md)。
+[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 可为你的计算机提供漏洞扫描服务，无需额外付费。 你无需具备 Qualys 许可证，甚至还不需要 Qualys 帐户 - 所有操作都在安全中心内无缝执行。 如需此扫描程序的详细信息及其部署方式说明，请参阅 [Defender 的集成 Qualys 漏洞评估解决方案](deploy-vulnerability-assessment-vm.md)。
 
 若要确保安全中心部署扫描程序时不生成警报，自适应应用程序控制建议的允许列表应包括所有计算机的扫描程序。 
 

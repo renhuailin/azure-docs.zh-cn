@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2021
+ms.date: 09/17/2021
 ms.author: monicar
-ms.openlocfilehash: 0f0b624097fdb159fd52adae7ae57830833662f2
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 223e75d0a02997187eec609324014493e2fa34df
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272939"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660982"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -133,6 +133,9 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 ## <a name="tag"></a>标记
 一个索引编制术语，用于根据管理或计费要求为资源分类。 如果有一系列复杂的资源，则可以使用标记以最有利的方式可视化这些资产。 例如，可以标记组织中充当类似角色或者属于同一部门的资源。  
 请参阅[使用标记整理 Azure 资源](./azure-resource-manager/management/tag-resources.md)
+
+## <a name="tenant"></a>租户
+租户是指对产品、服务或应用程序的实例共享访问权限并拥有特定特权的一组用户或某个组织。 在 Azure Active Directory 中，租户是组织在注册 Microsoft 365 等云应用程序时接收的 Azure Active Directory 实例。 各个 Azure AD 租户各不相同，相互独立。 多租户是指多个组织共享的应用程序实例，每个组织对该实例拥有不同的访问权限。
 
 ## <a name="update-domain"></a>更新域
 可用性集中可同时更新的虚拟机集合。 同一个更新域中的虚拟机会在计划维护期间一起重新启动。 Azure 永远不会一次性重新启动多个更新域。 也称为升级域。  

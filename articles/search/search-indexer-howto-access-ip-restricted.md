@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: f0b73c1cc510156e0db7518c2d377a6a5cc9b921
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: a91eddfba5c9e1973a938b0c58674cc528f11811
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112377289"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858626"
 ---
 # <a name="configure-ip-firewall-rules-to-allow-indexer-connections-in-azure-cognitive-search"></a>在 Azure 认知搜索中配置 IP 防火墙规则以允许索引器连接
 
@@ -48,7 +48,7 @@ Aliases:  contoso.search.windows.net
 
 额外的 IP 地址用于来自索引器的[多租户执行环境](search-indexer-securing-resources.md#indexer-execution-environment)的请求。 可以从服务标记获取此 IP 地址范围。
 
-`AzureCognitiveSearch` 服务标记的 IP 地址范围可通过[发现 API（预览版）](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)或[可下载的 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)获取。
+可通过[发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) 或[可下载的 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)获取 `AzureCognitiveSearch` 服务标记的 IP 地址范围。
 
 对于本演练，假设搜索服务是 Azure 公有云，应下载 [Azure 公共 JSON 文件](https://www.microsoft.com/download/details.aspx?id=56519)。
 

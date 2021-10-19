@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/19/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 9b586d453f9ac49dd7bd2894c0003fef521167da
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 982bb3719de66d880f635dbb7c95e9ae2c4590c2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514943"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711171"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>设置 Microsoft 客户协议的计费帐户
 
@@ -27,7 +27,7 @@ ms.locfileid: "122514943"
 若要设置计费帐户，必须将 Azure 订阅的计费从企业协议注册转换到新帐户。 该项设置不会影响订阅中正在运行的 Azure 服务。 但是，它会改变订阅的计费管理方式。
 
 - 应在 [Azure 门户](https://portal.azure.com)而不是 [EA 门户](https://ea.azure.com)中管理 Azure 服务和计费。
-- 你每月会收到一份数字版的费用发票。 可以在“Azure 成本管理 + 计费”页中查看和分析该发票。
+- 你每月会收到一份数字版的费用发票。 可在“成本管理 + 计费”页中查看和分析发票。
 - 需使用新帐户中的计费结构和范围，而不是企业协议注册中的部门和帐户，来管理和组织计费。
 
 在开始设置之前，我们建议执行以下操作：
@@ -331,7 +331,5 @@ ms.locfileid: "122514943"
 ## <a name="next-steps"></a>后续步骤
 
 - [开始使用新计费帐户](../understand/mca-overview.md)
-
 - [完成 Microsoft 客户协议计费帐户中的企业协议任务](mca-enterprise-operations.md)
-
 - [管理对计费帐户的访问权限](understand-mca-roles.md)

@@ -1,6 +1,7 @@
 ---
-title: Azure 市场应用程序的一键式单一登录 (SSO) 配置 |Microsoft Docs
+title: Azure 市场应用程序的一键式单一登录 (SSO) 配置
 description: Azure 市场中的应用程序的一键式 SSO 配置步骤。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 06/11/2019
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: ergreenl
-ms.openlocfilehash: dac32dd14e006b1187f62389d3bc38e3c30a890f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 97cdedac91fa80c45ec8b36bad4a1368e48e3e81
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791453"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615783"
 ---
-# <a name="one-click-app-configuration-of-single-sign-on"></a>单一登录的一键式应用配置
+# <a name="one-click-app-configuration-of-single-sign-on-in-azure-active-directory"></a>Azure Active Directory 中的单一登录的一键式应用配置
 
  在本教程中，你将了解如何从 Azure 市场为支持 SAML 的 Azure Active Directory (Azure AD) 应用程序执行一键式单点登录 (SSO) 配置。
 

@@ -11,12 +11,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 09/24/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, references_regions
-ms.openlocfilehash: 4fe1a4f9966e5342ee4f8a12d2b24b3a449efbae
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 38347644557b2e2e3bf76dc4412381ab52396de2
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424324"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658550"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习训练环境
 
@@ -111,7 +111,7 @@ ms.locfileid: "129424324"
     * 如果你打算使用 SDK，则存储帐户可以位于不同的子网中。
 
     > [!NOTE]
-    > 选中“允许信任的 Microsoft 服务访问此帐户”复选框不足以允许来自计算的通信。
+    > 为工作区添加资源实例或选中“允许受信任的 Microsoft 服务访问此帐户”复选框不足以允许来自计算的通信。
 
 * 当工作区使用专用终结点时，只能从虚拟网络内部访问计算实例。 如果使用自定义 DNS 或 hosts 文件，请为 `<instance-name>.<region>.instances.azureml.ms` 添加一个条目。 将此条目映射到工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅 [自定义 DNS](./how-to-custom-dns.md) 一文。
 * 虚拟网络服务终结点策略不适用于计算群集/实例系统存储帐户。
@@ -147,7 +147,7 @@ ms.locfileid: "129424324"
 
 [!INCLUDE [machine-learning-required-public-internet-access](../../includes/machine-learning-public-internet-access.md)]
 
-有关使用防火墙解决方案的信息，请参阅[将防火墙和 Azure 机器学习结合使用](how-to-access-azureml-behind-firewall.md)。
+有关使用防火墙解决方案的信息，请参阅[在 Azure 机器学习中使用防火墙](how-to-access-azureml-behind-firewall.md)。
 
 ## <a name="compute-clusters"></a><a name="compute-cluster"></a>计算群集
 
@@ -171,7 +171,7 @@ ms.locfileid: "129424324"
     :::image type="content" source="media/how-to-enable-virtual-network/create-compute-cluster-config.png" alt-text="显示设置计算名称、虚拟网络和子网的屏幕截图。":::
 
     > [!TIP]
-    > 如果工作区使用专用终结点连接到虚拟网络，则“虚拟网络”选择字段将显示为灰色。
+    > 如果工作区使用专用终结点来连接到虚拟网络，则“虚拟网络”选择字段会灰显。
     > 
 
 1. 选择“创建”以创建计算群集。

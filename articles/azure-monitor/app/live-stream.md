@@ -4,12 +4,12 @@ description: 通过自定义指标实时监视 Web 应用，使用实时失败�
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 865de94f1d9b4012a908643bbf87f38aeb8594a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e19d424f8aa56f37b12ab776c9ff85ca78f6738
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98679460"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614947"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
@@ -245,7 +245,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 | .NET Core（目标=.NET Framework）| 支持 (V2.4.1+) | 支持 (V2.4.1+) | 支持 (V2.4.1+) | 支持 (V2.4.1+) | 支持 (V2.4.1+)  |
 | .NET Core（目标=.NET Core）     | 支持 (V2.4.1+) | 支持*          | 支持 (V2.4.1+) | 支持 (V2.4.1+) | **不支持**    |
 | Azure Functions v2               | 支持           | 支持           | 支持           | 支持           | **不支持**    |
-| Java                             | 支持 (V2.0.0+) | 支持 (V2.0.0+) | **不支持**   | **不支持**   | **不支持**    |
+| Java                             | 支持 (V2.0.0+) | 支持 (V2.0.0+) | **不支持**   | 支持 (V3.2.0+) | **不支持**    |
 | Node.js                          | 支持 (V1.3.0+) | 支持 (V1.3.0+) | **不支持**   | 支持 (V1.3.0+) | **不支持**    |
 
 基本指标包括请求、依赖项和异常率。 性能指标（性能计数器）包括内存和 CPU。 示例遥测显示了有关失败的请求和依赖项、异常、事件和跟踪的详细信息流。

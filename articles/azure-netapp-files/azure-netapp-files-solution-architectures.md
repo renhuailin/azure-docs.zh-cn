@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/05/2021
+ms.date: 10/07/2021
 ms.author: b-juche
-ms.openlocfilehash: 22424e6d8498535c2b4b884834439a4f1882ab9d
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 3cbfd4349c96457e7278327d9edc3e31cd521211
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537241"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659956"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
 本文提供了使用 Azure NetApp 文件的解决方案体系结构最佳做法的参考，帮助你更好地理解这个体系结构。  
@@ -43,6 +43,7 @@ ms.locfileid: "129537241"
 ### <a name="machine-learning"></a>机器学习
 *   [Cloudera 机器学习](https://docs.cloudera.com/machine-learning/cloud/requirements-azure/topics/ml-requirements-azure.html)
 *   [Azure 中的分布式训练：通道检测 - 解决方案设计](https://www.netapp.com/media/32427-tr-4896-design.pdf)
+*   [Azure 中的分布式训练：点击式速率预测 - 解决方案设计](https://docs.netapp.com/us-en/netapp-solutions/ai/aks-anf_introduction.html)
 
 ### <a name="education"></a>教育
 * [Azure NetApp 文件 NFS 存储上的 Moodle](https://techcommunity.microsoft.com/t5/azure-architecture-blog/azure-netapp-files-for-nfs-storage-with-moodle/ba-p/2300630)

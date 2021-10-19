@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/28/2021
+ms.date: 10/06/2021
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 6042acd29325ab6bb887a74e47ceff115d000a9d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: da97095edce8c089acd53a8faf8ba353dd39515d
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129360047"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614206"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>使用 Azure Data Lake Storage Gen2 的最佳做法
 
@@ -45,7 +45,7 @@ Azure Data Lake Storage Gen2 不是专用的服务或帐户类型。 它是一�
 
 ### <a name="source-hardware"></a>源硬件
 
-无论使用的是本地计算机还是 Azure 中的虚拟机 (VM)，都请确保认真选择适当的硬件。 对于磁盘硬件，请考虑使用固态硬盘 (SSD)，并选择主轴速度较快的磁盘硬件。 对于网络硬件，请尽可能使用最快的网络接口控制器 (NIC)。 在 Azure 上，建议使用 Azure D14 VM，该系列具有相当强大的磁盘和网络硬件。
+无论使用的是本地计算机还是 Azure 中的虚拟机 (VM)，都请确保认真选择适当的硬件。 对于磁盘硬件，请考虑使用固态硬盘 (SSD)，并选择主轴速度较快的磁盘硬件。 对于网络硬件，请尽可能地使用最快的网络接口控制器 (NIC)。 在 Azure 上，我们建议使用 Azure D14 VM，该系列具有相当强大的磁盘和网络硬件。
 
 ### <a name="network-connectivity-to-the-storage-account"></a>与存储帐户的网络连接
 
@@ -53,7 +53,7 @@ Azure Data Lake Storage Gen2 不是专用的服务或帐户类型。 它是一�
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>配置数据引入工具，实现最大并行化
 
-为了实现最佳性能，请并行执行尽可能多的读取和写入，以使用所有可用吞吐量。
+若要实现最佳性能，请并行执行尽可能多的读取和写入，以使用所有可用吞吐量。
 
 ![Data Lake Storage Gen2 性能](./media/data-lake-storage-best-practices/throughput.png)
 
@@ -84,7 +84,7 @@ Hadoop 支持一组已针对存储和处理结构化数据进行优化的文件�
 
 当 I/O 模式读取操作繁重，或查询模式侧重于记录中的列子集时，请考虑使用 Parquet 和 ORC 文件格式。 读取事务可以优化为检索特定列，而不是读取整个记录。
 
-Apache Parquet 是一种开源文件格式，已针对读取密集型分析管道进行了优化。 Parquet 的纵栏式存储结构允许跳过不相关的数据。 你的查询效率将大幅提高，因为它们可以缩小从存储发送到分析引擎的数据的范围。 此外，由于类似的数据类型（适用于列）存储在一起，Parquet 支持高效的数据压缩和编码方案，这可以降低数据存储成本。 [Azure Synapse Analytics](../../synapse-analytics/overview-what-is.md)、[Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) 和 [Azure 数据工厂](../../data-factory/introduction.md)等服务具有利用 Parquet 文件格式的原生功能。
+Apache Parquet 是一种开源文件格式，已针对读取密集型分析管道进行优化。 Parquet 的列式存储结构允许跳过不相关的数据。 你的查询效率将大幅提高，因为它们可以缩小从存储发送到分析引擎的数据的范围。 此外，由于类似的数据类型（适用于列）将一起存储，Parquet 支持高效的数据压缩和编码方案，这可以降低数据存储成本。 [Azure Synapse Analytics](../../synapse-analytics/overview-what-is.md)、[Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) 和 [Azure 数据工厂](../../data-factory/introduction.md)等服务具有利用 Parquet 文件格式的本机功能。
 
 ### <a name="file-size"></a>文件大小
 
@@ -94,7 +94,7 @@ Apache Parquet 是一种开源文件格式，已针对读取密集型分析管�
 
 增加文件大小还可以降低事务成本。 读取和写入操作按 4 MB 的增量计费，因此，无论文件包含 4 MB 还是只有几 KB 的数据，都会收取操作费用。 有关定价信息，请参阅 [Azure Data Lake Storage 定价](https://azure.microsoft.com/pricing/details/storage/data-lake/)。
 
-有时，数据管道对原始数据（含有多个小文件）的控制有限。 通常，建议系统采用某种进程，将小文件聚合为较大的文件，以供下游应用程序使用。 如果你要实时处理数据，可将实时流式处理引擎（例如 [Azure 流分析](../../stream-analytics/stream-analytics-introduction.md)或 [Spark 流式处理](https://databricks.com/glossary/what-is-spark-streaming)）与消息代理（例如[事件中心](../../event-hubs/event-hubs-about.md)或 [Apache Kafka](https://kafka.apache.org/)）一起使用，以便将数据作为较大的文件进行存储。 将小文件聚合为较大文件时，请考虑以读取优化格式（例如 [Apache Parquet](https://parquet.apache.org/)）保存这些大文件，以供下游处理。 
+有时，数据管道对原始数据（含有多个小文件）的控制有限。 通常，建议系统采用某种进程，将小文件聚合为较大的文件，以供下游应用程序使用。 如果你要实时处理数据，可将实时流式处理引擎（例如 [Azure 流分析](../../stream-analytics/stream-analytics-introduction.md)或 [Spark 流式处理](https://databricks.com/glossary/what-is-spark-streaming)）与消息代理（例如[事件中心](../../event-hubs/event-hubs-about.md)或 [Apache Kafka](https://kafka.apache.org/)）一起使用，以便将数据作为较大的文件进行存储。 将小文件聚合为较大文件时，请考虑以读取优化格式（例如 [Apache Parquet](https://parquet.apache.org/)）保存这些大文件，供下游处理。 
 
 ### <a name="directory-structure"></a>目录结构
 
@@ -151,92 +151,32 @@ Apache Parquet 是一种开源文件格式，已针对读取密集型分析管�
 
 然后，查看 [Azure Data Lake Storage Gen2 中的访问控制模型](data-lake-storage-access-control-model.md)一文，获取有关已启用 Data Lake Storage Gen2 帐户的专门指导。 本文将帮助你了解如何使用 Azure 基于角色的访问控制 (Azure RBAC) 角色和访问控制列表 (ACL)，对分层文件系统中的目录和文件强制执行安全权限。 
 
-## <a name="ingest-data"></a>引入数据
+## <a name="ingest-process-and-analyze"></a>引入、处理和分析
 
-本部分重点介绍不同的数据源和将数据引入 Data Lake Storage Gen2 帐户的不同方式。
+有许多不同的数据源，并且可以通过不同的方式将数据引入已启用 Data Lake Storage Gen2 的帐户。 
 
-#### <a name="ad-hoc-data"></a>临时数据
+例如，可以从 HDInsight 和 Hadoop 群集引入大型数据集，也可以引入小型临时数据集以便为应用程序制作原型。 可以引入各种源（例如应用程序、设备和传感器）生成的流数据。 对于这种类型的数据，可以使用相应的工具以逐个事件的方式实时捕获和处理数据，然后将事件分批写入帐户。 还可以引入包含页面请求历史记录等信息的 Web 服务器。 对于日志数据，请考虑编写自定义脚本或应用程序来上传这些数据，以便可以灵活地将数据上传组件作为更大的大数据应用程序的一部分包括在内。 
 
-可用于形成大数据应用程序原型的较小数据集。 请考虑使用以下任何一种工具来引入数据： 
+数据在帐户中可用后，可以对该数据运行分析，创建可视化效果，甚至将数据下载到本地计算机或其他存储库（例如 Azure SQL 数据库或 SQL Server 实例）。 
 
-- Azure 门户
-- [Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)
-- [Azure CLI](data-lake-storage-directory-file-acl-cli.md)
-- [REST](/rest/api/storageservices/data-lake-storage-gen2)
-- [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
-- [Apache DistCp](data-lake-storage-use-distcp.md)
-- [AzCopy](../common/storage-use-azcopy-v10.md)
+下表推荐了可用于引入、分析、可视化和下载数据的工具。 使用此表中的链接可以找到有关如何配置和使用每个工具的指导。 
 
-#### <a name="streamed-data"></a>流数据
+| 目的 | 工具和工具指导 |
+|---|---|
+| 引入临时数据| Azure 门户、[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)、[Azure CLI](data-lake-storage-directory-file-acl-cli.md)、[REST](/rest/api/storageservices/data-lake-storage-gen2)、[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)、[Apache DistCp](data-lake-storage-use-distcp.md)、[AzCopy](../common/storage-use-azcopy-v10.md)|
+| 引入流数据 | [HDInsight Storm](../../hdinsight/storm/apache-storm-write-data-lake-store.md)、[Azure 流分析](../../stream-analytics/stream-analytics-quick-create-portal.md) |
+| 引入关系数据 | [Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md) |
+| 引入 Web 服务器日志 | [Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)、[Azure CLI](data-lake-storage-directory-file-acl-cli.md)、[REST](/rest/api/storageservices/data-lake-storage-gen2)、Azure SDK（[.NET](data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、[Python](data-lake-storage-directory-file-acl-python.md) 和 [Node.js](data-lake-storage-directory-file-acl-javascript.md)）、[Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md) |
+| 从 HDInsight 群集引入 | [Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md)、[Apache DistCp](data-lake-storage-use-distcp.md)、[AzCopy](../common/storage-use-azcopy-v10.md) |
+| 从 Hadoop 群集引入 | [Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md)、[Apache DistCp](data-lake-storage-use-distcp.md)、[WANdisco LiveData Migrator for Azure](migrate-gen2-wandisco-live-data-platform.md)、[Azure Data Box](data-lake-storage-migrate-on-premises-hdfs-cluster.md) |
+| 引入大型数据集（若干 TB） | [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) |
+| 处理和分析数据 | [Azure Synapse Analytics](../../synapse-analytics/get-started-analyze-storage.md)、[Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)、[Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse) |
+| 可视化数据 | [Power BI](/power-query/connectors/datalakestorage)、[Azure Data Lake Storage 查询加速](data-lake-storage-query-acceleration.md) |
+| 下载数据 | Azure 门户、[PowerShell](data-lake-storage-directory-file-acl-powershell.md)、[Azure CLI](data-lake-storage-directory-file-acl-cli.md)、[REST](/rest/api/storageservices/data-lake-storage-gen2)、Azure SDK（[.NET](data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、[Python](data-lake-storage-directory-file-acl-python.md) 和 [Node.js](data-lake-storage-directory-file-acl-javascript.md)）、[Azure 存储资源管理器](data-lake-storage-explorer.md)、[AzCopy](../common/storage-use-azcopy-v10.md#transfer-data)、[Azure 数据工厂](../../data-factory/copy-activity-overview.md)、[Apache DistCp](./data-lake-storage-use-distcp.md) |
 
-由各种源（如应用程序、设备和传感器）生成的数据。 用于引入此类数据的工具通常会以逐个事件的方式实时捕获和处理数据，然后将事件批量写入帐户。 请考虑使用以下任何一种工具来引入数据：
+> [!NOTE]
+> 此表未反映支持 Data Lake Storage Gen2 的 Azure 服务的完整列表。 若要查看受支持的 Azure 服务的列表及其支持级别，请参阅[支持 Azure Data Lake Storage Gen2 的 Azure 服务](data-lake-storage-supported-azure-services.md)。 
 
-- [HDInsight Storm](../../hdinsight/storm/apache-storm-write-data-lake-store.md)
-- [Azure 流分析](../../stream-analytics/stream-analytics-quick-create-portal.md)
-
-#### <a name="relational-data"></a>关系数据
-
-关系数据库收集了大量记录，这些记录如果通过大数据管道进行处理，可以提供关键见解。 建议使用 [Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md)引入关系数据。
-
-#### <a name="web-server-log-data"></a>Web 服务器日志数据
-
-日志文件，其中包含诸如页面请求历史记录等信息。 请考虑编写自定义脚本或应用程序来上传此数据，以便可以灵活地将数据上传组件作为更大的大数据应用程序的一部分包括在内。 请考虑使用这些工具和 SDK：
-
-- [Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)
-- [Azure CLI](data-lake-storage-directory-file-acl-cli.md)
-- [REST](/rest/api/storageservices/data-lake-storage-gen2)
-- Azure SDK（[.NET](data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、[Python](data-lake-storage-directory-file-acl-python.md) 和 [Node.js](data-lake-storage-directory-file-acl-javascript.md)）
-- [Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md)
-
-#### <a name="hdinsight-clusters"></a>HDInsight 群集
-
-大多数 HDInsight 群集类型（Hadoop、HBase、Storm）支持将 Data Lake Storage Gen2 用作数据存储库。 请考虑使用以下任何一种工具来引入数据：
-
-- [Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md)
-- [Apache DistCp](data-lake-storage-use-distcp.md)
-- [AzCopy](../common/storage-use-azcopy-v10.md)
-
-#### <a name="hadoop-clusters"></a>Hadoop 群集
-
-这些群集可能在本地或云中运行。 请考虑使用以下任何一种工具来引入数据：
-
-- [Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md)
-- [Apache DistCp](data-lake-storage-use-distcp.md)
-- [WANdisco LiveData Migrator for Azure](migrate-gen2-wandisco-live-data-platform.md)
-- [Azure Data Box](data-lake-storage-migrate-on-premises-hdfs-cluster.md)
-
-#### <a name="large-data-sets"></a>大型数据集
-
-对于上传兆兆字节范围内的数据集，使用上述方法可能有时速度慢且成本高。 在这种情况下，可以使用 Azure ExpressRoute。  
-
-Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间创建专有连接。 这对传输大量数据提供了可靠的选项。 若要了解详细信息，请参阅 [Azure ExpressRoute 文档](../../expressroute/expressroute-introduction.md)。
-
-## <a name="process-and-analyze-data"></a>处理和分析数据
-
-数据在 Data Lake Storage Gen2 中可用后，可以对该数据运行分析，创建可视化效果，甚至将数据下载到本地计算机或其他存储库（例如 Azure SQL 数据库或 SQL Server 实例）。 以下各节介绍可用于分析、可视化和下载数据的工具。
-
-#### <a name="tools-for-analyzing-data"></a>用于分析数据的工具
-
-- [Azure Synapse Analytics](../../synapse-analytics/get-started-analyze-storage.md)
-- [Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)
-- [Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse)
-
-#### <a name="tools-for-visualizing-data"></a>用于可视化数据的工具
-
-- [Power BI](/power-query/connectors/datalakestorage)
-- [Azure Data Lake Storage 查询加速](data-lake-storage-query-acceleration.md)
-
-#### <a name="tools-for-downloading-data"></a>用于下载数据的工具
-
-- Azure 门户
-- [PowerShell](data-lake-storage-directory-file-acl-powershell.md)
-- [Azure CLI](data-lake-storage-directory-file-acl-cli.md)
-- [REST](/rest/api/storageservices/data-lake-storage-gen2)
-- Azure SDK（[.NET](data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、[Python](data-lake-storage-directory-file-acl-python.md) 和 [Node.js](data-lake-storage-directory-file-acl-javascript.md)）
-- [Azure 存储资源管理器](data-lake-storage-explorer.md)
-- [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data)
-- [Azure 数据工厂](../../data-factory/copy-activity-overview.md)
-- [Apache DistCp](./data-lake-storage-use-distcp.md)
 
 ## <a name="monitor-telemetry"></a>监视遥测数据
 

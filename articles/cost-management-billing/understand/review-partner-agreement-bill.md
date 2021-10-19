@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: a7c67b364fba771ad485eee8b93a62b9bdabc841
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: acff6020d401390ab514c168241db8daca801691
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643035"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705811"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>教程：查看 Microsoft 合作伙伴协议发票
 
- 在 Microsoft 合作伙伴协议的计费帐户中，每月将为每个计费对象信息生成一份发票。 该发票包括上个月的所有客户费用。 可以通过分析 Azure 门户中的每笔交易来了解发票中的费用。 还可以在 Azure 门户中查看发票，并将费用与使用情况详细信息文件进行比较。
+在 Microsoft 合作伙伴协议的计费帐户中，每月将为每个计费对象信息生成一份发票。 该发票包括上个月的所有客户费用。 可以通过分析 Azure 门户中的每笔交易来了解发票中的费用。 还可以在 Azure 门户中查看发票，并将费用与使用情况详细信息文件进行比较。
 
 有关详细信息，请参阅[如何从 Azure 门户下载发票](download-azure-invoice.md)。
 
@@ -132,7 +132,7 @@ ms.locfileid: "128643035"
 > * 查看未结费用以估算下一份发票
 > * 分析 Azure 使用费
 
-了解如何使用面向合作伙伴的 Azure 成本管理。
+了解如何使用面向合作伙伴的成本管理。
 
 > [!div class="nextstepaction"]
-> [面向合作伙伴的 Azure 成本管理入门](../costs/get-started-partners.md)
+> [面向合作伙伴的成本管理入门](../costs/get-started-partners.md)

@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 10/06/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 40b40d25e47e3951293ebe5a5d58673535b6615e
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1fbd0c7a3c2a6edc2ffb0f6a5a4124979fc27225
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123470609"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612401"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>支持 Azure Data Lake Storage Gen2 的 Azure 服务
 
@@ -46,9 +46,13 @@ ms.locfileid: "123470609"
 |Azure 内容分发网络|尚不支持|不适用|不适用|[为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](../../cdn/cdn-overview.md)|
 |Azure SQL Database|尚不支持|不适用|不适用|[什么是 Azure SQL 数据库？](../../azure-sql/database/sql-database-paas-overview.md)|
 
+> [!TIP]
+> 若要查看如何将服务整理到多个类别（例如引入、下载、处理和可视化），请参阅[引入、处理和分析](data-lake-storage-data-scenarios.md#ingest-process-and-analyze)。
+
 ## <a name="see-also"></a>另请参阅
 
 - [Azure Data Lake Storage Gen2 的已知问题](data-lake-storage-known-issues.md)
 - [Azure 存储帐户中的 Blob 存储功能支持](storage-feature-support-in-storage-accounts.md)
 - [支持 Azure Data Lake Storage Gen2 的开源平台](data-lake-storage-supported-open-source-platforms.md)
 - [Azure Data Lake Storage 的多协议访问](data-lake-storage-multi-protocol-access.md)
+- [使用 Azure Data Lake Storage Gen2 的最佳做法](data-lake-storage-best-practices.md)

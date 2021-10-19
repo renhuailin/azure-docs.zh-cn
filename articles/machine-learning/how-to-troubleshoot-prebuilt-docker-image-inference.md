@@ -7,20 +7,23 @@ ms.service: machine-learning
 ms.subservice: mlops
 ms.author: ssambare
 author: shivanissambare
-ms.date: 05/25/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt, troubleshoot
-ms.openlocfilehash: 209a9ffe884fd772fde30bd7a6d4995a15d97f02
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 59a3709ef6145fa723d1919429fec4bf62a0998b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129423474"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705343"
 ---
-# <a name="troubleshooting-prebuilt-docker-images-for-inference-preview"></a>用于推理的预生成 Docker 映像（预览版）故障排除
+# <a name="troubleshooting-prebuilt-docker-images-for-inference"></a>用于推理的预生成 Docker 映像故障排除
 
-了解如何排查在 Azure 机器学习中使用用于推理的预生成 Docker 映像[（预览版）](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)时可能出现的问题。
+了解如何排查在通过 Azure 机器学习使用用于推理的预生成 Docker 映像时可能出现的问题。
+
+> [!IMPORTANT]
+> 将[预生成 Docker 映像的 Python 包可扩展性](how-to-prebuilt-docker-images-inference-python-extensibility.md)与 Azure 机器学习配合使用的功能目前以预览版提供。 预览功能按原样提供，不保证支持或服务级别协议。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="model-deployment-failed"></a>模型部署失败
 

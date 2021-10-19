@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 1203562d088efeafd20a0b6c58698fcfe10b79e6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ffa5aae5e45583385d7849637665a053ef0b9a2f
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816185"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729570"
 ---
 # <a name="introduction-to-azure-active-directory-verifiable-credentials-preview"></a>Azure Active Directory 可验证凭据简介（预览）
 
@@ -81,7 +81,7 @@ Microsoft 的可验证凭据解决方案使用去中心化凭据 (DID)，以加�
 
 **4. Microsoft Resolver** 链接到 ION 节点的 API，使用此方法查找和解决 DID，```did:ion```并返回 DID 文档对象 (DDO)。 DDO 包含与 DID 关联的 DPKI 元数据，如公钥和服务终结点。 
 
-**5. Azure Active Directory 可验证凭据服务**[W3C 可验证凭据](https://www.w3.org/TR/vc-data-model/)的颁发和验证 API 以及开源 SDK 由此方法签发```did:ion```。 允许身份所有者生成、提供和验证声明。 这构成了系统用户之间的信任基础。
+**5. Azure Active Directory 已验证凭据服务** Azure 中的颁发和验证服务以及使用 ```did:ion``` 方法签名的 [W3C 可验证凭据](https://www.w3.org/TR/vc-data-model/)的 REST API。 允许身份所有者生成、提供和验证声明。 这构成了系统用户之间的信任基础。
 
 ## <a name="a-sample-scenario"></a>示例方案
 

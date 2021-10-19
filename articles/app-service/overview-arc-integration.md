@@ -3,16 +3,16 @@ title: Azure Arc 上的应用服务
 description: 为 Azure 操作员介绍如何将应用服务与 Azure Arc 集成。
 ms.topic: article
 ms.date: 08/17/2021
-ms.openlocfilehash: bd5e257d48ec009ccb79696f4c299fd93568f1c9
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: cec1e7bb9dac43e33e85b6036910220a1fa287c2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397331"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711659"
 ---
 # <a name="app-service-functions-and-logic-apps-on-azure-arc-preview"></a>Azure Arc 上的应用服务、Functions 和逻辑应用（预览）
 
-可以在已启用 Azure Arc 的 Kubernetes 群集上运行应用服务、Functions 和逻辑应用。 Kubernetes 群集可以位于本地，也可以托管在第三方云中。 此方法使应用开发人员能够利用应用服务的功能。 同时，它使 IT 管理员能够通过将应用服务应用托管在内部基础结构上来保持公司的合规性。 它还使其他 IT 操作员能够通过在现有 Kubernetes 群集上运行应用服务来保护其先前在其他云提供商中的投资。
+可在已启用 Azure Arc 的 Kubernetes 群集上运行应用服务、Functions 和逻辑应用。 Kubernetes 群集可以位于本地，也可以托管在第三方云中。 此方法使应用开发人员能够利用应用服务的功能。 同时，它使 IT 管理员能够通过将应用服务应用托管在内部基础结构上来保持公司的合规性。 它还使其他 IT 操作员能够通过在现有 Kubernetes 群集上运行应用服务来保护其先前在其他云提供商中的投资。
 
 > [!NOTE]
 > 若要了解如何为应用服务、Functions 和逻辑应用设置 Kubernetes 群集，请参阅[创建应用服务 Kubernetes 环境（预览）](manage-create-arc-environment.md)。
@@ -42,7 +42,7 @@ ms.locfileid: "122397331"
 
 ## <a name="pods-created-by-the-app-service-extension"></a>应用服务扩展创建的 Pod
 
-在已启用 Arc 的 Kubernetes 群集上安装应用服务扩展后，会在指定的发布命名空间中创建几个 Pod。 这些 Pod 使 Kubernetes 群集能充当 Azure 中 `Microsoft.Web` 资源提供程序的扩展，并支持应用的管理和操作。 （可选）可以选择为扩展安装 [KEDA](https://keda.sh/) 以用于事件驱动的缩放。
+在已启用 Azure Arc 的 Kubernetes 群集上安装应用服务扩展后，可以看到在指定的发布命名空间中创建了几个 Pod。 这些 Pod 使 Kubernetes 群集能充当 Azure 中 `Microsoft.Web` 资源提供程序的扩展，并支持应用的管理和操作。 （可选）可以选择为扩展安装 [KEDA](https://keda.sh/) 以用于事件驱动的缩放。
  <!-- You can only have one installation of KEDA on the cluster. If you have one already, you must disable this behavior during installation of the cluster extension `TODO`. -->
 
 下表描述了默认情况下创建的每个 Pod 的角色：

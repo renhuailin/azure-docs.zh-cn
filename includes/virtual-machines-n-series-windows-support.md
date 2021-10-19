@@ -1,5 +1,5 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: virtual-machines-windows
 author: cynthn
@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a188812751552532ae1536529b12e54d55a24a2b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f66591f1f6fb20951a956e166645d63129f209b7
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "126056439"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638404"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
 ### <a name="nvidia-tesla-cuda-drivers"></a>NVIDIA Tesla (CUDA) 驱动程序
 
-仅下表中列出的操作系统支持适用于 NC、NCv2、NCv3、NCasT4_v3、ND 和 NDv2 系列 VM 的 NVIDIA Tesla (CUDA) 驱动程序（对 NV 系列为可选项）。 在本文发布时，驱动程序下载链接是最新的。 有关最新驱动程序，请访问 [NVIDIA](https://www.nvidia.com/) 网站。
+适用于 NC、NCv2、NCv3、NCasT4_v3、ND 和 NDv2 系列虚拟机 (VM) 的 NVIDIA Tesla (CUDA) 驱动程序在下表列出的操作系统上进行了测试（对 NV 系列而言是可选项）。 CUDA 驱动程序是通用的，不特定于 Azure。 有关最新驱动程序，请访问 [NVIDIA](https://www.nvidia.com/) 网站。
 
 > [!TIP]
 > 作为一种在 Windows Server VM 上手动安装 CUDA 驱动程序的替代方法，可以部署 Azure [数据科学虚拟机](../articles/machine-learning/data-science-virtual-machine/overview.md)映像。 用于 Windows Server 2016 的 DSVM 版本预安装 NVIDIA CUDA 驱动程序、CUDA 深度神经网络库和其他工具。

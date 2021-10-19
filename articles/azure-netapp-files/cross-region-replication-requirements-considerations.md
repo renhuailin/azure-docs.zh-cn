@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/04/2021
+ms.date: 10/07/2021
 ms.author: b-juche
-ms.openlocfilehash: b94374d8eaa0efac50989a388686f96d9bae0622
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 6e711f3101426f59aead80b84b88350af86bbd6b
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537129"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669181"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>使用跨区域复制的要求和注意事项 
 
@@ -33,7 +33,7 @@ ms.locfileid: "111537129"
 * 目标帐户必须位于与源卷区域不同的区域中。 你还可以在不同的区域中选择现有的 NetApp 帐户。  
 * 复制目标卷为只读状态，直到[故障转移到目标区域](cross-region-replication-manage-disaster-recovery.md#fail-over-to-destination-volume)以启用目标卷进行读写。 
 * Azure NetApp 文件复制当前不支持多个订阅；必须在单个订阅下执行所有复制。
-* 最多可为每个区域的单个订阅中的复制设置五个卷。 你可以打开支持票证，请求增加五个复制目标卷（一个区域中的每个订阅）的默认配额。 
+* 若要了解跨区域复制目标卷的最大数量，请参阅[资源限制](azure-netapp-files-resource-limits.md)。 可打开支持票证来[请求调高限制](azure-netapp-files-resource-limits.md#request-limit-increase)增加复制目标卷的默认配额（一个区域中的每个订阅）。
 * 接口在源卷上反映新添加的快照时，可能出现最多五分钟的延迟。  
 * 不支持级联和扇入/扇出拓扑。
 * 目前不支持为从快照创建的源卷配置卷复制。

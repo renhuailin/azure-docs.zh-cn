@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 09/13/2021
+ms.date: 10/13/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: devx-track-js
-ms.openlocfilehash: 8e609268258142875ebbe924f3cfbdebc94911f8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 115876aab202c550d694267294345b5472ad1f2a
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601707"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811715"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理 Azure Cosmos DB 的用于 MongoDB 的 API 中的索引编制
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -361,13 +361,13 @@ Azure Cosmos DB API for MongoDB 版本 3.6+ 支持使用 `currentOp()` 命令来
 
 ## <a name="reindex-command"></a>ReIndex 命令
 
-`reIndex` 命令会重新创建集合上的所有索引。 在大多数情况下，这是不必要的。 但在某些罕见情况下，查询性能可能会在运行 `reIndex` 命令后提高。
+`reIndex` 命令会重新创建集合上的所有索引。 在极少数情况下，可以运行 `reIndex` 命令来解决集合中的查询性能或其他索引问题。 如果在编制索引时遇到问题，建议的方法是使用 `reIndex` 命令重新创建索引。 
 
 可以使用以下语法运行 `reIndex` 命令：
 
 `db.runCommand({ reIndex: <collection> })`
 
-可以使用以下语法来检查是否需要运行 `reIndex` 命令：
+可使用以下语法来检查运行 `reIndex` 命令能否提高集合中的查询性能：
 
 `db.runCommand({"customAction":"GetCollection",collection:<collection>, showIndexes:true})`
 
@@ -402,7 +402,7 @@ Azure Cosmos DB API for MongoDB 版本 3.6+ 支持使用 `currentOp()` 命令来
 }
 ```
 
-如果 `reIndex` 是必需的，则 requiresReIndex 将为 true。 如果 `reIndex` 不是必需的，则会忽略此属性。
+如果 `reIndex` 可提高查询性能，则 requiresReIndex 为 true。 如果 `reIndex` 不能提高查询性能，则省略此属性。
 
 ## <a name="migrate-collections-with-indexes"></a>迁移带索引的集合
 

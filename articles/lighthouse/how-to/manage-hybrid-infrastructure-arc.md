@@ -3,12 +3,12 @@ title: 利用 Azure Arc 大规模管理混合基础结构
 description: Azure Lighthouse 可帮助你有效地管理 Azure 外部的客户计算机和 Kubernetes 群集。
 ms.date: 09/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 7d544f98d6a88678cb8efc337831aa89becb21ee
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8761c87daeda97b6c67ce8e79e438ed01d8d3a37
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736565"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714727"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>利用 Azure Arc 大规模管理混合基础结构
 
@@ -20,7 +20,7 @@ ms.locfileid: "124736565"
 
 借助[启用 Azure Arc 的 Kubernetes](../../azure-arc/kubernetes/overview.md)，客户可以在 Azure 内部或外部附加和配置 Kubernetes 群集。 将 Kubernetes 群集附加到 Azure Arc 后，它将显示在 Azure 门户中，并具有 Azure 资源管理器 ID 和托管标识。 群集附加到标准 Azure 订阅，位于资源组中，可以像任何其他 Azure 资源一样接收标记。
 
-本主题概述了如何在你管理的客户租户中以可伸缩方式使用启用了 Azure Arc 的服务器和启用了 Azure Arc 的 Kubernetes。
+本主题概述了如何在你管理的客户租户中，以可伸缩方式使用已启用 Azure Arc 的服务器和已启用 Azure Arc 的 Kubernetes。
 
 > [!TIP]
 > 尽管本主题中提及的是服务提供商和客户，但本指南同样适用于[使用 Azure Lighthouse 管理多个租户的企业](../concepts/enterprise.md)。
@@ -33,7 +33,7 @@ ms.locfileid: "124736565"
 
 例如，可以[确保在客户的混合计算机上应用一组相同的策略](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md)。 还可以使用 Azure 安全中心来监视所有客户混合环境的符合性，或[使用 Azure Monitor 直接从混合计算机收集数据](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md) 并传输到 Log Analytics 工作区。 可将[虚拟机扩展](../../azure-arc/servers/manage-vm-extensions.md)部署到非 Azure Windows 和 Linux VM，简化客户混合计算机的管理。
 
-## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arcenabled-kubernetes"></a>使用启用了 Azure Arc 的 Kubernetes 大规模管理混合 Kubernetes 群集
+## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>使用已启用 Azure Arc 的 Kubernetes 大规模管理混合 Kubernetes 群集
 
 可以管理[使用 Azure Arc 连接到客户订阅](../../azure-arc/kubernetes/quickstart-connect-cluster.md)的 Kubernetes 群集，就像它们在 Azure 中运行一样。
 
@@ -46,5 +46,5 @@ ms.locfileid: "124736565"
 ## <a name="next-steps"></a>后续步骤
 
 - 浏览 [Azure Arc GitHub 存储库](https://github.com/microsoft/azure_arc)中的快速入门和示例。
-- 了解[启用 Azure Arc 的服务器的支持方案](../../azure-arc/servers/overview.md#supported-cloud-operations)。
+- 了解[已启用 Azure Arc 的服务器支持的方案](../../azure-arc/servers/overview.md#supported-cloud-operations)。
 - 了解 [Azure Arc 支持的 Kubernetes 分布](../../azure-arc/kubernetes/overview.md#supported-kubernetes-distributions)。

@@ -1,24 +1,35 @@
 ---
-title: 使用 Azure 导入/导出将数据传输到 Azure Blob | Microsoft Docs
+title: 使用 Azure 导入/导出服务将数据导入 Azure Blob 存储的教程 | Microsoft Docs
 description: 了解如何在 Azure 门户中创建导入和导出作业，以便将数据传入和传出 Azure Blob。
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: how-to
-ms.date: 09/02/2021
+ms.topic: tutorial
+ms.date: 10/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 51e70fb16988c0f72cb9b1a35444f55e164839c9
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.custom: tutorial, devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: 10f2103049b47366a267fdf0412a7e3fb95a95cd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451774"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709626"
 ---
-# <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
+# <a name="tutorial-import-data-to-blob-storage-with-azure-importexport-service"></a>教程：使用 Azure 导入/导出服务将数据导入 Azure Blob 存储
 
 本文提供了有关如何使用 Azure 导入/导出服务安全地将大量数据导入到 Azure Blob 存储的分步说明。 若要将数据导入到 Azure Blob，此服务要求你将包含数据的已加密磁盘驱动器寄送到某个 Azure 数据中心。
+
+在本教程中，你将了解如何执行以下操作：
+
+> [!div class="checklist"]
+> * 将数据导入 Azure Blob 存储的先决条件
+> * 步骤 1：准备驱动器
+> * 步骤 2：创建导入作业
+> * 步骤 3：配置客户管理的密钥（可选）
+> * 步骤 4：寄送驱动器
+> * 步骤 5：使用跟踪信息更新作业
+> * 步骤 6：验证 Azure 中的数据上传
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -28,13 +39,13 @@ ms.locfileid: "123451774"
 * 拥有可用于导入/导出服务的有效 Azure 订阅。
 * 拥有至少一个包含存储容器的 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。
   * 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](../storage/common/storage-account-create.md)。
-  * 有关存储容器的信息，请转到[创建存储容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。
+  * 有关如何创建存储容器的信息，请转到[创建存储容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。
 * 拥有足够数量的[受支持类型](storage-import-export-requirements.md#supported-disks)的磁盘。
 * 拥有运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统。
 * 在 Windows 系统上启用 BitLocker。 请参阅[如何启用 BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)。
-* 在 Windows 系统上[下载最新的 WAImportExport 版本 1](https://www.microsoft.com/download/details.aspx?id=42659)。 该工具的最新版本包含安全更新，允许对 BitLocker 密钥使用外部保护程序并更新了解锁模式功能。
-
-  * 解压缩到默认文件夹 `waimportexportv1`。 例如，`C:\WaImportExportV1`。
+* 下载 Windows 系统上适用于 blob 的 Azure 导入/导出版本 1 工具的当前版本：
+  1. [下载 WAImportExport 版本 1](https://www.microsoft.com/download/details.aspx?id=42659)。 当前版本为 1.5.0.300。
+  1. 解压缩到默认文件夹 `WaImportExportV1`。 例如，`C:\WaImportExportV1`。
 * 具有 FedEx/DHL 帐户。 如果想使用 FedEx/DHL 以外的承运商，请通过 `adbops@microsoft.com` 与 Azure Data Box 运营团队联系。
   * 该帐户必须是有余额的有效帐户，且有退货功能。
   * 生成导出作业的跟踪号。
@@ -89,6 +100,9 @@ ms.locfileid: "123451774"
     |/blobtype:     |此选项指定要将数据导入到的 Blob 的类型。 对于块 Blob，Blob 类型为 `BlockBlob`；对于页 Blob，该项为 `PageBlob`。         |
     |/skipwrite:     | 此选项指定不需要复制任何新数据，但要准备磁盘上的现有数据。          |
     |/enablecontentmd5:     |启用此选项时，将确保计算 MD5 并将其设置为每个 blob 上的 `Content-md5` 属性。 仅当希望在将数据上传到 Azure 后使用 `Content-md5` 字段时，才使用此选项。 <br> 此选项不影响数据完整性检查（默认情况下会进行）。 此设置确实会增加将数据上传到云所需的时间。          |
+
+    > [!NOTE]
+    > 如果导入的 blob 与目标容器中某个现有 blob 同名，则导入的 blob 将覆盖该现有 blob。 在较早的工具版本（1.5.0.300 之前）中，默认情况下会重命名导入的 blob，使用 \Disposition 参数可以指定是否重命名、覆盖或忽略导入中的 blob。
 
 8. 为需要寄送的每个磁盘重复前面的步骤。 
 
@@ -352,9 +366,9 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="step-6-verify-data-upload-to-azure"></a>步骤 6：验证 Azure 中的数据上传
 
-跟踪作业直至完成。 作业完成后，验证数据已上传到 Azure。 仅在已确认上传成功后才删除本地数据。
+跟踪作业直至完成。 作业完成后，验证数据已上传到 Azure。 仅在已确认上传成功后才删除本地数据。 有关详细信息，请参阅[查看导入/导出复制日志](storage-import-export-tool-reviewing-job-status-v1.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [查看作业和驱动器状态](storage-import-export-view-drive-status.md)
-* [查看导入/导出要求](storage-import-export-requirements.md)
+* [查看导入/导出复制日志](storage-import-export-tool-reviewing-job-status-v1.md)

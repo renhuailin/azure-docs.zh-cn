@@ -8,14 +8,14 @@ ms.service: powerbi
 ms.subservice: powerbi-custom-visuals
 ms.topic: how-to
 ms.date: 09/21/2021
-ms.openlocfilehash: 33be5324913f084bdafbf07da2507027cf9e0b12
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7704990453e1220e7bc98191a03bec32f42d0b87
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699356"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660811"
 ---
-# <a name="define-the-availability-of-a-power-bi-visuals-offer"></a>定义 Power BI 视觉对象产品/服务的可用性
+# <a name="define-the-availability-of-a-power-bi-visual-offer"></a>定义 Power BI 视觉对象产品/服务的可用性
 
 可使用此页定义在何处以及如何提供产品/服务，包括市场和发行日期。
 

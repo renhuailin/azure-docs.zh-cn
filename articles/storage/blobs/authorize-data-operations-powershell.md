@@ -10,12 +10,12 @@ ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: dae63f442c2e2df068cc3f17bb5355abd4b7de77
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e83be2c3e6f98d000dfe9623cb90478ec4452053
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128615579"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859088"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-data"></a>使用 Azure AD 凭据运行 PowerShell 命令以访问 blob 数据
 
@@ -86,4 +86,4 @@ Azure 存储扩展支持针对 blob 数据的操作。 可调用的操作取决�
 ## <a name="next-steps"></a>后续步骤
 
 - [分配 Azure 角色以访问 blob 数据](assign-azure-role-data-access.md)
-- [使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限](../common/storage-auth-aad-msi.md)
+- [使用 Azure 资源托管标识授予对 Blob 数据的访问权限](authorize-managed-identity.md)

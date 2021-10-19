@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/17/2021
 ms.author: danlep
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 6a6a83ef0e810880ff14ddc8125235229db75787
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7739411364b187e437e9dda4c72dff85de26d741
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676158"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669561"
 ---
 # <a name="protect-a-web-api-backend-in-azure-api-management-using-oauth-20-authorization-with-azure-active-directory"></a>在 Azure API 管理中将 OAuth 2.0 授权和 Azure Active Directory 配合使用来保护 Web API 后端 
 
@@ -137,7 +137,7 @@ ms.locfileid: "128676158"
 
 此示例将在开发人员控制台（客户端应用）中启用 OAuth 2.0 用户授权。
 
-1. 在 Azure 门户中，找到“授权终结点 URL”和“令牌终结点 URL”，并将其保存供稍后使用 。 
+1. 在 Azure 门户中，找到授权终结点 URL 和令牌终结点 URL，并保存它们供稍后使用 。 
     1. 打开“应用注册”页。 
     1. 选择“终结点”。
     1. 复制“OAuth 2.0 授权终结点”和“OAuth 2.0 令牌终结点” 。 

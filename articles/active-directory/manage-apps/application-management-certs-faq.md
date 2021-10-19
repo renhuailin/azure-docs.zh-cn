@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory 应用程序管理证书常见问题
+title: 应用程序管理证书常见问题
+titleSuffix: Azure AD
 description: 了解有关使用 Azure Active Directory 作为标识提供程序 (IdP) 管理应用证书的常见问题解答 (FAQ)。
 services: active-directory
 author: davidmu1
@@ -11,14 +12,14 @@ ms.topic: reference
 ms.date: 03/19/2021
 ms.author: davidmu
 ms.reviewer: sureshja, saumadan
-ms.openlocfilehash: 497cc5b00db313c8bccbb31130ea7656634d051d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3f94c7eae439303f2954b8ab62f499b789902e79
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723111"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619930"
 ---
-# <a name="azure-active-directory-azure-ad-application-management-certificates-frequently-asked-questions"></a>Azure Active Directory (Azure AD) 应用程序管理证书常见问题
+# <a name="azure-active-directory-application-management-certificates-frequently-asked-questions"></a>Azure Active Directory 应用程序管理证书常见问题
 
 本页解答有关使用 Azure Active Directory (Azure AD) 作为标识提供程序 (IdP) 管理应用证书的常见问题。
 

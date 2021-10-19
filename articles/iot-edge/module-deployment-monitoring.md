@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0461fffa62f46491d5bbb3c2c9f66670b3bd9cba
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 601015658b2d2de6c855ac285b4dfbec6cb15ca8
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732876"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670226"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>了解单设备或大规模的 IoT Edge 自动部署
 
@@ -79,6 +79,7 @@ loT Edge 自动部署会分配 IoT Edge 模块映像，这些映像在一组 IoT
 * 目标条件的任何部分都不允许用双引号引起来。 请使用单引号。
 * 单引号表示目标条件的值。 因此，如果某个单引号是设备名称的一部分，则必须使用另一个单引号对其转义。 若要以名为 `operator'sDevice` 的设备为目标，请编写 `deviceId='operator''sDevice'`。
 * 目标条件值中允许使用数字、字母和以下字符：`-:.+%_#*?!(),=@;$`。
+* 目标条件键中不允许使用以下字符：`/;`。
 
 ### <a name="priority"></a>优先级
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/14/2020
 ms.author: cshoe
-ms.openlocfilehash: 262e0fc02632465a03391dbfeaa0902d1b6b9ec3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7267e733971b2abed258ca815a010b13938bc2a6
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609741"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613465"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>注册 Azure Functions 绑定扩展
 
@@ -69,7 +69,7 @@ ms.locfileid: "128609741"
 * 需要访问单个捆绑包中不可用的特定扩展组合。
 
 > [!NOTE]
-> 若要使用 Core Tools 手动安装扩展，必须安装 [.NET Core 2.x SDK](https://dotnet.microsoft.com/download)。 Azure Functions Core Tools 使用 .NET Core SDK 从 NuGet 安装扩展。 不需要了解 .NET 即可使用 Azure Functions 扩展。
+> 若要使用 Core Tools 手动安装扩展，必须安装 [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download)。 Azure Functions Core Tools 使用 .NET Core SDK 从 NuGet 安装扩展。 不需要了解 .NET 即可使用 Azure Functions 扩展。
 
 当你显式安装扩展时，系统会将名为 extensions.csproj 的 .NET 项目文件添加到项目的根目录。 此文件定义函数所需的 NuGet 包集。 尽管你可以使用此文件中的 [NuGet 包引用](/nuget/consume-packages/package-references-in-project-files)，但 Core Tools 允许你在不需手动编辑文件的情况下安装扩展。
 

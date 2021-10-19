@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: d8ba75ce068d7d2b604e9cafa4cde76393175c30
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3ca38fbefccaf6529d78d1c5acce30c85d88bf7c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114298150"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616980"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>配置选项 - 适用于 Java 的 Azure Monitor Application Insights
 
@@ -39,14 +39,14 @@ ms.locfileid: "114298150"
 
 ## <a name="configuration-file-path"></a>配置文件路径
 
-默认情况下，Application Insights Java 3.X 要求将配置文件命名为 `applicationinsights.json`，并置于 `applicationinsights-agent-3.1.1.jar` 所在的目录中。
+默认情况下，Application Insights Java 3.X 要求将配置文件命名为 `applicationinsights.json`，并置于 `applicationinsights-agent-3.2.0.jar` 所在的目录中。
 
 可以使用以下任一方法指定你自己的配置文件路径：
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` 环境变量，或者
 * `applicationinsights.configuration.file` Java 系统属性
 
-如果你指定相对路径，系统会相对于 `applicationinsights-agent-3.1.1.jar` 所在的目录对其进行解析。
+如果你指定相对路径，系统会相对于 `applicationinsights-agent-3.2.0.jar` 所在的目录对其进行解析。
 
 ## <a name="connection-string"></a>连接字符串
 
@@ -180,6 +180,22 @@ ms.locfileid: "114298150"
 > [!NOTE]
 > 从 3.0.2 版开始，如果你添加名为 `service.version` 的自定义维度，该值将存储在 Application Insights 日志表的 `application_Version` 列中，而不是作为自定义维度。
 
+## <a name="inherited-attribute-preview"></a>继承的属性（预览版）
+
+从版本 3.2.0 开始，可按如下所示以编程方式对请求遥测设置自定义维度，并让依赖项遥测继承该维度：
+
+```json
+{
+  "inheritedAttributes": [
+    {
+      "key": "mycustomer",
+      "type": "string"
+    }
+  ]
+}
+```
+
+
 ## <a name="telemetry-processors-preview"></a>遥测处理器（预览版）
 
 它可用于配置将应用于请求、依赖项和跟踪遥测的规则，例如：
@@ -254,28 +270,6 @@ ms.locfileid: "114298150"
 }
 ```
 
-## <a name="auto-collected-azure-sdk-telemetry-preview"></a>自动收集的 Azure SDK 遥测数据（预览版）
-
-许多最新的 Azure SDK 库都会发出遥测数据（请参阅[完整列表](./java-in-process-agent.md#azure-sdks-preview)）。
-
-从 Application Insights Java 3.0.3 开始，可启用对此遥测数据的捕获。
-
-如果要启用此功能：
-
-```json
-{
-  "preview": {
-    "instrumentation": {
-      "azureSdk": {
-        "enabled": true
-      }
-    }
-  }
-}
-```
-
-还可通过将环境变量 `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED` 设置为 `true`（优先级将高于 json 配置中指定的已启用项）来启用此功能。
-
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>取消特定的自动收集遥测
 
 从 3.0.3 版本开始，可使用以下配置选项取消特定的自动收集遥测：
@@ -283,6 +277,9 @@ ms.locfileid: "114298150"
 ```json
 {
   "instrumentation": {
+    "azureSdk": {
+      "enabled": false
+    },
     "cassandra": {
       "enabled": false
     },
@@ -301,6 +298,9 @@ ms.locfileid: "114298150"
     "mongo": {
       "enabled": false
     },
+    "rabbitmq": {
+      "enabled": false
+    },
     "redis": {
       "enabled": false
     },
@@ -313,12 +313,14 @@ ms.locfileid: "114298150"
 
 还可将以下环境变量设置为 `false`，以取消这些检测：
 
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_AZURE_SDK_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_JMS_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_KAFKA_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_MONGO_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_RABBITMQ_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_REDIS_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_SPRING_SCHEDULING_ENABLED`
 
@@ -326,6 +328,31 @@ ms.locfileid: "114298150"
 
 > [!NOTE]
 > 如果要查找更精细的控件，例如，要取消某些 redis 调用，而不是所有 redis 调用，请参阅[采样替代](./java-standalone-sampling-overrides.md)。
+
+## <a name="preview-instrumentations"></a>预览版检测
+
+从版本3.2.0 开始，可以启用以下预览版检测：
+
+```
+{
+  "preview": {
+    "instrumentation": {
+      "apacheCamel": {
+        "enabled": true
+      },
+      "grizzly": {
+        "enabled": true
+      },
+      "quartz": {
+        "enabled": true
+      },
+      "springIntegration": {
+        "enabled": true
+      }
+    }
+  }
+}
+```
 
 ## <a name="heartbeat"></a>检测信号
 
@@ -431,7 +458,7 @@ Application Insights Java 3.X 还沿用全局 `https.proxyHost` 和 `https.proxy
 
 `level` 可以为 `OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG` 或 `TRACE` 中的一个。
 
-`path` 可以是绝对或相对路径。 相对路径根据 `applicationinsights-agent-3.1.1.jar` 所在的目录进行解析。
+`path` 可以是绝对或相对路径。 相对路径根据 `applicationinsights-agent-3.2.0.jar` 所在的目录进行解析。
 
 `maxSizeMb` 是日志文件滚动更新之前的最大大小。
 

@@ -7,13 +7,13 @@ ms.topic: article
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 09/27/2021
-ms.openlocfilehash: c50a36c521848956577fd0e8f53bdb2dceaaee8f
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.date: 10/11/2021
+ms.openlocfilehash: 0ef727d47949acb1d095bbfb3890021b273c50db
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129084033"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811213"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“使用情况”仪表板
 
@@ -191,7 +191,7 @@ ms.locfileid: "129084033"
 | 执行的操作 | 执行的操作 | **适用于具有自定义计量维度的产品/服务**。<br>指定发布者确认以下事项的时间：客户对产品/服务的自定义计量维度的超额使用情况是真实的或虚假的。<br>如果发布者没有含自定义计量维度的产品/服务，并且通过编程访问导出此列，则值将为 null。 | ActionTakenAt |
 | 采取的操作 | 采取的操作 | **适用于具有自定义计量维度的产品/服务**。<br>指定确认以下事项的人员：客户对产品/服务的自定义计量维度的超额使用情况是真实的或虚假的。<br>如果发布者没有含自定义计量维度的产品/服务，并且通过编程访问导出此列，则值将为 null。 | ActionTakenBy |
 | 估计的财务影响 (USD) | 估计的财务影响，以美元计 | **适用于具有自定义计量维度的产品/服务**。<br>当合作伙伴中心将客户对产品/服务的自定义计量维度的超额使用情况标记为异常时，该字段会指定异常超额使用情况的估计财务影响（以美元为单位）。<br>如果发布者没有含自定义计量维度的产品/服务，并且通过编程方式导出此列，则值将为 null。 | EstimatedFinancialImpactUSD |
-| 不适用 | 资源 ID | 资源的完全限定 ID，包括资源名称和资源类型。 注意，此数据字段仅在下载报告中提供。<br>使用以下格式：<br> /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name} | 空值 |
+| 不适用 | 资源 ID | 资源的完全限定 ID，包括资源名称和资源类型。 注意，此数据字段仅在下载报告中提供。<br>使用以下格式：<br> /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}<br>注意：此字段将在 2021 年 10 月 20 日弃用。 | 空值 |
 |||||
 
 ### <a name="usage-page-filters"></a>使用情况页面筛选器

@@ -4,15 +4,15 @@ description: 查找有助于了解如何将 Azure 服务与 Azure Data Lake Stor
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
-ms.date: 02/17/2021
+ms.date: 10/06/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: bbe99ced7a4d0110ac9ff709201a16017b45ec15
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1c1849117b2e27198d7fb0c76590cb1cf14f0891
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128562469"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619343"
 ---
 # <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>将 Azure 服务与 Azure Data Lake Storage Gen2 配合使用的教程
 
@@ -37,8 +37,8 @@ ms.locfileid: "128562469"
 | Azure 认知搜索 | [为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](../../search/search-howto-index-azure-data-lake-storage.md) |
 
 > [!NOTE]
-> 此表未反映支持 Data Lake Storage Gen2 的 Azure 服务的完整列表。 若要查看受支持的 Azure 服务的列表，请参阅[支持 Azure Data Lake Storage Gen2 的 Azure 服务](data-lake-storage-supported-azure-services.md)
+> 此表未反映支持 Data Lake Storage Gen2 的 Azure 服务的完整列表。 若要查看受支持的 Azure 服务的列表及其支持级别，请参阅[支持 Azure Data Lake Storage Gen2 的 Azure 服务](data-lake-storage-supported-azure-services.md)。 若要查看如何将服务整理到多个类别（例如引入、下载、处理和可视化），请参阅[引入、处理和分析](data-lake-storage-data-scenarios.md#ingest-process-and-analyze)。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="see-also"></a>另请参阅
 
-- 了解如何将这些服务协同使用以构建用于引入、下载、处理和可视化数据的工作负载。 请参阅[使用 Azure Data Lake Storage Gen2 满足大数据需求](data-lake-storage-data-scenarios.md)。
+[使用 Azure Data Lake Storage Gen2 的最佳做法](data-lake-storage-best-practices.md)

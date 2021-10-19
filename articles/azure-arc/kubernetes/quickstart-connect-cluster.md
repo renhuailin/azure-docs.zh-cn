@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/09/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, Arc, Azure, 群集
-ms.openlocfilehash: 10c97945a78867d92b9ed4887e9655d49b195e33
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: e876ecf11de197e523c9d34825a5a52284af871b
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273754"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740448"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>快速入门：将现有 Kubernetes 群集连接到 Azure Arc
 
@@ -27,7 +27,7 @@ ms.locfileid: "129273754"
 
 * [安装 Azure CLI 或将其升级](/cli/azure/install-azure-cli)到不低于 2.16.0 的版本
 
-* 安装 1.0.0 或更高版本的 connectedk8s Azure CLI 扩展：
+* 安装 1.2.0 或更高版本的 Azure CLI 扩展 connectedk8s：
 
   ```console
   az extension add --name connectedk8s
@@ -48,8 +48,6 @@ ms.locfileid: "129273754"
 
 * `kubeconfig` 指向群集的文件和上下文。
 * 已启用 Azure Arc 的 Kuberneters 资源类型 (`Microsoft.Kubernetes/connectedClusters`) 的“读取”和“写入”权限。
-
-* 安装 [Helm 3](https://helm.sh/docs/intro/install)。 确保 Helm 3 版本为 &lt; 3.7.0。
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -99,6 +97,7 @@ ms.locfileid: "129273754"
 | `https://gbl.his.arc.azure.com`（针对 Azure 云），`https://gbl.his.arc.azure.us`（针对 Azure US Government） |  需要用于获取区域终结点，以便拉取系统分配的托管标识证书。 |
 | `https://*.his.arc.azure.com`（针对 Azure 云），`https://usgv.his.arc.azure.us`（针对 Azure US Government） |  拉取系统分配的托管标识证书时必需。 |
 |`*.servicebus.windows.net`, `guestnotificationservice.azure.com`, `*.guestnotificationservice.azure.com`, `sts.windows.net` | 针对基于[连接](cluster-connect.md)和[位置](custom-locations.md)的场景。 |
+|`https://k8connecthelm.azureedge.net` | `az connectedk8s connect` 使用 Helm 3 在 Kubernetes 群集上部署 Azure Arc 代理。 Helm 客户端下载需要此终结点来帮助部署代理 helm 图表。 |
 
 ## <a name="1-register-providers-for-azure-arc-enabled-kubernetes"></a>1. 为已启用 Azure Arc 的 Kubernetes 注册提供程序
 

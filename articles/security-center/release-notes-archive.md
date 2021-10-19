@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 10/03/2021
 ms.author: memildin
-ms.openlocfilehash: ca1e75af5f1d5697b84742e3aec207a33a57b1c6
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.openlocfilehash: 516fa13a24c9cb5376bc6e8d38eeb1fc077f1d57
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407183"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713959"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -504,7 +504,7 @@ Azure 安全基准是由 Microsoft 创作的特定于 Azure 的一组准则，�
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>本地和多云计算机的漏洞评估已正式发布 (GA)
 
-10 月，我们随[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 的集成式漏洞评估扫描器（由 Qualys 提供支持）提供了扫描已启用 Azure Arc 的服务器的预览。
+10 月，我们随[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 的集成式漏洞评估扫描程序（由 Qualys 提供支持）提供了扫描已启用 Azure Arc 的服务器的预览版。
 
 现已正式发布 (GA)。
 
@@ -519,9 +519,9 @@ Azure 安全基准是由 Microsoft 创作的特定于 Azure 的一组准则，�
 - 从部署的代理接收和分析检测到的漏洞（手动和大规模）
 - 统一的 Azure VM 和 Azure Arc 计算机体验
 
-[详细了解如何将集成式漏洞扫描器部署到混合计算机](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
+[详细了解如何将集成式 Qualys 漏洞扫描程序部署到混合计算机](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
 
-[详细了解启用了 Azure Arc 的服务器](../azure-arc/servers/index.yml)。
+[详细了解已启用 Azure Arc 的服务器](../azure-arc/servers/index.yml)。
 
 
 ### <a name="secure-score-for-management-groups-is-now-available-in-preview"></a>预览版中现可提供管理组的安全分数
@@ -971,7 +971,7 @@ NIST SP 800-171 R2 标准现可以内置计划的形式提供，用于安全中�
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>本地和多云计算机的漏洞评估（预览版）
 
-[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 的集成式漏洞评估扫描器（由 Qualys 提供支持）现可扫描启用了 Azure Arc 的服务器。
+[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 的集成式漏洞评估扫描程序（由 Qualys 提供支持）现可扫描已启用 Azure Arc 的服务器。
 
 当你在非 Azure 计算机上启用了 Azure Arc 后，安全中心将提供两种向计算机部署集成式漏洞扫描器的选项（手动和大规模）。
 
@@ -984,9 +984,9 @@ NIST SP 800-171 R2 标准现可以内置计划的形式提供，用于安全中�
 - 从部署的代理接收和分析检测到的漏洞（手动和大规模）
 - 统一的 Azure VM 和 Azure Arc 计算机体验
 
-[详细了解如何将集成式漏洞扫描器部署到混合计算机](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
+[详细了解如何将集成式 Qualys 漏洞扫描程序部署到混合计算机](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
 
-[详细了解启用了 Azure Arc 的服务器](../azure-arc/servers/index.yml)。
+[详细了解已启用 Azure Arc 的服务器](../azure-arc/servers/index.yml)。
 
 
 ### <a name="azure-firewall-recommendation-added-preview"></a>添加了 Azure 防火墙建议（预览版）
@@ -1257,7 +1257,7 @@ Azure 安全中心现在可保护 Azure、Amazon Web Services (AWS) 和 Google C
 
 相关页面：
 
-- [Azure 虚拟机安全中心的集成漏洞评估解决方案](deploy-vulnerability-assessment-vm.md)
+- [Azure 虚拟机安全中心的集成式 Qualys 漏洞评估解决方案](deploy-vulnerability-assessment-vm.md)
 - [用于 Azure 容器注册表映像的安全中心集成漏洞评估解决方案](defender-for-container-registries-usage.md)
 - [连续导出](continuous-export.md)
 
@@ -2011,7 +2011,7 @@ Azure 安全中心现在可以扫描 Azure 容器注册表中容器映像的漏�
 
 映像扫描的工作原理是分析容器映像文件，然后查看是否存在任何已知漏洞（由 Qualys 提供支持）。
 
-将新容器映像推送到 Azure 容器注册表时，会自动触发扫描本身。 发现的漏洞将以安全中心建议的形式显示，其中包括 Azure 安全评分，以及有关如何修补这些漏洞以减小允许的受攻击面的信息。
+将新容器映像推送到 Azure 容器注册表时，会自动触发扫描本身。 发现的漏洞将以安全中心建议的形式显示，其中包括安全评分，以及有关如何修补这些漏洞以减小允许的受攻击面的信息。
 
 
 ### <a name="additional-regulatory-compliance-standards-preview"></a>其他监管合规标准（预览版）
@@ -2045,7 +2045,7 @@ Kubernetes 很快就成了在云中部署和管理软件的新标准。 只有�
 
 Azure 安全中心对 IaaS VM 上运行的 SQL 数据库的威胁防护和漏洞评估支持现已推出预览版。
 
-[漏洞评估](../azure-sql/database/sql-vulnerability-assessment.md)是一项易于配置的服务，可以发现、跟踪并帮助修正潜在的数据库漏洞。 此服务可让你查看以 Azure 安全评分提供的安全态势，并包含用于解决安全问题和增强数据库防御能力的步骤。
+[漏洞评估](../azure-sql/database/sql-vulnerability-assessment.md)是一项易于配置的服务，可以发现、跟踪并帮助修正潜在的数据库漏洞。 此服务可让你查看以安全评分提供的安全态势，并包含用于解决安全问题和增强数据库防御能力的步骤。
 
 [高级威胁防护](../azure-sql/database/threat-detection-overview.md)检测异常活动，这些活动指示有人企图以非寻常或可能有害的方式访问或恶意利用你的 SQL 服务器。 它会持续监视数据库中的可疑活动，并针对异常的数据库访问模式提供操作导向的安全警报。 这些警报提供可疑活动的详细信息，以及有助于调查和缓解威胁的建议操作。
 

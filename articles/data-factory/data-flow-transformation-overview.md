@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
-ms.openlocfilehash: 393e6dbc0f30e4a541408119db6f606f24023d5d
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.date: 10/07/2021
+ms.openlocfilehash: 56a6a521eb648a1ad49baf2bf206ef84aa084731
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129059732"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714113"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>映射数据流转换概述
 
@@ -43,6 +43,7 @@ ms.locfileid: "129059732"
 | [接收器](data-flow-sink.md) | - | 数据的最终目标 |
 | [Sort](data-flow-sort.md) | 行修饰符 | 对当前数据流中的传入行进行排序 |
 | [Source](data-flow-source.md) | - | 数据流的数据源 |
+| [字符串化](data-flow-stringify.md) | - | 将复杂类型转换为纯字符串 |
 | [代理键](data-flow-surrogate-key.md) | 架构修饰符 | 添加增量非业务任意密钥值 |
 | [联合](data-flow-union.md) | 多个输入/输出 | 垂直合并多个数据流 |
 | [逆透视](data-flow-unpivot.md) | 架构修饰符 | 将列透视为行值 |

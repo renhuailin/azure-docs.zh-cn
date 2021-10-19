@@ -5,12 +5,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: 使用 Azure Monitor 收集已启用 Azure Arc 的 Kubernetes 群集的指标和日志
-ms.openlocfilehash: 55beedec85b5e2a426954f179b738fcf81eb4982
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 1ece606aa3967d9fddaa5f964c43e24350610817
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109845737"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709718"
 ---
 # <a name="azure-monitor-container-insights-for-azure-arc-enabled-kubernetes-clusters"></a>已启用 Azure Arc 的 Kubernetes 群集的 Azure Monitor 容器见解
 
@@ -24,11 +24,14 @@ ms.locfileid: "109845737"
 - `Docker`、`Moby` 和 CRI 兼容容器运行时（如 `CRI-O` 和 `containerd`）。
 - 支持无身份验证的出站代理和有基本身份验证的出站代理。 目前不支持需要受信任证书的出站代理。
 
+>[!NOTE]
+> Azure Monitor 容器见解目前不支持 Kubernetes v1.22 或更高版本
+
 ## <a name="prerequisites"></a>必备条件
 
 - 满足[通用群集扩展文档](../../azure-arc/kubernetes/extensions.md#prerequisites)中列出的先决条件。
 - Log Analytics 工作区：Azure Monitor 容器见解支持在 Azure [产品（按区域）页](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)上列出的区域中的 Log Analytics 工作区。 你可以通过 [Azure 资源管理器](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-sample-create-workspace.md) 或 [Azure 门户](../logs/quick-create-workspace.md)创建自己的工作区。
-- 对于包含已启用 Azure Arc 的 Kubernetes 资源的 Azure 订阅，你需要拥有[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色。 如果 Log Analytics 工作区位于不同的订阅中，在 Log Analytics 工作区上需要拥有 [Log Analytics 参与者](../logs/manage-access.md#manage-access-using-azure-permissions)角色。
+- 对于包含已启用 Azure Arc 的 Kubernetes 资源的 Azure 订阅，需要具有[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色分配。 如果 Log Analytics 工作区位于不同的订阅中，在 Log Analytics 工作区上需要拥有 [Log Analytics 参与者](../logs/manage-access.md#manage-access-using-azure-permissions)角色。
 - 要查看监视数据，在 Log Analytics 工作区上需要拥有 [Log Analytics 读者](../logs/manage-access.md#manage-access-using-azure-permissions)角色。
 - 除了[将 Kubernetes 群集连接到 Azure Arc](../../azure-arc/kubernetes/quickstart-connect-cluster.md#meet-network-requirements) 中所述的终结点以外，还需要为出站访问启用以下终结点。
 
@@ -40,7 +43,7 @@ ms.locfileid: "109845737"
     | `*.monitoring.azure.com` | 443 |
     | `login.microsoftonline.com` | 443 |
 
-    如果已启用 Arc 的 Kubernetes 资源在 Azure 美国政府环境中，则需要启用以下终结点以进行出站访问：
+    如果已启用 Azure Arc 的 Kubernetes 资源位于 Azure 美国政府环境中，则需要启用以下终结点以进行出站访问：
 
     | 端点 | 端口 |
     |----------|------|
@@ -130,7 +133,7 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 ### <a name="onboarding-from-the-azure-arc-enabled-kubernetes-resource-blade"></a>从已启用 Azure Arc 的 Kubernetes 资源边栏选项卡加入
 
-1. 在 Azure 门户中，选择要监视的已启用 Arc 的 Kubernetes 群集。
+1. 在 Azure 门户中，选择要监视的已启用 Azure Arc 的 Kubernetes 群集。
 
 2. 在资源边栏选项卡的“监视”部分下，选择“见解(预览)”项。
 
@@ -182,7 +185,7 @@ az k8s-extension delete --name azuremonitor-containers --cluster-type connectedC
 
 ## <a name="next-steps"></a>后续步骤
 
-- 启用监视功能以收集启用了 Arc 的 Kubernetes 群集及其上运行的工作负荷的运行状况和资源利用率后，请了解[如何使用容器见解](container-insights-analyze.md)。
+- 启用监视功能以收集启用了 Azure Arc 的 Kubernetes 群集及其上运行的工作负载的运行状况和资源利用率后，请了解[如何使用](container-insights-analyze.md)容器见解。
 
 - 默认情况下，容器化代理会收集在所有命名空间（kube-system 除外）中运行的所有容器的 stdout/stderr 容器日志。 若要配置特定于某个或某些命名空间的容器日志收集，请参阅[容器见解代理配置](container-insights-agent-config.md)，为 ConfigMap 配置文件配置所需的数据收集设置。
 

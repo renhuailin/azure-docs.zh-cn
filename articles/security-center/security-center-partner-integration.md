@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: 3d7bed3847465c48914453a3fd167384e1c180b6
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 66f2ca97ce20dc0aeb6b1fcecf691861b645284b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113435806"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706711"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -30,7 +30,7 @@ ms.locfileid: "113435806"
 > [!NOTE]
 > 安全中心不会在合作伙伴虚拟设备上安装 Log Analytics 代理，因为大多数安全供应商都禁止在其设备上运行外部代理。
 
-若要详细了解 Qualys 中漏洞扫描工具的集成，包括 Azure Defender 客户可用的内置扫描程序，请参阅 [Azure 虚拟机的漏洞评估](deploy-vulnerability-assessment-vm.md)。
+若要详细了解 Qualys 中漏洞扫描工具的集成，包括 Azure Defender 客户可使用的内置扫描程序，请参阅[适用于 Azure 和混合计算机的 Azure Defender 集成 Qualys 漏洞扫描程序](deploy-vulnerability-assessment-vm.md)。
 
 安全中心还为以下内容提供漏洞分析：
 

@@ -3,12 +3,12 @@ title: Azure Functions 1.x 的 host.json 参考
 description: 使用 v1 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 8466827402a5a5f785b65ea70887cc868f8667af
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5893bf8edc60e6a86aacccff6a798bc63ee655d8
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742655"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660602"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
@@ -16,7 +16,7 @@ ms.locfileid: "121742655"
 > * [版本 1](functions-host-json-v1.md)
 > * [第 2 版](functions-host-json.md)
 
-*host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了可用于 v1 运行时的设置。 JSON 架构位于 http://json.schemastore.org/host 。
+host.json 元数据文件包含影响函数应用实例中所有函数的配置选项。 本文列出了可用于版本 1.x 运行时的设置。 JSON 架构位于 http://json.schemastore.org/host 。
 
 > [!NOTE]
 > 本文适用于 Azure Functions 1.x。  有关 Functions 2.x 及更高版本中的 host.json 参考，请参阅 [Azure Functions 2.x 的 host.json 参考](functions-host-json.md)。
@@ -376,4 +376,4 @@ ms.locfileid: "121742655"
 > [了解如何更新 host.json 文件](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
-> [查看环境变量中的全局设置](functions-app-settings.md)
+> [环境变量中的持久性设置](functions-app-settings.md)

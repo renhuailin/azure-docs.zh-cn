@@ -1,24 +1,25 @@
 ---
-title: 分配企业应用程序所有者 - Azure AD | Microsoft Docs
+title: 分配企业应用程序所有者
+titleSuffix: Azure AD
 description: 在 Azure Active Directory 中将所有者分配给应用程序
 services: active-directory
 documentationcenter: ''
-author: davidmu1
+author: saipradeepb23
 manager: celesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.date: 08/03/2021
-ms.author: davidmu
-ms.openlocfilehash: 18649f5c597be73e9f14abf00a2df584c56df5d4
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.author: saibandaru
+ms.openlocfilehash: f08b2c40e5a81804274472a31150c1f0f3187d9e
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446608"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659234"
 ---
-# <a name="assign-enterprise-application-owners"></a>分配企业应用程序所有者
+# <a name="assign-enterprise-application-owners-in-azure-active-directory"></a>在 Azure Active Directory 中分配企业应用程序所有者
 
 分配所有者是授予全方面管理特定应用程序注册或企业应用程序的 Azure AD 配置权限的一种简单方法。 身为所有者的用户可以管理企业应用程序的组织特定配置，例如单一登录配置、预配和用户分配。 所有者还可以添加或删除其他所有者。 与全局管理员不同，所有者只能管理他们拥有的企业应用程序。
 

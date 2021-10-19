@@ -3,13 +3,13 @@ title: 将 Azure NetApp 文件与 Azure Kubernetes 服务集成 | Microsoft Docs
 description: 了解如何使用 Azure Kubernetes 服务预配 Azure NetApp 文件。
 services: container-service
 ms.topic: article
-ms.date: 10/04/2021
-ms.openlocfilehash: 177526fa98ada37341fadc90e183f224e1aa0830
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.date: 10/07/2021
+ms.openlocfilehash: f4b9c8316ff9cd77017fc49dbe6846ed840f5afb
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129544785"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658968"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>将 Azure NetApp 文件与 Azure Kubernetes 服务集成
 
@@ -17,10 +17,10 @@ ms.locfileid: "129544785"
 
 [Azure NetApp 文件][anf]是 Azure 上运行的一种企业级高性能计量式文件存储服务。 Kubernetes 用户在使用适用于 Kubernetes 工作负载的 Azure NetApp 文件时拥有以下两个选项：
 
-* 静态创建 Azure NetApp 文件卷：在本方案中，可在 AKS 外部实现创建卷。使用 `az`/Azure UI 创建卷，然后通过创建 `PersistentVolume` 将卷向 Kubernetes 公开。
-* 按需创建 Azure NetApp 文件卷，通过 Kubernetes 进行协调：此方法是直接通过 Kubernetes 创建多个卷的首选操作模式，需通过 [Astra Trident](https://netapp-trident.readthedocs.io/) 实现。
+* 静态创建 Azure NetApp 文件卷：在本方案中，可在 AKS 外部实现创建卷。使用 `az`/Azure UI 创建卷，然后通过创建 `PersistentVolume` 将卷向 Kubernetes 公开。 以静态方式创建的 ANF 卷存在很多限制（例如，无法扩展、需要过度预配等），在大多数用例中都不建议使用。
+* 按需创建 Azure NetApp 文件卷，通过 Kubernetes 进行协调：此方法是直接通过 Kubernetes 创建多个卷的首选操作模式，需通过 [Astra Trident](https://docs.netapp.com/us-en/trident/index.html) 实现。 Astra Trident 是符合 CSI 规范的动态存储业务流程协调程序，可帮助通过 Kubernetes 在本地预配卷。
 
-强烈建议使用可供 Kubernetes 用户直接通过 AKS 使用 Azure NetApp 文件的生产就绪 CSI 驱动程序。 适用于 Kubernetes 的开源动态存储业务流程协调程序 Astra Trident 可满足此要求。 Astra Trident 是专为 Kubernetes 构建的企业级存储业务流程协调程序，其完全支持 NetApp。 其可通过自动执行存储预配，简化跨 Kubernetes 环境对存储的访问。 使用者可以利用 Astra Trident 适用于 Azure NetApp 文件的 CSI 驱动程序，抽象基础详细信息并按需创建/扩展卷，或拍摄卷的快照。
+对于大多数用例，强烈建议通过 CSI 驱动程序来直接使用 AKS 工作负载中的 Azure NetApp 文件卷。 适用于 Kubernetes 的开源动态存储业务流程协调程序 Astra Trident 可满足此要求。 Astra Trident 是专为 Kubernetes 构建的企业级存储业务流程协调程序，完全受 NetApp 的支持。 其可通过自动执行存储预配，简化跨 Kubernetes 环境对存储的访问。 使用者可以利用 Astra Trident 适用于 Azure NetApp 文件的 CSI 驱动程序，抽象基础详细信息并按需创建/扩展卷，或拍摄卷的快照。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -37,7 +37,7 @@ ms.locfileid: "129544785"
 
 * Azure NetApp 文件只能在[选定的 Azure 区域][anf-regions]中使用。
 * 初始部署 AKS 群集后，可以选择以静态或动态方式预配 Azure NetApp 文件。
-* 要在 Azure NetApp 文件中使用动态预配，请安装并配置 [Astra Trident](https://netapp-trident.readthedocs.io/) 19.07 或更高版本。
+* 要在 Azure NetApp 文件中使用动态预配，请安装并配置 [Astra Trident](https://docs.netapp.com/us-en/trident/index.html) 19.07 或更高版本。
 
 ## <a name="configure-azure-netapp-files"></a>配置 Azure NetApp 文件
 
@@ -273,11 +273,11 @@ Filesystem             Size  Used Avail Use% Mounted on
 
 要动态预配卷，请安装 Astra Trident。 Astra Trident 是 NetApp 的动态存储预配程序，专为 Kubernetes 而构建。 使用 Astra Trident 的行业标准[容器存储接口 (CSI)](https://kubernetes-csi.github.io/docs/) 驱动程序可简化 Kubernetes 应用程序的存储消耗。 Astra Trident 在 Kubernetes 群集中部署为 Pod，并为 Kubernetes 工作负载提供动态存储业务流程服务。
 
-参阅[文档](https://netapp-trident.readthedocs.io/en/latest/index.html)即可了解详细信息。
+可在 [文档]https://docs.netapp.com/us-en/trident/index.html) 中了解详细信息。
 
 继续进行下一步之前，需执行以下操作：
 
-1. 安装 Astra Trident。 可使用运算符/Helm 图表/`tridentctl` 安装 Trident。 如下所示的说明解释了可使用运算符安装 Astra Trident 的方法。 要了解其他安装方法的工作原理，请参阅[安装指南](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/deploying.html)。
+1. 安装 Astra Trident。 可使用运算符/Helm 图表/`tridentctl` 安装 Trident。 如下所示的说明解释了可使用运算符安装 Astra Trident 的方法。 要了解其他安装方法的工作原理，请参阅[安装指南](https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html)。
 
 2. 创建后端。 要指示 Astra Trident Azure NetApp 文件订阅及其需要在何处创建卷，请创建后端。 此步骤需要上一步中创建的帐户详细信息。
 
@@ -285,10 +285,10 @@ Filesystem             Size  Used Avail Use% Mounted on
 
 本部分将介绍如何使用运算符安装 Astra Trident。 还可以选择使用其他方法执行安装：
 
-* [Helm 图表](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/operator-deploy.html#deploy-trident-operator-by-using-helm)。
-* [tridentctl](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/tridentctl-deploy.html)。
+* [Helm 图表](https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-operator.html)。
+* [tridentctl](https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-tridentctl.html)。
 
-请参阅[部署 Trident](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/deploying.html)，了解每个选项的工作原理，并确定最适合的选项。
+请参阅[部署 Trident](https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html)，了解每个选项的工作原理，并确定最适合的选项。
 
 在 Astra Trident 的 [GitHub 存储库](https://github.com/NetApp/trident/releases)中下载 Astra Trident。 在所需版本中选择，并下载安装程序捆绑包。
 
@@ -322,7 +322,7 @@ $ kubectl apply -f trident-installer/deploy/crds/tridentorchestrator_cr.yaml
 tridentorchestrator.trident.netapp.io/trident created 
 ```
 
-运算符通过使用 `TridentOrchestrator` 规范中提供的参数进行安装。可以从各种[安装](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/deploying.html)和[后端指南](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/backends/index.html)中了解配置参数和示例后端。
+运算符通过使用 `TridentOrchestrator` 规范中提供的参数进行安装。可以从各种[安装](https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html)和[后端指南](https://docs.netapp.com/us-en/trident/trident-use/backends.html)中了解配置参数和示例后端。
 
 确认已安装 Astra Trident。 
 
@@ -511,9 +511,9 @@ Events:
 
 Astra Trident 支持 Azure NetApp 文件中的众多功能，例如：
 
-* [扩展卷](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/volumes/vol-expansion.html)
-* [按需卷快照](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/volumes/snapshots.html)
-* [导入卷](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/volumes/import.html)
+* [扩展卷](https://docs.netapp.com/us-en/trident/trident-use/vol-expansion.html)
+* [按需卷快照](https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html)
+* [导入卷](https://docs.netapp.com/us-en/trident/trident-use/vol-import.html)
 
 ## <a name="next-steps"></a>后续步骤
 

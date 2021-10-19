@@ -12,17 +12,17 @@ ms.author: datrigan
 ms.reviewer: vanto, sstein
 ms.date: 06/09/2021
 tags: azure-synapse
-ms.openlocfilehash: c3b2d31a2351e90be2a30b146dd12d02b90ac16b
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: d6e613c02a4261523992411ce9122ca3518af35d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112236348"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708336"
 ---
 # <a name="sql-advanced-threat-protection"></a>SQL 高级威胁防护
-[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)] :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure VM 上的 SQL Server:::image type="icon" source="../media/applies-to/yes.png" border="false":::启用了 Azure Arc 的 SQL Server
+[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]:::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure VM 上的 SQL Server:::image type="icon" source="../media/applies-to/yes.png" border="false":::已启用 Azure Arc 的 SQL Server
 
-适用于 [Azure SQL 数据库](sql-database-paas-overview.md)、[Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)、[Azure 虚拟机上的 SQL Server](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) 以及[启用了 Azure Arc 的 SQL Server](/sql/sql-server/azure-arc/overview) 的高级威胁防护可检测异常活动，这些活动指示访问或利用数据库的异常和潜在有害尝试。
+适用于 [Azure SQL 数据库](sql-database-paas-overview.md)、[Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)、[Azure 虚拟机上的 SQL Server](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) 以及[已启用 Azure Arc 的 SQL Server](/sql/sql-server/azure-arc/overview) 的高级威胁防护可检测异常活动，这些活动指示访问或利用数据库的异常和潜在有害尝试。
 
 高级威胁防护包含在 [Azure Defender for SQL](../../security-center/defender-for-sql-introduction.md) 产品/服务中，这是用于高级 SQL 安全功能的统一软件包。 可通过中心 Azure Defender for SQL 门户访问和管理高级威胁防护。
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 480798177797ad83ec01f33297d5fc559c7c3e3d
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: c03b482a22f24cf4e8ef325c71a39eab65d2fdb4
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900460"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858531"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>选择如何使用 Azure CLI 授予对队列数据的访问权限
 
@@ -35,7 +35,7 @@ Azure 存储提供适用于 Azure CLI 的扩展，使你能够指定如何根据
 若要使用 `--auth-mode` 参数，请确保已安装 Azure CLI v2.0.46 或更高版本。 运行 `az --version` 以查看已安装版本。
 
 > [!NOTE]
-> 在使用 Azure 资源管理器 ReadOnly 锁锁定了某个存储帐户时，不允许为该存储帐户执行[列出密钥](/rest/api/storagerp/storageaccounts/listkeys)操作。 列出密钥是 POST 操作，并且在为该帐户配置了 ReadOnly 锁时，所有 POST 操作都会被阻止 。 因此，当帐户被 ReadOnly 锁锁定时，还没有帐户密钥的用户必须使用 Azure AD 凭据来访问队列数据。
+> 在使用 Azure 资源管理器 ReadOnly 锁锁定了某个存储帐户时，不允许对该存储帐户执行[列出密钥](/rest/api/storagerp/storageaccounts/listkeys)操作。 列出密钥是 POST 操作，并且在为该帐户配置了 ReadOnly 锁时，所有 POST 操作都会被阻止 。 因此，当帐户被 ReadOnly 锁锁定时，还没有帐户密钥的用户必须使用 Azure AD 凭据来访问队列数据。
 
 > [!IMPORTANT]
 > 如果省略 `--auth-mode` 参数或将其设置为 `key`，则 Azure CLI 会尝试使用帐户访问密钥进行授权。 在这种情况下，Microsoft 建议在命令或 `AZURE_STORAGE_KEY` 环境变量中提供访问密钥。 有关环境变量的详细信息，请参阅标题为[为授权参数设置环境变量](#set-environment-variables-for-authorization-parameters)的部分。
@@ -112,4 +112,4 @@ az storage queue create \
 ## <a name="next-steps"></a>后续步骤
 
 - [分配用于访问队列数据的 Azure 角色](assign-azure-role-data-access.md)
-- [使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限](../common/storage-auth-aad-msi.md)
+- [使用 Azure 资源托管标识授予对队列数据的访问权限](authorize-managed-identity.md)

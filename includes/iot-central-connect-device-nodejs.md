@@ -4,14 +4,14 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: 0322e1a5c7f7c809b91d5bf9e3dd142c7641598e
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: ba19a222f3485fa15bd754f130a9b72c82334a00
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114407658"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740861"
 ---
-[![浏览代码](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp)
+[![浏览代码](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/javascript/pnp)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "114407658"
 
 ## <a name="review-the-code"></a>查看代码
 
-在先前下载的适用于 Node.js 的 Microsoft Azure IoT SDK 副本中，使用文本编辑器打开 azure-iot-sdk-node/device/samples/pnp/pnpTemperatureController.js 文件。
+在之前下载的 Microsoft Azure IoT SDK for Node.js 的副本中，使用文本编辑器打开 azure-iot-sdk-node/device/samples/javascript/pnp/pnpTemperatureController.js 文件。
 
 当你运行连接到 IoT Central 的示例时，它将使用设备预配服务 (DPS) 来注册设备并生成连接字符串。 该示例从命令行环境中检索其所需的 DPS 连接信息。
 

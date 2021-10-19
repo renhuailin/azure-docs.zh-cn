@@ -1,36 +1,50 @@
 ---
-title: 使用 Azure 导入/导出将数据传输到 Azure 文件 | Microsoft Docs
+title: 使用 Azure 导入/导出将数据传输到 Azure 文件存储的教程 | Microsoft Docs
 description: 了解如何在 Azure 门户中创建导入作业，以便将数据传输到 Azure 文件。
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: how-to
-ms.date: 09/03/2021
+ms.topic: tutorial
+ms.date: 10/06/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 344d513f823c3eb04e869c66ca79bfb611c3eb6a
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.custom: tutorial, devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: 4f8d984d97c046891008c1e1e3904ef065198f98
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129079744"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709588"
 ---
-# <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 导入/导出服务将数据导入到 Azure 文件
+# <a name="tutorial-transfer-data-to-azure-files-with-azure-importexport"></a>教程：使用 Azure 导入/导出将数据传输到 Azure 文件存储
 
 本文提供了有关如何使用 Azure 导入/导出服务安全地将大量数据导入到 Azure 文件的分步说明。 若要导入数据，此服务要求你将包含数据的受支持磁盘驱动器寄送到某个 Azure 数据中心。
 
 导入/导出服务仅支持将 Azure 文件导入到 Azure 存储。 不支持导出 Azure 文件。
+
+在本教程中，你将了解如何执行以下操作：
+
+> [!div class="checklist"]
+> * 将数据导入 Azure 文件存储的先决条件
+> * 步骤 1：准备驱动器
+> * 步骤 2：创建导入作业
+> * 步骤 3：将驱动器寄送到 Azure 数据中心
+> * 步骤 4：使用跟踪信息更新作业
+> * 步骤 5：验证数据上传到 Azure
 
 ## <a name="prerequisites"></a>先决条件
 
 在创建导入作业来将数据传输到 Azure 文件之前，请仔细查看并完成以下先决条件列表。 必须具备以下条件：
 
 - 拥有可以用于导入/导出服务的活动 Azure 订阅。
-- 拥有至少一个 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](../storage/common/storage-account-create.md)。
+- 拥有至少一个 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。
+  - 考虑在存储帐户上配置大型文件共享。 在导入到 Azure 文件存储的过程中，如果某个文件共享的内存空间不足，则不再支持将数据自动拆分到多个 Azure 文件共享，并且复制将失败。 有关说明，请参阅[在存储帐户上配置大型文件共享](../storage/files/storage-how-to-create-file-share.md?tabs=azure-portal#enable-large-files-shares-on-an-existing-account)。
+  - 有关如何创建新存储帐户的信息，请参阅[如何创建存储帐户](../storage/common/storage-account-create.md)。
 - 拥有足够数量的[受支持类型](storage-import-export-requirements.md#supported-disks)的磁盘。
 - 拥有运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统。
-- 在 Windows 系统上[下载 WAImportExport 版本 2](https://aka.ms/waiev2)。 解压缩到默认文件夹 `waimportexport`。 例如，`C:\WaImportExport`。
+- 下载 Windows 系统上适用于文件的 Azure 导入/导出版本 2 工具的当前版本：
+  1. [下载 WAImportExport 版本 2](https://aka.ms/waiev2) 当前版本为 2.2.0.300。
+  1. 解压缩到默认文件夹 `WaImportExportV2`。 例如，`C:\WaImportExportV2`。
 - 具有 FedEx/DHL 帐户。 如果想使用 FedEx/DHL 以外的承运商，请通过 `adbops@microsoft.com` 与 Azure Data Box 运营团队联系。
     - 该帐户必须是有余额的有效帐户，且有退货功能。
     - 生成导出作业的跟踪号。
@@ -53,24 +67,27 @@ ms.locfileid: "129079744"
    - **导入文件**：在以下示例中，要复制的数据位于 F: 驱动器中。 文件 *MyFile1.txt* 将被复制到根目录 *MyAzureFileshare1* 中。 如果 MyAzureFileshare1 不存在，则会在 Azure 存储帐户中创建该目录。 文件夹结构保持不变。
 
        ```
-           BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
-           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
+           BasePath,DstItemPathOrPrefix,ItemType
+           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file
+       ```
+
+   - **导入文件夹**：MyFolder2 下的所有文件和文件夹都将以递归方式复制到该文件共享。 文件夹结构保持不变。 如果导入与目标文件夹中某个现有文件同名的文件，则导入的文件将覆盖该文件。
 
        ```
-   - **导入文件夹**：*MyFolder2* 下的所有文件和文件夹将以递归方式复制到该文件共享。 文件夹结构保持不变。
-
+           "F:\MyFolder2\","MyAzureFileshare1/",file
        ```
-           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
+   
+       > [!NOTE]
+       > Azure 导入/导出版本 2.2.0.300 不支持 /Disposition 参数，该参数可让你选择在导入该工具早期版本中已存在的文件时要执行的操作。 在早期的工具版本中，默认情况下会重命名与现有文件同名的导入文件。
 
-       ```
      可以在同一文件中创建与导入的文件夹或文件对应的多个条目。
 
        ```
-           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
-           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
-
+           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file
+           "F:\MyFolder2\","MyAzureFileshare1/",file
        ```
-     详细了解如何[准备数据集 CSV 文件](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import)。
+
+<!--ARCHIVED ARTICLE -Learn more about [preparing the dataset CSV file](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import).-->
 
 
 4. 修改工具所在的根文件夹中的 driveset.csv 文件。 在 *driveset.csv* 文件中添加类似于以下示例的条目。 此驱动器集文件包含磁盘列表和对应的驱动器号，因此，工具可以正确地选取要准备的磁盘列表。
@@ -171,7 +188,7 @@ ms.locfileid: "129079744"
 
    1. 请检查“条款”，然后选择“我确认提供的所有信息均正确无误，并同意上述条款和条件。” 然后会执行验证。
    1. 在摘要中复查提供的作业信息。 记下作业名称和 Azure 数据中心送货地址，以便将将磁盘寄回 Azure。 稍后将在发货标签中使用此信息。
-   1. 选择“创建”  。
+   1. 选择“创建”。
 
         ![创建导入作业 - 步骤 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
@@ -361,7 +378,11 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="step-5-verify-data-upload-to-azure"></a>步骤 5：验证数据上传到 Azure
 
-跟踪作业直至完成。 作业完成后，验证数据已上传到 Azure。 仅在已确认上传成功后才删除本地数据。
+跟踪作业直至完成。 作业完成后，验证数据已上传到 Azure。 检查复制日志中是否存在失败。 有关详细信息，请参阅[查看复制日志](storage-import-export-tool-reviewing-job-status-v1.md)。 仅在已确认上传成功后才删除本地数据。
+
+> [!NOTE]
+> 在适用于文件的最新版本 Azure 导入/导出工具 (2.2.0.300) 中，如果某个文件共享的内存空间不足，则数据不再自动拆分到多个 Azure 文件共享。 相反，复制会失败，然后支持人员将与你联系。 你需要在存储帐户上配置大型文件共享或者移动一些数据，以便在共享中腾出内存空间。 有关详细信息，请参阅[在存储帐户上配置大型文件共享](../storage/files/storage-how-to-create-file-share.md?tabs=azure-portal#enable-large-files-shares-on-an-existing-account)。
+
 
 ## <a name="samples-for-journal-files"></a>日志文件示例
 
@@ -397,4 +418,4 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 ## <a name="next-steps"></a>后续步骤
 
 * [查看作业和驱动器状态](storage-import-export-view-drive-status.md)
-* [查看导入/导出要求](storage-import-export-requirements.md)
+* [查看导入/导出复制日志](storage-import-export-tool-reviewing-job-status-v1.md)

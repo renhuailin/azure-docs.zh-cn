@@ -5,12 +5,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 7df94ff656cc862a2b6efd6998745531bba94d6d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d7a674a7ecc17f8f3f11c65d5fa6393a593501db
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956430"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706362"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>用于 Azure Monitor 代理的资源管理器模板示例
 本文包含用于在 Azure Monitor 中为虚拟机部署和配置 [Log Analytics 代理](./log-analytics-agent.md)和[诊断扩展](./diagnostics-extension-overview.md)的 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
@@ -19,7 +19,7 @@ ms.locfileid: "111956430"
 
 
 ## <a name="azure-monitor-agent-preview"></a>Azure Monitor 代理（预览版）
-Windows 和 Linux 代理上 Azure Monitor 代理（预览版）中的本部分的示例。 这包括在 Azure 中的虚拟机上以及启用了 Azure Arc 的服务器上安装代理。 
+Windows 和 Linux 代理上 Azure Monitor 代理（预览版）中的本部分的示例。 这包括在 Azure 中的虚拟机上和已启用 Azure Arc 的服务器上安装代理。 
 
 ### <a name="windows-azure-virtual-machine"></a>Windows Azure 虚拟机
 以下示例将在 Microsoft Azure 虚拟机上安装 Azure Monitor 代理。
@@ -123,8 +123,8 @@ Windows 和 Linux 代理上 Azure Monitor 代理（预览版）中的本部分�
 }
 ```
 
-### <a name="windows-azure-arc-enabled-server"></a>启用了 Microsoft Azure Arc 的服务器
-以下示例将在启用了 Microsoft Azure Arc 的服务器上安装 Azure Monitor 代理。
+### <a name="windows-azure-arc-enabled-server"></a>已启用 Windows Azure Arc 的服务器
+以下示例将在已启用 Windows Azure Arc 的服务器上安装 Azure Monitor 代理。
 
 #### <a name="template-file"></a>模板文件
 
@@ -173,8 +173,8 @@ Windows 和 Linux 代理上 Azure Monitor 代理（预览版）中的本部分�
 }
 ```
 
-### <a name="linux-azure-arc-enabled-server"></a>启用了 Linux Azure Arc 的服务器
-下面的示例在启用了 Linux Azure Arc 的服务器上安装 Azure Monitor 代理。
+### <a name="linux-azure-arc-enabled-server"></a>已启用 Linux Azure Arc 的服务器
+以下示例将在已启用 Linux Azure Arc 的服务器上安装 Azure Monitor 代理。
 
 #### <a name="template-file"></a>模板文件
 

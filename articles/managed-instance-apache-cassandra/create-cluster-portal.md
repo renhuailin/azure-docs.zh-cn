@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 09/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 468f5141d7e28d387719df6bddbf30f5810c5955
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 276ac87c4d1f0c31d75c4dd653aaa5c67f96d6c0
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128557224"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754513"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>快速入门：从 Azure 门户中创建适用于 Apache Cassandra 群集的 Azure 托管实例（预览版）
 
@@ -53,7 +53,7 @@ ms.locfileid: "128557224"
    * **确认 Cassandra 管理员密码** - 重新输入你的密码。
 
    > [!NOTE]
-   > 在公共预览版中，可以在美国东部、美国西部、美国东部 2、美国西部 2、美国中部、美国中南部、北欧、西欧、东南亚和澳大利亚东部区域中创建托管实例群集。
+   > 在公共预览版中，可在美国东部、美国西部、美国东部 2、美国西部 2、美国中部、美国中南部、北欧、西欧、东南亚、印度中部和澳大利亚东部区域创建托管实例群集。
 
    :::image type="content" source="./media/create-cluster-portal/create-cluster-page.png" alt-text="填写“创建群集”窗体。" lightbox="./media/create-cluster-portal/create-cluster-page.png" border="true":::
 

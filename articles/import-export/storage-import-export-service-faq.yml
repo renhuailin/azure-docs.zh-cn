@@ -6,15 +6,15 @@ metadata:
   services: storage
   ms.service: storage
   ms.topic: conceptual
-  ms.date: 09/07/2021
+  ms.date: 10/04/2021
   ms.author: alkohli
   ms.subservice: common
-  ms.openlocfilehash: 7a4344ed0aa7346d3c87d36d96e4772c08080327
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 7217f10d9d54931d0f37ec0400c8df3132076f87
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124763550"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129709461"
 title: Azure 导入/导出服务：常见问题解答
 summary: >
   下面是你在使用 Azure 导入/导出服务将数据传输到 Azure 存储时可能会提出的问题及其解答。
@@ -22,9 +22,9 @@ sections:
 - name: 关于导入/导出服务
   questions:
   - question: >
-      是否可以使用 Azure 导入/导出服务复制 Azure 文件存储？
+      是否可以使用 Azure 导入/导出服务复制到 Azure 文件存储？
     answer: >
-      是的。 Azure 导入/导出服务支持导入到 Azure 文件存储。 目前它不支持导出 Azure 文件。
+      是的。 Azure 导入/导出服务支持导入到 Azure 文件存储存储。 目前它不支持从 Azure 文件存储中导出。
   - question: >
       Azure 导入/导出服务是否适用于 CSP 订阅？
     answer: >
@@ -56,7 +56,7 @@ sections:
   - question: >
       是否可以取消我的作业？
     answer: >
-      是的。 可以取消状态为“正在创建”或“正在寄送”的作业。  在这些阶段之外，无法取消作业，它将一直执行到最终阶段。
+      是的。 可在作业状态为“正在创建”时取消作业。 但是，在输入跟踪信息后，作业的状态将更改为“正在寄送”，且不可再取消该作业。
   - question: >
       在 Azure 门户中可以查看多长时间的已完成作业的状态？
     answer: >
@@ -68,13 +68,17 @@ sections:
 
       当数据容量跨多个磁盘导入作业时，若需了解更多信息并获得指导，请联系 Microsoft 支持部门。
   - question: >
+      我在导入/导出作业的数据复制日志中发现了问题。 是否可以修复作业？
+    answer: >
+      否。Azure ImportExport 工具的当前版本（用于 Blob 的版本为 1.5.0.300，用于文件的版本为 2.2.0.300）不支持作业修复。 解决问题后，需要创建新的导入/导出作业。 请参阅[为 Blob 创建导入作业](storage-import-export-data-to-blobs.md#step-2-create-an-import-job)或[为文件创建导入作业](storage-import-export-data-to-files.md#step-2-create-an-import-job)。
+  - question: >
       上传的 blob 显示状态为“租用已过期”。 我该怎么办？
     answer: >
-      你可以忽略“租用已过期”字段。 导入/导出在上传期间对 blob 进行租用，以确保没有其他进程可以并行更新 blob。 “租用已过期”意味着导入/导出不再上传到它，并且 blob 可以供你使用。
+      你可以忽略“租用已过期”字段。 导入/导出在上传期间对 blob 进行租用，以确保没有其他进程可以并行更新 blob。 “租用已过期”意味着导入/导出不再上传到 Blob，并且该 Blob 可以供你使用。
 - name: 寄送磁盘
   questions:
   - question: >
-      一次装运的最大 HDD数量是多少？
+      一次寄送的最大 HDD 数量是多少？
     answer: >
       对于一次装运的 HDD 数量没有限制。 如果磁盘属于多个作业，我们建议：
 
@@ -92,7 +96,7 @@ sections:
   - question: >
       跨国寄送和返还驱动器是否存在限制？
     answer: >
-      请注意，发运的物理介质可能需要穿越国界。 应当负责确保物理介质和数据是遵照适用的法律导入和/或导出的。 在发运物理介质之前，请咨询顾问以验证介质和数据是否可以合法地发运到所确定的数据中心。 这会有助于确保它可以及时到达 Microsoft。
+      请注意，发运的物理介质可能需要穿越国界。 应当负责确保物理介质和数据是遵照适用的法律导入和/或导出的。 在发运物理介质之前，请咨询顾问以验证介质和数据是否可以合法地发运到所确定的数据中心。 提前检查将有助于确保它可以及时到达 Microsoft。
 
 
       上传完成后，将驱动器返还到国际地址的过程需要的时间可能会长于本地寄送所需的时间（通常为 2-3 天）。 在 Azure 门户中列出的“打包”阶段，Data Box 团队将确保提供正确的文档，以确保寄送符合各种国际进出口要求。
@@ -112,7 +116,7 @@ sections:
   - question: >
       寄送我的驱动器时，承运商要求我提供数据中心的联系地址和电话号码。 我该如何提供？
     answer: >
-      电话号码和数据中心地址是在创建作业过程中提供的。
+      电话号码和数据中心地址作为作业创建的一部分提供。
   - question: >
       为什么我的设备已经交付，我的订单状态仍为“正在寄送”？
     answer: >
@@ -137,7 +141,13 @@ sections:
   - question: >
       如果驱动器的文件已存在于我的存储帐户中，该服务是否会覆盖现有 Blob 或文件？
     answer: >
-      视情况而定。 准备驱动器时，可以使用数据集 CSV 文件中名为 /Disposition:<rename|no-overwrite|overwrite> 的字段指定是否应覆盖或忽略目标文件。 默认情况下，该服务会将新文件重命名，而不是覆盖现有 Blob 或文件。
+      是的。 Azure ImportExport 工具的最新版本 1.5.0.300（用于 Blob）和 2.2.0.300（用于文件）会在当导入中包含与目标存储中的 Blob 或文件同名的 Blob 或文件时，自动覆盖存储中已存在的 Blob 或文件。 如果某个现有 Blob 或文件具有与传入的 Blob 或文件相同的名称，早期版本的工具会默认将传入的 Blob 或文件重命名。 使用数据集 CSV 文件中的“处置”字段可指定是重命名、不覆盖还是覆盖目标文件或 Blob。 “处置”字段具有格式：`Disposition:<rename|no-overwrite|overwrite>`。
+  - question: >
+      我正在创建新作业。 是否仍可使用旧的 Azure 导入/导出工具？
+    answer: >
+      你仍可对现有作业使用旧的 Azure 导入/导出工具。 但强烈建议你为新的导入/导出作业迁移到当前工具版本，因为旧版工具即将淘汰。当旧版工具不再受支持时，你将在 Azure 门户中收到通知。
+
+      在这里可以找到当前的工具版本。 [下载 WAImportExport 版本 1.5.0.300](https://www.microsoft.com/download/details.aspx?id=42659)（用于 Blob）。 [下载 WAImportExport 版本 2.2.0.300](https://aka.ms/waiev2)（用于文件）。
   - question: >
       WAImportExport 工具是否与 32 位操作系统兼容？
     answer: >

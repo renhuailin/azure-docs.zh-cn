@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 2391fbdf586c652f7567b5c4b08757a68546314a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 52afb1398217fc8a3a885704ea1e689a6f4b1393
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731978"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711451"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -32,7 +32,7 @@ ms.locfileid: "121731978"
 
 成本分析支持各种 Azure 帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。
 
-若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](./assign-access-acm-data.md)。
+若要了解如何分配对成本管理数据的访问权限，请参阅[分配对数据的访问权限](./assign-access-acm-data.md)。
 
 如果你有新订阅，则无法立即使用成本管理功能。 最多可能需要 48 小时才能使用所有成本管理功能。
 
@@ -113,7 +113,7 @@ ms.locfileid: "121731978"
 
 大部分Azure 资源都支持标记。 但某些标记在“成本管理”和“计费”中不可用。 此外，不支持资源组标记。 对标记的支持适用于在将标记应用于资源后报告的使用情况。 标记不会逆向应用于成本汇总。
 
-观看 [How to review tag policies with Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw)（如何通过 Azure 成本管理查看标记策略）视频，了解如何使用 Azure 标记策略来改进成本数据可见性。
+观看[如何通过成本管理查看标记策略](https://www.youtube.com/watch?v=nHQYcYGKuyw)视频，了解如何使用 Azure 标记策略来改进成本数据可见性。
 
 下面是当前月份的 Azure 服务成本视图。
 
@@ -147,7 +147,7 @@ ms.locfileid: "121731978"
 
 保存自定义视图并将其与他人共享，方法是将成本分析固定到 Azure 门户仪表板或复制成本分析的链接。
 
-请观看视频[在 Azure 成本管理中共享和保存视图](https://www.youtube.com/watch?v=kQkXXj-SmvQ)，来详细了解如何使用门户在整个组织中分享成本知识。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
+观看[在成本管理中共享和保存视图](https://www.youtube.com/watch?v=kQkXXj-SmvQ)视频，详细了解如何使用门户在整个组织中分享成本知识。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 

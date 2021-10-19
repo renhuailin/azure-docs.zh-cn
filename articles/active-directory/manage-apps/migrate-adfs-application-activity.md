@@ -1,6 +1,7 @@
 ---
-title: 使用活动报表将 AD FS 应用移动到 Azure Active Directory |Microsoft Docs"
+title: 使用活动报表将 AD FS 应用移动到 Azure Active Directory
 description: Active Directory 联合身份验证服务 (AD FS) 应用程序活动报表可让你快速地将应用程序从 AD FS 迁移到 Azure Active Directory (Azure AD)。 此 AD FS 迁移工具标识与 Azure AD 的兼容性，并提供迁移指南。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 01/14/2019
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: alamaral
-ms.openlocfilehash: 6b60479d1205acdd0d18311791adfc4924913c4e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 00bc79bf0ab078e3a95c958b8c539f453a633e1c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738775"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614719"
 ---
-# <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>使用 AD FS 应用程序活动报表将应用程序迁移到 Azure AD
+# <a name="review-the-application-activity-report-in-azure-active-directory"></a>查看 Azure Active Directory 中的应用程序活动报表
 
 许多组织使用 Active Directory 联合身份验证服务 (AD FS) 来提供云应用程序的单一登录。 将 AD FS 应用程序迁移到 Azure AD 进行身份验证有很大的优势，特别是在成本管理、风险管理、生产力、合规性和监管方面。 但是，了解与 Azure AD 兼容的应用程序和确定具体的迁移步骤可能很耗时。
 

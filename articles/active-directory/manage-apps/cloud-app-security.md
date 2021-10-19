@@ -1,5 +1,6 @@
 ---
 title: 使用 Microsoft Cloud App Security 实现应用可见性和控制
+titleSuffix: Azure AD
 description: 了解如何识别应用风险级别、实时阻止违规和透露，以及使用应用连接器通过提供程序 API 来实现可见性和监管。
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 07/29/2021
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: bokacevi, dacurwin
-ms.openlocfilehash: ffc4a35aef2304a650f5673a26f0e4fd532e23be
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 52c17d521ca1a3a4e191c4a4a82d37a98371f879
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738854"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619835"
 ---
-# <a name="cloud-app-visibility-and-control"></a>云应用可见性和控制
+# <a name="cloud-app-visibility-and-control-in-azure-active-directory"></a>Azure Active Directory 中的云应用的可见性和控制
 
 若要充分利用云应用和服务，IT 团队必须在支持访问与保持对关键数据的控制和保护之间找到适当的平衡。 Microsoft Cloud App Security 针对数据的移动提供丰富的可见性和控制功能，并提供先进的分析工具来识别和应对所有 Microsoft 和第三方云服务中的网络威胁。
 

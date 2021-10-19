@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 10/05/2021
+ms.date: 10/10/2021
 ms.author: memildin
-ms.openlocfilehash: e6d1c8cf55687a8e4d7612ca432a314ae38256bc
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 6a98a5dfbdf47ad9e2b74415786c240b32b3b499
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534416"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754684"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>即将推出的对 Azure 安全中心的重要更改
 
@@ -30,8 +30,10 @@ ms.locfileid: "129534416"
 |----------------------|---------------------------|
 | [即将弃用预览版警报：ARM.MCAS_ActivityFromAnonymousIPAddresses](#deprecating-a-preview-alert-armmcas_activityfromanonymousipaddresses)             | 2021 年 10 月|
 | [正在将 ISO 27001 的旧版实现替换为新的 ISO 27001:2013](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)| 2021 年 10 月|
-| [关于管理 Endpoint Protection 解决方案的更改建议](#changes-to-recommendations-for-managing-endpoint-protection-solutions)             | 2021 年 10 月    |
-| [针对用于对 SQL 数据库中的敏感数据进行分类的建议进行了增强](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)   | 2022 年第 1 季度    |
+| [关于管理 Endpoint Protection 解决方案的更改建议](#changes-to-recommendations-for-managing-endpoint-protection-solutions)             | 2021 年 11 月| 
+| [清单中显示本地计算机时将使用不同的资源名称模板](#inventory-display-of-on-premises-machines-will-use-different-template-for-resource-name)    | 2021 年 11 月    |
+| [针对标识建议进行了多项更改](#multiple-changes-to-identity-recommendations)                                                                                          | 2021 年 11 月    |
+| [针对用于对 SQL 数据库中的敏感数据进行分类的建议进行了增强](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)                              | 2022 年第 1 季度    |
 |||
 
 ### <a name="deprecating-a-preview-alert-armmcas_activityfromanonymousipaddresses"></a>即将弃用预览版警报：ARM.MCAS_ActivityFromAnonymousIPAddresses
@@ -57,7 +59,7 @@ ms.locfileid: "129534416"
 
 ### <a name="changes-to-recommendations-for-managing-endpoint-protection-solutions"></a>关于管理 Endpoint Protection 解决方案的更改建议
 
-**预计更改日期：** 2021 年 10 月
+**预计更改日期：** 2021 年 11 月
 
 2021 年 8 月，我们就如何在计算机上部署和维护 Endpoint Protection 解决方案，增加了两项新预览建议。 有关完整的详细信息，请参阅[发行说明](release-notes.md#two-new-recommendations-for-managing-endpoint-protection-solutions-in-preview)。
 
@@ -74,6 +76,68 @@ ms.locfileid: "129534416"
 了解详细信息：
 - [安全中心的受支持 Endpoint Protection 解决方案](security-center-services.md#endpoint-supported)
 - [这些建议如何评估部署的解决方案的状态](security-center-endpoint-protection.md)
+
+
+
+### <a name="inventory-display-of-on-premises-machines-will-use-different-template-for-resource-name"></a>清单中显示本地计算机时使用不同的资源名称模板
+
+**预计更改日期：** 2021 年 11 月
+
+为了改进[资产清单](asset-inventory.md)中资源的表示形式，我们将从用于命名本地计算机的模板中删除 "source-computer-IP" 元素。
+
+- 当前格式：``machine-name_source-computer-id_VMUUID``
+- 更新后：``machine-name_VMUUID``
+
+
+### <a name="multiple-changes-to-identity-recommendations"></a>针对标识建议进行了多项更改
+
+**预计更改日期：** 2021 年 11 月
+
+安全中心包含多项用于改进用户和帐户管理的建议。 我们将在 11 月做出如下更改。
+
+- 改进刷新间隔 - 当前，标识建议的刷新间隔为 24 小时。 更新后间隔将减少到 12 小时。
+
+- 帐户豁免功能 - 安全中心具有许多功能，可用于进行体验自定义并确保安全功能分数反映组织的安全优先级。 安全建议的豁免选项就是其中一项功能。 如需完整的概述和说明，请参阅[从安全功能分数中豁免资源和建议](exempt-resource.md)。 通过此更新，你将能够豁免下表中列出的八项建议对特定帐户的评估。
+
+    通常，将从 MFA 建议中豁免紧急“破窗”帐户，因为此类帐户通常被有意排除在组织的 MFA 要求之外。 或者，你可能拥有想要允许其访问 MFA 但未为其启用 MFA 的外部帐户。
+
+    > [!TIP]
+    > 豁免某个帐户时，它不会显示为运行不正常，也不会导致订阅看起来不正常。
+
+    |建议| 评估密钥|
+    |-|-|
+    |[应在对订阅拥有所有者权限的帐户上启用 MFA](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/94290b00-4d0c-d7b4-7cea-064a9554e681)|94290b00-4d0c-d7b4-7cea-064a9554e681|
+    |[应在对订阅拥有读取权限的帐户上启用 MFA](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/151e82c5-5341-a74b-1eb0-bc38d2c84bb5)|151e82c5-5341-a74b-1eb0-bc38d2c84bb5|
+    |应在对订阅拥有写入权限的帐户上启用 MFA|57e98606-6b1e-6193-0e3d-fe621387c16b|
+    |[应从订阅中删除拥有所有者权限的外部帐户](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/c3b6ae71-f1f0-31b4-e6c1-d5951285d03d)|c3b6ae71-f1f0-31b4-e6c1-d5951285d03d|
+    |[应从订阅中删除拥有读取权限的外部帐户](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/a8c6a4ad-d51e-88fe-2979-d3ee3c864f8b)|a8c6a4ad-d51e-88fe-2979-d3ee3c864f8b|
+    |[应从订阅中删除具有写入权限的外部帐户](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/04e7147b-0deb-9796-2e5c-0336343ceb3d)|04e7147b-0deb-9796-2e5c-0336343ceb3d|
+    |[应从订阅中删除拥有所有者权限的已弃用帐户](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/e52064aa-6853-e252-a11e-dffc675689c2)|e52064aa-6853-e252-a11e-dffc675689c2|
+    |[应从订阅中删除弃用的帐户](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/00c6d40b-e990-6acf-d4f3-471e747a27c4)|00c6d40b-e990-6acf-d4f3-471e747a27c4|
+    |||
+ 
+- 建议重命名 - 更新将重命名两条建议。 我们还将修改建议说明。 评估密钥保持不变。 
+
+
+    |属性  |当前值  | 更新后|
+    |---------|---------|---------|
+    |评估密钥     | e52064aa-6853-e252-a11e-dffc675689c2        | 不变|
+    |名称     |[应从订阅中删除拥有所有者权限的已弃用帐户](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/e52064aa-6853-e252-a11e-dffc675689c2)         |应清除在 Active Directory 中被阻止且具有所有者权限的帐户的订阅        |
+    |说明     |应从订阅中删除已被阻止登录的用户帐户。<br>这些帐户可能会成为攻击者的目标，攻击者会设法在不被发现的情况下访问你的数据。|应从订阅中删除被阻止登录到 Active Directory 的用户帐户。 这些帐户可能会成为攻击者的目标，攻击者会设法在不被发现的情况下访问你的数据。<br>在 [Azure 标识管理和访问控制安全最佳做法](/azure/security/fundamentals/identity-management-best-practices.md)中详细了解如何保护标识外围。|
+    |相关策略     |[应从订阅中删除拥有所有者权限的已弃用帐户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2febb62a0c-3560-49e1-89ed-27e074e9f8ad)         |应清除在 Active Directory 中被阻止且具有所有者权限的帐户的订阅 |
+    |||
+
+    |属性  |当前值  | 更新后|
+    |---------|---------|---------|
+    |评估密钥     | 00c6d40b-e990-6acf-d4f3-471e747a27c4        | 不变|
+    |名称     |[应从订阅中删除弃用的帐户](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/00c6d40b-e990-6acf-d4f3-471e747a27c4)|应清除在 Active Directory 中被阻止且具有读写权限的帐户的订阅|
+    |说明     |应从订阅中删除已被阻止登录的用户帐户。<br>这些帐户可能会成为攻击者的目标，攻击者会设法在不被发现的情况下访问你的数据。|应从订阅中删除被阻止登录到 Active Directory 的用户帐户。 这些帐户可能会成为攻击者的目标，攻击者会设法在不被发现的情况下访问你的数据。<br>在 [Azure 标识管理和访问控制安全最佳做法](/azure/security/fundamentals/identity-management-best-practices.md)中详细了解如何保护标识外围。|
+    |相关策略     |[应从订阅中删除弃用的帐户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6b1cbf55-e8b6-442f-ba4c-7246b6381474)|应清除在 Active Directory 中被阻止且具有读写权限的帐户的订阅|
+    |||
+ 
+
+
+
 
 ### <a name="enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases"></a>针对用于对 SQL 数据库中的敏感数据进行分类的建议进行了增强
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 07/08/2021
+ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 43220ce85bf02919a0ccf069bc9646a16c3a0a26
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 448b13d1406587c36b729b3258d8ca375a0914ae
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129155346"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706564"
 ---
 # <a name="create-and-use-managed-identity-for-your-form-recognizer-resource"></a>为表单识别器资源创建和使用托管标识
 
@@ -35,7 +35,7 @@ Azure 托管标识是一项服务主体，用于创建 Azure 受管理资源的 
 >
 > * 如果要使用[表单识别器示例标记工具 (FOTT)](https://fott-2-1.azurewebsites.net/) 分析存储数据，则必须在启用 VNet 或防火墙的情况下部署该工具。
 >
-> * [Analyze Receipt API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeReceiptAsync)、[Business Card API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)、[Invoice API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)、[Identity Document API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707) 和 [Custom Form API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm) 可以通过将请求发布为原始二进制内容，从单个文档中提取数据。     在这些情况下，不需要托管标识凭据。
+> * 分析[收据](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeReceiptAsync)、[名片](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)、[发票](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)、[ID 文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)和[自定义表单](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm) API 可通过将请求发布为原始二进制内容，从单个文档中提取数据     。 在这些情况下，不需要托管标识凭据。
 
 ## <a name="prerequisites"></a>先决条件
 

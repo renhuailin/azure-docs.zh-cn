@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure AD 配置权限分类
+title: 配置权限分类
+titleSuffix: Azure AD
 description: 了解如何管理委托权限分类。
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1824eb31b17ba1a46bd5514797e11a502ac4665a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8a2bfb1e76a323ab3fb9d4daa3bbb3e6ba2408ab
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124810051"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619778"
 ---
-# <a name="configure-permission-classifications"></a>配置权限分类
+# <a name="configure-permission-classifications-with-azure-active-directory"></a>使用 Azure Active Directory 配置权限分类
 
 通过权限分类，可根据组织的策略和风险评估确定不同权限的影响。 例如，可使用同意策略中的权限分类来确定允许用户同意哪一组权限。
 
@@ -29,7 +30,7 @@ ms.locfileid: "124810051"
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 全局管理员角色。
-- 安装 Azure AD PowerShell。 请参阅 [Azure AD PowerShell](/powershell/azure/)
+- 设置 Azure AD PowerShell。 请参阅 [Azure AD PowerShell](/powershell/azure/)
 
 ## <a name="manage-permission-classifications"></a>管理权限分类
 

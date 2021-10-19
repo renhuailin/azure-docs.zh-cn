@@ -4,13 +4,13 @@ description: 描述 Bicep 文件中用于处理字符串的函数。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: d94f2b97a9ff78b715682052a647f02af6286af3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/01/2021
+ms.openlocfilehash: e8691fd357b8f8cbde87309f4881fa7424f7f44e
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794075"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389070"
 ---
 # <a name="string-functions-for-bicep"></a>Bicep 的字符串函数
 
@@ -22,7 +22,9 @@ ms.locfileid: "124794075"
 
 返回输入字符串的 base64 表示形式。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -62,7 +64,9 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 将 base64 表示形式转换为 JSON 对象。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -103,7 +107,9 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 将 base64 表示形式转换为字符串。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -133,7 +139,7 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -141,7 +147,7 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 ## <a name="concat"></a>concat
 
-改为使用字符串内插，而不要使用 concat 函数。 
+改为使用字符串内插，而不要使用 concat 函数。
 
 ```bicep
 param prefix string = 'prefix'
@@ -155,13 +161,17 @@ output concatOutput string = '${prefix}And${uniqueString(resourceGroup().id)}'
 | ---- | ---- | ----- |
 | concatOutput | String | prefixAnd5yj4yjf5mbg72 |
 
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
 ## <a name="contains"></a>contains
 
 `contains (container, itemToFind)`
 
 检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。 字符串比较区分大小写。 但在测试某个对象是否包含某个键时，该比较不区分大小写。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -216,7 +226,9 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 将一个值转换为数据 URI。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -251,7 +263,9 @@ output toStringOutput string = dataUriToString(dataFormattedString)
 
 将采用数据 URI 格式的值转换为字符串。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -286,7 +300,9 @@ output toStringOutput string = dataUriToString(dataFormattedString)
 
 确定数组、对象或字符串是否为空。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -312,7 +328,7 @@ output stringEmpty bool = empty(testString)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -324,7 +340,9 @@ output stringEmpty bool = empty(testString)
 
 确定某个字符串是否以某个值结尾。 比较不区分大小写。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -350,7 +368,7 @@ output endsFalse bool = endsWith('abcdef', 'e')
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -365,7 +383,9 @@ output endsFalse bool = endsWith('abcdef', 'e')
 
 返回字符串的第一个字符，或数组的第一个元素。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -403,7 +423,9 @@ output stringOutput string = first('One Two Three')
 
 基于输入值创建带格式的字符串。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -429,7 +451,7 @@ output formatTest string = format('{0}, {1}. Formatted number: {2:N0}', greeting
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | formatTest | String | Hello, User。 带格式的数字：8,175,133 |
 
@@ -439,7 +461,9 @@ output formatTest string = format('{0}, {1}. Formatted number: {2:N0}', greeting
 
 基于以参数形式提供的值创建一个采用全局唯一标识符格式的值。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -492,7 +516,9 @@ output guidPerDeployment string = guid(resourceGroup().id, deployment().name)
 
 返回字符串中某个值的第一个位置。 比较不区分大小写。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -533,13 +559,17 @@ output notFound int = indexOf('abcdef', 'z')
 
 将有效的 JSON 字符串转换为 JSON 数据类型。 有关详细信息，请参阅 [json 函数](./bicep-functions-object.md#json)。
 
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
 ## <a name="last"></a>last
 
 `last (arg1)`
 
 返回字符串的最后一个字符，或数组的最后一个元素。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -577,7 +607,9 @@ output stringOutput string = last('One Two Three')
 
 返回字符串中某个值的最后一个位置。 比较不区分大小写。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -616,7 +648,9 @@ output notFound int = indexOf('abcdef', 'z')
 
 返回字符串中的字符数、数组中的元素数或对象中的根级属性数。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -665,6 +699,8 @@ output objectLength int = length(objectToTest)
 `newGuid()`
 
 以全局唯一标识符的格式返回一个值。 **此函数只能在参数的默认值中使用。**
+
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="remarks"></a>备注
 
@@ -734,7 +770,9 @@ output nameOutput string = storageName
 
 通过向左侧添加字符直至到达指定的总长度返回右对齐的字符串。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -760,7 +798,7 @@ output stringOutput string = padLeft(testString, 10, '0')
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | stringOutput | String | 0000000123 |
 
@@ -770,7 +808,9 @@ output stringOutput string = padLeft(testString, 10, '0')
 
 返回其中某个字符串的所有实例均替换为另一个字符串的新字符串。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -806,7 +846,9 @@ output secondOutput string = replace(testString, '1234', 'xxxx')
 
 返回一个字符串，其中包含指定字符数后面的所有字符；或者返回一个数组，其中包含指定元素数后面的所有元素。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -848,7 +890,9 @@ output stringOutput string = skip(testString, charactersToSkip)
 
 返回包含输入字符串的子字符串的字符串数组，其中的子字符串使用指定的分隔符进行分隔。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -889,7 +933,9 @@ output secondOutput array = split(secondString, delimiters)
 
 确定某个字符串是否以某个值开头。 比较不区分大小写。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -915,7 +961,7 @@ output endsFalse bool = endsWith('abcdef', 'e')
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -930,7 +976,9 @@ output endsFalse bool = endsWith('abcdef', 'e')
 
 将指定的值转换为字符串。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -975,7 +1023,9 @@ output intOutput string = string(testInt)
 
 返回从指定的字符位置开始且包含指定数量的字符的子字符串。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1018,7 +1068,9 @@ output substringOutput string = substring(testString, 4, 3)
 
 返回一个字符串，其中包含从字符串开头位置算起的指定数目的字符；或返回一个数组，其中包含从数组开头位置算起的指定数目的元素。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1049,7 +1101,7 @@ output stringOutput string = take(testString, charactersToTake)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
@@ -1060,7 +1112,9 @@ output stringOutput string = take(testString, charactersToTake)
 
 将指定的字符串转换为小写。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1094,7 +1148,9 @@ output toUpperOutput string = toUpper(testString)
 
 将指定的字符串转换为大写。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1128,7 +1184,9 @@ output toUpperOutput string = toUpper(testString)
 
 从指定的字符串中删除所有前导和尾随空白字符。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1160,7 +1218,9 @@ output return string = trim(testString)
 
 根据作为参数提供的值创建确定性哈希字符串。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1204,7 +1264,7 @@ resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
 }
 ```
 
-如果每次部署 Bicep 文件都需要新建不重复的名称且不希望更新资源，则可以结合 uniqueString，使用 [utcNow](./bicep-functions-date.md#utcnow) 函数。 可以在测试环境中使用此方法。 有关示例，请参阅 [utcNow](./bicep-functions-date.md#utcnow)。
+如果每次部署 Bicep 文件都需要新建不重复的名称且不希望更新资源，则可以结合 uniqueString，使用 [utcNow](./bicep-functions-date.md#utcnow) 函数。 可以在测试环境中使用此方法。 有关示例，请参阅 [utcNow](./bicep-functions-date.md#utcnow)。 请注意，utcNow 函数只能在参数的默认值的表达式中使用。
 
 ### <a name="return-value"></a>返回值
 
@@ -1225,7 +1285,9 @@ output uniqueDeploy string = uniqueString(resourceGroup().id, deployment().name)
 
 通过组合 baseUri 和 relativeUri 字符串来创建绝对 URI。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1282,7 +1344,9 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 将 URI 编码。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -1321,7 +1385,9 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 返回 URI 编码值的字符串。
 
-### <a name="parameters"></a>参数
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>parameters
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |

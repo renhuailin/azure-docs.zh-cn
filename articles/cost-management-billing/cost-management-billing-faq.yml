@@ -10,13 +10,13 @@ metadata:
   ms.topic: conceptual
   ms.date: 09/16/2021
   ms.author: banders
-  ms.openlocfilehash: d23c07386fe0245f3acd7bc1e716a053cdfa2019
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.openlocfilehash: 7edae913ea733002aa3ad0736cf744f969003cdb
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128607285"
-title: Azure 成本管理 + 计费常见问题解答 (FAQ)
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129706211"
+title: 成本管理 + 计费常见问题解答 (FAQ)
 summary: ''
 sections:
 - name: 一般计费问题
@@ -55,7 +55,7 @@ sections:
       请参阅[分配对成本管理数据的访问权限](costs/assign-access-acm-data.md)。
   - question: 成本管理支持哪些合作伙伴产品/服务？
     answer: >
-      成本管理适用于其客户具有 Azure 计划的合作伙伴。 通过启用策略设置，合作伙伴可以允许其客户查看成本信息。 有关详细信息，请参阅[面向合作伙伴的 Azure 成本管理入门](costs/get-started-partners.md)。 成本管理不支持经典 CSP。
+      成本管理适用于其客户具有 Azure 计划的合作伙伴。 通过启用策略设置，合作伙伴可以允许其客户查看成本信息。 有关详细信息，请参阅[面向合作伙伴的成本管理入门](costs/get-started-partners.md)。 成本管理不支持经典 CSP。
   - question: 如何查看预测的成本？
     answer: >
       在 Azure 门户中，导航到“成本管理 + 计费” > “成本管理” > “成本分析”  。 在默认视图中，顶部图表包含实际/分摊的成本和预测成本部分。 该图表的纯色显示实际/分摊的成本。 着色颜色显示预测成本。
@@ -87,7 +87,7 @@ sections:
     answer: >
       请参阅[使用 Azure 存储帐户 SAS 密钥导出成本数据](costs/export-cost-data-storage-account-sas-key.md)一文。
   - question: 作为 CSP 合作伙伴，Azure 计划中的经典 CSP 产品/服务是否支持成本管理？
-    answer: "鉴于计划将经典 CSP 的客户转换到[新商务体验](https://www.microsoft.com/licensing/news/new-azure-experience-in-csp)上的 Azure 计划，Azure 成本管理将仅适用于使用 Azure 计划的客户的直接合作伙伴和间接提供商。 \n"
+    answer: "鉴于计划将经典 CSP 的客户转换到采用[新商务体验](https://www.microsoft.com/licensing/news/new-azure-experience-in-csp)的 Azure 计划，成本管理 + 计费将仅适用于使用 Azure 计划的客户的直接合作伙伴和间接提供商。 \n"
   - question: 作为 CSP 合作伙伴（全局管理员），如何在 Azure 计划的最终客户和经销商的订阅范围内启用成本可见性策略？
     answer: >
       请参阅[为客户租户订阅启用成本管理](costs/get-started-partners.md#enable-cost-management-for-customer-tenant-subscriptions)，为订阅的 Azure RBAC 用户以零售价启用 Azure 所消耗服务的成本可见性策略。 作为直接合作伙伴或间接提供商的全局管理员，无论策略如何，你都可以查看客户租户的成本。
@@ -100,10 +100,10 @@ sections:
   - question: 成本管理中支持的产品/服务类型有哪些？
     answer: >
       请参阅[支持的 Microsoft Azure 产品/服务](./costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers)。
-  - question: 多久能在 Azure 成本管理中查看成本和使用情况数据？
+  - question: 多久能在成本管理中查看成本和使用情况数据？
     answer: >
       请参阅[成本和使用情况数据更新和保留](./costs/understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)。
-  - question: 能否在 Azure 成本管理中找到所有与成本相关的信息？
+  - question: 能否在成本管理中找到所有与成本相关的信息？
     answer: >
       请参阅[成本管理中包括的成本](costs/understand-cost-mgt-data.md#costs-included-in-cost-management)。
   - question: 分摊的成本是否已分解为预算和预测视图？
@@ -144,7 +144,7 @@ sections:
     answer: >
       可以通过多种方式查看节省额。
 
-      -  如果你是 EA 客户，则可以使用适用于 EA 的 Azure 成本管理 Power BI 应用来查看 [RI 节省额报告](./costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md#reports-available-with-the-app)。
+      -  如果你是 EA 客户，则可以使用适用于 EA 的成本管理 Power BI 应用来查看 [RI 节省额报告](./costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md#reports-available-with-the-app)。
 
       -  使用“使用情况 + 费用”数据文件手动[确定预留节省额](reservations/understand-reserved-instance-usage-ea.md#determine-reservation-savings)。
   - question: 如何查看预留使用不足情况？
@@ -340,7 +340,7 @@ sections:
       > 只能将标记应用到支持 Azure 资源管理器操作的资源。 如果是通过经典部署模型（如通过经典门户）创建的虚拟机、虚拟网络或存储，则无法向该资源应用标记。 必须通过资源管理器重新部署这些资源才支持标记。 所有其他资源均支持标记。
   - question: 能否使用 Power BI 执行分析？
     answer: >
-      是，可以使用[适用于 Power BI Desktop 的 Azure 成本管理连接器](/power-bi/connect-data/desktop-connect-azure-cost-management)来创建功能强大的自定义可视化效果和报表，帮助你更好地了解 Azure 支出。 如果你使用的是企业协议 (EA)，则还可以使用 [Azure 成本管理模板应用](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md)。 Azure 成本管理模板应用附带有预制报表，可协助你监视成本、服务使用情况趋势，并确定成本优化选项以减少支出。               Power BI 报告适用于 Azure EA 直接合作伙伴以及能够查看帐单信息的间接客户。
+      是，可以使用[适用于 Power BI Desktop 的成本管理连接器](/power-bi/connect-data/desktop-connect-azure-cost-management)来创建功能强大的自定义可视化效果和报表，帮助你更好地了解 Azure 支出。 如果你使用的是企业协议 (EA)，则还可以使用[成本管理模板应用](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md)。 成本管理模板应用附带有预制报表，可协助你监视成本、服务使用情况趋势，并确定成本优化选项以减少支出。               Power BI 报告适用于 Azure EA 直接合作伙伴以及能够查看帐单信息的间接客户。
   - question: 是否可以将现有的 Azure 帐户关联到 Azure EA 注册？
     answer: >
       是的。 你是其帐户所有者的所有 Azure 订阅都将转换为企业协议。 这包括使用每月额度的订阅，例如 Visual Studio、AzurePass、MPN 和 BizSpark 等。 转换此类订阅时，会失去每月额度。

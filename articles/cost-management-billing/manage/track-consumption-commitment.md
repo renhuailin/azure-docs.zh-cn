@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 07/06/2021
+ms.date: 10/11/2021
 ms.author: banders
-ms.openlocfilehash: 41a4f22e669300e24ddce0248e8ab1744b773202
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 741efbce1f8578ca425059b2b04b64d9892112cb
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113301917"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857585"
 ---
 # <a name="track-your-microsoft-azure-consumption-commitment-macc"></a>跟踪 Microsoft Azure 使用量承诺 (MACC)
 
-Microsoft Azure 使用量承诺 (MACC) 是你的组织针对一段时间内的 Microsoft Azure 支出做出的合同承诺。 如果你的组织的某个 Microsoft 客户协议 (MCA) 计费帐户具有 MACC，则你可以通过 Azure 门户或 REST API 查看承诺的重要内容，包括开始和结束日期、剩余承诺金额以及合格的支出。 企业协议 (EA) 计费帐户的 MACC 或 CTC 尚不可通过 Azure 门户或 REST API 进行查看。
+Microsoft Azure 使用量承诺 (MACC) 是你的组织针对一段时间内的 Microsoft Azure 支出做出的合同承诺。 如果你的组织的某个 Microsoft 客户协议 (MCA) 计费帐户或企业协议 (EA) 计费帐户具有 MACC，则你可以通过 Azure 门户或 REST API 查看承诺的重要内容，包括开始和结束日期、剩余承诺金额以及合格的支出。
 
 ## <a name="track-your-macc-commitment"></a>跟踪 MACC 承诺
 
@@ -27,13 +27,16 @@ Microsoft Azure 使用量承诺 (MACC) 是你的组织针对一段时间内的 M
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 搜索“成本管理 + 计费”。  
     :::image type="content" source="./media/track-consumption-commitment/billing-search-cost-management-billing.png" alt-text="屏幕截图显示了在门户中搜索“成本管理 + 计费”。" lightbox="./media/track-consumption-commitment/billing-search-cost-management-billing.png" :::
-3. 在计费范围页中，选择要跟踪其承诺的计费帐户。 计费帐户的类型应为 **Microsoft 客户协议**。  
+3. 在计费范围页中，选择要跟踪其承诺的计费帐户。 对于 Microsoft 客户协议 (MCA) 客户，计费帐户类型必须是“Microsoft 客户协议”；对于 EA 客户，计费帐户类型必须是“企业协议” 。   
     :::image type="content" source="./media/track-consumption-commitment/list-of-scopes.png" alt-text="显示计费范围的屏幕截图。" lightbox="./media/track-consumption-commitment/list-of-scopes.png" :::
     > [!NOTE]
      > Azure 门户会记住你访问的最后一个计费范围，并在你下一次转到“成本管理 + 计费”页时显示该范围。 如果你早前访问过“成本管理 + 计费”，则看不到计费范围页。 如果是这样，请检查你是否处于[正确的范围](#check-access-to-a-microsoft-customer-agreement)。 否则，请[切换范围](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)，选择 Microsoft 客户协议的计费帐户。
-4. 从左侧选择“属性”，然后选择“Microsoft Azure 使用量承诺(MACC)”。  
-    :::image type="content" source="./media/track-consumption-commitment/select-macc-tab.png" alt-text="屏幕截图显示了选择 MACC 选项卡。" lightbox="./media/track-consumption-commitment/select-macc-tab.png" :::
-5. “Microsoft Azure 使用量承诺(MACC)”选项卡包含以下部分。
+4. 根据你的协议类型执行以下操作之一：
+    - （对于 MCA 客户）在左侧选择“属性”，然后选择“Microsoft Azure 使用量承诺(MACC)” 。  
+        :::image type="content" source="./media/track-consumption-commitment/select-macc-tab.png" alt-text="显示 MCA 客户选择“MACC”选项卡的屏幕截图。" lightbox="./media/track-consumption-commitment/select-macc-tab.png" :::
+    - （对于 EA 客户）在左侧导航菜单中选择“信用 + 承诺”，然后选择“Microsoft Azure 使用量承诺(MACC)” 。  
+        :::image type="content" source="./media/track-consumption-commitment/select-macc-tab-ea.png" alt-text="显示 EA 客户选择“MACC”选项卡的屏幕截图。" lightbox="./media/track-consumption-commitment/select-macc-tab-ea.png" :::
+1. “Microsoft Azure 使用量承诺(MACC)”选项卡包含以下部分。
 
 #### <a name="remaining-commitment"></a>剩余承诺金额 
 
@@ -73,7 +76,7 @@ Microsoft Azure 使用量承诺 (MACC) 是你的组织针对一段时间内的 M
 |---|---|
 | Date | 事件的发生日期 |
 | 说明 | 事件的说明 |
-| 计费配置文件 | 发生的事件对应的计费对象信息 |
+| 计费配置文件 | 发生的事件对应的计费配置文件。 计费配置文件仅适用于 Microsoft 客户协议。 如果你有 EA 注册，则不会显示“计费配置文件”。 |
 | MACC 减量 | 事件导致的 MACC 减量 |
 | 剩余承诺金额 | 发生此事件后的剩余 MACC 承诺金额 |
 
@@ -81,7 +84,7 @@ Microsoft Azure 使用量承诺 (MACC) 是你的组织针对一段时间内的 M
 
 可以使用 [Azure 计费](/rest/api/billing/)和[消耗](/rest/api/consumption/) API 以编程方式获取你的计费帐户的 Microsoft Azure 使用量承诺 (MACC)。
 
-下面显示的示例使用 REST API。 目前，PowerShell 和 Azure CLI 不受支持。
+下面显示的示例使用 REST API。 目前，PowerShell 和 Azure CLI 不受支持。 示例输出适用于 Microsoft 客户协议，因此针对企业协议的输出与此不同。
 
 ### <a name="find-billing-accounts-you-have-access-to"></a>查找你有权访问的计费帐户
 

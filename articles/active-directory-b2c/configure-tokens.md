@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: dad937a385f22444baafb00c46de503b836b27f4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9ca7d1b5f5e8a9958d072317bfb2d01bd7a9199e
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128575515"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611814"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置令牌
 
@@ -60,7 +60,12 @@ ms.locfileid: "128575515"
 1. 打开之前创建的用户流。
 1. 选择“属性”。
 1. 在“令牌生存期”下，调整属性以满足应用程序的需要。
-1. 单击“保存”。
+1. 单击“保存”  。
+
+
+
+:::image type="content" source="./media/configure-tokens/configure-tokens.png" alt-text="在 Azure 门户中配置用户流令牌。":::
+
 
 ::: zone-end
 
@@ -116,7 +121,7 @@ ms.locfileid: "128575515"
 1. 打开之前创建的用户流。
 1. 选择“属性”。
 1. 在“令牌兼容性设置”下，调整属性以满足应用程序的需要。
-1. 单击“保存”。
+1. 单击“保存”  。
 
 ::: zone-end
 

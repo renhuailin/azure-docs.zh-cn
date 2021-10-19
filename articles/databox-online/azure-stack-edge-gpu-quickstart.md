@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: quickstart
 ms.date: 06/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 0dd8b103f81ea911a079aee6590287a939819b52
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: fa68d0c14c8a540b4e32fc4d4075df6e7529ad03
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982369"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710149"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>快速入门：开始使用 Azure Stack Edge Pro with GPU 
 
@@ -72,7 +72,7 @@ ms.locfileid: "111982369"
 
 12. **配置计算**：在 Azure 门户中，转到“概述”>“设备”。 确认设备处于联机状态。 在左窗格中，转到“边缘计算”>“入门”>“配置边缘计算”>“计算”。 提供现有或新的 IoT 中心服务，并等待大约 20 分钟的时间完成计算配置。 请在[教程：在 Azure Stack Edge Pro GPU 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)中查看详细信息
 
-现在即可在设备上[通过 IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)、[通过 `kubectl`](azure-stack-edge-gpu-create-kubernetes-cluster.md) 或[通过启用了 Azure Arc 的 Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md) 部署计算工作负荷！ 如果在设置过程中遇到任何问题，请参阅针对 [Azure Stack Edge Pro GPU 设备](azure-stack-edge-gpu-troubleshoot.md)、[证书问题](azure-stack-edge-gpu-certificate-troubleshooting.md)或 [IoT Edge 问题](azure-stack-edge-gpu-troubleshoot-iot-edge.md)的故障排除信息。 
+现在可在设备上[通过 IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)、[通过 `kubectl`](azure-stack-edge-gpu-create-kubernetes-cluster.md) 或[通过已启用 Azure Arc 的 Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md) 部署计算工作负载！ 如果在设置过程中遇到任何问题，请参阅针对 [Azure Stack Edge Pro GPU 设备](azure-stack-edge-gpu-troubleshoot.md)、[证书问题](azure-stack-edge-gpu-certificate-troubleshooting.md)或 [IoT Edge 问题](azure-stack-edge-gpu-troubleshoot-iot-edge.md)的故障排除信息。 
 
 ## <a name="next-steps"></a>后续步骤
 

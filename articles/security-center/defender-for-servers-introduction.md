@@ -3,16 +3,16 @@ title: 用于存储的 Azure Defender - 优点和功能
 description: 了解适用于服务器的 Azure Defender 的优点和功能。
 author: memildin
 ms.author: memildin
-ms.date: 08/09/2021
+ms.date: 09/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5ffa11472227375867be215ed73ee0b7fc203b9c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1a7b5d1e7ed3c4c1de2c535fb126b67f3ffadecd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743091"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711712"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>适用于服务器的 Azure Defender 简介
 
@@ -32,13 +32,15 @@ ms.locfileid: "121743091"
     用于终结点的 Defender 在检测到威胁时会触发警报。 警报在安全中心显示。 在安全中心，还可以透视用于终结点的 Defender 控制台，并执行详细调查来发现攻击范围。 了解有关用于终结点的 Microsoft Defender 的详细信息。
 
     > [!IMPORTANT]
-    > 使用安全中心的 Windows 计算机上已自动启用 Microsoft Defender for Endpoint 传感器。
+    > 默认启用安全中心与 Microsoft Defender for Endpoint 的集成。 因此，启用 Azure Defender 即同意适用于服务器的 Azure Defender 访问与漏洞、已安装的软件和终结点的警报相关的 Microsoft Defender for Endpoint 数据。
     >
-    > 我们目前提供适用于 Linux 计算机的传感器（预览版）。 若要了解详细信息，请参阅[通过安全中心的集成式 EDR 解决方案保护终结点：Microsoft Defender for Endpoint](security-center-wdatp.md)。 
+    > 我们目前提供适用于 Linux 计算机的传感器（预览版）。 若要了解详细信息，请参阅[通过安全中心的集成式 EDR 解决方案保护终结点：Microsoft Defender for Endpoint](security-center-wdatp.md)。
 
-- **VM 的漏洞评估扫描** - 适用于服务器的 Azure Defender 包括由 Qualys 提供支持的漏洞扫描程序。
+- **计算机的漏洞评估工具** - 适用于服务器的 Azure Defender 包括针对计算机的漏洞发现和管理工具选项。 在安全中心的“设置”页中，你可以选择将其中哪个工具部署到计算机，并在安全建议中显示发现的漏洞。
 
-    Qualys 的扫描程序是一种用于实时识别 Azure 虚拟机和混合虚拟机中漏洞的领先工具。 你无需具备 Qualys 许可证，甚至还不需要 Qualys 帐户 - 所有操作都在安全中心内无缝执行。 有关详细信息，请参阅[适用于 Azure 虚拟机和混合虚拟机的 Azure Defender 集成漏洞评估解决方案](deploy-vulnerability-assessment-vm.md)。
+    - **Microsoft 威胁和漏洞管理** - 使用 Microsoft Defender for Endpoint 实时发现漏洞和错误配置，无需其他代理或定期扫描。 [威胁和漏洞管理](/microsoft-365/security/defender-endpoint/next-gen-threat-and-vuln-mgt)根据威胁情况、组织中的检测、易受攻击设备上的敏感信息以及业务上下文，为漏洞设置优先级。 若要了解详细信息，请参阅[通过 Microsoft Defender for Endpoint 威胁和漏洞管理调查弱点](deploy-vulnerability-assessment-tvm.md)
+
+    - **由 Qualys 提供支持的漏洞扫描程序** - Qualys 的扫描程序是一种用于实时识别 Azure 虚拟机和混合虚拟机中漏洞的领先工具。 你无需具备 Qualys 许可证，甚至还不需要 Qualys 帐户 - 所有操作都在安全中心内无缝执行。 有关详细信息，请参阅[适用于 Azure 和混合计算机的 Azure Defender 的集成式 Qualys 扫描程序](deploy-vulnerability-assessment-vm.md)。
 
 - **实时 (JIT) 虚拟机 (VM) 访问** - 威胁制造者会主动搜寻设有开放管理端口（如 RDP 或 SSH）的可访问计算机。 你的所有虚拟机都是潜在的攻击目标。 VM 在被成功入侵后将会用作进一步攻击环境中资源的入口点。
 
@@ -55,6 +57,7 @@ ms.locfileid: "121743091"
 - **自适应网络强化 (ANH)** - 应用网络安全组 (NSG) 来筛选往返资源的流量，改善网络安全状况。 但是，仍然可能存在一些这样的情况：通过 NSG 流动的实际流量是所定义 NSG 规则的子集。 在这些情况下，可以根据实际流量模式强化 NSG 规则，从而进一步改善安全状况。
 
     自适应网络强化为进一步强化 NSG 规则提供了建议。 它使用机器学习算法，这种算法会将实际流量、已知受信任的配置、威胁情报和其他泄露标志都考虑在内，然后提供仅允许来自特定 IP/端口元组的流量的建议。 有关详细信息，请参阅[通过自适应网络强化改善网络安全状况](security-center-adaptive-network-hardening.md)。
+
 
 - **Docker 主机强化** - Azure 安全中心会标识 IaaS Linux VM 上或运行 Docker 容器的其他 Linux 计算机上承载的非托管容器。 安全中心会持续评估这些容器的配置。 然后，它会将其与 Internet 安全中心 (CIS) 的 Docker 基准进行比较。 安全中心包含 CIS 的 Docker 基准的完整规则集，并会在容器不符合控件标准的情况下发出警报。 有关详细信息，请参阅[强化 Docker 主机](harden-docker-hosts.md)。
 

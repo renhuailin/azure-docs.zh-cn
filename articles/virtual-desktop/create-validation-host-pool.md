@@ -3,23 +3,23 @@ title: Azure 虚拟桌面主机池服务更新 - Azure
 description: 如何创建验证主机池以在将更新推广到生产之前监视服务更新。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 07/23/2021
+ms.date: 10/08/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 13d340d427d2478d226b966e17bf98bcf2561004
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: c81fb82695d534864fa96d8a5bfff9b3cebd4a4e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123110155"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705307"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教程：创建主机池以验证服务更新
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[本文](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md)。
 
-主机池是 Azure 虚拟桌面环境中包含一个或多个相同虚拟机的集合。 我们强烈建议先创建一个要应用服务更新的验证主机池。 这样可以在服务将更新应用于标准或非验证环境之前，监视服务更新。 如果没有验证主机池，则可能无法发现引入错误的更改，这可能会在标准环境中对用户导致故障时间。
+主机池是 Azure 虚拟桌面环境中包含一个或多个相同虚拟机的集合。 我们强烈建议先创建一个要应用服务更新的验证主机池。 通过验证主机池，可在服务将更新应用于标准或非验证环境之前，监视服务更新。 如果没有验证主机池，则可能无法发现引入错误的更改，这可能会在标准环境中对用户导致故障时间。
 
 若要确保应用适用于最新更新，验证主机池应尽可能地与非验证环境中的主机池类似。 用户应如同连接到标准主机池一样频繁地连接到验证主机池。 如果在主机池上进行自动测试，则应在验证主机池上包含自动测试。
 
@@ -33,7 +33,7 @@ ms.locfileid: "123110155"
 
 ## <a name="create-your-host-pool"></a>创建主机池
 
-可以按照以下任何文章中的说明创建主机池：
+可将任何现有的池或个人主机池配置为验证主机池。 还可按照以下任意文章中的说明，新建用于验证的主机池：
 - [教程：使用 Azure 市场或 Azure CLI 创建主机池](create-host-pools-azure-marketplace.md)
 - [使用 PowerShell 或 Azure CLI 创建主机池](create-host-pools-powershell.md)
 
@@ -49,7 +49,7 @@ ms.locfileid: "123110155"
 4. 选择要编辑的主机池的名称。
 5. 选择“属性”。
 6. 在“验证环境”字段中，选择“是”，启用验证环境。
-7. 选择“保存”。 这将应用新设置。
+7. 选择“保存”来应用新的设置。
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -106,7 +106,7 @@ az desktopvirtualization hostpool show --name "MyHostPool" \
 
 服务更新每月进行一次。 如果存在重大问题，则会更频繁地提供关键更新。
 
-如果有任何服务更新，请确保每天至少有一小组用户登录，以验证环境。 建议你定期访问我们的 [TechCommunity 站点](https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=wvdupdate&location=forum-board:WindowsVirtualDesktop&sort_by=-topicPostDate&collapse_discussion=true)并关注包含 WVDUPdate 的任何帖子，以便随时了解服务更新。
+如果有任何服务更新，请确保每天至少有几位用户登录来验证环境。 建议你定期访问我们的 [TechCommunity 站点](https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=wvdupdate&location=forum-board:WindowsVirtualDesktop&sort_by=-topicPostDate&collapse_discussion=true)并关注包含 WVDUPdate 的任何帖子，以便随时了解服务更新。
 
 ## <a name="next-steps"></a>后续步骤
 

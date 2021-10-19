@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 07/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 81c6f9eb55a44be49cfdbde5e171ce431f4f3cfd
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f536ac07a15b0b17405cf83233b2fbfba4193d25
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114481249"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714090"
 ---
 # <a name="azure-stack-edge-2106-release-notes"></a>Azure Stack Edge 2106 发行说明
 
@@ -62,7 +62,7 @@ Azure Stack Edge 2106 版本中提供了以下新功能。
 
 | 不是。 | 功能 | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
-|**1.**|预览功能 |此版本中提供了以下所有功能的预览版：本地 Azure 资源管理器、VM、VM 的云管理、Kubernetes 云管理、启用了 Azure Arc 的 Kubernetes、用于 Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 的 VPN、用于 Azure Stack Edge Pro GPU 的多进程服务 (MPS) 和多接入边缘计算 (MEC)。  |将在以后的版本中正式推出这些功能。 |
+|**1.**|预览功能 |此版本中提供了以下所有功能的预览版：本地 Azure 资源管理器、VM、VM 的云管理、Kubernetes 云管理、已启用 Azure Arc 的 Kubernetes、用于 Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 的 VPN、用于 Azure Stack Edge Pro GPU 的多进程服务 (MPS) 和多接入边缘计算 (MEC)。  |将在以后的版本中正式推出这些功能。 |
 
 
 ## <a name="known-issues-from-previous-releases"></a>以前版本中的已知问题
@@ -79,7 +79,7 @@ Azure Stack Edge 2106 版本中提供了以下新功能。
 |**6.**|NFS 共享连接|如果将多个进程复制到相同的共享，并且未使用 `nolock` 属性，则在复制过程中可能会出现错误。|必须将 `nolock` 属性传递给 mount 命令，才能将文件复制到 NFS 共享。 例如：`C:\Users\aseuser mount -o anon \\10.1.1.211\mnt\vms Z:`。|
 |**7.**|Kubernetes 群集|在运行 kubernetes 群集的设备上应用更新时，Kubernetes 虚拟机将重启并重新引导。 在这种情况下，只会在更新后自动还原使用指定副本部署的 pod。  |如果在未指定副本集的情况下在复制控制器之外创建了单独的 pod，则在设备更新后，不会自动还原这些 pod。 需要还原这些 pod。<br>系统会使用副本集替换因任何原因被删除或终止的 pod（例如节点故障或中断性节点升级）。 出于此原因，建议使用副本集，即使你的应用程序只需要一个 Pod。|
 |**8.**|Kubernetes 群集|只有 Helm v3 或更高版本支持 Azure Stack Edge Pro 上的 Kubernetes。 有关详细信息，请参阅[常见问题解答：删除 Tiller](https://v3.helm.sh/docs/faq/)。|
-|**9.**|已启用 Azure Arc 的 Kubernetes |对于正式发布版，启用了 Azure Arc 的 Kubernetes 已从版本 0.1.18 更新为 0.2.9。 由于 Azure Stack Edge 设备上不支持 Azure Arc 启用的 Kubernetes 更新，因此需要重新部署启用了 Azure Arc 的 Kubernetes。|按照以下步骤操作：<ol><li>[应用设备软件和 Kubernetes 更新](azure-stack-edge-gpu-install-update.md)。</li><li>连接到[设备的 PowerShell 界面](azure-stack-edge-gpu-connect-powershell-interface.md)。</li><li>删除现有的 Azure Arc 代理。 键入：`Remove-HcsKubernetesAzureArcAgent`。</li><li>[将 Azure Arc 部署到新资源](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)。 不要使用现有的 Azure Arc 资源。</li></ol>|
+|**9.**|已启用 Azure Arc 的 Kubernetes |对于正式发布版，已启用 Azure Arc 的 Kubernetes 已从版本 0.1.18 更新为 0.2.9。 由于 Azure Stack Edge 设备上不支持已启用 Azure Arc 的 Kubernetes 更新，因此需要重新部署已启用 Azure Arc 的 Kubernetes。|按照以下步骤操作：<ol><li>[应用设备软件和 Kubernetes 更新](azure-stack-edge-gpu-install-update.md)。</li><li>连接到[设备的 PowerShell 界面](azure-stack-edge-gpu-connect-powershell-interface.md)。</li><li>删除现有的 Azure Arc 代理。 键入：`Remove-HcsKubernetesAzureArcAgent`。</li><li>[将 Azure Arc 部署到新资源](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)。 不要使用现有的 Azure Arc 资源。</li></ol>|
 |**10.**|已启用 Azure Arc 的 Kubernetes|如果在 Azure Stack Edge Pro 设备上配置了 web 代理，则不支持 Azure Arc 部署。||
 |**11.**|Kubernetes |端口 31000 保留给 Kubernetes 仪表板。 端口 31001 保留给 Edge 容器注册表。 同样，在默认配置中，保留了 IP 地址 172.28.0.1 和172.28.0.10，分别用于 Kubernetes 服务和核心 DNS 服务。|不要使用保留 IP。|
 |**12.**|Kubernetes |Kubernetes 当前不允许多协议 LoadBalancer 服务。 例如，需要同时侦听 TCP 和 UDP 的 DNS 服务。 |若要解决 Kubernetes 与 MetalLB 的这一限制，可以在同一 pod 选择器上创建两个服务（一个用于 TCP，一个用于 UDP）。 这些服务使用相同的共享密钥和 loadBalancerIP 来共享相同的 IP 地址。 如果服务数多于可用 IP 地址，则还可以共享 IP。 <br> 有关详细信息，请参阅 [IP 地址共享](https://metallb.universe.tf/usage/#ip-address-sharing)|

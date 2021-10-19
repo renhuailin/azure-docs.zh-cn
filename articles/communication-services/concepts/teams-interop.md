@@ -1,19 +1,19 @@
 ---
-title: Teams 会议互操作性
+title: Teams 互操作性
 titleSuffix: An Azure Communication Services concept document
-description: 加入 Teams 会议
+description: Teams 互操作性
 author: chpalm
 ms.author: chpalm
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 85616e754df0eebc76dd3dceea48dfefe4acf971
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 32067409bb6289b283d8dd3b4de18e1a83f8e374
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362372"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856042"
 ---
 # <a name="teams-interoperability"></a>Teams 互操作性
 
@@ -58,15 +58,9 @@ Teams 匿名用户无需是 Teams 用户。 使用 Azure 通信服务，可以�
 
 自带标识 (BYOI) 是使用 Azure 通信服务和 Teams 互操作性的常见模型。 它支持任何标识提供者和身份验证方案。 启用的第一个方案允许你的应用程序加入 Microsoft Teams 会议，并且 Teams 会将这些用户视为匿名外部帐户，与使用 Teams 匿名 Web 应用程序加入的用户相同。 这非常适用于将员工（熟悉 Teams）和外部用户（使用自定义应用程序体验）聚集到会议体验中的企业对使用者应用程序。 今后，我们将启用其他方案，包括直接呼叫和聊天，让你的应用程序可以在 Teams 会议的上下文之外发起与 Teams 用户的呼叫和聊天。
 
-通信服务用户以匿名用户身份加入 Teams 会议的功能由现有的“允许匿名会议加入”配置控制，该配置还控制现有 Teams 匿名会议加入。  此设置可在 [Teams 管理中心](https://admin.teams.microsoft.com/meetings/settings)或通过 Teams PowerShell cmdlet [Set-CsTeamsMeetingConfiguration](/powershell/module/skype/set-csteamsmeetingconfiguration) 进行更新。 与 Teams 匿名会议加入一样，应用程序必须具有要加入的会议链接，该链接可通过图形 API 或 Microsoft Teams 中的日历来检索。  Teams 中显示的通信服务用户的名称可通过通信服务通话 SDK 进行配置。
+有关详细信息，请参阅[加入 Teams 会议](join-teams-meeting.md)。
 
-外部用户将能够通过 Azure 通信服务 SDK 使用核心音频、视频、屏幕共享和聊天功能。 举手、一起模式和分组讨论室等功能仅适用于 Teams 用户。 通信服务用户只能在参加 Teams 会议并且该会议未计划为频道时发送和接收消息。 
-
-可以在[聊天概念](./chat/concepts.md#message-types)中找到通信服务用户支持的消息类型列表。 可以忽略不支持的消息类型。
-
-自定义应用程序应考虑使用用户身份验证和其他安全措施来保护 Teams 会议。 请注意允许匿名用户加入会议的安全影响，并使用 [Teams 安全指南](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings)配置匿名用户可用的功能。
-
-有关加入 Teams 会议所需数据流的更多信息，请访问[客户端和服务器体系结构页面](client-and-server-architecture.md)。 [群组通话特大示例](../samples/calling-hero-sample.md)提供了用于从 Web 应用程序加入 Teams 会议的示例代码。
+目前，Teams 用户无法加入使用 Azure 通信服务呼叫 SDK 发起的通话。
 
 ## <a name="microsoft-365-teams-identity"></a>Microsoft 365 Teams 标识
 Azure 通信服务通话 SDK 可与 Microsoft 365 Teams 标识一起使用，以支持类似 Teams 的 Teams 互操作性体验。 Microsoft 365 Teams 标识由 Azure Active Directory 提供和验证。 你的应用可以使用常规 Microsoft 365 标识拨打或接听电话。 有关用户的所有属性和详细信息都绑定到 Azure Active Directory 用户。
@@ -88,7 +82,7 @@ Teams 用户通过 MSAL 库针对客户端应用程序中的 Azure Active Direct
 |身份验证和授权|自定义*| Azure Active Directory 和自定义*|
 |可通过以下方式通话 | 通信服务通话 SDK | 通信服务通话 SDK |
 |可通过以下方式聊天 | 通信服务聊天 SDK | 图形 API |
-|PSTN 支持| 出站语音呼叫、出站直接路由、[详细信息](./telephony-sms/telephony-concept.md) | 分配给 Teams 标识的入站呼叫、使用呼叫计划的出站呼叫|
+|PSTN 支持| Teams 会议中不支持通信服务用户 | 分配给 Teams 标识的入站呼叫、使用呼叫计划的出站呼叫|
 
 \* 发布访问令牌的服务器逻辑可以对请求执行任何自定义身份验证和授权。
 
@@ -108,5 +102,4 @@ Azure 通信服务互操作性与目前使用 [Microsoft 365 政府云 (GCC)](/M
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [将 BYOI 通话应用加入 Teams 会议](../quickstarts/voice-video-calling/get-started-teams-interop.md)
 > [对 Microsoft 365 用户进行身份验证](../quickstarts/manage-teams-identity.md)

@@ -1,5 +1,6 @@
 ---
-title: 使用 F5 实现 Azure AD 安全混合访问 | Microsoft Docs
+title: 使用 F5 保护混合访问
+titleSuffix: Azure AD
 description: 将 F5 BIG-IP Access Policy Manager 与 Azure Active Directory 集成以实现安全混合访问
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 11/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: a5066eece8950d4e9dffabedb2e0cca4c527353f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e5f17826d4a578f0c82a5e1e58abf54d4abac252
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823000"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620652"
 ---
-# <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>将 F5 BIG-IP Access Policy Manager 与 Azure Active Directory 集成以实现安全混合访问
+# <a name="integrate-f5-big-ip-with-azure-active-directory"></a>将 F5 BIG-IP 与 Azure Active Directory 集成
 
 移动办公人员的激增以及不断变化的威胁格局要求对资源访问与治理实施额外的审查，使[零信任](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)成为编写所有现代化程序时要考虑到的首要因素。
 Microsoft 和 F5 已经意识到，这项数字变革对于任何企业而言通常是一场历时多年的旅程，在实现现代化之前，可能会使关键资源暴露在威胁之下。 开发 F5 BIG-IP 和 Azure Active Directory 安全混合访问 (SHA) 的初衷不仅仅是为了改进对本地应用程序的远程访问，而且还要增强这些易受攻击的服务的总体安全态势。

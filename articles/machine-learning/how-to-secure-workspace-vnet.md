@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 09/22/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, security
-ms.openlocfilehash: 7200c13d5ad4157afeb2c0dd1d7ab7445670609d
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 61e5bda5722d343aae2fc6be80312f13a21c415a
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425328"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658172"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习工作区
 
@@ -105,18 +105,28 @@ Azure 机器学习支持将存储帐户配置为使用专用终结点或服务�
 
 # <a name="private-endpoint"></a>[专用终结点](#tab/pe)
 
-> [!TIP]
-> 必须为你的默认存储帐户配置两个专用终结点：
-> * 具有 blob 目标子资源的专用终结点。
-> * 具有文件目标子资源（文件共享）的专用终结点。
->
-> 如果计划在管道中使用 [ParallelRunStep](./tutorial-pipeline-batch-scoring-classification.md)，还必须使用“队列”和“表”目标子资源配置专用终结点。  ParallelRunStep 使用队列和表进行任务调度和分派。
+1. 在 Azure 门户中，选择 Azure 存储帐户。
+1. 使用 [Azure 存储的专用终结点](../storage/common/storage-private-endpoints.md#creating-a-private-endpoint)中的信息，为以下存储子资源添加专用终结点：
 
-:::image type="content" source="./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png" alt-text="屏幕截图，显示具有 blob 和文件选项的专用终结点配置页":::
+    * **Blob**
+    * **文件**
+    * 队列：仅计划在 Azure 机器学习管道中使用 [ParallelRunStep](./tutorial-pipeline-batch-scoring-classification.md) 时需要。
+    * 表：仅计划在 Azure 机器学习管道中使用 [ParallelRunStep](./tutorial-pipeline-batch-scoring-classification.md) 时需要。
 
-若要为非默认存储的存储帐户配置专用终结点，请选择与要添加的存储帐户对应的“目标子资源”类型 。
+    :::image type="content" source="./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png" alt-text="屏幕截图，显示具有 blob 和文件选项的专用终结点配置页":::
 
-有关详细信息，请参阅[对 Azure 存储使用专用终结点](../storage/common/storage-private-endpoints.md)
+    > [!TIP]
+    > 配置不是默认存储的存储帐户时，请选择与要添加的存储帐户对应的“目标子资源”类型 。
+
+1. 为三个子资源创建专用终结点后，请在“存储帐户”的“网络”下选择“防火墙和虚拟网络”选项卡 。
+1. 选择“所选网络”，然后在“资源实例”下选择 `Microsoft.MachineLearningServices/Workspace` 作为资源类型  。 使用“实例名称”选择工作区。 有关更多信息，请参阅[基于系统分配的托管标识的受信任访问](/azure/storage/common/storage-network-security#trusted-access-based-on-system-assigned-managed-identity)。
+
+    > [!TIP]
+    > 或者，可以选择“允许受信任服务列表中的 Azure 服务访问此存储帐户”，以便更广泛地允许来自受信任服务的访问。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../storage/common/storage-network-security.md#trusted-microsoft-services)。
+
+    :::image type="content" source="./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-no-vnet.png" alt-text="使用专用终结点时，Azure 门户中“Azure 存储”页上的“网络”区域":::
+
+1. 选择“保存”  以保存配置。
 
 > [!TIP]
 > 使用专用终结点时，还可以禁用公共访问。 有关详细信息，请参阅[禁止公共读取访问](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account)。
@@ -134,14 +144,12 @@ Azure 机器学习支持将存储帐户配置为使用专用终结点或服务�
 
 1. 在“资源实例”下，选择 `Microsoft.MachineLearningServices/Workspace` 作为“资源类型”并使用“实例名称”来选择你的工作区。  有关更多信息，请参阅[基于系统分配的托管标识的受信任访问](/azure/storage/common/storage-network-security#trusted-access-based-on-system-assigned-managed-identity)。
 
-1. 在“异常”下面，选择“允许受信任的服务列表中的 Azure 服务访问此存储帐户”。 
+    > [!TIP]
+    > 或者，可以选择“允许受信任服务列表中的 Azure 服务访问此存储帐户”，以便更广泛地允许来自受信任服务的访问。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../storage/common/storage-network-security.md#trusted-microsoft-services)。
 
-    * 某些服务的资源在注册到订阅后，可在同一订阅中访问存储帐户以便执行选择操作 。 例如，写入日志或创建备份。
-    * 可通过向其系统分配的托管标识分配 Azure 角色，向某些服务的资源授予对存储帐户的显式访问权限。
+    :::image type="content" source="./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png" alt-text="Azure 门户中“Azure 存储”页上的网络区域":::
 
-    有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../storage/common/storage-network-security.md#trusted-microsoft-services)。
-
-:::image type="content" source="./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png" alt-text="Azure 门户中“Azure 存储”页上的网络区域":::
+1. 选择“保存”  以保存配置。
 
 > [!TIP]
 > 使用服务终结点时，还可以禁用公共访问。 有关详细信息，请参阅[禁止公共读取访问](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account)。

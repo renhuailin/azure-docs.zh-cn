@@ -11,16 +11,24 @@ ms.topic: overview
 ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: contperf-fy21q3, contperf-fy22q1
-ms.openlocfilehash: f727846a13566832d8549b5fa76ae5011a1be2ee
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 77e3eb54f344039130f5971f87ccdca1e6461afd
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351856"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129808328"
 ---
 # <a name="whats-new-in-azure-face-service"></a>Azure 人脸服务有哪些新增功能？
 
 Azure 人脸服务会不断更新。 使用本文了解最新的功能、增强功能、修复和文档更新。
+
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="new-headpose-and-landmarks-improvements-for-detection_03"></a>面向 Detection_03 的新的 HeadPose 和特征点改进
+
+* Detection_03 模型现已更新，可支持面部特征点。
+* Detection_03 中的特征点功能更加精确，尤其是在对视线跟踪至关重要的眼球特征点方面。
+
 
 ## <a name="april-2021"></a>2021 年 4 月
 

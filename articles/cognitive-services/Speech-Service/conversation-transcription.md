@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.author: pafarley
-ms.openlocfilehash: 0c7fb175d80a35d30649d2e4ce491fe39ac19c70
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: abef7e44ad2e15bda230d28e8dae74a3fd949f88
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539130"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706328"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>什么是对话听录（预览版）？
 
@@ -55,10 +55,13 @@ ms.locfileid: "123539130"
 ## <a name="expected-inputs"></a>预期输入
 
 - 多声道音频流 – 有关规范和设计详细信息，请参阅 [Microsoft 语音设备 SDK 麦克风](./speech-devices-sdk-microphone.md)。 若要详细了解或购买开发工具包，请参阅[获取 Microsoft 语音设备 SDK](./get-speech-devices-sdk.md)。
-- 用户语音样本 – 对话听录在对话前需要用户配置文件。 需要从每个用户收集音频录制内容，然后将录制内容发送到[签名生成服务](https://aka.ms/cts/signaturegenservice)，以验证音频并生成用户配置文件。
+- 用户语音样本 - 对话听录需要在对话之前提供用户配置文件，以进行说话人识别。 需要从每个用户收集音频录制内容，然后将录制内容发送到[签名生成服务](https://aka.ms/cts/signaturegenservice)，以验证音频并生成用户配置文件。
 
 > [!NOTE]
-> 用户语音样本是可选的。 如果没有此输入，听录会显示不同的说话人，但显示为“说话人 1”、“说话人 2”等，而不是识别为预先注册的特定说话人姓名。
+> 为实现说话人识别，需要提供用户语音样本进行语音签名。 没有语音样本的说话人将识别为“未识别”。 启用 `DifferentiateGuestSpeakers` 属性后，仍可以对无法识别的说话人进行区分（请参阅下面的示例）。 听录输出随后会将说话人显示为“Guest_0”、“Guest_1”等，而不是将其识别为预先注册的特定说话人姓名。
+> ```csharp
+> config.SetProperty("DifferentiateGuestSpeakers", "true");
+> ```
 
 
 ## <a name="real-time-vs-asynchronous"></a>实时与异步

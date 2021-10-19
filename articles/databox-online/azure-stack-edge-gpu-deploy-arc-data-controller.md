@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: ebccfdad883242411b4f45b717553ebd25ee69a9
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: e1078bb12b6d33eb4d4d35cc3e1e11f91ef39e9b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633512"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705541"
 ---
 # <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上部署 Azure 数据服务
 
@@ -43,7 +43,7 @@ Azure Arc 数据控制器是可在客户管理的环境中启用 Azure 数据服
         1. 下载客户端，与主节点相差不超过一个次要版本的客户端。 不过，客户端版本可比主节点最多领先一个次要版本。 例如，v1.3 主节点应该可以使用 v1.1、v1.2 和 v1.3 节点，并且应该可以使用 v1.2、v1.3 和 v1.4 客户端。 有关 Kubernetes 客户端版本的详细信息，请参阅 [Kubernetes 版本和版本偏差支持策略](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)。
     
 1. （可选）[安装用于部署和管理已启用 Azure Arc 的数据服务的客户端工具](../azure-arc/data/install-client-tools.md)。 这些工具不是必需的，但建议使用。  
-1. 确保设备上有足够的资源用于预配数据控制器和一个 SQL 托管实例。 至少需要 16 GB RAM 和 4 个 CPU 核心才能预配数据控制器和一个 SQL 托管实例。 有关详细指导，请参阅[已启用 Azure Arc 的数据服务部署的最低要求](../azure-arc/data/sizing-guidance.md#minimum-deployment-requirements)。
+1. 确保设备上有足够的资源用于预配数据控制器和一个 SQL 托管实例。 至少需要 16 GB RAM 和 4 个 CPU 核心才能预配数据控制器和一个 SQL 托管实例。 有关详细指导，请转到[已启用 Azure Arc 的数据服务部署的最低要求](../azure-arc/data/sizing-guidance.md#minimum-deployment-requirements)。
 
 
 ## <a name="configure-kubernetes-external-service-ips"></a>配置 Kubernetes 外部服务 IP

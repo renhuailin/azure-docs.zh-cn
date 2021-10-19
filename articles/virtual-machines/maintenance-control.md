@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: maintenance
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 11/19/2020
+ms.date: 10/06/2021
 ms.author: cynthn
-ms.openlocfilehash: 47d99e87e788c833e5793a1e4e3b7d517d90909b
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: f04a1e776573ae8b335f1659057d89b2a144e051
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534991"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129661229"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>使用维护控制管理平台更新 
 
@@ -34,7 +34,7 @@ ms.locfileid: "129534991"
 - VM 必须位于[专用主机](./dedicated-hosts.md)上，或者必须使用[独立 VM 大小](isolation.md)进行创建。
 - 维护时段持续时间可能会因月而异，有时用户启动挂起的更新后，应用该更新可能需要长达 2 小时。  
 - 35 天后，更新将自动应用。
-- 机架级维护活动尚不属于此维护控制。
+- 无法通过维护控制来控制机架级维护。
 - 用户必须具有“资源参与者”  访问权限。
 
 ## <a name="management-options"></a>管理选项

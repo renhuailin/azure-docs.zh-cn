@@ -7,18 +7,18 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/16/2021
-ms.openlocfilehash: 2c8cbc3496b0a7b12f8df114ed2aa993ee5cb1a7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 054abdaeb184a37a995f14ab6196c378abbb470b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610857"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707675"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充提示
 
 本文包含一系列提示和窍门，用于帮助你完成 Azure 认知搜索中的 AI 扩充功能的入门。 
 
-仔细阅读[教程：了解如何调用 AI 扩充 API](cognitive-search-quickstart-blob.md)，以便练习如何将 AI 扩充应用到 Blob 数据源（如果尚未这样做）。
+如果尚未这样做，请逐步执行[创建文本翻译和实体技能集](cognitive-search-quickstart-blob.md)或[创建 OCR 映像技能集](cognitive-search-quickstart-ocr.md)快速入门，获取对 Blob 数据扩充的简介。
 
 ## <a name="tip-1-start-with-a-small-dataset"></a>提示 1：从小数据集开始
 若要快速查找问题，最好的方式是提高解决问题的速度。 若要缩短索引时间，最好的方式是减少要索引的文档数。 

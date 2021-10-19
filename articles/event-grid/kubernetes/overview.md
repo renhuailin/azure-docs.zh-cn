@@ -6,12 +6,12 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: 807d337988993c8be0fee76b9c12e1fc6dc75c7d
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 109c9248bf087cb998fd8debdc644de8cfb1488b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770561"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714910"
 ---
 # <a name="event-grid-on-kubernetes-with-azure-arc-preview---overview"></a>具有 Azure Arc 的 Kubernetes 上的事件网格（预览）- 概述
 本文概括性介绍 Kubernetes 上的事件网格、其用例、其提供的功能以及其与 Azure 事件网格的不同之处。
@@ -29,7 +29,7 @@ ms.locfileid: "122770561"
 
 
 ## <a name="event-grid-on-kubernetes-with-azure-arc"></a>具有 Azure Arc 的 Kubernetes 上的事件网格
-具有 Azure Arc 的 Kubernetes 上的事件网格是一种产品/服务，可让你在自己的 Kubernetes 群集中运行事件网格。 此功能是通过使用[已启用 Azure Arc 的 Kubernetes](../../azure-arc/kubernetes/overview.md) 启用的。 通过已启用 Azure Arc 的 Kubernetes，可将[受支持的 Kubernetes 群集](install-k8s-extension.md#supported-kubernetes-distributions)连接到 Azure。 连接后，可在其上[安装事件网格](install-k8s-extension.md)。 
+具有 Azure Arc 的 Kubernetes 上的事件网格是一种产品/服务，可让你在自己的 Kubernetes 群集中运行事件网格。 此功能是使用[已启用 Azure Arc 的 Kubernetes](../../azure-arc/kubernetes/overview.md) 启用的。 通过已启用 Azure Arc 的 Kubernetes，可将[受支持的 Kubernetes 群集](install-k8s-extension.md#supported-kubernetes-distributions)连接到 Azure。 连接后，可在其上[安装事件网格](install-k8s-extension.md)。 
 
 ### <a name="use-case"></a>用例
 Kubernetes 上的事件网格支持各种事件驱动的集成方案。 但是，受支持且表述为用户情景的主要涵盖方案是：

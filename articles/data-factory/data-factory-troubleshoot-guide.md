@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: troubleshooting
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 09/09/2021
+ms.date: 09/30/2021
 ms.author: abnarain
-ms.openlocfilehash: c9e6c4c0475842d9eb8c674464ebcf997d98b548
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ec238a018dea8940143aa6a2483c0e7dfa0d3d63
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124749447"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705606"
 ---
 # <a name="troubleshoot-azure-data-factory-and-synapse-pipelines"></a>排查 Azure 数据工厂和 Synapse 管道问题
 
@@ -142,6 +142,20 @@ ms.locfileid: "124749447"
 
 - **建议**：如果使用的是自承载集成运行时，请确保来自集成运行时节点的网络连接是可靠的。 如果使用的是 Azure 集成运行时，则重试通常有效。
  
+### <a name="the-boolean-run-output-starts-coming-as-string-instead-of-expected-int"></a>布尔运行输出开始以字符串（而不是预期的整数）形式出现
+
+- **症状**：布尔运行输出开始以字符串形式（例如，`"0"` 或 `"1"`）出现，而不是以预期的整数形式（例如，`0` 或 `1`）出现。
+
+   :::image type="content" source="media/data-factory-troubleshoot-guide/databricks-pipeline.png" alt-text="Databricks 管道的屏幕截图。":::
+
+    2021 年 9 月 28 日美国东部标准时间上午 9 点左右，当依赖此输出的管道开始出现故障时，你注意到这一变化。 管道上没有进行任何更改，并且在出现故障之前，布尔输出一直按预期方式出现。 
+
+   :::image type="content" source="media/data-factory-troubleshoot-guide/old-and-new-output.png" alt-text="输出差异的屏幕截图。":::
+
+- **原因**：这个问题是由最近的一项更改引起的，这是设计使然。 更改后，如果结果是以零开头的数字，Azure 数据工厂会将该数字转换为八进制值，这是一个 bug。 此数字一直为 0 或 1，这在此更改之前从未引起过问题。 因此，为了修复八进制转换的问题，字符串输出将按原样从 Notebook 运行传递。 
+
+- **建议**：将 if 条件更改为类似于 `if(value=="0")` 的条件。
+
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
 下表适用于 U-SQL。
@@ -1021,6 +1035,15 @@ ms.locfileid: "124749447"
 **原因：** 每个活动运行的有效负载包括活动配置、关联的数据集和链接服务配置（如果有），以及为每个活动类型生成的系统属性的一小部分。 如[数据工厂](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)和 [Azure Synapse Analytics](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-synapse-analytics-limits) 的 Azure 限制文档中所述，此类有效负载大小限制为 896 KB。
 
 **建议：** 达到此限制，很可能是因为从上游活动输出或外部传入了一个或多个大参数值，尤其是在控制流中跨活动传递实际数据时。 请检查是否可以减小大参数值，或调整管道逻辑以避免跨活动传递此类值，而改为在活动内处理此类值。
+
+### <a name="unsupported-compression-causes-files-to-be-corrupted"></a>不受支持的压缩导致文件损坏
+
+**症状**：你尝试解压缩存储在 blob 容器中的文件。 管道中的单个复制活动有一个压缩类型设置为“deflate64”（或任何不受支持的类型）的源。 此活动成功运行并生成包含在 zip 文件中的文本文件。 但是，文件中的文本有问题，该文件似乎已损坏。 当此文件在本地解压缩时，它是正常的。
+
+**原因**：你的 zip 文件是通过“deflate64”算法压缩的，而 Azure 数据工厂的内部 zip 库仅支持“deflate”。 如果 zip 文件是由 Windows 系统压缩的，并且整体文件大小超过一定数量，Windows 将默认使用“deflate64”，而此算法在 Azure 数据工厂中不受支持。 另一方面，如果文件较小或你使用某些支持指定压缩算法的第三方 zip 工具，Windows 将默认使用“deflate”。
+
+> [!TIP]
+> 实际上，[Azure 数据工厂和 Synapse Analytics 中的二进制格式](format-binary.md)和 [Azure 数据工厂和 Azure Synapse Analytics 中带分隔符的文本格式](format-delimited-text.md)都明确指出，Azure 数据工厂不支持“deflate64”格式。
 
 ## <a name="next-steps"></a>后续步骤
 

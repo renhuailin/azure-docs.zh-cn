@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 983844a824f4aac6bfe21f06b8fab591c99e1bf1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dc878b0f1a843d8212cd6541338510f8eff4b56c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740540"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714934"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices"></a>教程：创建 IoT Edge 设备的层次结构
 
@@ -87,9 +87,8 @@ ms.locfileid: "121740540"
 
    ![创建虚拟机时会输出 JSON，其中包含虚拟机的 SSH 句柄](./media/tutorial-nested-iot-edge/virtual-machine-outputs.png)
 
-* 请确保以下端口对于除最下层设备之外的所有设备均为开放入站：8000、443、5671、8883：
-  * 8000：用于通过 API 代理拉取 Docker 容器映像。
-  * 443：在 REST API 调用的父边缘中心和子边缘中心之间使用。
+* 请确保以下端口对于所有设备均为开放入站（最下层设备 443、5671、8883 除外）：
+  * 443：在父边缘中心和子边缘中心之间用于 REST API 调用，并拉取 docker 容器映像。
   * 5671、8883：用于 AMQP 和 MQTT。
 
   有关详细信息，请参阅[如何使用 Azure 门户向虚拟机开放端口](../virtual-machines/windows/nsg-quickstart-portal.md)。
@@ -235,7 +234,7 @@ IoT Edge 设备构成层次结构的各个层。 本教程将创建包含以下�
 对于下层设备，需要在命令中手动传递诊断映像：
 
    ```bash
-   sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azureiotedge-diagnostics:1.2
+   sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:443/azureiotedge-diagnostics:1.2
    ```
 
 在上层设备中，你会看到一个输出，其中包含多个传递评估。 可能会显示有关日志策略的一些警告，具体取决于网络情况和 DNS 策略。
@@ -259,9 +258,9 @@ IoT Edge 设备构成层次结构的各个层。 本教程将创建包含以下�
 
 除了 IoT Edge 代理和 IoT Edge 中心这两个运行时模块外，上层设备还会接收 Docker 注册表模块和 IoT Edge API 代理模块    。
 
-Docker 注册表模块指向现有的 Azure 容器注册表。 在本例中，`REGISTRY_PROXY_REMOTEURL` 指向 Microsoft Container Registry。 在 `createOptions` 中，你可以看到它在端口 5000 上进行通信。
+Docker 注册表模块指向现有的 Azure 容器注册表。 在本例中，`REGISTRY_PROXY_REMOTEURL` 指向 Microsoft Container Registry。 Docker 注册表默认侦听端口 5000。
 
-IoT Edge API 代理模块可将 HTTP 请求路由到其他模块，使下层设备能拉取容器映像或将 blob 推送到存储。 在本教程中，它在端口 8000 上进行通信，并配置为将 Docker 容器映像拉取请求路由发送到端口 5000 上的 Docker 注册表模块。 此外，所有 blob 存储都将请求路由上传到端口 11002 上的 AzureBlobStorageonIoTEdge 模块。 有关 IoT Edge API 代理模块及其配置方法的详细信息，请参阅模块的[操作指南](how-to-configure-api-proxy-module.md)。
+IoT Edge API 代理模块可将 HTTP 请求路由到其他模块，使下层设备能拉取容器映像或将 blob 推送到存储。 在本教程中，它在端口 443 上进行通信，并配置为将 Docker 容器映像拉取请求路由发送到端口 5000 上的 Docker 注册表模块。 此外，所有 blob 存储都将请求路由上传到端口 11002 上的 AzureBlobStorageonIoTEdge 模块。 有关 IoT Edge API 代理模块及其配置方法的详细信息，请参阅模块的[操作指南](how-to-configure-api-proxy-module.md)。
 
 要查看如何通过 Azure 门户或 Azure Cloud Shell 创建与此类似的部署，请参阅[操作指南的上层设备部分](how-to-connect-downstream-iot-edge-device.md#deploy-modules-to-top-layer-devices)。
 
@@ -271,7 +270,7 @@ IoT Edge API 代理模块可将 HTTP 请求路由到其他模块，使下层设�
    cat ~/nestedIotEdgeTutorial/iotedge_config_cli_release/templates/tutorial/deploymentLowerLayer.json
    ```
 
-你可以在 `systemModules` 下面看到，下层设备的运行时模块设置为从 `$upstream:8000`（而不是 `mcr.microsoft.com`）进行拉取，这与上层设备相同 。 下层设备将 Docker 映像请求发送到端口 8000 上的 IoT Edge API 代理模块，因为它无法直接从云中拉取映像 。 另一个部署到下层设备的模块（模拟温度传感器模块）也向 `$upstream:8000` 发出其映像请求 。
+你可以在 `systemModules` 下面看到，下层设备的运行时模块设置为从 `$upstream:443`（而不是 `mcr.microsoft.com`）进行拉取，这与上层设备相同 。 下层设备将 Docker 映像请求发送到端口 443 上的 IoT Edge API 代理模块，因为它无法直接从云中拉取映像 。 另一个部署到下层设备的模块（模拟温度传感器模块）也向 `$upstream:443` 发出其映像请求 。
 
 要查看如何通过 Azure 门户或 Azure Cloud Shell 创建与此类似的部署，请参阅[操作指南的下层设备部分](how-to-connect-downstream-iot-edge-device.md#deploy-modules-to-lower-layer-devices)。
 
@@ -305,10 +304,8 @@ IoT Edge API 代理模块可将 HTTP 请求路由到其他模块，使下层设�
 
 从下层运行 `iotedge check` 时，程序将尝试通过端口 443 从父计算机拉取映像。
 
-在本教程中，我们使用端口 8000，因此需要指定它：
-
 ```bash
-sudo iotedge check --diagnostics-image-name $upstream:8000/azureiotedge-diagnostics:1.2
+sudo iotedge check --diagnostics-image-name $upstream:443/azureiotedge-diagnostics:1.2
 ```
 
 `azureiotedge-diagnostics` 值是从与注册表模块链接的容器注册表中拉取的。 本教程将其默认设置为 https://mcr.microsoft.com:

@@ -1,18 +1,20 @@
 ---
-author: wesmc7777
+author: anastasia-ms
 ms.service: iot-dps
 ms.topic: include
-ms.date: 06/15/2021
-ms.author: wesmc
-ms.openlocfilehash: b3c218314f56fb53d0690ac0659192bb955e4301
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.date: 10/10/2021
+ms.author: v-stharr
+ms.openlocfilehash: fa416ff3e3ef5b502b65ac414558692ccd7071b5
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112538992"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129866150"
 ---
 > [!NOTE]
 > 此服务的限制在某些区域可调整。 下表的“可调整?”列中进行了相关描述。 当限制可调整时，“可调整?”的值为“是” 。
+>
+>可调整限制的实际值可能因每位客户的部署而异。 对于非常大的部署，可能需要多个 DPS 实例。
 >
 > 如果你的业务需要将可调整的限制或配额提高到默认限制之上，可以通过[创建支持票证](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来请求更多资源。
 

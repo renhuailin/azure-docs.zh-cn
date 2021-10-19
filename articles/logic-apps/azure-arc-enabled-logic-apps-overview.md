@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, ladolan, reylons, archidda, sopai, azla
 ms.topic: overview
 ms.date: 05/25/2021
-ms.openlocfilehash: 880e194fefdf49b05f2b531699a83d1f0e3e70cc
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 2a8d3187eecb684f7c0c2b89c135745dbcc9d8e9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429473"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713368"
 ---
 # <a name="what-is-azure-arc-enabled-logic-apps-preview"></a>什么是已启用 Azure Arc 的逻辑应用？ （预览版）
 
@@ -38,11 +38,11 @@ ms.locfileid: "122429473"
 
 <a name="why-use"></a>
 
-## <a name="why-use-arc-enabled-logic-apps"></a>为何要使用已启用 Arc 的逻辑应用
+## <a name="why-use-azure-arc-enabled-logic-apps"></a>为何使用已启用 Azure Arc 的逻辑应用
 
 使用已启用 Azure Arc 的逻辑应用，可以像在 Azure 逻辑应用的单租户体验中那样创建和部署逻辑应用工作流。 在你操作和管理的 Kubernetes 基础结构上运行逻辑应用时，还可以获得更高的控制度和灵活性。
 
-在创建、设计和部署逻辑应用方面，Azure Arc 和单租户逻辑应用的体验存在细微的差别。 使用已启用 Azure Arc 的逻辑应用时，主要差别在于逻辑应用将在自定义位置运行。 此位置已映射到你在其中安装并启用了 Azure 应用服务平台扩展捆绑包的、已启用 Arc 的 Kubernetes 群集。
+在创建、设计和部署逻辑应用方面，Azure Arc 和单租户逻辑应用的体验存在细微的差别。 使用已启用 Azure Arc 的逻辑应用时，主要差别在于逻辑应用将在自定义位置运行。 此位置已映射到你在其中安装并启用了 Azure 应用服务平台扩展捆绑包的、已启用 Azure Arc 的 Kubernetes 群集。
 
 例如，此群集可以是 Azure Kubernetes 服务、裸机 Kubernetes 或其他设置。 通过扩展捆绑包，可在 Kubernetes 群集上运行 Azure 逻辑应用、Azure Functions 和 Azure 应用服务等平台服务。
 
@@ -53,11 +53,11 @@ ms.locfileid: "122429473"
 - [什么是已启用 Azure Arc 的 Kubernetes？](../azure-arc/kubernetes/overview.md)
 - [已启用 Azure Arc 的 Kubernetes 上的自定义位置](../azure-arc/kubernetes/conceptual-custom-locations.md)
 - [Azure Arc 上的应用服务、函数和逻辑应用（预览版）](../app-service/overview-arc-integration.md)
-- [设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、函数和逻辑应用（预览）](../app-service/manage-create-arc-environment.md)
+- [设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、Functions 和逻辑应用（预览版）](../app-service/manage-create-arc-environment.md)
 
 <a name="when-to-use"></a>
 
-## <a name="when-to-use-arc-enabled-logic-apps"></a>何时使用已启用 Arc 的逻辑应用
+## <a name="when-to-use-azure-arc-enabled-logic-apps"></a>何时使用已启用 Azure Arc 的逻辑应用
 
 尽管 Kubernetes 可提供更高的控制度和灵活性，但它也会产生操作开销。 如果你对逻辑应用服务感到满意，觉得它能够满足你的需求，则我们建议你继续使用此服务。 但对于以下情况，请考虑使用已启用 Azure Arc 的逻辑应用：
 
@@ -123,7 +123,7 @@ ms.locfileid: "122429473"
       在运行容器的任何位置运行
    :::column-end:::
    :::column:::
-      在包含已启用 Arc 的 Kubernetes 群集的任何位置运行
+      在包含已启用 Azure Arc 的 Kubernetes 群集的任何位置运行
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -181,4 +181,4 @@ ms.locfileid: "122429473"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用已启用 Arc 的逻辑应用创建和部署工作流](azure-arc-enabled-logic-apps-create-deploy-workflows.md)
+> [使用已启用 Azure Arc 的逻辑应用创建和部署工作流](azure-arc-enabled-logic-apps-create-deploy-workflows.md)

@@ -10,12 +10,12 @@ ms.devlang: python
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: 49e80e277c6df5372341293861d5bda0580f3e8c
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 920aadf1cc800a8ea9d7c764cf0bcfa7cf9287f3
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537165"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614016"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>向 Azure 服务总线主题发送消息，并从该主题的订阅接收消息 (Python)
 本文介绍如何使用 Python 向服务总线主题发送消息，并从该主题的订阅接收消息。 
@@ -23,7 +23,7 @@ ms.locfileid: "107537165"
 ## <a name="prerequisites"></a>先决条件
 - Azure 订阅。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 - 遵循[快速入门：使用 Azure 门户创建一个服务总线主题和多个对该主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)。 记下连接字符串、主题名称和订阅名称。 本快速入门仅需使用一个订阅。 
-- Python 2.7 或更高版本，且安装了 [Azure Python SDK][Azure Python package] 包。 有关详细信息，请参阅 [Python 安装指南](/azure/developer/python/azure-sdk-install)。
+- Python 3.5 或更高版本，且安装了 [Azure Python SDK][Azure Python 包] 包。 有关详细信息，请参阅 [Python 安装指南](/azure/developer/python/azure-sdk-install)。
 
 ## <a name="send-messages-to-a-topic"></a>将消息发送到主题
 

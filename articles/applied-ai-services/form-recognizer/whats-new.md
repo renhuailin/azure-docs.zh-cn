@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 09/30/2021
+ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 3adffbac5641c2791c5ef683b5c4d687331a1c3b
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 401c9d08efd6be33d4444d34ba7a2a6c89723a6b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350132"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715086"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
@@ -22,21 +22,59 @@ ms.locfileid: "129350132"
 
 表单识别器服务会持续更新。 将此页添加为书签，随时了解发行说明、功能增强和文档更新。
 
+## <a name="october-2021"></a>2021 年 10 月
+
+### <a name="form-recognizer-new-preview-release"></a>表单识别器新预览版
+
+ 表单识别器新预览版引入了几个新的特性和功能：
+
+* [常规文档](concept-general-document.md)模型是一个新的 API，它使用预先训练的模型从表单和文档中提取文本、表、结构、键值对和命名实体。
+* 已将[酒店收据](concept-receipt.md)模型添加到预生成收据处理。
+* [身份文档的扩展字段](concept-id-document.md)：身份模型支持从美国驾照提取准驾车型、限制和车辆分类信息。
+* [签名字段](concept-custom.md)是自定义表单中的新字段类型，用于检测表单字段中是否存在签名。
+
+* [语言扩展](language-support.md)：支持 122 种打印语言和 7 种手写语言。 最新预览版的表单识别器布局和自定义表单将[支持的语言](language-support.md)扩展为 122 种。 它支持从 49 种新语言（包括俄语、保加利亚语、其他西里尔语和其他拉丁语）的打印文本中提取文本。 此外，手写文本提取现在支持 7 种语言，包括英语，以及简体中文、法语、德语、意大利语、葡萄牙语和西班牙语的新预览版。
+
+* 表和文本提取增强：布局现在支持提取单行表（也称为键值表）。 文本提取增强包括可以更好地处理数字 PDF，以及身份文档中的机器可读区域 (MRZ) 文本，同时可以保持一般的性能。
+
+* [表单识别器工作室](https://formrecognizer.appliedai.azure.com)：为了简化服务的使用，现在你可以访问表单识别器工作室来测试不同的预生成模型，或者标记和训练自定义模型
+
+开始使用适用于 v3.0 预览版 API 的新 [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)、[Python](quickstarts/try-v3-python-sdk.md) 或 [.NET](quickstarts/try-v3-csharp-sdk.md) SDK。
+
+ #### <a name="form-recognizer-model-data-extraction"></a>表单识别器模型数据提取
+
+  | **Model**   | 文本提取 |键值对 |选择标记   | **表**   |**实体** |
+  | --- | :---: |:---:| :---: | :---: |:---: |
+  |常规文档  | ✓  |  ✓ | ✓  | ✓  | ✓  |
+  | Layout  | ✓  |   | ✓  | ✓  |   |
+  | 发票  | ✓ | ✓  | ✓  | ✓ ||
+  |回执  | ✓  |   ✓ |   |  ||
+  | 身份文档 | ✓  |   ✓  |   |   ||
+  | 名片    | ✓  |   ✓ |   |   ||
+  | 自定义             |✓  |  ✓ | ✓  | ✓  | ✓  |
+
 ## <a name="september-2021"></a>2021 年 9 月
 
-[Azure 指标资源管理器高级功能](/azure/azure-monitor/essentials/metrics-charts)可在 Azure 门户的表单识别器资源概述页上使用。
+* [Azure 指标资源管理器高级功能](/azure/azure-monitor/essentials/metrics-charts)可在 Azure 门户的表单识别器资源概述页上使用。
 
-### <a name="monitoring-menu"></a>监视菜单
+    ### <a name="monitoring-menu"></a>监视菜单
 
-:::image type="content" source="media/portal-metrics.png" alt-text="显示 Azure 门户中的监视菜单的屏幕截图":::
+    :::image type="content" source="media/portal-metrics.png" alt-text="显示 Azure 门户中的监视菜单的屏幕截图":::
 
-### <a name="charts"></a>图表
+    ### <a name="charts"></a>图表
 
-:::image type="content" source="media/portal-metrics-charts.png" alt-text="显示 Azure 门户中的示例指标图表的屏幕截图。":::
+    :::image type="content" source="media/portal-metrics-charts.png" alt-text="显示 Azure 门户中的示例指标图表的屏幕截图。":::
+
+*  身份文档模型更新：可成功处理包含后缀并且带有或不带有点号（句点）的姓名：
+
+    |输入文本 | 更新后的结果 |
+    |------------|-------------------------------------------|
+    | William Isaac Kirby Jr. |FirstName：William Isaac</br></br>LastName：Kirby Jr. |
+    | Henry Caleb Ross Sr | FirstName：Henry Caleb </br></br> LastName：Ross Sr |
 
 ## <a name="july-2021"></a>2021 年 7 月
 
-### <a name="system-assigned-managed-identity-support"></a>系统分配的托管标识支持 
+### <a name="system-assigned-managed-identity-support"></a>系统分配的托管标识支持
 
  你现在可以启用系统分配的托管标识，以授予表单识别器对专用存储帐户的有限访问权限，包括那些受虚拟网络 (VNet) 或防火墙保护的帐户，或启用了自带存储 (BYOS) 的帐户。 请参阅[为表单识别器资源创建和使用托管标识](managed-identity-byos.md)以了解详细信息。
 
@@ -90,9 +128,9 @@ ms.locfileid: "129350132"
 * [标识文档](concept-identification-cards.md)
 * [自定义窗体](concept-custom.md)
 
-#### <a name="get-started"></a>入门 
+#### <a name="get-started"></a>入门
 
-请转到[表单识别器示例工具](https://fott-2-1.azurewebsites.net/)并按照[快速入门](quickstarts/get-started-with-form-recognizer.md)进行操作 
+请转到[表单识别器示例工具](https://fott-2-1.azurewebsites.net/)并按照[快速入门](quickstarts/get-started-with-form-recognizer.md)进行操作
 
 ### <a name="layout-adds-table-headers"></a>布局中添加了表头
 
@@ -375,9 +413,9 @@ pip 包版本 3.1.0b4
 
    :::image type="content" source="./media/id-canada-passport-example.png" alt-text="护照示例" lightbox="./media/id-canada-passport-example.png":::
 
-* 预生成发票模型的行项提取 - 预生成发票模型现在支持行项提取；现在，它将提取所有项及其部件：说明、金额、数量、产品 ID、日期等。 使用简单的 API/SDK 调用，可以从发票中提取有用数据：文本、表、键值对和行项。
+* 发票模型的行项提取 - 预生成发票模型现在支持行项提取；现在，它将提取所有项及其部件：说明、金额、数量、产品 ID、日期等。 使用简单的 API/SDK 调用，可以从发票中提取有用数据：文本、表、键值对和行项。
 
-   [了解有关预生成发票模型的更多信息](concept-invoices.md)
+   [详细了解发票模型](concept-invoices.md)
 
 * 监督式表标记和训练，空值标记 - 除了表单识别器的[先进深度学习自动表提取功能](https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011)，现在还允许客户对表进行标记和训练。 此新版本包括对行项/表进行标记和训练（动态和固定），并训练自定义模型来提取键值对和行项。 对模型进行训练后，模型将提取行项作为 JSON 输出中 documentResults 部分的一部分。
 

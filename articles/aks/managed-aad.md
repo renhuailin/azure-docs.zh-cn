@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: a4739276cd05ffae6015fb2464e464d0a9f15955
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: f8815258398e6aaa3c54032279645960417756d7
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272041"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667186"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS 托管的 Azure Active Directory 集成
 
@@ -182,7 +182,7 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
   }
 ```
 
-如果要访问群集，请按照[此处][access-cluster]的步骤进行操作。
+若要更新 kubeconfig 以访问群集，请按照[此处][access-cluster]的步骤操作。
 
 ## <a name="non-interactive-sign-in-with-kubelogin"></a>通过 kubelogin 进行非交互式登录
 
@@ -396,7 +396,7 @@ aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
 ```
 ### <a name="apply-just-in-time-access-at-the-namespace-level"></a>在命名空间级别应用即时访问
 
-1. 将 AKS 群集与 [Azure RBAC](manage-azure-rbac.md) 集成。
+1. 将 AKS 群集与 [Azure RBAC](https://docs.microsoft.com/azure/aks/manage-azure-rbac) 集成。
 2. 通过角色分配将要与即时访问集成的组与群集中的命名空间相关联。
 
 ```azurecli-interactive

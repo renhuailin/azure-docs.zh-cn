@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 06/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 20df340df025ceada8a4b254f317fe2f5d8eecbc
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 1607ad99ffb78a90bcc143ab20829709cec77561
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768893"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706494"
 ---
 # <a name="view-update-assessments-in-update-management"></a>查看更新管理中的更新评估
 
-在更新管理中，可以查看有关计算机、缺少的更新、更新部署和计划的更新部署的信息。 可以从选定的已启用 Arc 的服务器或所有已配置的计算机和服务器上的自动化帐户查看范围为选定 Azure 虚拟机的评估信息。
+在更新管理中，可以查看有关计算机、缺少的更新、更新部署和计划的更新部署的信息。 可以从选定的已启用 Azure Arc 的服务器，或从所有已配置的计算机和服务器上的自动化帐户查看范围为选定 Azure 虚拟机的评估信息。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -28,13 +28,13 @@ ms.locfileid: "122768893"
 
 [ ![Azure VM 的更新管理评估视图](./media/view-update-assessments/update-assessment-azure-vm.png)](./media/view-update-assessments/update-assessment-azure-vm-expanded.png#lightbox)
 
-若要从已启用 Arc 的服务器查看更新评估，请导航到“服务器 - Azure Arc”，然后从列表中选择服务器。 在左侧菜单中，选择“来宾和主机更新”。 在“来宾 + 主机更新”页上，选择“转到更新管理”。
+若要从已启用 Azure Arc 的服务器查看更新评估，请导航到“服务器 - Azure Arc”，然后从列表中选择服务器。 在左侧菜单中，选择“来宾和主机更新”。 在“来宾 + 主机更新”页上，选择“转到更新管理”。
 
-在更新管理中，可以查看有关已启用 Arc 的计算机、缺失的更新、更新部署和计划的更新部署的信息。
+在更新管理中，可以查看有关已启用 Azure Arc 的计算机、缺失的更新、更新部署和计划的更新部署的信息。
 
 [ ![已启用 Arc 的服务器的更新管理评估视图](./media/view-update-assessments/update-assessment-arc-server.png)](./media/view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
 
-要查看所有计算机上的更新评估，包括来你的自动化帐户的已启用 Arc 的服务器，请导航到“自动化帐户”并从列表中选择启用了更新管理的自动化帐户。 在自动化帐户中，从左侧菜单选择“更新管理”。
+要查看所有计算机上的更新评估，包括来自你的自动化帐户的已启用 Azure Arc 的服务器，请导航到“自动化帐户”并从列表中选择启用了更新管理的自动化帐户。 在自动化帐户中，从左侧菜单选择“更新管理”。
 
 “更新管理”页上会列出你的环境所具有的更新。 如果发现缺少任何更新，则会在“缺少的更新”选项卡上显示缺少的更新的列表。
 

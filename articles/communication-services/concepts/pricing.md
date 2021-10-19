@@ -3,18 +3,16 @@ title: 呼叫（语音/视频）和聊天的定价方案
 titleSuffix: An Azure Communication Services concept document
 description: 了解通信服务的定价模型。
 author: nmurav
-manager: nmurav
-services: azure-communication-services
 ms.author: nmurav
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: d2ea2c510aa9e6225de215da128670514f1dba3b
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 5d08f964899faf9fe438a0df68c6fe4401fd01c7
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129360435"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859373"
 ---
 # <a name="pricing-scenarios"></a>定价方案
 
@@ -119,6 +117,35 @@ Alice 医生与她的患者 Bob 会面。 Alice 将从 Teams 桌面应用程序�
 - 用户使用通信服务 JavaScript SDK 加入：0.004 美元 + 0.116 美元 + 0.0024 美元 = 0.1224 美元
 - 用户通过 Teams 桌面应用程序加入：0 美元（Teams 许可证涵盖）
 
+
+## <a name="call-recording"></a>通话记录
+
+Azure 通信服务允许记录 PSTN、WebRTC、会议、SIP 接口通话。 目前，通话记录支持混合音频 + 视频的 MP4 和仅有混合音频的 MP3/WAV 输出格式。 调用记录 SDK 适用于 Java 和 C#。 请参阅[此页了解详细信息](../quickstarts/voice-video-calling/call-recording-sample.md)。
+
+### <a name="price"></a>价格
+
+混合音频 + 视频格式收费 0.01 美元/分钟，仅混合音频格式收费 0.002 美元/分钟。
+
+### <a name="pricing-example-record-a-call-in-a-mixed-audiovideo-format"></a>定价示例：以音频 + 视频的混合格式录制通话
+
+Alice 与其同事 Bob 和 Charlie 进行了一次群呼。 
+
+- 该呼叫总共持续 60 分钟。 并且录制在 60 分钟内处于活动状态。
+- Bob 的通话时间为 30 分钟，Alice 和 Charlie 为 60 分钟。
+
+成本计算
+- 将针对会议的时长向你收费。 （会议的时长是用户开始录制与明确停止录制或与会人员均已离开之间的时间线）。
+- 60 分钟 x 每次录制 0.01 美元/分钟= 0.6 美元
+
+### <a name="pricing-example-record-a-call-in-a-mixed-audioonly-format"></a>定价示例：以音频 + 视频的混合格式录制通话
+
+Alice 开始与 Jane 通话。 
+
+- 该呼叫总共持续 60 分钟。 录制持续 45 分钟。
+
+成本计算
+- 将针对录制的时长向你收费。 
+- 45 分钟 x 每次录制 0.002 美元/分钟= 0.09 美元
 
 ## <a name="chat"></a>聊天
 

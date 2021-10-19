@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: how-to
 ms.subservice: tutorials
 ms.date: 09/29/2021
-ms.openlocfilehash: d1a23e166c322a4a74c3ec175ea672d78ed23de9
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 98fa799cc5fd933d21fb0130093381c628f8e23c
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367382"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660944"
 ---
 # <a name="send-notifications-to-a-microsoft-teams-channel-from-an-azure-data-factory-or-synapse-analytics-pipeline"></a>从 Azure 数据工厂或 Synapse Analytics 管道向 Microsoft Teams 通道发送通知
 
@@ -106,3 +106,7 @@ ms.locfileid: "129367382"
 上述表达式将根据失败返回相关错误消息，这些错误消息可在 Teams 通道上作为通知发送出去。 有关详细信息，请参阅[复制活动输出属性](copy-activity-monitoring.md)一文。
 
 我们还鼓励你查看 Microsoft Teams 支持的[通知有效负载架构](https://adaptivecards.io/explorer/AdaptiveCard.html)，并根据需要进一步自定义上述模板。
+
+## <a name="next-steps"></a>后续步骤
+
+[如何从管道发送电子邮件](how-to-send-email.md)

@@ -4,12 +4,12 @@ description: 本文介绍如何通过容器见解停止监视混合 Kubernetes �
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bd13c3e3c3a1aca3253bc43377a15324db2cc4fb
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: b8f548b8e9440804ae6a7ff293c35e7107cfc4c8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319928"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708927"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>如何停止监视混合群集
 
@@ -17,7 +17,7 @@ ms.locfileid: "108319928"
 
 - Azure 和 Azure Stack 的 AKS 引擎
 - OpenShift 版本 4 及更高版本
-- 启用了 Azure Arc 的 Kubernetes（预览版）
+- 已启用 Azure Arc 的 Kubernetes（预览版）
 
 ## <a name="how-to-stop-monitoring-using-helm"></a>如何使用 Helm 停止监视
 
@@ -39,9 +39,9 @@ ms.locfileid: "108319928"
     azmon-containers-release-1      default         3               2020-04-21 15:27:24.1201959 -0700 PDT   deployed        azuremonitor-containers-2.7.0   7.0.0-1
     ```
 
-    “azmon-containers-release-1”表示容器见解的 helm chart 版本。
+    *azmon-containers-release-1* 表示用于“容器见解”的 helm 图表版本。
 
-2. 若要删除 chart 版本，请运行以下 helm 命令。
+2. 若要删除图表版本，请运行以下 helm 命令。
 
     `helm delete <releaseName>`
 
@@ -49,15 +49,15 @@ ms.locfileid: "108319928"
 
     `helm delete azmon-containers-release-1`
 
-    这将从群集中删除该版本。 可通过运行 `helm list` 命令进行验证：
+    允许该命令后，将从群集中删除发布。 用户可通过再次运行命令 `helm list` 来验证。
 
     ```
     NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
     ```
 
-配置更改可能需要几分钟才能完成。 由于 Helm 即使在你删除了版本之后也会对其进行跟踪，因此你可以审核群集的历史记录，甚至可以使用 `helm rollback` 取消删除某个版本。
+配置更改可能需要几分钟才能完成。 由于 Helm 会在用户删除发布后对其进行跟踪，因此可以审核群集的历史记录，甚至还可以使用 `helm rollback` 撤消删除发布。
 
-## <a name="how-to-stop-monitoring-on-arc-enabled-kubernetes"></a>如何停止监视启用了 Arc 的 Kubernetes
+## <a name="how-to-stop-monitoring-on-azure-arc-enabled-kubernetes"></a>如何停止监视已启用 Azure Arc 的 Kubernetes
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
@@ -73,7 +73,7 @@ ms.locfileid: "108319928"
     $azureArcClusterResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
     ```
 
-3. 通过运行命令 `kubectl config get-contexts`，使用群集的 kube-context 配置 `$kubeContext` 变量。 若要使用当前上下文，请将值设置为 `""`。
+3. 通过运行 `kubectl config get-contexts` 命令，使用群集的 kube-context 配置 `$kubeContext` 变量。 若要使用当前上下文，请将值设置为 `""`。
 
     ```powershell
     $kubeContext = "<kubeContext name of your k8s cluster>"
@@ -89,7 +89,7 @@ ms.locfileid: "108319928"
 脚本 disable-monitoring.ps1 使用交互式设备登录。 如果你更喜欢非交互式登录，则可以使用现有服务主体，也可以创建一个具有所需权限的新服务主体，如[先决条件](container-insights-enable-arc-enabled-clusters.md#prerequisites)中所述。 若要使用服务主体，必须将 $servicePrincipalClientId、$servicePrincipalClientSecret 和 $tenantId 参数（包含要使用的服务主体的值）传递给 enable-monitoring.ps1 脚本。
 
 ```powershell
-$subscriptionId = "<subscription Id of the Azure Arc connected cluster resource>"
+$subscriptionId = "<subscription Id of the Azure Arc-connected cluster resource>"
 $servicePrincipal = New-AzADServicePrincipal -Role Contributor -Scope "/subscriptions/$subscriptionId"
 
 $servicePrincipalClientId =  $servicePrincipal.ApplicationId.ToString()
@@ -142,7 +142,7 @@ $tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
 bash 脚本 disable-monitoring.sh 使用交互式设备登录。 如果你更喜欢非交互式登录，则可以使用现有服务主体，也可以创建一个具有所需权限的新服务主体，如[先决条件](container-insights-enable-arc-enabled-clusters.md#prerequisites)中所述。 若要使用服务主体，你必须将要使用的服务主体的 --client-id、--client-secret 和 --tenant-id 值传递给 enable-monitoring.sh bash 脚本。
 
 ```bash
-subscriptionId="<subscription Id of the Azure Arc connected cluster resource>"
+subscriptionId="<subscription Id of the Azure Arc-connected cluster resource>"
 servicePrincipal=$(az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${subscriptionId}")
 servicePrincipalClientId=$(echo $servicePrincipal | jq -r '.appId')
 
@@ -158,4 +158,4 @@ bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-conte
 
 ## <a name="next-steps"></a>后续步骤
 
-如果创建 Log Analytics 工作区只是为了支持监视群集，并且不再需要它，则必须将其手动删除。 如果不熟悉如何删除工作区，请参阅[删除 Azure Log Analytics 工作区](../logs/delete-workspace.md)。
+如果创建的“日志分析工作区”仅用于支持监视群集，且不需要再使用，则需要手动删除它。 如果不熟悉如何删除工作区，请参阅[删除 Azure Log Analytics 工作区](../logs/delete-workspace.md)。

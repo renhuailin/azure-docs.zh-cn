@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 01/04/2021
+ms.date: 10/11/2021
 ms.author: banders
-ms.openlocfilehash: 07e3cfdce238d5fc4e2737a49dde6fd624de8506
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ae2d16b6164f201bae8f34c62876f66b45862cfa
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882494"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855339"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 使用情况和费用文件中的术语
 
@@ -111,6 +111,8 @@ _<sup>**1**</sup>_ 用于生成单个成本记录的唯一 ID 的字段。
 
 请注意，某些字段的帐户类型之间可能存在大小写和间距差异。
 旧版即用即付使用情况文件通过不同的部分来说明报表和每日使用情况。
+
+对于具有 MCA 协议的客户，请注意，`PublisherType` 字段的值发生了更改。 有关详细信息，请参阅[对发布服务器类型值所做的更改](../costs/group-filter.md#changes-to-publisher-type-values)。
 
 ### <a name="list-of-terms-from-older-apis"></a>旧版 API 中的术语列表
 下表将旧版 API 中使用的术语映射到了新术语。 有关说明，请参阅上表。

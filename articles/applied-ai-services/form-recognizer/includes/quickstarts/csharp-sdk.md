@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 07/30/2021
 ms.author: lajanuar
 ms.custom: " devx-track-csharp"
-ms.openlocfilehash: 5b1b4658199d624f2ebb8e1ed3dc08d64489f11b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9b8f854a2bf5753f9e2ac047cff9f4c7fcef68da
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652492"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715424"
 ---
 <!-- markdownlint-disable MD024 -->
 
@@ -97,7 +97,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.1
 
 * 使用为了分析自定义表单而训练的自定义模型，来识别表单字段和内容。  这些值在 `RecognizedForm` 对象的集合中返回。 请参阅示例[分析自定义表单](#analyze-forms-with-a-custom-model)。
 * 无需训练模型即可识别表单内容，包括表格、行和单词。  表单内容在 `FormPage` 对象的集合中返回。 请参阅示例[分析布局](#analyze-layout)。
-* 使用表单识别器服务上预先训练的模型，识别美国回执、名片、发票和标识文件中的常见字段。
+* 使用表单识别器服务上预先训练的模型识别美国收据、名片、发票和 ID 文档中的常见字段。
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -279,18 +279,18 @@ Total: '1203.39', with confidence '0.774'
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_print)]
 
-## <a name="analyze-identity-documents"></a>分析标识文档
+## <a name="analyze-id-documents"></a>分析 ID 文档
 
-本部分演示如何使用表单识别器预生成的 ID 模型，分析和提取政府颁发的标识文档（全球护照和美国驾照）中的关键信息。 有关标识文档分析的详细信息，请参阅[预生成的标识模型概念指南](../../concept-identification-cards.md)。
+本部分演示如何使用表单识别器预生成的 ID 模型，分析和提取政府颁发的标识文档（全球护照和美国驾照）中的关键信息。 有关 ID 文档分析的详细信息，请参阅[预生成的标识模型概念指南](../../concept-identification-cards.md)。
 
-若要从 URI 分析标识文档，请使用 `StartRecognizeIdentityDocumentsFromUriAsync` 方法。
+若要从 URI 分析 ID 文档，请使用 `StartRecognizeIdentityDocumentsFromUriAsync` 方法。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_id_call)]
 
 > [!TIP]
-> 你还可以分析本地标识文档图像。 请参阅 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 StartRecognizeIdentityDocumentsAsync。 也可参阅 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+> 还可分析本地 ID 文档图像。 请参阅 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 StartRecognizeIdentityDocumentsAsync。 也可参阅 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
 
-以下代码处理给定 URI 的标识文档，并将主字段和值输出到控制台。
+以下代码会处理给定 URI 的 ID 文档，并将主字段和值输出到控制台。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_id_print)]
 
@@ -602,7 +602,7 @@ dotnet run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../../cognitive-services/cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../../cognitive-services/cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../../cognitive-services/cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="troubleshooting"></a>疑难解答

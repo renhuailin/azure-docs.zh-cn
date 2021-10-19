@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: overview
 ms.custom: contperf-fy21q4
 ms.date: 10/15/2020
-ms.openlocfilehash: 443dcf5bf34622fd0767ac75ece83e3ea6dc3ad0
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 9764afb8bbb0dd6e627336e360ed5b5edc5b8d14
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075558"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855966"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>什么是 Microsoft 商业市场？
 
@@ -43,8 +43,8 @@ Microsoft 商业市场是我们的独立软件供应商 (ISV) 合作伙伴提供
 
 本文中所述的 Microsoft 商业市场包括两个主要在线商店： 
 
-- [Microsoft AppSource](https://appsource.microsoft.com/)，其中包含业务解决方案和 Azure 市场。
-- [Azure 市场](https://azuremarketplace.microsoft.com/)，专为 IT 解决方案而设计。
+- 用于业务解决方案的 [Microsoft AppSource](https://appsource.microsoft.com/)
+- IT 解决方案的 [Azure 市场](https://azuremarketplace.microsoft.com/)
 
 > [!NOTE]
 > 还可在 Microsoft 产品（例如 Microsoft 365、Dynamics 365、Microsoft Power Platform 和 Azure）中找到其他商业市场软件和服务。 我们的在线商店和产品内体验每个月可吸引数百万潜在客户。 每个在线商店都提供不同的方案，以确保你的解决方案或服务可供合适的客户使用。

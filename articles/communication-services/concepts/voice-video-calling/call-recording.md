@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.service: azure-communication-services
 ms.subservice: calling
-ms.openlocfilehash: a6e5f1ecb5686145718d83febf3faf5c520db6fe
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 103ced05c6b88c5f7f60de398f78f89cc460daf9
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609510"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667300"
 ---
 # <a name="calling-recording-overview"></a>通话录制概述
 
@@ -30,11 +30,12 @@ ms.locfileid: "128609510"
 ![通话记录概念关系图](../media/call-recording-concept.png)
 
 ## <a name="media-output-types"></a>媒体输出类型
-通话录制当前支持混合音频 + 视频的 MP4 输出格式。 输出媒体与通过 Microsoft Teams 录制生成的会议录像相同。
+目前，通话记录支持混合音频 + 视频的 MP4 和仅有混合音频的 MP3/WAV 输出格式。 混合音频 + 视频输出媒体与通过 Microsoft Teams 录制生成的会议录像相同。
 
 | 信道类型 | 内容格式 | 视频 | 音频 |
 | :----------- | :------------- | :---- | :--------------------------- |
 | audioVideo | mp4 | 所有参与者采用默认磁贴排列的 1920x1080 8 FPS 视频 | 所有参与者的 16kHz mp4a 混合音频 |
+| audioOnly| mp3/wav | 空值 | 所有参与者的 16kHz mp3/wav 混合音频 |
 
 
 ## <a name="run-time-control-apis"></a>运行时控件 API

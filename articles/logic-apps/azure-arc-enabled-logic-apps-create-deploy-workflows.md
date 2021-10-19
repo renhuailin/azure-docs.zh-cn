@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, ladolan, reylons, archidda, sopai, azla
 ms.topic: how-to
 ms.date: 06/03/2021
-ms.openlocfilehash: a3ccea075dd4ce4bce06b31fdbe6dc2a55812ebc
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 17c9eb020d62207910008fb032872bd609df553f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754072"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712305"
 ---
 # <a name="create-and-deploy-single-tenant-based-logic-app-workflows-with-azure-arc-enabled-logic-apps-preview"></a>使用已启用 Azure Arc 的逻辑应用（预览版）创建和部署基于单租户的逻辑应用工作流
 
@@ -31,7 +31,7 @@ ms.locfileid: "111754072"
 - [什么是已启用 Azure Arc 的 Kubernetes？](../azure-arc/kubernetes/overview.md)
 - [已启用 Azure Arc 的 Kubernetes 上的自定义位置](../azure-arc/kubernetes/conceptual-custom-locations.md)
 - [Azure Arc 上的应用服务、函数和逻辑应用（预览版）](../app-service/overview-arc-integration.md)
-- [设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、函数和逻辑应用（预览）](../app-service/manage-create-arc-environment.md)
+- [设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、Functions 和逻辑应用（预览版）](../app-service/manage-create-arc-environment.md)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,7 +39,7 @@ ms.locfileid: "111754072"
 
 - 具有活动订阅的 Azure 帐户。 如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- 具有启用了 Azure Arc 的 Kubernetes 群集和自定义位置的 Kubernetes 环境，可在其中托管和运行 Azure 逻辑应用、Azure 应用服务和 Azure Functions。
+- 具有已启用 Azure Arc 的 Kubernetes 群集和自定义位置的 Kubernetes 环境，可在其中托管和运行 Azure 逻辑应用、Azure 应用服务和 Azure Functions。
 
   > [!IMPORTANT]
   > 对于 Kubernetes 环境、自定义位置和逻辑应用，请确保使用相同的资源位置。
@@ -51,8 +51,8 @@ ms.locfileid: "111754072"
   有关详细信息，请查看以下文档：
 
   - [Azure Arc 上的应用服务、函数和逻辑应用（预览版）](../app-service/overview-arc-integration.md)
-  - [已启用 Azure Arc 的 Kubernetes 的群集扩展](../azure-arc/kubernetes/conceptual-extensions.md)
-  - [设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、函数和逻辑应用（预览）](../app-service/manage-create-arc-environment.md)
+  - [已启用 Azure Arc 的 Kubernetes 上的群集扩展](../azure-arc/kubernetes/conceptual-extensions.md)
+  - [设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、Functions 和逻辑应用（预览版）](../app-service/manage-create-arc-environment.md)
   - [更改默认缩放行为](#change-scaling)
 
 - 自己的 Azure Active Directory (Azure AD) 标识
@@ -183,7 +183,7 @@ az logicapp create --name MyLogicAppName
    --storage-account MyStorageAccount --custom-location MyCustomLocation
 ```
 
-若要使用专用 Azure 容器注册表映像创建启用了 Azure Arc 的逻辑应用，请使用以下必需参数运行命令 `az logicapp create`：
+若要使用专用 Azure 容器注册表映像创建已启用 Azure Arc 的逻辑应用，请使用以下必需参数运行命令 `az logicapp create`：
 
 ```azurecli
 az logicapp create --name MyLogicAppName 
@@ -205,7 +205,7 @@ az logicapp show --name MyLogicAppName
 
 #### <a name="deploy-logic-app"></a>部署逻辑应用
 
-若要使用 [Azure 应用服务的 Kudu zip 部署](../app-service/resources-kudu.md)来部署启用了 Azure Arc 的逻辑应用，请使用以下必需参数运行命令 `az logicapp deployment source config-zip`：
+若要使用 [Azure 应用服务的 Kudu zip 部署](../app-service/resources-kudu.md)来部署已启用 Azure Arc 的逻辑应用，请使用以下必需参数运行命令 `az logicapp deployment source config-zip`：
 
 > [!IMPORTANT]
 > 请确保 zip 文件在根级别包含项目的生成工件。 这些生成工件包括所有工作流文件夹、配置文件（如 host.json、connections.json）和任何其他相关文件。 不要添加任何额外的文件夹，也不要将任何生成工件放入项目结构中不存在的文件夹。 例如，下面的列表显示示例 MyBuildArtifacts.zip 文件结构：
@@ -261,7 +261,7 @@ az logicapp delete --name MyLogicAppName
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-可在 Visual Studio Code 中创建、部署和监视完整的逻辑应用工作流。 开发在单租户 Azure 逻辑应用中和已启用 Azure Arc 的逻辑应用中运行的逻辑应用工作流的设计器体验不会有任何变化或不同。
+可在 Visual Studio Code 中创建、部署和监视完整的逻辑应用工作流。 开发在单租户 Azure 逻辑应用中和已启用 Azure Arc 的逻辑应用中运行的逻辑应用工作流时，设计器体验不会有任何变化或不同。
 
 1. 若要创建逻辑应用项目，请遵循[通过 Visual Studio Code 在单租户 Azure 逻辑应用中创建集成工作流](create-single-tenant-workflows-visual-studio-code.md)文档中的先决条件和步骤。
 
@@ -275,7 +275,7 @@ az logicapp delete --name MyLogicAppName
 
    1. 提供逻辑应用的全局唯一名称。
 
-   1. 选择要在其中部署的已启用 Azure Arc 的 Kubernetes 环境的自定义位置。 如果改为选择通用 Azure 区域，请创建在单租户 Azure 逻辑应用中运行的已启用非 Azure Arc 的逻辑应用资源。
+   1. 选择要在其中部署的已启用 Azure Arc 的 Kubernetes 环境的自定义位置。 如果改为选择通用 Azure 区域，请创建在单租户 Azure 逻辑应用中运行的未启用 Azure Arc 的逻辑应用资源。
 
    1. 选择或创建要在其中部署逻辑应用的新资源组。
 
@@ -294,7 +294,7 @@ az logicapp delete --name MyLogicAppName
 
 ### <a name="azure-portal"></a>[Azure 门户](#tab/azure-portal)
 
-适用于已启用 Azure Arc 的逻辑应用的基于门户的设计器的编辑功能目前正在开发中。 可使用基于门户的设计器创建、部署和查看逻辑应用，但在部署后无法在门户中编辑。 目前，可以在 Visual Studio Code 本地创建和编辑逻辑应用项目，然后使用 Visual Studio Code、Azure CLI 或自动化部署进行部署。
+目前正在为已启用 Azure Arc 的逻辑应用开发基于门户的设计器的编辑功能。 可使用基于门户的设计器创建、部署和查看逻辑应用，但在部署后无法在门户中编辑。 目前，可以在 Visual Studio Code 本地创建和编辑逻辑应用项目，然后使用 Visual Studio Code、Azure CLI 或自动化部署进行部署。
 
 1. 在 Azure 门户中，[创建一个逻辑应用（标准）资源](create-single-tenant-workflows-azure-portal.md)。 但对于“发布”目标，请选择“Docker 容器”。 在“区域”中，选择先前创建的自定义位置作为应用的位置。
 
@@ -640,11 +640,11 @@ az logicapp delete --name MyLogicAppName
 
 ### <a name="prerequisites-to-change-scaling"></a>更改缩放的先决条件
 
-在已启用 Arc 的 Kubernetes 群集上，必须将以前创建的应用服务捆绑包扩展的 `keda.enabled` 属性设置为 `true`。 有关详细信息，请查看[顶级先决条件](#prerequisites)。
+在已启用 Azure Arc 的 Kubernetes 群集上，必须将以前创建的应用服务捆绑包扩展的 `keda.enabled` 属性设置为 `true`。 有关详细信息，请查看[顶级先决条件](#prerequisites)。
 
 ### <a name="change-scaling-threshold"></a>更改缩放阈值
 
-在已启用 Azure Arc 的逻辑应用中，作业队列的长度会触发缩放事件，并为逻辑应用的缩放频率设置了阈值。 可更改队列长度，它的默认值设置为 `20` 个作业。 若要降低缩放频率，请增加队列长度。 若要增加缩放频率，请减小队列长度。 此过程可能需要用到某种试错方法。
+在已启用 Azure Arc 的逻辑应用中，作业队列的长度会触发缩放事件，并为逻辑应用的缩放频率设置阈值。 可更改队列长度，它的默认值设置为 `20` 个作业。 若要降低缩放频率，请增加队列长度。 若要增加缩放频率，请减小队列长度。 此过程可能需要用到某种试错方法。
 
 若要更改队列长度，在逻辑应用项目的根级别 host.json 文件中，设置 `Runtime.ScaleMonitor.KEDA.TargetQueueLength` 属性，例如：
 

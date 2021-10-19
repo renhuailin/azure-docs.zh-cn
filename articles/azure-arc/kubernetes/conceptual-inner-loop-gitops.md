@@ -8,12 +8,12 @@ author: sudivate
 ms.author: sudivate
 description: '本文提供采用 GitOps 的团队的内部循环开发人员体验的概念概述 '
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes 服务, 容器, CI, CD, Azure DevOps, 内部循环, 开发体验
-ms.openlocfilehash: 3c0e8041a31c506c926315381741afd75bb8a806
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 3bd60c3236bb187f14b924f4246d8e6fcfed4ed3
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113598554"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706411"
 ---
 # <a name="inner-loop-developer-experience-for-teams-adopting-gitops"></a>采用 GitOps 的团队的内部循环开发人员体验
 
@@ -90,6 +90,6 @@ ms.locfileid: "113598554"
 > [!NOTE]
 > 在此 [GitHub 存储库](https://github.com/Azure/arc-cicd-demo-src)中查找上述工作流的示例代码
 
-
 ## <a name="next-steps"></a>后续步骤
+
 详细了解如何在群集与 Git 存储库之间创建连接，用作[已启用 Azure Arc 的 Kubernetes 中的配置资源](./conceptual-configurations.md)

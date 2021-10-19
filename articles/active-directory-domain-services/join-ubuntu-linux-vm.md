@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 10/11/2021
 ms.author: justinha
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 79c3481f523efba4a88a0c559e7e1dcccbeba545
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: ea50fc8bfbaaf7383eb71b433fee97729967c061
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112516825"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856973"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>将 Ubuntu Linux 虚拟机加入到 Azure Active Directory 域服务托管域
 
@@ -35,7 +35,7 @@ ms.locfileid: "112516825"
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
     * 如果需要，请参考第一篇教程[创建并配置 Azure Active Directory 域服务托管域][create-azure-ad-ds-instance]。
-* 属于托管域的用户帐户。
+* 属于托管域的用户帐户。 请确保未自动生成用户的 SAMAccountName 属性。 如果 Azure AD 租户中的多个用户帐户具有相同的 mailNickname 属性，则系统会为每个用户生成 SAMAccountName 属性。 有关详细信息，请参阅[如何在 Azure Active Directory 域服务托管域中同步对象和凭据](synchronization.md)。
 * 唯一的 Linux VM 名称，最大长度为 15 个字符，可避免名称被截断，截断的名称可能会在 Active Directory 中导致冲突。
 
 ## <a name="create-and-connect-to-an-ubuntu-linux-vm"></a>创建并连接到 Ubuntu Linux VM

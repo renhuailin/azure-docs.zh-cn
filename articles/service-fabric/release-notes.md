@@ -5,12 +5,12 @@ ms.date: 04/13/2021
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 11615d48bb1331e068c685a507670f0add883344
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8404078943f9398df6604c78413bc3750f13d655
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721844"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729076"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric 版本
 
@@ -26,20 +26,23 @@ ms.locfileid: "121721844"
 
 ## <a name="service-fabric-81"></a>Service Fabric 8.1
 
-我们很高兴地宣布，Service Fabric 运行时 8.1 版本已经开始与工具和 SDK 更新一起向各个 Azure 区域推出。 .NET SDK、Java SDK 和 Service Fabric 运行时的更新可通过 Web 平台安装程序、NuGet 包和 Maven 存储库获得。
+我们很高兴地宣布，Service Fabric 运行时的 8.1 版本已经开始在不同的 Azure 区域推出，同时推出的还有工具和 SDK 更新。 .NET SDK、Java SDK 和 Service Fabric 运行时的更新可通过 Web 平台安装程序、NuGet 包和 Maven 存储库获得。
 
 ### <a name="key-announcements"></a>重要公告
-- 添加了对辅助副本的支持
+- 添加了对辅助复制的支持
 - 预览版添加了对 .NET 6.0 Service Fabric 应用程序的支持
 - 添加了对更新应用程序说明的 API 支持
-- 添加了在重新配置代理 (RA) 和重新配置代理程序代理 (RAP) 之间定期 ping，以检测 IPC 故障和进程停滞
-- 添加了对非容器化应用程序的运行状态和就绪情况探测的支持
+- 在重新配置代理 (RA) 与重新配置代理程序代理 (RAP) 之间添加了定期 ping 以检测 IPC 故障和进程停滞
+- 添加了对非容器化应用程序的运行情况和就绪情况探测的支持
 - 使节点容量更新的群集升级无影响
 
 ### <a name="service-fabric-81-releases"></a>Service Fabric 8.1 版本
 | 发布日期 | 发布 | 更多信息 |
 |---|---|---|
 | 2021 年 7 月 28 日 | [Azure Service Fabric 8.1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-1-release/ba-p/2594194)  | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_81.md)|
+| 2021 年 8 月 13 日 | [Azure Service Fabric 8.1 第一次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-1-first-refresh-release/ba-p/2638798) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_81CU1.md) |
+| 2021 年 9 月 9 日 | [Azure Service Fabric 8.1 第二次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-1-second-refresh-release/ba-p/2734904) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_81CU2.md) |
+| 2021 年 10 月 6 日 | [Azure Service Fabric 8.1 第三次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-1-third-refresh-release/ba-p/2816117) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_81CU3.md) |
 
 
 ## <a name="service-fabric-80"></a>Service Fabric 8.0

@@ -6,12 +6,12 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 06/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: 5060d8e3022d98c31d11ea570555b7c5bba3d062
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: d08f7678fa2a38f501c28938395bf152c6be7126
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112415635"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715831"
 ---
 # <a name="route-cloud-events-to-webhooks-with-azure-event-grid-on-kubernetes"></a>使用 Kubernetes 上的 Azure 事件网格将云事件路由到 Webhook
 在此快速入门中，你将在 Kubernetes 上的事件网格中创建一个主题，为该主题创建订阅，然后将示例事件发送到该主题以测试方案。 
@@ -56,7 +56,7 @@ ms.locfileid: "112415635"
     customlocationid=$(az customlocation show -n $customlocationname -g $resourcegroupname --query id -o tsv)    
     ```
 
-    有关创建自定义位置的详细信息，请参阅[在已启用 Azure Arc 的 Kubernetes 上创建和管理自定义位置](../../azure-arc/kubernetes/custom-locations.md)。 
+    若要详细了解如何创建自定义位置，请参阅[在已启用 Azure Arc 的 Kubernetes 上创建和管理自定义位置](../../azure-arc/kubernetes/custom-locations.md)。 
 
 ## <a name="create-a-topic"></a>创建主题
 在本节中，你将在上一步创建的自定义位置中创建一个主题。 运行该命令之前，请更新资源组和事件网格主题的名称。 如果你使用的是美国东部以外的位置，则请更新位置。 

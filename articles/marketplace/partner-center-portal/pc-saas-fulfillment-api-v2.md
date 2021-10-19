@@ -4,15 +4,15 @@ description: 了解如何在 Microsoft AppSource 和 Azure 市场中使用履行
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/10/2020
+ms.date: 10/08/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 194d9465d43de33f1f05e9587d2e166e9d2831f1
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: c420a2fd947e32acb0cce9a6ce4a73ddd1d2a3bd
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455126"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729133"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>商业市场中的 SaaS 履行 API 版本 2
 
@@ -30,11 +30,11 @@ ms.locfileid: "129455126"
 
 #### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>已购买但尚未激活 (PendingFulfillmentStart)
 
-最终用户（或云解决方案提供商）在商业市场中购买 SaaS 产品/服务后，发布者应会收到通知。 然后，发布者可以在发布者端为最终用户创建并配置新的 SaaS 帐户。
+最终用户或云解决方案提供商 (CSP) 在商业市场中购买 SaaS 产品/服务后，发布者应会收到购买通知。 然后，发布者可以在发布者端为最终用户创建并配置新的 SaaS 帐户。
 
 创建帐户的过程如下：
 
-1. 在 Microsoft AppSource 或 Azure 门户成功购买后，客户选择适用于 SaaS 产品/服务的“配置”按钮。 或者，客户可以使用他们在购买后不久即会收到的电子邮件中的“配置”按钮。
+1. 在 Microsoft AppSource 或 Azure 门户中成功购买后，客户选择适用于 SaaS 产品/服务的“立即配置帐户”按钮。 或者，客户可以使用他们在购买后不久即会收到的电子邮件中的“立即配置”按钮。
 2. 然后，Microsoft 将在新的浏览器标签页中打开包含令牌参数（商业市场中的购买标识令牌）的登陆页 URL，通知合作伙伴有人购买了产品/服务。
 
 此类调用的示例为 `https://contoso.com/signup?token=<blob>`，而在合作伙伴中心，此 SaaS 产品/服务的登陆页 URL 配置为 `https://contoso.com/signup`。 此令牌为发布者提供一个用于唯一标识 SaaS 购买项和客户的 ID。
@@ -84,7 +84,7 @@ ms.locfileid: "129455126"
 
 在此流中，客户从 Azure 门户或 Microsoft 365 管理中心更改订阅计划或座席数量。
 
-1. 输入更新后，Microsoft 将结合 action 和其他相关参数的值调用发布者的 Webhook URL，该 URL 是在合作伙伴中心的“连接 Webhook”字段中配置的。 
+1. 输入更新后，Microsoft 将结合 action 和其他相关参数的值，调用发布者的 Webhook URL，该 URL 是在合作伙伴中心的“技术配置”页上的“连接 Webhook”字段中配置的。
 1. 发布者端应该对 SaaS 服务进行所需的更改，并在完成后通过调用[更新操作状态 API](#update-the-status-of-an-operation) 来通知 Microsoft。
 1. 如果发送修补命令时出现失败状态，则更新过程不会在 Microsoft 端完成。 SaaS 订阅将保留现有的计划和座席数量。
 
@@ -580,7 +580,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 |  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  用于获取操作状态的 URL。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
+|  `Operation-Location`        |  用于获取操作状态的 URL。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
 
 代码：400 错误的请求: 验证失败。
 
@@ -645,7 +645,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 |  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  链接到资源以获取操作状态。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。  |
+|  `Operation-Location`        |  链接到资源以获取操作状态。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。  |
 
 代码：400 错误的请求: 验证失败。
 
@@ -710,7 +710,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 |  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  链接到资源以获取操作状态。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
+|  `Operation-Location`        |  链接到资源以获取操作状态。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
 
 代码：400 错误的请求。  删除操作未包含在此 SaaS 订阅的 `allowedCustomerOperations` 列表中。
 
@@ -727,8 +727,6 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 #### <a name="list-outstanding-operations"></a>列出未完成的操作 
 
 获取指定 SaaS 订阅的等待中操作列表。  发布者应该通过调用[操作修补 API](#update-the-status-of-an-operation) 来确认返回的操作。
-
-目前只会返回恢复操作作为此 API 调用的响应。
 
 ##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Get `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
 
@@ -750,7 +748,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 响应代码：
 
-代码：200 返回针对指定 SaaS 订阅的等待中恢复操作。
+代码：200，返回针对指定 SaaS 订阅的等待中操作。
 
 *响应有效负载示例：*
 
@@ -773,7 +771,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 }
 ```
 
-如果没有任何恢复操作等待执行，则返回空 JSON。
+如果没有任何操作等待执行，则返回空 json。
 
 代码：400 错误的请求: 验证失败。
 
@@ -902,7 +900,7 @@ Response body:
 在合作伙伴中心创建可交易的 SaaS 产品/服务时，合作伙伴需提供要用作 HTTP 终结点的连接 Webhook URL。  Microsoft 使用 POST HTTP 调用来调用此 Webhook，以通知发布者以下事件将在 Microsoft 端发生：
 
 * 当 SaaS 订阅处于“已取消订阅”状态时：
-    * ChangePlan 
+    * ChangePlan
     * ChangeQuantity
     * 挂起
     * 取消订阅

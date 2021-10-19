@@ -14,14 +14,14 @@ ms.author: davidmu
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
 ms.reviewer: hirsin
-ms.openlocfilehash: 56a4c06759841e5e011deb5fde50f1e9fe2cbea7
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: a266e60ef3079ecb12b227b047519abad5d26bf1
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061820"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619721"
 ---
-# <a name="configure-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置登录行为
+# <a name="configure-sign-in-behavior-in-azure-active-directory"></a>在 Azure Active Directory 中配置登录行为
 
 本文介绍了如何使用主领域发现 (HRD) 策略为联合用户配置 Azure Active Directory (Azure AD) 身份验证行为。  它涉及使用自动加速来跳过用户名输入屏幕，并自动将用户转发到联合登录终结点。  Microsoft 不再建议配置自动加速，因为它可能会阻止使用更强的身份验证方法（如 First Identity Online (FIDO)），并阻碍协作。
 

@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: fd50253b5fc77ec1042aada9351e85ee64035ec2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8a64c0e4a2c6ee080288bd0a700defc4adf598d2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740285"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708603"
 ---
 # <a name="set-up-a-resource-owner-password-credentials-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置资源所有者密码凭据流
 
@@ -54,15 +54,18 @@ ms.locfileid: "124740285"
 
 ##  <a name="create-a-resource-owner-user-flow"></a>创建资源所有者用户流
 
-1. 以 Azure AD B2C 租户的全局管理员身份登录 Azure 门户。
-2. 若要切换到 Azure AD B2C 租户，请在门户右上角选择 B2C 目录。
-3. 选择“用户流”，然后选择“新建用户流”。
-4. 选择“使用资源所有者密码凭据(ROPC)登录”。
-5. 在“版本”下，确保选中“预览版”，然后选择“创建”。  
-7. 提供用户流名称，例如 ROPC_Auth。
-8. 在“应用程序声明”下，单击“显示更多”。
-9. 选择应用程序所需的应用程序声明，例如“显示名称”、“电子邮件”和“标识提供者”。
-10. 选择“确定”，然后选择“创建” 。
+1. 以 Azure AD B2C 租户的全局管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+2. 确保正在使用包含 Azure AD B2C 租户的目录：
+    1. 在门户工具栏中选择“目录 + 订阅”图标。
+    1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
+1. 选择“用户流”，然后选择“新建用户流”。
+1. 选择“使用资源所有者密码凭据(ROPC)登录”。
+1. 在“版本”下，确保选中“预览版”，然后选择“创建”。  
+1. 提供用户流名称，例如 ROPC_Auth。
+1. 在“应用程序声明”下，单击“显示更多”。
+1. 选择应用程序所需的应用程序声明，例如“显示名称”、“电子邮件”和“标识提供者”。
+1. 选择“确定”，然后选择“创建” 。
 
 ::: zone-end
 
@@ -289,7 +292,7 @@ ms.locfileid: "124740285"
 - 将 `<tenant-name>` 替换为 Azure AD B2C 租户的名称。
 - 将 `B2C_1A_ROPC_Auth` 替换为资源所有者密码凭据策略的全名。
 
-| 密钥 | 值 |
+| 密钥 | Value |
 | --- | ----- |
 | username | `user-account` |
 | password | `password1` |

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 05/12/2021
 ms.author: lajanuar
 ms.custom: devx-track-js
-ms.openlocfilehash: 18111fcce10b5c139105d19edd3eda68c5dff33c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 880f27665b191df2459cbdc15b6a8afa47fd3f8c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652497"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715456"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -87,7 +87,7 @@ npm install @azure/ai-form-recognizer
 
 * 使用为了分析自定义表单而训练的自定义模型，来识别表单字段和内容。 这些值在 `RecognizedForm` 对象的集合中返回。
 * 无需训练模型即可识别表单内容，包括表格、行和单词。 表单内容在 `FormPage` 对象的集合中返回。
-* 使用表单识别器服务上预先训练的模型，识别美国回执、名片、发票和标识文件中的常见字段。
+* 使用表单识别器服务上预先训练的模型识别美国收据、名片、发票和 ID 文档中的常见字段。
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -190,11 +190,11 @@ First receipt:
 > [!TIP]
 > 还可以使用 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) 方法（例如 beginRecognizeInvoices）分析本地收据图像。 
 
-## <a name="analyze-identity-documents"></a>分析标识文档
+## <a name="analyze-id-documents"></a>分析 ID 文档
 
 本部分演示如何使用表单识别器预生成的 ID 模型，分析和提取政府颁发的标识文档（全球护照和美国驾照）中的关键信息。 有关 ID 文档分析的详细信息，请参阅[预生成的标识模型概念指南](../../concept-identification-cards.md)。
 
-若要分析位于某个 URL 的标识文档，请使用 `beginRecognizeIdDocumentsFromUrl` 方法。
+若要从 URL 分析 ID 文档，请使用 `beginRecognizeIdDocumentsFromUrl` 方法。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_id)]
 
@@ -432,7 +432,7 @@ node index.js
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../../cognitive-services/cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../../cognitive-services/cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../../cognitive-services/cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="troubleshooting"></a>疑难解答

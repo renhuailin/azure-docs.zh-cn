@@ -3,25 +3,22 @@ title: 适用于 DNS 的 Azure Defender - 优点和功能
 description: 了解适用于 DNS 的 Azure Defender 的优点和功能
 author: memildin
 ms.author: memildin
-ms.date: 08/18/2021
+ms.date: 10/11/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cffe4947e321cbd1f2cbb8a4d22141039129c1e1
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: ad2b761a747401646c48dcbf32385b8e5ec153c1
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419591"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740220"
 ---
 # <a name="introduction-to-azure-defender-for-dns"></a>适用于 DNS 的 Azure Defender 简介
 
-[Azure DNS](../dns/dns-overview.md) 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
+对于使用 Azure DNS 的[Azure 提供的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution)功能的资源，Azure Defender for DNS 提供了额外的一层保护。 
 
-适用于 DNS 的 Azure Defender 通过以下方式为连接到 Azure DNS 的资源提供了额外的一层保护：
-
-- 持续监视来自 Azure 资源的所有 DNS 查询
-- 运行高级安全分析，以发出有关可疑活动的警报
+在 Azure DNS 中，Defender for DNS 会监视来自这些资源的查询并检测可疑活动，而无需对资源使用任何其他代理。
 
 ## <a name="availability"></a>可用性
 
@@ -34,12 +31,12 @@ ms.locfileid: "122419591"
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-dns"></a>适用于 DNS 的 Azure Defender 有哪些优点？
 
-适用于 DNS 的 Azure Defender 会保护连接到 Azure DNS 的资源，防止出现以下问题：
+Azure Defender for DNS 会检测可疑活动和异常活动，例如：
 
 - 使用 DNS 隧道从 Azure 资源中泄漏数据
-- 恶意软件与 C&C 服务器通信
-- 以钓鱼和加密挖掘等方式与恶意域进行通信
+- 与命令和控制服务器通信的恶意软件
 - DNS 攻击 - 与恶意 DNS 解析器进行通信 
+- 与用于恶意活动（如钓鱼和加密挖掘）的域通信
 
 [警报参考页](alerts-reference.md#alerts-dns)上提供了由适用于 DNS 的 Azure Defender 提供的警报的完整列表。
 

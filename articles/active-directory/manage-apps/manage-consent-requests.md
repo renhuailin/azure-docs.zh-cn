@@ -1,6 +1,7 @@
 ---
-title: 在 Azure Active Directory 中管理应用程序的同意和评估同意请求
+title: 管理对应用程序的同意和评估同意请求
 description: 了解在 Azure Active Directory 中如何在禁用或限制用户同意时管理同意请求，以及如何评估对应用程序的租户范围管理员同意请求。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -11,14 +12,14 @@ ms.topic: how-to
 ms.date: 08/25/2021
 ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: a6bf1ec1616d45edd08b943b55f2859d7942c908
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 5de11c8f853d471ad616ff0a9df4d01acb896c3f
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425806"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619797"
 ---
-# <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>管理应用程序的同意和评估同意请求
+# <a name="manage-consent-to-applications-and-evaluate-consent-requests-in-azure-active-directory"></a>在 Azure Active Directory 中管理对应用程序的同意和评估同意请求
 
 Microsoft 建议[限制用户同意](../../active-directory/manage-apps/configure-user-consent.md)，以允许用户仅同意来自经验证的出版商的应用程序，并且只同意所选择的权限。 对于不满足此策略的应用，决策过程将集中于你的组织的安全和标识管理员团队。
 

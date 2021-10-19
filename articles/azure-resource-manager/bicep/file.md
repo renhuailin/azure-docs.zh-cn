@@ -2,13 +2,13 @@
 title: Bicep 文件结构和语法
 description: 使用声明性语法介绍 Bicep 文件的结构和属性。
 ms.topic: conceptual
-ms.date: 10/01/2021
-ms.openlocfilehash: e627821f80f76ff536859fd643bd01c55d50ab7e
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/07/2021
+ms.openlocfilehash: 8251c490b61f3bbb739fd9519c10b1b124f9064c
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350417"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129661115"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>了解 Bicep 文件的结构和语法
 
@@ -202,7 +202,7 @@ var uniqueStorageName = '${storagePrefix}${uniqueString(resourceGroup().id)}'
 
 ## <a name="resource"></a>资源
 
-使用关键字 `resource` 定义要部署的资源。 资源声明中包含资源的符号名称。 如果需要从资源中获取值，请在 Bicep 文件的其他部分中使用此符号名称。 符号名称可以包含 a-z、A-Z、0-9 和“_”，该名称不能以数字开头。
+使用关键字 `resource` 定义要部署的资源。 资源声明中包含资源的符号名称。 如果需要从资源中获取值，请在 Bicep 文件的其他部分中使用此符号名称。 符号名称区分大小写。 符号名称可以包含字母、数字和 _；但不能以数字开头。
 
 资源声明中还包含资源类型和 API 版本。
 

@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure AD 配置最终用户如何对应用程序表示同意
+title: 配置最终用户如何对应用程序表示同意
+titleSuffix: Azure AD
 description: 对于将有权访问你组织数据的应用程序，了解管理用户如何及何时对这些应用表示同意的方式。
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 06/01/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ecf463ed332299f20ef1d34f0c3158db31f52e8d
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 5289f9a6ed602df67d85cbb5b11875befec916f5
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113568039"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614890"
 ---
-# <a name="configure-how-end-users-consent-to-applications"></a>配置最终用户如何对应用程序表示同意
+# <a name="configure-how-end-users-consent-to-applications-using-azure-active-directory"></a>使用 Azure Active Directory 配置最终用户如何对应用程序表示同意
 
 你可以将应用程序与 Microsoft 标识平台集成，以允许用户使用其工作或学校帐户登录和访问你组织的数据，从而提供丰富的数据驱动体验。
 

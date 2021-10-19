@@ -1,60 +1,68 @@
 ---
 title: HB 系列停用
-description: HB 系列自 2021 年 9 月 1 日起停用
+description: 2021 年 9 月 1 日开始停用 HB 系列。
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 08/02/2021
 ms.author: amverma
-ms.openlocfilehash: 2d14b9b3adb9905cc87408db33018746e1479a1b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f582aad0b5af8053ff7accfac2917d4d5191ce5d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680084"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712156"
 ---
 # <a name="migrate-your-hb-series-virtual-machines-by-august-31-2024"></a>在 2024 年 8 月 31 日前迁移 HB 系列虚拟机
-由于 Microsoft Azure 已针对高性能计算 (HPC) 推出 HBv2 和 HBv3 系列虚拟机，因此我们建议你将原始 HB 系列虚拟机中的工作负载迁移至我们较新的产品。  
 
-Azure [HBv2](hbv2-series.md) 和 [HBv3](hbv3-series.md) 虚拟机具有以下优势：内存带宽更大、改进了远程直接内存访问 (RDMA) 网络功能、本地固态硬盘容量更大且处理速度更快，以及能以更低成本/更高性能处理各种 HPC 工作负载。 因此，我们将于 2024 年 8 月 31 日停用 HB 系列 Azure 虚拟机大小。
+Microsoft Azure 为高性能计算 (HPC) 推出了 HBv2 和 HBv3 系列虚拟机 (VM)。 因此，我们建议将工作负载从原始 HB 系列 VM 迁移到我们的新产品/服务。
 
-## <a name="how-does-the-hb-series-migration-affect-me"></a>HB 系列迁移对我有何影响？  
+Azure [HBv2](hbv2-series.md) 和 [HBv3](hbv3-series.md) VM 具有以下优势：内存带宽更大、改进了远程直接内存访问 (RDMA) 网络功能、本地固态硬盘容量更大且处理速度更快，以及能以更低成本和更高性能处理各种 HPC 工作负载。 因此，我们将在 2024 年 8 月 31 日停用 HB 系列 Azure VM 大小。
 
-2024 年 8 月 31 日之后，任何剩余的 HB 大小虚拟机订阅都将设置为已解除分配状态且停止提供服务，并且不再产生计费费用。  
+## <a name="how-does-the-hb-series-migration-affect-me"></a>HB 系列迁移对我有何影响？
+
+2024 年 8 月 31 日之后，所有剩余的 HB 大小 VM 订阅将设置为已解除分配状态。 这些订阅将停止工作，且不再产生费用。
+
 > [!NOTE]
-> 此次 VM 大小停用只会影响到 HB 系列中的 VM 大小。 本停用公告不适用于较新的 HBv2、HBv3 和 HC 系列虚拟机。 
+> 此次 VM 大小停用只会影响到 HB 系列中的 VM 大小。 本停用公告不适用于较新的 HBv2、HBv3 和 HC 系列 VM。
 
-## <a name="what-actions-should-i-take"></a>我应该采取什么措施？  
+## <a name="what-actions-should-i-take"></a>我应该采取什么措施？
 
-你需要针对 H 系列虚拟机执行调整大小或解除分配操作。 我们建议你将原始 H 系列（包括 H 系列促销）虚拟机中的工作负载迁移至我们较新的产品/服务。
+需要调整 H 系列 VM 的大小或将其解除分配。 我们建议将工作负载从原始 H 系列 VM 和 H 系列促销 VM 迁移到我们的较新产品/服务。
 
-与 HB 系列相比，[HBv2](hbv2-series.md) 和 [HBv3](hbv3-series.md) VM 大幅改进了 CPU 核心体系结构、提高了内存带宽、扩大了 L3 缓存并增强了 InfiniBand 网络功能，因而能以较低成本提供更出色的 HPC 工作负载性能。 因此，HBv2 和 HBv3 系列通常可以显著提高每个成本单位产生的性能（即在支出不变的情况下最大限度提升性能），以及降低每个性能单位消耗的成本（即在性能不变的情况下最大限度降低所耗成本）。
+[HBv2](hbv2-series.md) 和 [HBv3](hbv3-series.md) VM 提供的 HPC 工作负载性能和成本效率要高得多，因为：
 
-含 HB 系列 VM 的所有区域都包含 HBv2 和 HBv3 系列虚拟机，因此你可以迁移在 HB 系列 VM 上运行的现有工作负载，而无需考虑放置虚拟机的地理位置或访问这些区域的其他服务。 
+- CPU 核心体系结构有了重大改进。
+- 内存带宽更高。
+- L3 缓存更大。
+- 与 HB 系列相比，InfiniBand 网络已得到增强。
 
-[HB 系列](hb-series.md) VM 不会于 2024 年 9 月之前停用，因此我们提前提供本指南，以便为客户提供较长时间来评估、计划和执行其迁移工作。 
+因此，HBv2 和 HBv3 系列通常可以显著提高每个成本单位产生的性能（即在支出不变的情况下最大限度提升性能），以及降低每个性能单位消耗的成本（即在性能不变的情况下最大限度降低所耗成本）。
 
-### <a name="recommendations-for-workload-migration-from-hb-series-virtual-machines"></a>从 HB 系列虚拟机迁移工作负载的建议方案 
+包含 HB 系列 VM 的所有区域都包含 HBv2 和 HBv3 系列 VM。 可以迁移 HB 系列 VM 上运行的现有工作负载，而无需考虑地理位置，或者如何访问这些区域中的其他服务。
+
+[HB 系列](hb-series.md) VM 在 2024 年 9 月之前不会停用。 我们提前发布本指南的目的是使你有充足的时间可以评估、规划和执行迁移。
+
+### <a name="recommendations-for-workload-migration-from-hb-series-vms"></a>有关从 HB 系列 VM 迁移工作负载的建议
 
 | 当前 VM 大小 | 目标 VM 大小 | 规格差异  |
 |---|---|---|
-|Standard_HB60rs |Standard_HB120rs_v2 <br> Standard_HB120rs_v3 <br> Standard_HB120-64rs_v3 |更新的 CPU：AMD Rome 和 MiIan (+20-30% IPC) <br> 内存：RAM 至多扩大 2 倍  <br> 内存带宽：至多提高 30% <br> InfiniBand：200 Gb HDR（带宽提高 2 倍） <br> 最大数据磁盘数：多达 32（增加 8 倍） |
-|Standard_HB60-45rs |Standard_HB120-96rs_v3 <br> Standard_HB120-64rs_v3 <br> Standard_HB120-32rs_v3 |更新的 CPU：AMD Rome 和 MiIan (+20-30% IPC) <br> 内存：RAM 至多扩大 2 倍  <br>  内存带宽：至多提高 30% <br> InfiniBand：200 Gb HDR（带宽提高 2 倍） <br> 最大数据磁盘数：多达 32（增加 8 倍） |
-|Standard_HB60-30rs |Standard_HB120-32rs_v3 <br> Standard_HB120-16rs_v3 |更新的 CPU：AMD Rome 和 MiIan (+20-30% IPC) <br> 内存：RAM 至多扩大 2 倍 <br> 内存带宽：至多提高 30% <br> InfiniBand：200 Gb HDR（带宽提高 2 倍） <br> 最大数据磁盘数：多达 32（增加 8 倍） |
-|Standard_HB60-15rs |Standard_HB120-16rs_v3 |更新的 CPU：AMD Rome 和 MiIan (+20-30% IPC) <br> 内存：RAM 至多扩大 2 倍 <br> 内存带宽：至多提高 30% <br> InfiniBand：200 Gb HDR（带宽提高 2 倍） <br> 最大数据磁盘数：多达 32（增加 8 倍） |
+|Standard_HB60rs |Standard_HB120rs_v2 <br> Standard_HB120rs_v3 <br> Standard_HB120-64rs_v3 |更新的 CPU：AMD Rome 和 MiIan (+20-30% IPC) <br> 内存：RAM 至多扩大 2 倍  <br> 内存带宽：提高多达 30% <br> InfiniBand：200 Gb HDR（带宽提高 2 倍） <br> 最大数据磁盘数：多达 32（增加 8 倍） |
+|Standard_HB60-45rs |Standard_HB120-96rs_v3 <br> Standard_HB120-64rs_v3 <br> Standard_HB120-32rs_v3 |更新的 CPU：AMD Rome 和 MiIan (+20-30% IPC) <br> 内存：RAM 至多扩大 2 倍  <br>  内存带宽：提高多达 30% <br> InfiniBand：200 Gb HDR（带宽提高 2 倍） <br> 最大数据磁盘数：多达 32（增加 8 倍） |
+|Standard_HB60-30rs |Standard_HB120-32rs_v3 <br> Standard_HB120-16rs_v3 |更新的 CPU：AMD Rome 和 MiIan (+20-30% IPC) <br> 内存：RAM 至多扩大 2 倍 <br> 内存带宽：提高多达 30% <br> InfiniBand：200 Gb HDR（带宽提高 2 倍） <br> 最大数据磁盘数：多达 32（增加 8 倍） |
+|Standard_HB60-15rs |Standard_HB120-16rs_v3 |更新的 CPU：AMD Rome 和 MiIan (+20-30% IPC) <br> 内存：RAM 至多扩大 2 倍 <br> 内存带宽：提高多达 30% <br> InfiniBand：200 Gb HDR（带宽提高 2 倍） <br> 最大数据磁盘数：多达 32（增加 8 倍） |
 
+### <a name="migration-steps"></a>迁移步骤
 
-### <a name="migration-steps"></a>迁移步骤 
-1. 选择迁移的系列和大小。 
-2. 获取目标 VM 系列的配额 
-3. 将当前 HB 系列 VM 大小调整为目标大小 
+1. 选择迁移的系列和大小。
+1. 获取目标 VM 系列的配额。
+1. 将当前 HB 系列 VM 大小调整为目标大小。
 
-
-### <a name="get-quota-for-the-target-vm-family"></a>获取目标 VM 系列的配额 
+### <a name="get-a-quota-for-the-target-vm-family"></a>获取目标 VM 系列的配额
 
 按照指南进行操作，[请求提高 VM 系列的 vCPU 配额](../azure-portal/supportability/per-vm-quota-requests.md)。
 
+### <a name="resize-the-current-vm"></a>重设当前 VM 大小
 
-### <a name="resize-the-current-virtual-machine"></a>调整当前虚拟机的大小
 可以[重设虚拟机大小](resize-vm.md)。

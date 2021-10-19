@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: bf35868d67dab2cb48aee5c85b964f86abd912e3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 74dea2337bb40469e4d4e94117df080960faca53
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128653771"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858765"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -75,7 +75,7 @@ IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS)](../../iot-dps/abou
 
 要将具有设备 SAS 密钥的设备连接到应用程序，请执行以下操作：
 
-1. 创建使用共享访问签名 (SAS) 证明类型的注册组。
+1. 创建使用共享访问签名 (SAS) 证明类型的注册组。 
 1. 从注册组中复制组主密钥或辅助密钥。
 1. 使用 Azure CLI 从组密钥生成设备密钥：
 
@@ -84,6 +84,9 @@ IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS)](../../iot-dps/abou
     ```
 
 1. 当设备连接到 IoT Central 应用程序时，使用生成的设备密钥。
+
+> [!NOTE]
+> 若要使用注册组中的现有 SAS 密钥，请禁用“自动生成密钥”切换按钮，然后键入 SAS 密钥。
 
 ## <a name="individual-enrollment"></a>单独注册
 

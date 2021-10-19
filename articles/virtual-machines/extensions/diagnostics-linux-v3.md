@@ -9,12 +9,12 @@ ms.author: amjads
 ms.collection: linux
 ms.date: 12/13/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 20be29d428fe6eaf9e7e64b4536c5014641c5416
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 04264276b3419e32aa420792027502ce3d1acbb2
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962537"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669675"
 ---
 # <a name="use-linux-diagnostic-extension-30-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展 3.0 监视指标和日志
 
@@ -62,7 +62,7 @@ LAD 支持以下分发和版本。 分发和版本的列表仅适用于 Azure �
 
 支持的分发和版本：
 
-- Ubuntu 18.04、16.04、14.04
+- Ubuntu 20.04、18.04、16.04、14.04
 - CentOS 7、6.5+
 - Oracle Linux 7、6.4+
 - OpenSUSE 13.1+
@@ -232,7 +232,7 @@ Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location 
 }
 ```
 
-名称 | Value
+名称 | 值
 ---- | -----
 storageAccountName | 扩展写入数据的存储帐户的名称。
 storageAccountEndPoint | （可选）标识存储帐户所在云的终结点。 如果缺少此设置，则 LAD 默认为 Azure 公有云 `https://core.windows.net`。 若要使用 Azure 德国、Azure 政府或 Azure 中国世纪互联中的存储帐户，请根据需要设置此值。
@@ -270,7 +270,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 
 `sinksConfig` 可选部分用于定义扩展要将其收集到的信息发送到的更多的目的地。 `sink` 数组包含每个附加数据接收器的对象。 `type` 特性确定对象中的其他特性。
 
-元素 | Value
+元素 | 值
 ------- | -----
 name | 在扩展配置中其他位置引用此接收器的字符串。
 type | 要定义的接收器的类型。 确定此类型实例中的其他值（如果有）。
@@ -362,7 +362,7 @@ mdsdHttpProxy | （可选）与[受保护的设置](#protected-settings)中的�
 * `performanceCounters` 或 `syslogEvents` 或两者兼备。 
 * `metrics` 结构。
 
-元素 | Value
+元素 | 值
 ------- | -----
 eventVolume | （可选）控制在存储表中创建的分区数。 必须为 `"Large"`、`"Medium"` 或 `"Small"`。 如果未指定值，则默值认为 `"Medium"`。
 sampleRateInSeconds | （可选）两次收集原始（未聚合）指标之间的默认时间间隔。 支持的最小采样率为 15 秒。 如果未指定值，则默认值为 `15`。
@@ -506,7 +506,7 @@ minSeverity | Syslog 严重性级别，例如 `"LOG_ERR"` 或 `"LOG_INFO"`。 �
 ]
 ```
 
-元素 | Value
+元素 | 值
 ------- | -----
 命名空间 | （可选）应在其中运行查询的 OMI 命名空间。 如果未指定，则默认值为 `"root/scx"`。 由 [System Center 跨平台提供程序](https://github.com/Microsoft/SCXcore)实现。
 query | 要运行的 OMI 查询。

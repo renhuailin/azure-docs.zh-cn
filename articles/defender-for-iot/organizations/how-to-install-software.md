@@ -1,18 +1,18 @@
 ---
 title: Defender for IoT 安装
 description: 了解如何安装适用于 Azure Defender for IoT 的传感器和本地管理控制台。
-ms.date: 10/05/2021
+ms.date: 10/09/2021
 ms.topic: how-to
-ms.openlocfilehash: a5b4beff2d01896082974bf761cb7544d439af9e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: f23c5fe84959045ba0446ad03c9a990a7bbb2014
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537311"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754532"
 ---
 # <a name="defender-for-iot-installation"></a>Defender for IoT 安装
 
-本文介绍如何安装 Azure Defender for IoT 的以下元素：
+本文介绍如何安装以下 Azure Defender for IoT 组件：
 
 - **传感器**：Defender for IoT 传感器使用被动（无代理）监视收集 ICS 网络流量。 这些传感器属被动非侵入式传感器，对 OT 和 IoT 网络和设备不会有任何影响。 传感器在连接到 SPAN 端口或网络 TAP 后，会立即开始监视你的网络。 检测结果显示在传感器控制台中。 在那里，你可以在网络映射、设备清单和各种报表中查看、调查和分析它们。 例如，风险评估报表、数据挖掘查询、攻击途径。 有关传感器功能的详细信息，请阅读 [Defender for IoT 传感器用户指南（直接下载）](./getting-started.md)。
 
@@ -43,7 +43,7 @@ Defender for IoT 设备传感器在连接到 SPAN 端口或网络 TAP 后，会�
 | **Model** | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 | HPE EL300 |
 | **监视端口** | 最多 15 个 RJ45 或 8 个 OPT | 最多 8 个 RJ45 或 6 个 OPT | 最多 4 个 RJ45 | 最多 5 个 RJ45 |
 | **最大带宽\*** | 3 Gb/秒 | 1 Gb/秒 | 200 Mb/秒 | 100 Mb/秒 |
-| **受保护设备的最大数目** | 30,000 | 15,000 | 1,000 | 800 |
+| **受保护设备的最大数目** | 10,000 | 10,000 | 1,000 | 800 |
 
 *最大带宽容量可能因协议分配而异。
 
@@ -55,7 +55,7 @@ Defender for IoT 设备传感器在连接到 SPAN 端口或网络 TAP 后，会�
 |--|--|--|--|
 | **说明** | 适用于企业部署的虚拟设备 | 适用于企业部署的虚拟设备 | 适用于 SMB 部署的虚拟设备 |
 | **最大带宽\*** | 2.5 Gb/秒 | 800 Mb/秒 | 160 Mb/秒 |
-| **受保护设备的最大数目** | 30,000 | 10,000 | 800 |
+| **受保护设备的最大数目** | 10,000 | 10,000 | 800 |
 | **部署类型** | 企业 | Enterprise | SMB |
 
 *最大带宽容量可能因协议分配而异。
@@ -1361,7 +1361,7 @@ sudo ethtool -p <port value> <time-in-seconds>
 
 ## <a name="configure-a-span-port"></a>配置 SPAN 端口
 
-vSwitch 没有镜像功能，但你可以使用一种解决方法来实现 SPAN 端口。 可以通过 ESXi 或 Hyper-V 实现此变通方法。
+虚拟交换机没有镜像功能。 但是，可以在虚拟交换机环境中使用混杂模式。 混杂模式是一种操作模式，也是一种在虚拟交换机或端口组级别定义的安全、监视和管理方法。 默认情况下，混杂模式处于禁用状态。 启用混杂模式后，位于相同端口组中的虚拟机网络接口将使用混杂模式来查看通过该虚拟交换机的所有网络流量。 可以通过 ESXi 或 Hyper-V 实现此变通方法。
 
 :::image type="content" source="media/tutorial-install-components/purdue-model.png" alt-text="体系结构中传感器应放置位置的屏幕截图。":::
 

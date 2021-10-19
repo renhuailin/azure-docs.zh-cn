@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 PowerShell 创建 blob
+title: 快速入门：上传、下载和列出 Blob - Azure PowerShell
 titleSuffix: Azure Storage
 description: 本快速入门将在对象 (Blob) 存储中使用 Azure PowerShell。 然后，使用该 PowerShell 将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
 services: storage
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 03/31/2020
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 56919745c893a8ba05538c8b1e342b4bbdd0e6fc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9060660328367d08d849c7a72ca0e69b68a0c20a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662548"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616524"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>快速入门：使用 PowerShell 上传、下载和列出 blob
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 916c5191acb0f7245c929c6ef1db5fca4fc3841b
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 54af9f4b8584500faa9c3134f350a436da54c24b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352461"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709976"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>什么是 Azure Active Directory B2C？
 
@@ -25,10 +25,10 @@ Azure Active Directory B2C 以服务的形式提供企业到客户的标识。 �
 
 Azure AD B2C 是一个客户标识访问管理 (CIAM) 解决方案，每天能够支持数百万用户和数十亿次身份验证。 它负责身份验证平台的缩放和安全性，并监视和自动处理拒绝服务、密码喷射或暴力攻击等威胁。
 
-Azure AD B2C 是一项独立于 [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) 的服务。 它是基于与 Azure AD 相同的技术构建的，但用于不同的目的：使企业能够生成面向客户的应用程序，然后使任何人都能注册这些应用程序，而对用户帐户没有限制。
+Azure AD B2C 是一项独立于 [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) 的服务。 它基于与 Azure AD 相同的技术进行构建，但用途不同。 它使企业能够生成面向客户的应用程序，然后使任何人都能注册这些应用程序，而对用户帐户没有限制。
    
 ## <a name="who-uses-azure-ad-b2c"></a>谁在使用 Azure AD B2C？
-希望使任何人都能注册其 Web/移动应用程序的任何企业或个人。 
+任何希望使用白标签身份验证解决方案对终端用户进行 web/移动应用程序身份验证的企业或个人。 除了身份验证，Azure AD B2C 服务还可用于授权，如授权经过身份验证的用户访问 API 资源等。 Azure AD B2C 由“IT 管理员”和“开发者”使用 。
 
 ## <a name="custom-branded-identity-solution"></a>自定义品牌的标识解决方案
 

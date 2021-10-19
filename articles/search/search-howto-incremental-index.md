@@ -6,20 +6,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 4165768837f590690a39226b983b4d32361957e3
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.date: 10/06/2021
+ms.openlocfilehash: 5ea2c908cce37e19023e27b0e3e4cc76f778b7f0
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730552"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620158"
 ---
-# <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为增量扩充配置缓存
+# <a name="configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>在 Azure 认知搜索中为增量扩充配置缓存
 
 > [!IMPORTANT] 
-> 此功能根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)处于公开预览状态。 [预览版 REST API](/rest/api/searchservice/index-preview) 支持此功能
+> 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，此功能以公共预览版提供。 [预览版 REST API](/rest/api/searchservice/index-preview) 支持此功能
 
-本文介绍如何将缓存添加到扩充管道，以便能够以增量方式修改步骤，而无需每次更改后都要重新生成。 默认情况下，技能集是无状态的，更改其任何构成部分都要从头到尾地重新运行索引器。 使用增量扩充时，索引器可以根据技能集或索引器定义中检测到的更改，确定需要刷新文档树的哪些组成部分。 现有的已处理输出将会保留，在可能的情况下可供重复使用。 
+本文说明了如何将缓存添加到扩充管道，以便能够以增量方式修改步骤，而无需每次更改后都要重新生成。 默认情况下，技能集是无状态的，更改其任何构成部分都要从头到尾地重新运行索引器。 使用增量扩充时，索引器可以根据技能集或索引器定义中检测到的更改，确定需要刷新文档树的哪些组成部分。 现有的已处理输出将会保留，在可能的情况下可供重复使用。 
 
 使用提供的帐户信息将缓存的内容放置在 Azure 存储中。 在运行索引器时，将创建名为 `ms-az-search-indexercache-<alpha-numerc-string>` 的容器。 应将此容器视为搜索服务管理的内部组件，不得对它进行修改。
 
@@ -29,12 +29,9 @@ ms.locfileid: "114730552"
 
 如果现有的索引器已有一个技能集，请遵循本部分中的步骤添加缓存。 在增量处理生效之前，必须先重置并从头到尾地重新运行索引器。这是一次性的操作。
 
-> [!TIP]
-> 作为概念证明，可以通读此[门户快速入门](cognitive-search-quickstart-blob.md)来创建必要的对象，然后使用 Postman 或门户进行更新。 你可能想要附加计费的认知服务资源。 多次运行索引器会耗尽每日的免费资源分配，导致无法完成所有步骤。
-
 ### <a name="step-1-get-the-indexer-definition"></a>步骤 1：获取索引器定义
 
-从包含以下组件的现有有效索引器开始：数据源、技能集和索引。 索引器应可运行。 
+从包含以下组件的现有有效索引器开始：数据源、技能集和索引。 索引器应可运行。
 
 使用 API 客户端构造[获取索引器请求](/rest/api/searchservice/get-indexer)，以获取索引器的当前配置。 使用预览版 API 获取索引器时，会将一个设置为 null 的 `cache` 属性添加到定义中。
 

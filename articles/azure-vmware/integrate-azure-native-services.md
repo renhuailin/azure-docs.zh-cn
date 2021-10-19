@@ -3,12 +3,12 @@ title: 使用 Azure 原生服务监视和保护 VM
 description: 了解如何集成和部署 Microsoft Azure 原生工具，以监视和管理 Azure VMware 解决方案工作负载。
 ms.topic: how-to
 ms.date: 08/15/2021
-ms.openlocfilehash: 19453eeb652a0303e0447a80e37b63613aa92255
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fa3a30ce3908494e1fdf0470781f4057279fe001
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124799313"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714966"
 ---
 # <a name="monitor-and-protect-vms-with-azure-native-services"></a>使用 Azure 原生服务监视和保护 VM
 
@@ -16,7 +16,7 @@ Microsoft Azure 原生服务可让你监视、管理和保护混合环境（Azur
 
 可与 Azure VMware 解决方案集成的 Azure 原生服务包括：
 
-- Azure Arc 可将 Azure 管理扩展到任何基础结构，包括 Azure VMware 解决方案、本地或其他云平台。 利用[启用了 Azure Arc 的服务器](../azure-arc/servers/overview.md)，可以管理 Windows 和 Linux 物理服务器和虚拟机，这些服务器和虚拟机托管在 Azure（或其他云提供商）外部的企业网络中。 可以使用[已启用 Azure Arc 的 Kubernetes](../azure-arc/kubernetes/overview.md) 附加在 Azure VMware 解决方案环境中托管的 Kubernetes 群集。 
+- Azure Arc 可将 Azure 管理扩展到任何基础结构，包括 Azure VMware 解决方案、本地或其他云平台。 通过[已启用 Azure Arc 的服务器](../azure-arc/servers/overview.md)，可管理 Windows 和 Linux 物理服务器和虚拟机，这些内容托管在 Azure 外部（在公司网络或其他云提供商处）。 可以使用[已启用 Azure Arc 的 Kubernetes](../azure-arc/kubernetes/overview.md) 附加在 Azure VMware 解决方案环境中托管的 Kubernetes 群集。 
 
 - Azure Monitor 用于收集、分析和响应来自云和本地环境的遥测数据。 它不需要部署。  你可以监视来宾操作系统性能，以发现和映射 Azure VMware 解决方案或本地 VM 的应用程序依赖项。 通过 Azure Monitor 中的 Log Analytics 工作区可以使用 Log Analytics 代理或扩展启用日志收集和性能计数器收集。 
 
@@ -92,7 +92,6 @@ Azure 自动化中的 [Azure 更新管理](../automation/update-management/overv
  
 1. 启用更新管理后，可以[在 VM 上部署更新并查看结果](../automation/update-management/deploy-updates.md)。 
 
-
 ## <a name="enable-azure-security-center"></a>启用 Azure 安全中心
 
 评估 Azure VMware 解决方案 VM 的漏洞，必要时引发警报。 这些安全警报可以转发到 Azure Monitor 以进行解决。 有关详细信息，请参阅 [VM 支持的功能](../security-center/security-center-services.md)。
@@ -124,8 +123,7 @@ Azure 安全中心提供许多功能，包括：
 
 
 
-## <a name="onboard-hybrid-kubernetes-clusters-with-arc-enabled-kubernetes"></a>使用已启用 Arc 的 Kubernetes 加入混合 Kubernetes 群集
-
+## <a name="onboard-hybrid-kubernetes-clusters-with-azure-arc-enabled-kubernetes"></a>使用已启用 Azure Arc 的 Kubernetes 加入混合 Kubernetes 群集
 
 使用已启用 Azure Arc 的 Kubernetes 附加在 Azure VMware 解决方案环境中托管的 Kubernetes 群集。 有关详细信息，请参阅[创建已启用 Azure Arc 的加入服务主体](../azure-arc/kubernetes/create-onboarding-service-principal.md)。
 

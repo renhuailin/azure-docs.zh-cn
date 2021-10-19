@@ -3,16 +3,16 @@ title: Azure Defender 和可用计划概述
 description: 了解 Azure Defender 的计划、保护和警报。 然后在订阅上针对高级安全启用 Azure Defender 。
 author: memildin
 ms.author: memildin
-ms.date: 9/30/2020
+ms.date: 10/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cfbb8badd4a0d9a8b9776d810d33f77a051b3a39
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 34d450535b25b8d3ba1bcc69b54a27d6aab73115
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112238957"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715400"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 简介
 
@@ -57,7 +57,7 @@ Azure Defender 为虚拟机、SQL 数据库、容器、web 应用程序、网络
 
 可根据你的特定环境获取自定义威胁智能和设置了优先级别的警报，这样你便能够专注于最重要的事务。
 
-若要将 Azure Defender 的保护扩展到其他云中或本地的虚拟机和 SQL 数据库，可部署 [Azure Arc](https://azure.microsoft.com/services/azure-arc/) 并启用 Azure Defender。 Azure Arc for servers 是一项免费服务，但在启用了 Arc 的服务器上使用的服务（例如 Azure Defender）将按照该服务的定价收费。 详细了解[使用 Azure Arc 添加非 Azure 计算机](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc)。
+若要将 Azure Defender 的保护扩展到其他云中或本地的虚拟机和 SQL 数据库，可部署 [Azure Arc](https://azure.microsoft.com/services/azure-arc/) 并启用 Azure Defender。 Azure Arc for servers 是一项免费服务，但在启用了 Azure Arc 的服务器上使用的服务（例如 Azure Defender）将按照该服务的定价收费。 详细了解[使用 Azure Arc 添加非 Azure 计算机](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc)。
 
 > [!TIP]
 > 适用于 AWS 的本机连接器以透明方式处理 Azure Arc 部署。 在[将 AWS 帐户连接到 Azure 安全中心](quickstart-onboard-aws.md)中了解详细信息。
@@ -84,13 +84,18 @@ Azure Defender 在定制与资源相关的建议时会使用高级分析。
 
 ## <a name="vulnerability-assessment-and-management"></a>漏洞评估和管理
 
-Azure Defender 为你的虚拟机和容器注册表提供漏洞扫描，且无需额外付费。 扫描程序由 Qualys 提供支持，但你无需具备 Qualys 许可证，甚至也不需要 Qualys 帐户 - 所有操作都在安全中心内无缝执行。 
+Azure Defender 为你的虚拟机和容器注册表提供漏洞评估，且无需额外付费。 某些扫描程序由 Qualys 提供支持，但你无需具备 Qualys 许可证，甚至也不需要 Qualys 帐户 - 所有操作都在安全中心内无缝执行。 
+
+如果已启用[与 Microsoft Defender for Endpoint 的集成](security-center-wdatp.md)，则可以从 Microsoft 威胁和漏洞管理访问漏洞发现结果。 若要了解详细信息，请参阅[通过 Microsoft Defender for Endpoint 威胁和漏洞管理调查弱点](deploy-vulnerability-assessment-tvm.md)。
 
 查看这些漏洞扫描程序中的发现结果，并相应从安全中心内部作出全部响应。 这使安全中心更接近于用于集中了解所有云安全工作情况的统一视窗。
 
+> [!IMPORTANT]
+> 默认启用安全中心与 Microsoft Defender for Endpoint 的集成。 因此，启用 Azure Defender 即同意适用于服务器的 Azure Defender 访问与漏洞、已安装的软件和终结点的警报相关的 Microsoft Defender for Endpoint 数据。
+
 通过以下页面了解详细信息：
 
-- [Azure 虚拟机安全中心的集成漏洞评估解决方案](deploy-vulnerability-assessment-vm.md)
+- [适用于 Azure 和混合计算机的 Azure Defender 的集成式 Qualys 扫描程序](deploy-vulnerability-assessment-vm.md)
 - [标识 Azure 容器注册表映像中的漏洞](defender-for-container-registries-usage.md#identify-vulnerabilities-in-images-in-other-container-registries)
 
 

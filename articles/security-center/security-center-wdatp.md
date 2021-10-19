@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 08/16/2021
+ms.date: 10/08/2021
 ms.author: memildin
-ms.openlocfilehash: a57a94b8ee0bb91deb0b15a3da0265af15dbc3a3
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 174540ecdfe54073c30cdc7b71952c0621a66ba8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536295"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710731"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>通过安全中心的集成式 EDR 解决方案 Microsoft Defender for Endpoint 来保护终结点
 
@@ -48,6 +48,10 @@ Microsoft Defender for Endpoint 提供：
 
 - 高级入侵后检测传感器。 Defender for Endpoint 传感器可收集计算机中的大量行为信号。
 
+- Microsoft 威胁和漏洞管理解决方案中的漏洞评估。 启用 Microsoft Defender for Endpoint 后，安全中心可以显示威胁和漏洞管理模块发现的漏洞，并可以提供此模块作为支持的漏洞评估解决方案。 若要了解详细信息，请参阅[通过 Microsoft Defender for Endpoint 的威胁和漏洞管理调查弱点](deploy-vulnerability-assessment-tvm.md)。
+
+    此模块还引入了[访问软件清单](asset-inventory.md#access-a-software-inventory)中所述的软件清单功能。可以使用[自动部署设置](auto-deploy-vulnerability-assessment.md)为支持的计算机自动启用此模块。
+
 - 基于分析的、由云提供支持的入侵后检测。 Defender for Endpoint 可快速应对不断变化的威胁。 它使用高级分析和大数据。 Defender for Endpoint 借助 Intelligent Security Graph 的强大功能得以增强，并结合 Windows、Azure 和 Office 中的信号来检测未知威胁。 它提供可以采取措施的警报，并可让你快速做出响应。
 
 - **威胁智能**。 Defender for Endpoint 在识别攻击者工具、方法和过程时生成警报。 它使用 Microsoft 威胁猎人和安全团队生成的，并由合作伙伴提供的情报补充的数据。
@@ -78,9 +82,12 @@ Microsoft Defender for Endpoint 提供：
 
     - **Azure 虚拟机（Windows 或 Linux）** ：请按照配置设备代理和 Internet 连接设置：[Windows](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet) 或 [Linux](/microsoft-365/security/defender-endpoint/linux-static-proxy-configuration) 中所述配置网络设置。
 
-    - **本地计算机**：请将目标计算机连接到 Azure Arc，如 [将混合计算机连接到已启用 Azure Arc 的服务器](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)中所述。
+    - 本地计算机 - 将目标计算机连接到 Azure Arc，如[将混合计算机连接到已启用 Azure Arc 的服务器](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)中所述。
 
 1. 启用适用于服务器的 Azure Defender。 请参阅[快速入门：启用 Azure Defender](enable-azure-defender.md)。
+
+    > [!IMPORTANT]
+    > 默认已启用安全中心与 Microsoft Defender for Endpoint 的集成。 因此，当你启用 Azure Defender 时，将同意适用于服务器的 Azure Defender 访问与漏洞、已安装的软件和终结点的警报相关的 Microsoft Defender for Endpoint 数据。
 
 1. 如果已在 Azure 租户之间移动订阅，还需要执行一些手动预备步骤。 有关完整的详细信息，请[联系 Microsoft 支持人员](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 

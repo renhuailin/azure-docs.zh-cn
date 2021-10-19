@@ -8,17 +8,17 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 09/10/2020
-ms.openlocfilehash: a5050958f01743ff3c6fdcdecfee3067b1d2073e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/06/2021
+ms.openlocfilehash: 6dddc7e5a2492aeaf0c15c954f685e10ce475fa7
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98934269"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612933"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>将 Azure 认知搜索服务移动到另一个 Azure 区域
 
-客户偶尔会询问如何将搜索服务移动到另一个区域。 目前没有可帮助完成该任务的内置机制或工具，但本文可以帮助你了解实现相同结果的手动步骤。
+客户偶尔会询问如何将搜索服务移动到另一个区域。 目前没有内置机制或工具可帮助执行该任务，但本文可帮助你了解在不同区域中的新搜索服务上重新创建索引和其他对象的手动步骤。
 
 > [!NOTE]
 > 在 Azure 门户中，所有服务都有 Export template 命令。 对于 Azure 认知搜索，此命令生成服务的基本定义（名称、位置、层、副本和分区计数），但不识别服务的内容，也不移动密钥、角色或日志。 尽管存在该命令，但我们不建议用它来移动搜索服务。

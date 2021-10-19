@@ -4,12 +4,12 @@ description: 本文详细介绍了已启用 Azure Arc 的服务器代理，该�
 ms.date: 09/30/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 36dc64a28cd0199e7fba3ab2b5f3f6765eef489d
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: e4251ceafd2ab06afc43f8c3ba84f167219d7e14
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455600"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713175"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>已启用 Azure Arc 的服务器代理概述
 
@@ -20,7 +20,7 @@ ms.locfileid: "129455600"
 
 ## <a name="agent-component-details"></a>代理组件详细信息
 
-:::image type="content" source="media/agent-overview/connected-machine-agent.png" alt-text="启用 Azure Arc 的服务器代理概述。" border="false":::
+:::image type="content" source="media/agent-overview/connected-machine-agent.png" alt-text="已启用 Azure Arc 的服务器代理概述。" border="false":::
 
 Azure Connected Machine 代理包包含捆绑在一起的多个逻辑组件。
 

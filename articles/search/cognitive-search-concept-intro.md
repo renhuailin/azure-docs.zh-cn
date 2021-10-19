@@ -9,18 +9,20 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: b1c7a8f29c08f00cc69dbd304c8215180f5ace92
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d3f76777b717051b7524585abf593f57fedc47d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796602"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707915"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充
 
 在 Azure 认知搜索中，AI 扩充是指内置认知技能和自定义技能，用于在索引编制过程中添加内容转换和生成。 扩充创建以前不存在的新信息：从图像中提取信息，从文本中检测情感、关键短语和实体等等。 扩充还向无差别文本中添加结构。 所有这些过程将产生使全文搜索更有效的文档。 在许多情况下，扩充的文档可用于除搜索以外的方案，例如知识挖掘。
 
 扩充由附加到[索引器](search-indexer-overview.md)的[技能组](cognitive-search-working-with-skillsets.md)定义。 索引器将提取内容并进行设置，而技能组从映像、Blob 和其他非结构化数据源中识别、分析和创建新信息和结构。 扩充管道的输出是[搜索索引](search-what-is-an-index.md)或[知识存储](knowledge-store-concept-intro.md)。
+
+![扩充管道关系图](./media/cognitive-search-intro/cogsearch-architecture.png "扩充管道概述")
 
 技能组可以包含认知搜索中的内置技能或 [*自定义技能*](cognitive-search-create-custom-skill-example.md)中提供的嵌入外部处理。 自定义技能的示例可能包括面向特定领域（例如金融、科技出版或医疗）的自定义实体模块或文档分类器。
 
@@ -29,8 +31,6 @@ ms.locfileid: "124796602"
 + “自然语言处理”技能包括[实体识别](cognitive-search-skill-entity-recognition-v3.md)[语言检测](cognitive-search-skill-language-detection.md)[关键短语提取](cognitive-search-skill-keyphrases.md)操作、[情绪检测（包括观点挖掘）](cognitive-search-skill-sentiment-v3.md)和 [PII 检测](cognitive-search-skill-pii-detection.md)。 通过这些技能，非结构化文本在索引中映射为可搜索和可筛选的字段。
 
 + “图像处理”技能包括 [光学字符识别 (OCR)](cognitive-search-skill-ocr.md) 和[视觉特征](cognitive-search-skill-image-analysis.md)标识，例如面部检测、图像解释、图像识别（名人和地标）或属性（例如图像方向）。 这些技能创建图像内容的文本表示形式，这样就可以使用 Azure 认知搜索的查询功能来搜索这些内容了。
-
-![扩充管道关系图](./media/cognitive-search-intro/cogsearch-architecture.png "扩充管道概述")
 
 Azure 认知搜索中的内置技能基于认知服务 API 中预先训练的机器学习模型：[计算机视觉](../cognitive-services/computer-vision/index.yml)和[文本分析](../cognitive-services/text-analytics/overview.md)。 若要在内容处理期间利用这些资源，可以附加认知服务资源。
 
@@ -109,11 +109,11 @@ AI 扩充在 Azure 认知服务也可用的区域中提供。 可在[各区域�
 
 在 Azure 认知搜索中，索引器保存它创建的输出。
 
-[可搜索索引](search-what-is-an-index.md)是始终由索引器创建的输出之一。 索引规范是索引器要求，附加技能组时，技能组的输出以及从源直接导入的任何字段都将用于填充索引。 通常，特定技能的输出（例如关键短语或情绪评分）将引入到为此目的而创建的字段的索引中。
+[可搜索索引](search-what-is-an-index.md)是始终由索引器创建的输出之一。 索引规范是索引器要求，附加技能组时，技能组的输出以及从源直接映射的任何字段都将用于填充索引。 通常，特定技能的输出（例如关键短语或情绪评分）将引入到为此目的而创建的字段的索引中。
 
 [知识存储](knowledge-store-concept-intro.md)是一个可选输出，用于下游应用（例如 知识挖掘）。 知识存储在技能组中定义。 其定义决定了你的已扩充文档是被投影为表还是对象（文件或 blob）。 表格投影非常适用于 Power BI 等工具中的交互式分析，而文件和 blob 通常用于数据科学或类似的流程中。
 
-最后，索引器可以在 Azure Blob 存储中[缓存扩充文档](cognitive-search-incremental-indexing-conceptual.md)，以在后续技能组执行中重复使用。 缓存扩充将由稍后重新运行的同一技能组所使用。 如果技能组包括图像分析或 OCR，并且你希望避免重新处理图像文件所花费的时间和费用，则高速缓存是有帮助的。
+最后，索引器可以在 Azure Blob 存储中[缓存扩充文档](cognitive-search-incremental-indexing-conceptual.md)，以在后续技能组执行中重复使用。 缓存供内部使用。 缓存扩充将由稍后重新运行的同一技能组所使用。 如果技能组包括图像分析或 OCR，并且你希望避免重新处理图像文件所花费的时间和费用，则高速缓存是有帮助的。
 
 索引和知识存储完全相互独立。 虽然必须附加索引以满足索引器要求，但如果唯一目标是知识存储，则填充后可以忽略该索引。 不过，请避免将其删除。 如果要重新运行索引器与技能组，则需要索引才能运行索引器。
 
@@ -141,7 +141,8 @@ AI 扩充在 Azure 认知服务也可用的区域中提供。 可在[各区域�
 
 ## <a name="next-steps"></a>后续步骤
 
-+ [快速入门：在门户演练中试用 AI 扩充](cognitive-search-quickstart-blob.md)
++ [快速入门：创建文本翻译和实体技能组](cognitive-search-quickstart-blob.md)
++ [快速入门：创建 OCR 图像技能组](cognitive-search-quickstart-ocr.md)
 + [教程：了解 AI 扩充 REST API](cognitive-search-tutorial-blob.md)
 + [技能组概念](cognitive-search-working-with-skillsets.md)
 + [知识存储概念](knowledge-store-concept-intro.md)

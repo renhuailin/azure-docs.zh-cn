@@ -3,21 +3,21 @@ title: 将 EA 迁移到 Microsoft 客户协议 API - Azure
 description: 本文帮助你了解将 Microsoft 企业协议 (EA) 迁移到 Microsoft 客户协议的影响。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 2d3bae2f6282a4e505e2d5aa9ce2cf3f52b80006
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: fbccab537575720aa92c00f74afcdb82c773423e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762275"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711368"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>从企业协议迁移到 Microsoft 客户协议 API
 
-本文帮助你了解企业协议 (EA) 与 Microsoft 客户协议 (MCA) 帐户之间的数据结构、API 和其他系统集成差异。 Azure 成本管理支持这两种帐户类型的 API。 在继续阅读之前，请先查看[设置 Microsoft 客户协议的计费帐户](../manage/mca-setup-account.md)一文。
+本文帮助你了解企业协议 (EA) 与 Microsoft 客户协议 (MCA) 帐户之间的数据结构、API 和其他系统集成差异。 成本管理支持这两种帐户类型的 API。 在继续阅读之前，请先查看[设置 Microsoft 客户协议的计费帐户](../manage/mca-setup-account.md)一文。
 
 具有现有 EA 帐户的组织应查看本文，同时设置一个 MCA 帐户。 以前，续订 EA 帐户需要完成少量的工作，以便从旧注册转移到新注册。 但是，迁移到 MCA 帐户需要额外的工作。 之所以需要付出额外的工作，是因为底层计费子系统发生了变化，影响了所有与成本相关的 API 和服务产品。
 
@@ -28,7 +28,7 @@ ms.locfileid: "113762275"
 - 通过本机 Azure API 获得 API 完全可用性。
 - 在单个计费帐户中配置多个发票。
 - 访问合并的 API 以及 Azure 服务使用情况、第三方市场使用情况和市场购买内容。
-- 使用 Azure 成本管理查看各个计费配置文件（与注册相同）中的成本。
+- 使用成本管理查看各个计费对象信息（与注册相同）的成本。
 - 访问新的 API，以显示成本、在成本超出预定义的阈值时获得通知，并自动导出原始数据。
 
 ## <a name="migration-checklist"></a>迁移核对清单
@@ -517,7 +517,7 @@ Microsoft 客户协议中的 Azure 消耗服务价格对于 productOrderName 和
 
 ## <a name="power-bi-integration"></a>Power BI 集成
 
-还可以使用 Power BI 来报告成本。 可以使用 Power BI Desktop 的 [Azure 成本管理连接器](/power-bi/desktop-connect-azure-cost-management)创建强大的自定义报表，以便更好地了解 Azure 支出。 Azure 成本管理连接器目前支持签署了 Microsoft 客户协议或企业协议 (EA) 的客户。
+还可以使用 Power BI 来报告成本。 可以使用 Power BI Desktop 的[成本管理连接器](/power-bi/desktop-connect-azure-cost-management)创建强大的自定义报表，以便更好地了解 Azure 支出。 成本管理连接器目前支持签署了 Microsoft 客户协议或企业协议 (EA) 的客户。
 
 ## <a name="next-steps"></a>后续步骤
 

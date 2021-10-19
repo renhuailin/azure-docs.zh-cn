@@ -7,20 +7,20 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: ssambare
 author: shivanissambare
-ms.date: 05/25/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.reviewer: larryfr
-ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: db019c225b3e3caaad1a02b30ec0b7278e5b9dcc
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.custom: deploy, docker, prebuilt, curated environments
+ms.openlocfilehash: 04ca2582360f0a4463dd806664a84d020b0c58a7
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435899"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712174"
 ---
-# <a name="prebuilt-docker-images-for-inference-preview"></a>用于推理的预生成 Docker 映像（预览版）
+# <a name="prebuilt-docker-images-for-inference"></a>用于推理的预生成 Docker 映像
 
-通过 Azure 机器学习部署模型时，将使用用于推理的预生成 Docker 容器映像[（预览版）](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。  这些映像是使用流行的机器学习框架和 Python 包预生成的。 你还可以使用以下方法之一扩展包，以添加其他包：
+通过 Azure 机器学习部署模型时，将使用用于推理的预生成 Docker 容器映像。  这些映像是使用流行的机器学习框架和 Python 包预生成的。 你还可以使用以下方法之一扩展包，以添加其他包：
 
 * [添加 Python 包](how-to-prebuilt-docker-images-inference-python-extensibility.md)。
 * [使用预生成的推理映像作为新 Dockerfile 的基础](how-to-extend-prebuilt-docker-image-inference.md)。 使用此方法可以安装 Python 包和 apt 包。
@@ -34,47 +34,7 @@ ms.locfileid: "123435899"
 
 ## <a name="list-of-prebuilt-docker-images-for-inference"></a>用于推理的预生成 Docker 映像列表 
 
-* 所有 docker 映像都以非根用户身份运行。
-* 我们建议对 docker 映像使用 `latest` 标记。 用于推理的预生成 docker 映像会发布到 Microsoft 容器注册表 (MCR)。若要查询可用标记的列表，请按照[其 GitHub 存储库的说明](https://github.com/microsoft/ContainerRegistry#browsing-mcr-content)进行操作。
-
-### <a name="tensorflow"></a>TensorFlow
-
-框架版本 | CPU/GPU | 预安装的包 | MCR 路径 | 特选环境
- --- | --- | --- | --- | --- |
- 1.15 | CPU | pandas==0.25.1 </br> numpy=1.20.1 | `mcr.microsoft.com/azureml/tensorflow-1.15-ubuntu18.04-py37-cpu-inference:latest`  | AzureML-tensorflow-1.15-ubuntu18.04-py37-cpu-inference | 
-2.4 | CPU | numpy>=1.16.0 </br> pandas~=1.1.x | `mcr.microsoft.com/azureml/tensorflow-2.4-ubuntu18.04-py37-cpu-inference:latest` | AzureML-tensorflow-2.4-ubuntu18.04-py37-cpu-inference |
-2.4 | GPU | numpy >= 1.16.0 </br> pandas~=1.1.x </br> CUDA==11.0.3 </br> CuDNN==8.0.5.39 | `mcr.microsoft.com/azureml/tensorflow-2.4-ubuntu18.04-py37-cuda11.0.3-gpu-inference:latest` | AzureML-tensorflow-2.4-ubuntu18.04-py37-cuda11.0.3-gpu-inference |
-
-### <a name="pytorch"></a>PyTorch
-
-框架版本 | CPU/GPU | 预安装的包 | MCR 路径 | 特选环境
- --- | --- | --- | --- | --- |
- 1.6 | CPU | numpy==1.20.1 </br> pandas==0.25.1 | `mcr.microsoft.com/azureml/pytorch-1.6-ubuntu18.04-py37-cpu-inference:latest` | AzureML-pytorch-1.6-ubuntu18.04-py37-cpu-inference |
-1.7 | CPU | numpy>=1.16.0 </br> pandas~=1.1.x | `mcr.microsoft.com/azureml/pytorch-1.7-ubuntu18.04-py37-cpu-inference:latest` | AzureML-pytorch-1.7-ubuntu18.04-py37-cpu-inference |
-
-### <a name="scikit-learn"></a>SciKit-Learn
-
-框架版本 | CPU/GPU | 预安装的包 | MCR 路径 | 特选环境
- --- | --- | --- | --- | --- |
-0.24.1  | CPU | scikit-learn==0.24.1 </br> numpy>=1.16.0 </br> pandas~=1.1.x | `mcr.microsoft.com/azureml/sklearn-0.24.1-ubuntu18.04-py37-cpu-inference:latest` | AzureML-sklearn-0.24.1-ubuntu18.04-py37-cpu-inference |
-
-### <a name="onnx-runtime"></a>ONNX 运行时
-
-框架版本 | CPU/GPU | 预安装的包 | MCR 路径 | 特选环境
- --- | --- | --- | --- | --- |
-1.6 | CPU | numpy>=1.16.0 </br> pandas~=1.1.x | `mcr.microsoft.com/azureml/onnxruntime-1.6-ubuntu18.04-py37-cpu-inference:latest` |AzureML-onnxruntime-1.6-ubuntu18.04-py37-cpu-inference |
-
-### <a name="xgboost"></a>XGBoost
-
-框架版本 | CPU/GPU | 预安装的包 | MCR 路径 | 特选环境
- --- | --- | --- | --- | --- |
-0.9 | CPU | scikit-learn==0.23.2 </br> numpy==1.20.1 </br> pandas==0.25.1 | `mcr.microsoft.com/azureml/xgboost-0.9-ubuntu18.04-py37-cpu-inference:latest` | AzureML-xgboost-0.9-ubuntu18.04-py37-cpu-inference | 
-
-### <a name="no-framework"></a>无框架
-
-框架版本 | CPU/GPU | 预安装的包 | MCR 路径 | 特选环境
- --- | --- | --- | --- | --- |
-NA | CPU | NA | `mcr.microsoft.com/azureml/minimal-ubuntu18.04-py37-cpu-inference:latest` | AzureML-minimal-ubuntu18.04-py37-cpu-inference  |
+[!INCLUDE [list-of-inference-prebuilt-docker-images](../../includes/aml-inference-list-prebuilt-docker-images.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

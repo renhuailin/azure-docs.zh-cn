@@ -2,18 +2,18 @@
 title: 将 Wi-Fi 配置文件与 Azure Stack Edge Mini R 设备配合使用
 description: 本文介绍如何为高安全性企业网络和个人网络上的 Azure Stack Edge Mini R 设备创建 Wi-Fi 配置文件。
 services: databox
-author: v-dalc@microsoft.com
+author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/24/2021
+ms.date: 10/07/2021
 ms.author: alkohli
-ms.openlocfilehash: 90c7c238cef104eae78618e51fa4b284adcc8f42
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 34fe33f3c1d5be747e96ae71567424026c7c7a2a
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105050269"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669200"
 ---
 # <a name="use-wi-fi-profiles-with-azure-stack-edge-mini-r-devices"></a>将 Wi-Fi 配置文件与 Azure Stack Edge Mini R 设备配合使用
 
@@ -97,6 +97,8 @@ Wi-Fi 配置文件包含 SSID（服务集标识符或网络名称）、密码密
 
 若要在计算机上导出 Wi-Fi 接口的配置文件，请执行以下步骤：
 
+1. 确保用于导出无线配置文件的计算机可以连接到设备将使用的 Wi-Fi 网络。
+
 1. 若要查看计算机上的无线配置文件，请在“开始”菜单上，打开“命令提示符”(cmd.exe)，然后输入以下命令：
 
    `netsh wlan show profiles`
@@ -120,14 +122,14 @@ Wi-Fi 配置文件包含 SSID（服务集标识符或网络名称）、密码密
        All User Profile     : Boat
    ```
 
-2. 若要导出配置文件，请输入以下命令：
+1. 若要导出配置文件，请输入以下命令：
 
-   `netsh wlan export profile name=”<profileName>” folder=”<path>\<profileName>"`
+   `netsh wlan export profile name=”<profileName>” folder=”<path>\<profileName>" key=clear`
 
    例如，以下命令将 XML 格式的 ContosoFTINET 配置文件保存到名为 `gusp` 的用户的“下载”文件夹中。
 
    ```dos
-   C:\Users\gusp>netsh wlan export profile name="ContosoFTINET" folder=c:Downloads
+   C:\Users\gusp>netsh wlan export profile name="ContosoFTINET" folder=c:Downloads key=clear
 
    Interface profile "ContosoFTINET" is saved in file "c:Downloads\ContosoFTINET.xml" successfully.
    ```

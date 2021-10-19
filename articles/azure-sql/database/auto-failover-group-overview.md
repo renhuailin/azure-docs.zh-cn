@@ -6,18 +6,17 @@ services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
-ms.devlang: ''
 ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
-ms.date: 10/04/2021
-ms.openlocfilehash: 403f3c82bbb5a387e7611a6d98ce808ded599146
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.date: 10/06/2021
+ms.openlocfilehash: a2b8498b0ff4eab174c0ae77bd29d1e562db508a
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129456283"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667642"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -372,7 +371,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - 需要通过 [VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 来连接 SQL 托管实例的实例使用的虚拟网络。 当两个虚拟网络通过本地网络连接时，请确保没有任何防火墙规则阻止端口 5022 和 11000-11999。 支持全局 VNet 对等互连，但有如下说明所述的限制。
 
    > [!IMPORTANT]
-   > [2020 年 9 月 22 日，我们宣布支持为新建的虚拟群集建立全局虚拟网络对等互连](https://azure.microsoft.com/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 这意味着，自公告日期之后在空子网中创建的 SQL 托管实例以及在这些子网中随后创建的所有托管实例，都支持全局虚拟网络对等互连。 对于所有其他 SQL 托管实例，由于[全局虚拟网络对等互连的约束](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)，对等互连支持仅限于同一区域中的网络。 有关更多详细信息，另请参阅 [Azure 虚拟网络常见问题解答](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)一文的相关部分。 若要能够对在公告日期之前创建的虚拟群集中的 SQL 托管实例使用全局虚拟网络对等互连，请考虑在实例上配置[维护时段](./maintenance-window.md)，因为它会将实例移动到支持全局虚拟网络对等互连的新虚拟群集中。
+   > [2020 年 9 月 22 日，我们宣布支持为新建的虚拟群集建立全局虚拟网络对等互连](https://azure.microsoft.com/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 这意味着，自公告日期之后在空子网中创建的 SQL 托管实例以及在这些子网中随后创建的所有托管实例，都支持全局虚拟网络对等互连。 对于所有其他 SQL 托管实例，由于[全局虚拟网络对等互连的约束](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)，对等互连支持仅限于同一区域中的网络。 有关更多详细信息，另请参阅 [Azure 虚拟网络常见问题解答](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)一文的相关部分。 若要能够对在公告日期之前创建的虚拟群集中的 SQL 托管实例使用全局虚拟网络对等互连，请考虑在实例上配置非默认[维护时段](./maintenance-window.md)，因为它会将实例移动到支持全局虚拟网络对等互连的新虚拟群集中。
 
 - 两个 SQL 托管实例 VNet 的 IP 地址不能重叠。
 - 需要设置网络安全组 (NSG)，使端口 5022 和端口范围 11000~12000 保持打开，以便能够从其他托管实例的子网建立入站和出站连接。 目的是允许实例之间的复制流量。
@@ -413,6 +412,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - 无法重命名故障转移组。 需要删除该组，并使用不同的名称重新创建它。
 - 故障转移组中的实例不支持数据库重命名。 需要临时删除故障转移组，才能重命名数据库。
 - 系统数据库不会复制到故障转移组中的辅助实例。 因此，依赖于系统数据库中对象的方案要求在辅助实例上手动创建对象，并在对主实例进行更改后手动保持同步。 唯一的例外是 SQL 托管实例的服务主密钥 (SMK)，它在创建故障转移组期间自动复制到辅助实例。 但是，在主实例上进行的任何后续 SMK 更改都不会复制到辅助实例。
+- 如果某个实例加入自动故障转移组，则更改该实例的[连接类型](../managed-instance/connection-types-overview.md)对通过故障转移组侦听器终结点建立的连接不起作用。 需要暂时删除并重新创建自动故障转移组，使连接类型更改生效。
 
 ## <a name="programmatically-managing-failover-groups"></a>以编程方式管理故障转移组
 

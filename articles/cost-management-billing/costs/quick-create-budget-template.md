@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: quickstart
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.openlocfilehash: b7ae1fa6533067c977952cdfc3ae73244e50d941
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ac32afdf2197c32f43c94c6b0126688ed363902f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584916"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711394"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>快速入门：使用 ARM 模板创建预算
 
@@ -161,7 +161,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个用于部署的 Azure 预算。 若要详细了解 Azure 成本管理和计费以及 Azure 资源管理器，请继续阅读以下文章。
+在本快速入门中，你创建了一个用于部署的 Azure 预算。 若要详细了解成本管理 + 计费和 Azure 资源管理器，请继续阅读以下文章。
 
 - 阅读[成本管理和计费](../cost-management-billing-overview.md)概述
 - 在 Azure 门户中[创建预算](tutorial-acm-create-budgets.md)

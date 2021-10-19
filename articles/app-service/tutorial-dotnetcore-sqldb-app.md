@@ -3,27 +3,27 @@ title: 教程：将 ASP.NET Core 与 Azure SQL 数据库配合使用
 description: 了解如何在 Azure 应用服务中运行 .NET Core 应用，同时使其连接到 Azure SQL 数据库。
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/29/2021
+ms.date: 10/06/2021
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 45214579e599ab83dfa97470276c85c225c5473b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5db5a4a1d390164cff0f4acee56ca49687ebddfb
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730660"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658419"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 ASP.NET Core 和 Azure SQL 数据库应用
 
 ::: zone pivot="platform-windows"  
 
-[Azure 应用服务](overview.md)在 Azure 中提供高度可缩放、自修补的 Web 托管服务。 本教程演示如何创建 .NET Core 应用，并将其连接至 SQL 数据库。 完成操作后，将拥有一个在 Windows 应用服务中运行的 .NET Core MVC 应用。
+[Azure 应用服务](overview.md)在 Azure 中提供高度可缩放、自修补的 Web 托管服务。 本教程演示如何创建 ASP.NET Core 应用，并将其连接至 SQL 数据库。 完成操作后，将拥有一个在 Windows 应用服务中运行的 .NET MVC 应用。
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-[Azure 应用服务](overview.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程演示如何创建 .NET Core 应用，并将其连接至 SQL 数据库。 完成操作后，将拥有一个在 Linux 应用服务中运行的 .NET Core MVC 应用。
+[Azure 应用服务](overview.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程演示如何创建 ASP.NET Core 应用，并将其连接至 SQL 数据库。 完成操作后，将拥有一个在 Linux 上的应用服务中运行的 ASP.NET Core MVC 应用。
 
 ::: zone-end
 
@@ -33,7 +33,7 @@ ms.locfileid: "121730660"
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 SQL 数据库。
-> * 将 .NET Core 应用连接到 SQL 数据库
+> * 将 ASP.NET Core 应用连接到 SQL 数据库
 > * 将应用部署到 Azure
 > * 更新数据模型并重新部署应用
 > * 从 Azure 流式传输诊断日志
@@ -43,16 +43,16 @@ ms.locfileid: "121730660"
 
 ## <a name="prerequisites"></a>先决条件
 
-为完成此教程：
+完成本教程：
 
 - <a href="https://git-scm.com/" target="_blank">安装 Git</a>
-- <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安装最新的 .NET Core 3.1 SDK</a>
+- <a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank">安装最新的 .NET 5.0 SDK</a>
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-## <a name="create-local-net-core-app"></a>创建本地 .NET Core 应用
+## <a name="create-local-aspnet-core-app"></a>创建本地 ASP.NET Core 应用
 
-在此步骤中，你将设置本地 .NET Core 项目。
+在此步骤中，请设置本地 ASP.NET Core 项目。
 
 ### <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -90,7 +90,7 @@ ms.locfileid: "121730660"
 
     ![已成功连接到 SQL 数据库](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
-1. 在终端按 `Ctrl+C`，随时停止 .NET Core。
+1. 在终端按 `Ctrl+C` 可随时停止 ASP.NET Core。
 
 ## <a name="create-production-sql-database"></a>创建生产环境 SQL 数据库
 
@@ -169,7 +169,7 @@ az sql db show-connection-string --client ado.net --server <server-name> --name 
 
 在命令输出中，将 \<username> 和 \<password> 替换为你先前使用的数据库管理员凭据 。
 
-这是 .NET Core 应用的连接字符串。 将其进行复制，留待稍后使用。
+这是 ASP.NET Core 应用的连接字符串。 将其进行复制，留待稍后使用。
 
 ### <a name="configure-app-to-connect-to-production-database"></a>配置应用以连接到生产数据库
 
@@ -200,7 +200,7 @@ services.AddDbContext<MyDatabaseContext>(options =>
 ```
 # Delete old migrations
 rm -r Migrations
-# Recreate migrations
+# Recreate migrations with UseSqlServer (see previous snippet)
 dotnet ef migrations add InitialCreate
 
 # Set connection string to production database
@@ -236,7 +236,7 @@ dotnet ef database update
 
 ## <a name="deploy-app-to-azure"></a>将应用部署到 Azure
 
-在此步骤中，将已连接 SQL 数据库的 .NET Core 应用程序部署到应用服务。
+在此步骤中，将已连接 SQL 数据库的 ASP.NET Core 应用程序部署到应用服务。
 
 ### <a name="configure-local-git-deployment"></a>配置本地 Git 部署
 
@@ -275,7 +275,7 @@ dotnet ef database update
 若要为 Azure 应用设置连接字符串，请使用 Cloud Shell 中的 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令。 在下列命令中，将 \<app-name> 和 \<connection-string> 参数替换为先前创建的连接字符串 。
 
 ```azurecli-interactive
-az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
+az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLAzure
 ```
 
 在 ASP.NET Core 中，可以通过标准模式使用此命名连接字符串 (`MyDbConnection`)，就像在 appsettings.json 中指定的任何连接字符串一样。 在本例中，`MyDbConnection` 也在 appsettings.json 中定义。 在应用服务中运行时，应用服务中定义的连接字符串优先于 appsettings.json 中定义的连接字符串。 此代码在本地开发过程中使用 appsettings.json 值，相同的代码在部署时使用应用服务值。
@@ -361,7 +361,7 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
     ![在应用服务中运行的应用](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-祝贺你！ 数据驱动的 .NET Core 应用已经在你的应用服务中运行了。
+祝贺你！ 数据驱动的 ASP.NET Core 应用已经在你的应用服务中运行了。
 
 ## <a name="update-locally-and-redeploy"></a>在本地更新并重新部署
 
@@ -468,12 +468,12 @@ dotnet ef database update
 
 当 ASP.NET Core 应用在 Azure 应用服务中运行时，可以将控制台日志传输到 Cloud Shell。 如此，可以获得相同的诊断消息，以便调试应用程序错误。
 
-示例项目已遵循了 [Azure 中的 ASP.NET Core 日志记录](/aspnet/core/fundamentals/logging#azure-app-service-provider)中的指南，并且进行了两个配置更改：
+示例项目已遵循了 [Azure 应用服务日志提供程序](/dotnet/core/extensions/logging-providers#azure-app-service)的指南，并且进行了两个配置更改：
 
 - 在 *DotNetCoreSqlDb.csproj* 中包含了对 `Microsoft.Extensions.Logging.AzureAppServices` 的引用。
 - 在 *Program.cs* 中调用 `loggerFactory.AddAzureWebAppDiagnostics()`。
 
-1. 若要将应用服务中的 ASP.NET Core [日志级别](/aspnet/core/fundamentals/logging#log-level)从默认级别 `Error` 设置为 `Information`，请在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log#az_webapp_log_config) 命令。
+1. 若要将应用服务中的 ASP.NET Core [日志级别](/dotnet/core/extensions/logging#log-level)从默认级别 `Error` 设置为 `Information`，请在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log#az_webapp_log_config) 命令。
 
     ```azurecli-interactive
     az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging filesystem --level information
@@ -492,21 +492,7 @@ dotnet ef database update
 
 1. 若要随时停止日志流式处理，请键入 `Ctrl`+`C`。
 
-有关自定义 ASP.NET Core 日志的详细信息，请参阅 [ASP.NET Core 中的日志记录](/aspnet/core/fundamentals/logging)。
-
-## <a name="manage-your-azure-app"></a>管理 Azure 应用
-
-1. 若要查看所创建的应用，请在 [Azure 门户](https://portal.azure.com)中，搜索并选择“应用服务”"。
-
-    ![在 Azure 门户中选择应用服务](./media/tutorial-dotnetcore-sqldb-app/app-services.png)
-
-1. 在“应用服务”页上，选择 Azure 应用的名称。
-
-    ![在门户中导航到 Azure 应用](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
-
-    默认情况下，门户将显示应用的“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
-
-    ![Azure 门户中的“应用服务”页](./media/tutorial-dotnetcore-sqldb-app/web-app-blade.png)
+有关自定义 ASP.NET Core 日志的详细信息，请参阅 [.NET 中的日志记录](/dotnet/core/extensions/logging)。
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
@@ -517,7 +503,7 @@ dotnet ef database update
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 SQL 数据库。
-> * 将 .NET Core 应用连接到 SQL 数据库
+> * 将 ASP.NET Core 应用连接到 SQL 数据库
 > * 将应用部署到 Azure
 > * 更新数据模型并重新部署应用
 > * 将日志从 Azure 流式传输到终端

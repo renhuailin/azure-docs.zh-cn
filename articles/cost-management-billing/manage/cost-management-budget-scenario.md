@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 2f2d88a48b7dca0b2ab3ad512e6b723ab68931c8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c3ed338341ffb73f59a5b20fea55e8d83f4a375f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128650242"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711303"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>使用 Azure 预算管理成本
 
-成本控制是最大化云投资价值的关键部分。 以下几种方案中，成本可见性、报告和基于成本的业务流程对于持续的业务操作至关重要。 [Azure 成本管理 API](/rest/api/consumption/) 提供了一组 API，用于支持每种方案。 这些 API 提供使用情况详细信息，可让你查看更精确的实例级成本。
+成本控制是最大化云投资价值的关键部分。 以下几种方案中，成本可见性、报告和基于成本的业务流程对于持续的业务操作至关重要。 [成本管理 API](/rest/api/consumption/) 提供了一组 API，用于支持每种方案。 这些 API 提供使用情况详细信息，可让你查看更精确的实例级成本。
 
 成本控制中通常会用到预算。 可在 Azure 中限制预算范围。 例如，可根据订阅、资源组或资源集合缩小预算视图。 除了使用预算 API 在达到预算阈值时通过电子邮件进行通知外，还可使用 [Azure Monitor 操作组](../../azure-monitor/alerts/action-groups.md)来触发由于预算事件而安排的一组操作。
 

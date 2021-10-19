@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 8c9ab37e46f23d533550ffc535633575a85937a6
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: dc065e68d513850f9e006371861d087cccc6e155
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122778897"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669846"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>将跨租户 VNet 连接到某个虚拟 WAN 中心
 
@@ -28,6 +28,9 @@ ms.locfileid: "122778897"
 
 此配置的步骤是混合使用 Azure 门户和 PowerShell 执行的。 但是，此功能本身仅通过 PowerShell 和 CLI 提供。
 
+>[!NOTE]
+> 请注意，跨租户虚拟网络连接只能通过 PowerShell 或 CLI 进行管理。 无法在 Azure 门户中管理跨租户虚拟网络连接。
+> 
 ## <a name="before-you-begin"></a>开始之前
 
 ### <a name="prerequisites"></a>先决条件

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: ee18a405ca6c6a9d2e6a3a6cceb5c0ff89b5cf73
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3126eb9a2c3289f6fbc97a14fadf94300d1c2e84
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748589"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728772"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>在 Azure 中选择适当的 MySQL Server 选项
 
@@ -111,7 +111,7 @@ ms.locfileid: "124748589"
 | [**监视**](flexible-server/concepts-monitoring.md) | | | |
 | Azure Monitor 集成和警报 | 支持 | 支持 | 用户管理 |
 | 监视数据库操作 | 支持 | 支持 | 用户管理 |
-| 查询性能见解 | 支持 | 不支持 | 用户管理 |
+| 查询性能见解 | 支持 | 支持（使用工作簿）| 用户管理 |
 | 服务器日志 | 支持 | 支持（使用诊断日志） | 用户管理 |
 | 审核日志 | 支持 | 支持 | 支持 | 
 | 错误日志 | 不支持 | 支持 | 支持 |

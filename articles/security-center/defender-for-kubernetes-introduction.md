@@ -7,12 +7,12 @@ ms.date: 07/20/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 53c5ef179a3df860d97cbe31287f2defcec2411b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 265f8646de1208a88b00dcaaccc992e09d44b29a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750713"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711742"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>适用于 Kubernetes 的 Azure Defender 简介
 
@@ -22,7 +22,7 @@ Azure Defender for Kubernetes 是 Azure Defender 计划，无论 Kubernetes 群�
 
 - **Azure Kubernetes 服务 (AKS)** 中的群集；AKS 是 Microsoft 的托管服务，用于开发、部署和管理容器化应用程序
 
-- **本地和多云环境** 中的群集；可 [为已启用 Arc 的 Kubernetes 使用扩展](defender-for-kubernetes-azure-arc.md)
+- **本地和多云环境** - 为[已启用 Azure Arc 的 Kubernetes](defender-for-kubernetes-azure-arc.md) 使用扩展
 
 Azure 安全中心和 AKS 构成了一种云原生 Kubernetes 安全产品/服务，同时提供环境强化功能、工作负载保护和运行时间保护，如[安全中心中的容器安全](container-security.md)所述。
 

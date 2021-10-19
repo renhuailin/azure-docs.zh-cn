@@ -3,12 +3,12 @@ title: Azure Policy 概述
 description: Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。
 ms.date: 07/27/2021
 ms.topic: overview
-ms.openlocfilehash: 9462281ce37e066a920c17d1dc142a177b97fb2a
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: aff8dc3aa4ff97438a4ebc457a6946f30dccb142
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770543"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660849"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
@@ -74,7 +74,7 @@ Azure Policy 在两个资源提供程序中具有多个权限（称为操作）�
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-许多内置角色可授予对 Azure Policy 资源的权限。 “资源策略参与者”角色包括大多数 Azure Policy 操作。 “所有者”具有完全权限。 “参与者”和“读取者”都有权访问所有 Azure Policy 读取操作。  “参与者”可以触发资源修正，但无法创建定义或分配。 需要“用户访问管理员”以授予 deployIfNotExists 或 modify 分配所需权限的托管标识  。
+许多内置角色可授予对 Azure Policy 资源的权限。 “资源策略参与者”角色包括大多数 Azure Policy 操作。 “所有者”具有完全权限。 “参与者”和“读取者”都有权访问所有 Azure Policy 读取操作。  “参与者”可以触发资源修正，但无法创建定义或分配。 需要“用户访问管理员”以授予 deployIfNotExists 或 modify 分配所需权限的托管标识  。 范围内的所有角色可读取所有策略对象。
 
 如果没有任何内置角色具有所需的权限，可创建[自定义角色](../../role-based-access-control/custom-roles.md)。
 
@@ -148,7 +148,7 @@ Azure Policy 评估订阅级别或更低级别的所有 Azure 资源，包括启
 | 策略 | 参数的名称 |参数的类型  |注意 |
 |---|---|---|---|
 | policyA | allowedLocations | array  |此参数要求将值设置为字符串列表，因为参数类型已定义为数组 |
-| policyB | allowedSingleLocation |字符串 |此参数要求将值设置为一个字词，因为参数类型已定义为字符串 |
+| policyB | allowedSingleLocation |string |此参数要求将值设置为一个字词，因为参数类型已定义为字符串 |
 
 在此情况下，定义 initiativeC 的计划参数时，有三个选项可供选择：
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6c0e01349c56744590f35659edae66d963aeb302
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 17445b90c3923fa6c3772b40024eec5657cae89e
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110697958"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858588"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -448,7 +448,7 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>运行状况检查从哪些 IP 地址发起？
 
-单击[此处](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)，以了解如何检索可从其中发起流量管理器运行状况检查的 IP 地址的列表。 可以使用 REST API、Azure CLI 或 Azure PowerShell 来检索最新列表。 查看列出的 IP，确保终结点允许来自这些 IP 地址的传入连接，以便检查其运行状况。
+查看[本文](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api)，了解如何检索可能是流量管理器运行状况检查源头的 IP 地址列表。 可以使用 REST API、Azure CLI 或 Azure PowerShell 来检索最新列表。 查看列出的 IP，确保终结点允许来自这些 IP 地址的传入连接，以便检查其运行状况。
 
 使用 Azure PowerShell 的示例：
 

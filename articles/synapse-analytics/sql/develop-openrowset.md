@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 578ff0997375b62b3fd5a90ec44967ead1b9cd63
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 392d457ead16d0bcfc057282886669a01e24ff3e
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253800"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730368"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池使用 OPENROWSET
 
@@ -98,6 +98,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 [ , HEADER_ROW = { TRUE | FALSE } ]
 [ , DATAFILETYPE = { 'char' | 'widechar' } ]
 [ , CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' } ]
+[ , ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}' ]
 ```
 
 ## <a name="arguments"></a>参数
@@ -242,15 +243,19 @@ CSV 分析器版本 2.0 详细信息：
 
 HEADER_ROW = { TRUE | FALSE }
 
-指定 CSV 文件是否包含标题行。 默认值为 FALSE。 在 PARSER_VERSION='2.0' 时受支持。 如果为 TRUE，则根据 FIRSTROW 参数从第一行读取列名称。 如果为 TRUE 且使用 WITH 指定了架构，则列名的绑定将按列名而不是按顺序位置来完成。
+指定 CSV 文件是否包含标题行。 默认为 `FALSE.`，在 PARSER_VERSION='2.0' 时受支持。 如果为 TRUE，则根据 FIRSTROW 参数从第一行读取列名称。 如果为 TRUE 且使用 WITH 指定了架构，则列名的绑定将按列名而不是按顺序位置来完成。
 
 DATAFILETYPE = { 'char' | 'widechar' }
 
-指定编码：char 用于 UTF8，widechar 用于 UTF16 文件。
+指定编码：`char` 用于 UTF8，`widechar` 用于 UTF16 文件。
 
 CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' }
 
 指定该数据文件中数据的代码页。 默认值为 65001（UTF-8 编码）。 [此处](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15&preserve-view=true#codepage)有关于此选项的更多详细信息。
+
+ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}'
+
+此选项将在查询执行期间禁用文件修改检查，并读取查询运行时更新的文件。 当需要读取查询运行时追加的仅限追加的文件时，此选项非常有用。 在可追加文件中，不更新现有内容，仅添加新行。 因此，与可更新文件相比，这样做生成错误结果的可能性最低。 使用此选项，可以在不处理错误的情况下读取经常追加的文件。 有关详细信息，请参阅[查询可追加的 CSV 文件](query-single-csv-file.md#querying-appendable-files)部分。
 
 ## <a name="fast-delimited-text-parsing"></a>带分隔符的文本的快速分析
 
@@ -262,7 +267,7 @@ CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' }
 
 Parquet 文件包含要读取的列元数据，可在 [Parquet 的类型映射](#type-mapping-for-parquet)中找到类型映射。 有关示例，请查看[在不指定架构的情况下读取 Parquet 文件](#read-parquet-files-without-specifying-schema)。
 
-对于 CSV 文件，可以从标题行读取列名称。 可以使用 HEADER_ROW 参数指定是否存在标题行。 如果 HEADER_ROW = FALSE，将使用通用列名称：C1, C2, ...Cn，其中 n 是文件中的列数。 将从前 100 个数据行推断数据类型。 有关示例，请查看[在不指定架构的情况下读取 CSV 文件](#read-csv-files-without-specifying-schema)。
+对于 CSV 文件，可从标题行读取列名称。 可以使用 HEADER_ROW 参数指定是否存在标题行。 如果 HEADER_ROW = FALSE，将使用通用列名称：C1, C2, ...Cn，其中 n 是文件中的列数。 将从前 100 个数据行推断数据类型。 有关示例，请查看[在不指定架构的情况下读取 CSV 文件](#read-csv-files-without-specifying-schema)。
 
 > [!IMPORTANT]
 > 在有些情况下，由于缺少信息而无法推断出适当的数据类型，将改用较大的数据类型。 这会造成性能开销，并且对于将推断为 varchar(8000) 的字符列尤其重要。 为了获得最佳性能，请[查看推断的数据类型](./best-practices-serverless-sql-pool.md#check-inferred-data-types)并[使用适当的数据类型](./best-practices-serverless-sql-pool.md#use-appropriate-data-types)。
@@ -275,7 +280,7 @@ Parquet 文件和 Delta Lake 文件包含每一列的类型说明。 下表介�
 | --- | --- | --- |
 | BOOLEAN | | bit |
 | BINARY/BYTE_ARRAY | | varbinary |
-| DOUBLE | | FLOAT |
+| DOUBLE | | float |
 | FLOAT | | real |
 | INT32 | | int |
 | INT64 | | bigint |
@@ -285,10 +290,10 @@ Parquet 文件和 Delta Lake 文件包含每一列的类型说明。 下表介�
 | BINARY |STRING |varchar \*（UTF8 排序规则） |
 | BINARY |ENUM|varchar \*（UTF8 排序规则） |
 | FIXED_LEN_BYTE_ARRAY |UUID |uniqueidentifier |
-| BINARY |DECIMAL |decimal |
+| BINARY |DECIMAL |Decimal |
 | BINARY |JSON |varchar(8000) \*（UTF8 排序规则） |
 | BINARY |BSON | 不支持 |
-| FIXED_LEN_BYTE_ARRAY |DECIMAL |decimal |
+| FIXED_LEN_BYTE_ARRAY |DECIMAL |Decimal |
 | BYTE_ARRAY |INTERVAL | 不支持 |
 | INT32 |INT(8, true) |smallint |
 | INT32 |INT(16, true) |smallint |
@@ -297,11 +302,11 @@ Parquet 文件和 Delta Lake 文件包含每一列的类型说明。 下表介�
 | INT32 |INT(16, false) |int |
 | INT32 |INT(32, false) |bigint |
 | INT32 |DATE |date |
-| INT32 |DECIMAL |decimal |
+| INT32 |DECIMAL |Decimal |
 | INT32 |TIME (MILLIS)|time |
 | INT64 |INT(64, true) |bigint |
 | INT64 |INT(64, false) |decimal(20,0) |
-| INT64 |DECIMAL |decimal |
+| INT64 |DECIMAL |Decimal |
 | INT64 |TIME (MICROS) |time - 不支持 TIME(NANOS) |
 |INT64 |TIMESTAMP (MILLIS/MICROS) |datetime2 - 不支持 TIMESTAMP(NANOS) |
 |[复杂类型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |列表 |varchar(8000)，序列化为 JSON |

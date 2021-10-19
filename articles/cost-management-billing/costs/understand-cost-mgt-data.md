@@ -1,24 +1,24 @@
 ---
 title: 了解 Azure 成本管理数据
-description: 本文帮助你更好地了解 Azure 成本管理中包含的数据、这些数据的处理频率以及收集、显示和关闭方式。
+description: 本文可帮助你更好地了解成本管理中包含的数据、这些数据的处理频率以及收集、显示和关闭方式。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/24/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 025208685d45658824956b5625993a5dfdbf5e6a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0e67812e07229ee8dc13bcd79fc6d546a2618009
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467526"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711310"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
-本文帮助你更好地了解 Azure 成本管理中包含的 Azure 成本和使用情况数据。 本文介绍这些数据的处理频率以及收集、显示和关闭方式。 你需要按月支付 Azure 使用费。 尽管计费周期是按月的，但周期开始日期和结束日期因订阅类型而异。 成本管理接收用量数据的频率根据不同的因素而异。 此类因素包括处理数据所花费的时间，以及 Azure 服务向计费系统发出用量数据的频率。
+本文可帮助你更好地了解成本管理中包含的 Azure 成本和使用情况数据。 本文介绍这些数据的处理频率以及收集、显示和关闭方式。 你需要按月支付 Azure 使用费。 尽管计费周期是按月的，但周期开始日期和结束日期因订阅类型而异。 成本管理接收用量数据的频率根据不同的因素而异。 此类因素包括处理数据所花费的时间，以及 Azure 服务向计费系统发出用量数据的频率。
 
 成本管理包括所有使用情况和购买情况，其中包括企业协议 (EA) 帐户的预留和第三方产品/服务。 Microsoft 客户协议帐户和使用即用即付费率的个人订阅仅包含 Azure 和市场服务的使用情况。 不包括支持和其他成本。 在生成发票之前估计成本，而不考虑额度。
 
@@ -26,7 +26,7 @@ ms.locfileid: "110467526"
 
 ## <a name="supported-microsoft-azure-offers"></a>支持的 Microsoft Azure 套餐
 
-以下信息说明了 Azure 成本管理中目前支持的 [Microsoft Azure 套餐](https://azure.microsoft.com/support/legal/offer-details/)。 Azure 套餐是客户拥有的 Azure 订阅类型。 从“数据可用”日期开始，成本管理中会提供数据。 如果订阅更改了套餐，则套餐更改日期之前的成本不可用。
+以下信息展示了成本管理中目前支持的 [Microsoft Azure 套餐](https://azure.microsoft.com/support/legal/offer-details/)。 Azure 套餐是客户拥有的 Azure 订阅类型。 从“数据可用”日期开始，成本管理中会提供数据。 如果订阅更改了套餐，则套餐更改日期之前的成本不可用。
 
 | **类别**  | **产品/服务名称** | **配额 ID** | **套餐编号** | **数据可用** |
 | --- | --- | --- | --- | --- |
@@ -54,7 +54,7 @@ ms.locfileid: "110467526"
 
 _<sup>2</sup> Microsoft 客户协议从 2019 年 3 月开始，在此时间点之前没有任何历史数据。_ 
 
-_<sup>3</sup> 基于额度的订阅和提前支付订阅的历史数据可能与发票不匹配。请参阅下面的[历史数据可能与发票不匹配](#historical-data-might-not-match-invoice)。_ 
+_<sup>3</sup> 基于额度的订阅和提前支付订阅的历史数据可能与发票不匹配。请参阅下面的 [历史数据可能与发票不匹配](#historical-data-might-not-match-invoice)。_ 
 
 目前尚不支持以下套餐：
 
@@ -105,7 +105,7 @@ _<sup>6</sup> 预留项购买目前仅适用于企业协议 (EA) 和 Microsoft �
 
 ## <a name="how-tags-are-used-in-cost-and-usage-data"></a>如何在成本和使用情况数据中使用标记
 
-Azure 成本管理接收标记，作为各个服务提交的每个使用记录的一部分。 以下约束适用于这些标记：
+成本管理接收标记，作为各个服务提交的每条使用记录的一部分。 以下约束适用于这些标记：
 
 - 必须直接将标记应用到资源，不能从父资源组隐式继承标记。
 - 只有部署到资源组的资源才支持资源标记。

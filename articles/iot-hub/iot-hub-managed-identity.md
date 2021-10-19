@@ -7,27 +7,25 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/02/2021
 ms.author: miag
-ms.openlocfilehash: e230f06c91e775de87b42fcc2112fc699f9ecafc
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 15cde0a434df9ac06e69bf0c589cdcab8a03d2dc
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449220"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712391"
 ---
 # <a name="iot-hub-support-for-managed-identities"></a>IoT 中心对托管标识的支持 
 
 托管标识在 Azure AD 中以安全的方式为 Azure 服务提供自动托管标识。 这样，开发人员无需提供标识即可管理凭据。 有两种类型的托管标识：系统分配和用户分配的托管标识。 IoT 中心支持这两者。 
 
-在 IoT 中心，托管标识可用于从 IoT 中心到其他 Azure 服务的出口连接，以实现[消息路由](iot-hub-devguide-messages-d2c.md)、[文件上传](iot-hub-devguide-file-upload.md)和[批量设备导入/导出](iot-hub-bulk-identity-mgmt.md)等功能。 在本文中，你将了解如何在 IoT 中心使用系统分配的和用户分配的托管标识来实现不同的功能。 
-
+在 IoT 中心，托管标识可用于从 IoT 中心到其他 Azure 服务的出口连接，以实现[消息路由](iot-hub-devguide-messages-d2c.md)、[文件上传](iot-hub-devguide-file-upload.md)和[批量设备导入/导出](iot-hub-bulk-identity-mgmt.md)等功能。 在本文中，你将了解如何在 IoT 中心使用系统分配的和用户分配的托管标识来实现不同的功能。
 
 ## <a name="prerequisites"></a>先决条件
 - 阅读 [Azure 资源托管标识](./../active-directory/managed-identities-azure-resources/overview.md)这一文档，了解系统分配的托管标识和用户分配的托管标识之间的区别。
 
 - 如果没有 IoT 中心，请先[创建一个](iot-hub-create-through-portal.md)，然后再继续。
 
-
-## <a name="system-assigned-managed-identity"></a>系统分配的托管标识 
+## <a name="system-assigned-managed-identity"></a>系统分配的托管标识
 
 ### <a name="add-and-remove-a-system-assigned-managed-identity-in-azure-portal"></a>在 Azure 门户中添加和删除系统分配的托管标识
 1.  登录 Azure 门户并导航到所需的 IoT 中心。
@@ -128,8 +126,8 @@ az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resou
 
     :::image type="content" source="./media/iot-hub-managed-identity/user-assigned.png" alt-text="显示如何为 IoT 中心添加用户分配的托管标识的屏幕截图":::        
 
-
 ### <a name="enable-user-assigned-managed-identity-at-hub-creation-time-using-arm-template"></a>在创建中心时使用 ARM 模板启用用户分配的托管标识
+
 可使用以下示例模板，通过用户分配的托管标识来创建中心。 此模板会创建一个用户分配的标识，其名称为 [iothub-name-provided]-identity 并被分配给已创建的 IoT 中心。 可更改模板，根据需要添加多个用户分配的标识。
  
 ```json
@@ -212,6 +210,7 @@ az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resou
   ]
 }
 ```
+
 ```azurecli-interactive
 az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json> --parameters iotHubName=<valid-iothub-name> skuName=<sku-name> skuTier=<sku-tier> location=<any-of-supported-regions>
 ```
@@ -221,34 +220,41 @@ az deployment group create --name <deployment-name> --resource-group <resource-g
 ```azurecli-interactive
 az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resource-name> --resource-group <resource-group-name>
 ```
+
 ## <a name="egress-connectivity-from-iot-hub-to-other-azure-resources"></a>从 IoT 中心到其他 Azure 资源的出口连接
-托管标识可用于从 IoT 中心到其他 Azure 服务的出口连接，以实现[消息路由](iot-hub-devguide-messages-d2c.md)、[文件上传](iot-hub-devguide-file-upload.md)和[批量设备导入/导出](iot-hub-bulk-identity-mgmt.md)。 可为每个指向客户拥有的终结点的 IoT 中心出站连接选择要使用的托管标识。 
+
+托管标识可用于从 IoT 中心到其他 Azure 服务的出口连接，以实现[消息路由](iot-hub-devguide-messages-d2c.md)、[文件上传](iot-hub-devguide-file-upload.md)和[批量设备导入/导出](iot-hub-bulk-identity-mgmt.md)。 可为每个指向客户拥有的终结点的 IoT 中心出站连接选择要使用的托管标识。
+
+> [!NOTE]
+> 使用系统分配的托管标识访问专用资源。
 
 ## <a name="configure-message-routing-with-managed-identities"></a>使用托管标识配置消息路由
+
 在本部分中，我们以[消息路由](iot-hub-devguide-messages-d2c.md)到事件中心自定义终结点为例。 该示例适用于其他路由自定义终结点。 
 
-1.  首先，我们需要转到 Azure 门户中的事件中心，向托管标识分配正确的访问权限。 在事件中心，导航到“访问控制(IAM)”选项卡，依次单击“添加”和“添加角色分配”  。 如果没有分配角色的权限，则将禁用“添加角色分配”选项。
+1. 首先，我们需要转到 Azure 门户中的事件中心，向托管标识分配正确的访问权限。 在事件中心，导航到“访问控制(IAM)”选项卡，依次单击“添加”和“添加角色分配”  。 如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
-2.  选择“事件中心数据发送者”作为角色。
+2. 选择“事件中心数据发送者”作为角色。
 
-    > [!NOTE] 
+    > [!NOTE]
     > 对于存储帐户，请选择“存储 Blob 数据参与者”（[不是参与者或存储帐户参与者](../storage/blobs/assign-azure-role-data-access.md)）作为角色。 对于服务总线，请选择“服务总线数据发送者”作为角色 。
 
-3.  对于用户分配的托管标识，请在“将访问权限分配到”下方选择“用户分配的托管标识” 。 在下拉列表中选择订阅和用户分配的托管标识。 单击“保存”按钮  。
+3. 对于用户分配的托管标识，请在“将访问权限分配到”下方选择“用户分配的托管标识” 。 在下拉列表中选择订阅和用户分配的托管标识。 单击“保存”按钮  。
 
     :::image type="content" source="./media/iot-hub-managed-identity/eventhub-iam-user-assigned.png" alt-text="具有用户分配的托管标识的 IoT 中心消息路由":::
 
-4.  对于系统分配的托管标识，请在“将访问权限分配到”下方，选择“用户、组或服务主体”，然后在下拉列表中选择 IoT 中心的资源名称 。 单击“保存” 。
+4. 对于系统分配的托管标识，请在“将访问权限分配到”下方，选择“用户、组或服务主体”，然后在下拉列表中选择 IoT 中心的资源名称 。 单击“保存”  。
 
     :::image type="content" source="./media/iot-hub-managed-identity/eventhub-iam-system-assigned.png" alt-text="具有系统分配的托管标识的 IoT 中心消息路由":::
 
     如果需要通过 VNet 限制与自定义终结点的连接，则需要启用 Microsoft 受信任的第一方例外，使 IoT 中心能够访问特定终结点。 例如，如果要添加事件中心自定义终结点，请导航到事件中心的“防火墙和虚拟网络”选项卡，并启用“允许从所选网络访问”选项 。 在“异常”列表中，勾选“允许受信任的 Microsoft 服务访问事件中心”复选框 。 单击“保存”按钮  。 这也适用于存储帐户和服务总线。 详细了解 [IoT 中心的虚拟网络支持](./virtual-network-support.md)。
 
     > [!NOTE]
-    > 在 IoT 中心内将事件中心添加为自定义终结点之前，需要完成上述步骤以为托管标识分配正确的访问权限。 请等待角色分配传播完成。 
+    > 在 IoT 中心内将事件中心添加为自定义终结点之前，需要完成上述步骤以为托管标识分配正确的访问权限。 请等待角色分配传播完成。
 
 5. 接下来，请前往 IoT 中心。 在中心，导航到“消息路由”，然后单击“自定义终结点” 。 单击“添加”，然后选择要使用的终结点类型。 在本部分中，我们使用事件中心作为示例。
-6.  在页面底部，选择首选的“身份验证类型”。 在本部分中，我们使用“用户分配”作为示例。 在下拉列表中，选择首选的用户分配的托管标识，然后单击“创建”。
+
+6. 在页面底部，选择首选的“身份验证类型”。 在本部分中，我们使用“用户分配”作为示例。 在下拉列表中，选择首选的用户分配的托管标识，然后单击“创建”。
 
     :::image type="content" source="./media/iot-hub-managed-identity/eventhub-routing-endpoint.png" alt-text="具有用户分配的托管标识的 IoT 中心事件中心":::
 
@@ -260,19 +266,18 @@ az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resou
 9. 选择要为此终结点更新的新身份验证类型，然后单击“保存”。
 
 ## <a name="configure-file-upload-with-managed-identities"></a>使用托管标识配置文件上传
+
 IoT 中心的[文件上传](iot-hub-devguide-file-upload.md)功能允许设备将文件上传到客户拥有的存储帐户。 若要正常上传文件，IoT 中心需要连接到存储帐户。 类似于消息路由，你可以为指向 Azure 存储帐户的 IoT 中心出站连接选择首选身份验证类型和托管标识。 
 
 1. 在 Azure 门户中，导航到存储帐户的“访问控制 (IAM)”选项卡，然后在“添加角色分配”部分下，单击“添加”  。
 2. 选择“存储 Blob 数据参与者”（不是参与者或存储帐户参与者）作为角色。
 3. 对于用户分配的托管标识，请在“将访问权限分配到”下方选择“用户分配的托管标识”。 在下拉列表中选择订阅和用户分配的托管标识。 单击“保存”按钮  。
-4. 对于系统分配的托管标识，请在“将访问权限分配到”下方，选择“用户、组或服务主体”，然后在下拉列表中选择 IoT 中心的资源名称 。 单击“保存” 。
+4. 对于系统分配的托管标识，请在“将访问权限分配到”下方，选择“用户、组或服务主体”，然后在下拉列表中选择 IoT 中心的资源名称 。 单击“保存”  。
 
     如果需要通过 VNet 限制与存储帐户的连接，则需要启用 Microsoft 受信任的第一方例外，使 IoT 中心能够访问特定终结点。 在存储帐户资源页上，导航到存储帐户中的“防火墙和虚拟网络”选项卡，并启用“允许从所选网络进行访问”选项 。 在“异常”列表中，勾选“允许受信任的 Microsoft 服务访问此存储帐户”复选框 。 单击“保存”按钮  。 详细了解 [IoT 中心的虚拟网络支持](./virtual-network-support.md)。 
 
-
     > [!NOTE]
-    > 在使用托管标识在 IoT 中心保存存储帐户以供文件上传之前，需要完成上述步骤来为托管标识分配正确的访问权限。 请等待角色分配传播完成。 
- 
+    > 在使用托管标识在 IoT 中心保存存储帐户以供文件上传之前，需要完成上述步骤来为托管标识分配正确的访问权限。 请等待角色分配传播完成。
 5. 在 IoT 中心的“资源”页上，导航到“文件上传”选项卡。
 6. 在显示的页面上，选择要在 blob 存储中使用的容器，根据需要配置“文件通知设置、SAS TTL、默认 TT 和最大传送计数”。 选择首选的身份验证类型，然后单击“保存”。 如果在此步骤中遇到错误，请暂时将存储帐户设置为允许从所有网络访问，然后重试。 文件上传配置完成后，可以在存储帐户上配置防火墙。
 
@@ -288,8 +293,7 @@ IoT 中心支持从/向客户提供的存储 blob 批量[导入/导出](iot-hub-
 1. 在 Azure 门户中，导航到存储帐户的“访问控制 (IAM)”选项卡，然后在“添加角色分配”部分下，单击“添加”  。
 2. 选择“存储 Blob 数据参与者”（不是参与者或存储帐户参与者）作为角色。
 3. 对于用户分配的托管标识，请在“将访问权限分配到”下方选择“用户分配的托管标识”。 在下拉列表中选择订阅和用户分配的托管标识。 单击“保存”按钮  。
-4. 对于系统分配的托管标识，请在“将访问权限分配到”下方，选择“用户、组或服务主体”，然后在下拉列表中选择 IoT 中心的资源名称 。 单击“保存” 。
-
+4. 对于系统分配的托管标识，请在“将访问权限分配到”下方，选择“用户、组或服务主体”，然后在下拉列表中选择 IoT 中心的资源名称 。 单击“保存”  。
 
 ### <a name="using-rest-api-or-sdk-for-import-and-export-jobs"></a>将 REST API 或 SDK 用于导入和导出作业
 
@@ -299,7 +303,6 @@ IoT 中心支持从/向客户提供的存储 blob 批量[导入/导出](iot-hub-
 - **inputBlobContainerUri：** 仅在导入作业中设置此属性。
 - **inputBlobContainerUri：** 在导入和导出作业中设置此属性。
 - **identity：** 将值设置为要使用的托管标识。
-
 
 Azure IoT 中心 SDK 也支持在服务客户端的注册表管理器中使用此功能。 以下代码段演示如何在使用 C# SDK 时启动导入或导出作业。
 

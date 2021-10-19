@@ -1,8 +1,8 @@
 ---
 title: 重置 Azure Kinect DK
 description: 介绍如何将 Azure Kinect DK 设备重置为出厂映像
-author: Teresa-Motiv
-ms.author: v-tea
+author: martinekuan
+ms.author: martinek
 ms.reviewer: jarrettr
 ms.prod: kinect-dk
 ms.date: 02/11/2020
@@ -14,12 +14,12 @@ ms.custom:
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: f851579712a9549c88f1ca652aea4f31457da132
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 71579ba69852dd3f5359526a70f8b99d266344e4
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77200633"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129808867"
 ---
 # <a name="reset-azure-kinect-dk"></a>重置 Azure Kinect DK
 
@@ -37,7 +37,7 @@ ms.locfileid: "77200633"
    松开重置按钮后，电源指示灯会以白色和琥珀色闪烁，此时设备正在重置。 
 1. 等待电源指示灯变为稳定白色。
 1. 在三脚架安装锁孔中装回螺丝，盖住重置按钮。
-1. 使用 Azure Kinect 查看器验证固件是否已重置。 为此，请启动 [Azure Kinect 查看器](azure-kinect-viewer.md)，选择“设备固件版本信息”查看安装在 Azure Kinect DK 上的固件版本。 
+1. 使用 Azure Kinect 查看器验证固件是否已重置。 为此，请启动 [Azure Kinect 查看器](azure-kinect-viewer.md)，选择“设备固件版本信息”查看安装在 Azure Kinect DK 上的固件版本。
 
 请始终确保在设备上安装最新的固件。 若要获取最新的固件版本，请使用 Azure Kinect 固件工具。 有关如何检查固件状态的详细信息，请参阅[检查设备固件版本](azure-kinect-firmware-tool.md#check-device-firmware-version)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "77200633"
 
 - [关于 Azure Kinect DK](about-azure-kinect-dk.md)
 - [设置 Azure Kinect DK](set-up-azure-kinect-dk.md)
-- [Azure Kinect DK 硬件规格：工作环境](hardware-specification.md#operating-environment)
+- [Azure Kinect DK 硬件规范：操作环境](hardware-specification.md#operating-environment)
 - [Azure Kinect 固件工具](azure-kinect-firmware-tool.md)
 - [Azure Kinect 查看器](azure-kinect-viewer.md)
 - [跨多个 Azure Kinect DK 设备进行同步](multi-camera-sync.md)

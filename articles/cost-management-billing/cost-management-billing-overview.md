@@ -1,28 +1,28 @@
 ---
 title: Azure 成本管理和计费概述
-description: 可以使用 Azure 成本管理和计费功能执行计费管理任务，并管理对成本的计费访问。 还可以使用该功能监视和控制 Azure 支出，并优化 Azure 资源的使用。
+description: 可使用成本管理 + 计费功能执行计费管理任务，并管理对成本的计费访问。 还可以使用该功能监视和控制 Azure 支出，并优化 Azure 资源的使用。
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2021
+ms.date: 10/07/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8eb040183f1a207410c5e093009878845a61f261
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 51b33d90a1dda0878f3c0fa39ed35c7d63d905dd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113768480"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706227"
 ---
-# <a name="what-is-azure-cost-management--billing"></a>什么是 Azure 成本管理和计费？
+# <a name="what-is-cost-management--billing"></a>什么是“成本管理 + 计费”？
 
-通过使用 Microsoft 云，可以显著提高业务工作负载的技术性能。 还可以降低管理组织资产所需的成本和开销。 不过，该业务机遇会带来风险，因为云部署中引入了潜在的浪费和效率低下因素。 Azure 成本管理和计费是 Microsoft 提供的一套工具，有助于分析、管理和优化工作负载的成本。 使用此套件有助于确保组织充分利用云提供的权益。
+通过使用 Microsoft 云，可以显著提高业务工作负载的技术性能。 还可以降低管理组织资产所需的成本和开销。 不过，该业务机遇会带来风险，因为云部署中引入了潜在的浪费和效率低下因素。 成本管理 + 计费是 Microsoft 提供的一套工具，有助于分析、管理和优化工作负载的成本。 使用此套件有助于确保组织充分利用云提供的权益。
 
-可以将 Azure 工作负载视为你家中的灯。 如果你某天要出门，你会不关灯就走吗？ 你能否使用不同的更节能的灯泡来帮助减少每月能源开销？ 某个房间内的灯光是否比所需的灯光更多？ 可以使用 Azure 成本管理和计费功能，将类似的思维过程应用于组织使用的工作负载。
+可以将 Azure 工作负载视为你家中的灯。 如果你某天要出门，你会不关灯就走吗？ 你能否使用不同的更节能的灯泡来帮助减少每月能源开销？ 某个房间内的灯光是否比所需的灯光更多？ 可使用成本管理 + 计费功能将类似的思维过程应用于组织使用的工作负载。
 
-使用 Azure 产品和服务，只需为你使用的部分付费。 创建和使用 Azure 资源时，需要为资源付费。 由于新资源易于部署，因此如果没有恰当的分析和监视，工作负载的成本可能会显著变化。 使用 Azure 成本管理和计费功能可以：
+使用 Azure 产品和服务，只需为你使用的部分付费。 创建和使用 Azure 资源时，需要为资源付费。 由于新资源易于部署，因此如果没有恰当的分析和监视，工作负载的成本可能会显著变化。 可使用成本管理 + 计费功能来：
 
 - 执行计费管理任务，例如支付帐单
 - 管理对成本的计费访问权限
@@ -31,7 +31,7 @@ ms.locfileid: "113768480"
 - 设置支出阈值
 - 确定可优化支出的工作负载更改机会
 
-若要详细了解如何作为组织来处理成本管理，请参阅 [Azure 成本管理最佳做法](./costs/cost-mgt-best-practices.md)一文。
+若要详细了解如何作为组织来处理成本管理，请参阅[成本管理最佳做法](./costs/cost-mgt-best-practices.md)一文。
 
 ![“成本管理 + 计费”优化过程的示意图。](./media/cost-management-optimization-process.png)
 
@@ -51,7 +51,7 @@ Azure 门户当前支持以下类型的计费帐户：
 
 - **Microsoft 客户协议**：当组织与 Microsoft 代表一起签署 Microsoft 客户协议时，将会为 Microsoft 客户协议创建一个计费帐户。 特定区域的某些客户通过 Azure 网站注册采用即用即付费率的帐户或者升级其 [Azure 免费帐户](./manage/create-free-services.md)，这些客户可能也有一个适用于 Microsoft 客户协议的计费帐户。
 
-## <a name="understand-azure-cost-management"></a>了解 Azure 成本管理
+## <a name="understand-cost-management"></a>了解成本管理
 
 虽然与计费相关，但计费不等同于成本管理。 计费是为客户开具商品或服务的发票及管理商业关系的过程。
 
@@ -59,7 +59,7 @@ Azure 门户当前支持以下类型的计费帐户：
 
 你可以使用 Azure 门户或各种 API 执行自动导出，从而将成本数据与外部系统和过程进行整合。 另外，还可自动导出计费数据和计划的报表。
 
-观看 Azure 成本管理概述视频来快速了解 Azure 成本管理如何帮助你在 Azure 中节省金钱。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
+观看成本管理概述视频，快速了解成本管理如何帮助你在 Azure 中节省费用。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
@@ -77,7 +77,7 @@ Azure 门户当前支持以下类型的计费帐户：
 
 ### <a name="additional-azure-tools"></a>其他 Azure 工具
 
-Azure 还包含其他一些工具，虽然这些工具不属于 Azure 成本管理和计费功能集， 但它们在成本管理过程中都发挥着重要作用。 若要详细了解这些工具，请参阅以下链接。
+Azure 还包含成本管理 + 计费功能集中没有的其他一些工具。 但它们在成本管理过程中都发挥着重要作用。 若要详细了解这些工具，请参阅以下链接。
 
 - [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/) - 使用此工具可估计前期云成本。
 - [Azure Migrate](../migrate/migrate-services-overview.md) - 评估当前数据中心的工作负载，获取有关 Azure 替代解决方案所需内容的见解。
@@ -88,5 +88,5 @@ Azure 还包含其他一些工具，虽然这些工具不属于 Azure 成本管�
 
 至此，你已熟悉成本管理和计费，接下来将了解如何使用该服务。
 
-- 开始使用 Azure 成本管理来[分析成本](./costs/quick-acm-cost-analysis.md)。
-- 此外，还可以详细了解 [Azure 成本管理最佳做法](./costs/cost-mgt-best-practices.md)。
+- 开始使用成本管理来[分析成本](./costs/quick-acm-cost-analysis.md)。
+- 此外，还可详细了解[成本管理最佳做法](./costs/cost-mgt-best-practices.md)。

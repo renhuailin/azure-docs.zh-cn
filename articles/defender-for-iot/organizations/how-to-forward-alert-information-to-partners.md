@@ -3,12 +3,12 @@ title: 转发警报信息
 description: 你可以通过使用转发规则将警报信息发送到合作伙伴系统。
 ms.date: 08/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 2136a58a383bb623edca69cb03c1c9c5530a107f
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: eb902036a286be50dc1f29ccca894f3d422cc59c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432340"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612194"
 ---
 # <a name="forward-alert-information"></a>转发警报信息
 
@@ -98,6 +98,8 @@ Defender for IoT 系统已设置为验证证书或忽略证书验证。  有关�
 为转发规则定义电子邮件：
 
 1. 输入单个电子邮件地址。 如果需要添加多个电子邮件，你将需要为每个电子邮件地址创建另一个操作。
+
+    :::image type="content" source="media/how-to-forward-alert-information-to-partners/forward-email.png" alt-text="屏幕截图显示了转发警报屏幕，它用于将警报转发到电子邮件地址。":::
 
 1. 请在 SIEM 上输入警报检测的时间戳的时区。
 

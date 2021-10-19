@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 07a4d0b7b932b92307b77420df1a21027df1efb0
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 1463c4e879b364f8242d55aa58b424a8cc6f9cf9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538050"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706802"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储
 
-知识存储是 Azure 认知搜索的一项功能，该功能可将 [AI 扩充管道](cognitive-search-concept-intro.md)的输出发送到 Azure 存储中的表和 blob，以供独立分析或进行下游处理。
+“知识存储”是一种数据接收器，由认知搜索 [AI 扩充管道](cognitive-search-concept-intro.md)创建，它在 Azure 存储中的表和 Blob 容器中存储已扩充的内容，以便在非搜索场景（例如知识挖掘）中进行独立分析或下游处理。
 
 如果你过去使用过认知技能，那么你已经知道技能组可通过扩充序列调用原子转换（如识别实体或翻译文本）来移动文档。 结果可以是搜索索引，也可以是知识存储中的投影。 这两个输出（搜索索引和知识存储）是相同管道的互斥性产品；它们派生自相同的输入，但生成的输出将在不同应用程序中进行结构化、存储和使用。
 

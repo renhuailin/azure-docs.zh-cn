@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/27/2021
+ms.date: 10/07/2021
 ms.author: b-juche
-ms.openlocfilehash: abbf02776d6bc1506912a5bdd1446393b9f678fb
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: f396904b3832403337a6fa4553e2ae4a4b8c86b4
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094841"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667946"
 ---
 # <a name="requirements-and-considerations-for-azure-netapp-files-backup"></a>Azure NetApp 文件备份的要求和注意事项 
 
@@ -45,6 +45,8 @@ ms.locfileid: "129094841"
     需要备份的卷要求有一个已配置的快照策略来创建快照。 配置的备份数量存储在 Azure 存储中。 
 
 * 如果出现问题（例如，卷上没有足够的空间）并导致快照策略停止创建新快照，则备份功能将没有任何新快照要备份。 
+
+* 在跨区域复制设置中，只能在源卷上配置 Azure NetApp 文件备份。 不支持在跨区域复制目标卷上进行此配置。
 
 ## <a name="next-steps"></a>后续步骤
 

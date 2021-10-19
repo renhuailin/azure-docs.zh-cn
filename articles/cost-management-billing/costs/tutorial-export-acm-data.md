@@ -1,26 +1,26 @@
 ---
 title: 教程 - 从 Azure 成本管理创建和管理导出的数据
-description: 本文介绍如何创建和管理导出的 Azure 成本管理数据，以便在外部系统中使用。
+description: 本文介绍如何创建和管理导出的成本管理数据，以便在外部系统中使用。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/16/2021
+ms.date: 10/07/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 5c27f34adcf427a82f425f7ef4cf24a4ae843bc4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a08c6a6b00273e21c517162260f54ed3e6fc65ff
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128648765"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711357"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
 如果你已阅读成本分析教程，则会熟悉如何手动下载成本管理数据。 但是，可以创建一个定期任务，按日、按周或按月自动将成本管理数据导出到 Azure 存储。 导出的数据采用 CSV 格式，它包含成本管理收集的所有信息。 然后，可以在外部系统使用从 Azure 存储导出的数据，并将其与自己的自定义数据相结合。 在类似仪表板或其他财务系统等的外部系统中，你都可以使用导出的数据。
 
-观看[如何使用 Azure 成本管理计划对存储的导出](https://www.youtube.com/watch?v=rWa_xI1aRzo)视频，了解如何创建计划导出以将 Azure 成本数据导出到 Azure 存储。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
+观看[如何使用成本管理计划到存储的导出](https://www.youtube.com/watch?v=rWa_xI1aRzo)视频，了解如何创建 Azure 成本数据到 Azure 存储的计划导出。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/rWa_xI1aRzo]
 

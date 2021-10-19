@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 08/24/2021
-ms.openlocfilehash: f9dacea4d80591b6ec5b83ae93564cd8b03aff9c
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 4af576587d5d0e87053fb31cdd2c1d073d1ea97e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212449"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714767"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 
 使用导入数据向导和由虚拟酒店数据构成的内置示例数据源来创建首个搜索索引。 该向导指导你完成搜索索引 (hotels-sample-index) 的创建过程，以便你可以在几分钟内编写有趣查询。 
 
-尽管本快速入门中不会使用这些选项，但该向导包含用于 AI 扩充的页面，以便你从图像文件和非结构化文本中提取文本和结构。 有关包括 AI 扩充的类似演练，请参阅[快速入门：创建认知技能组](cognitive-search-quickstart-blob.md)。
+尽管本快速入门中不会使用这些选项，但该向导包含用于 AI 扩充的页面，以便你从图像文件和非结构化文本中提取文本和结构。 有关包含 AI 扩充的类似演练，请参阅[文本翻译和实体技能集](cognitive-search-quickstart-blob.md)或 [OCR 映像技能集](cognitive-search-quickstart-ocr.md)快速入门。
 
 ## <a name="prerequisites"></a>先决条件
 

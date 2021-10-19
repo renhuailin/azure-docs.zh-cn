@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a55a49232e18c61f1c5b1915c06cd61e1f13ab0b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4fe44c7880420d7f2bc89f479e152a23f22909e8
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128674426"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670207"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Key Vault 虚拟机扩展
 
@@ -33,6 +33,9 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 > [!NOTE]
 > 若要获得扩展的安全功能，请准备升级 Ubuntu-1604 和 Debian-9 系统，因为这些版本的指定支持期将结束。
 > 
+
+> [!NOTE]
+> Key Vault VM 扩展会将证书下载到默认位置或 VM 扩展设置中“certStoreLocation”属性所提供的位置。 KeyValut VM 扩展会将文件夹权限更新为 700 (drwx------)，即仅允许对文件夹所有者的“读取”、“写入”和“执行”权限
 
 ### <a name="supported-certificate-content-types"></a>支持的证书内容类型
 
@@ -76,7 +79,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为没有安全影响的信息。 该扩展需要受监视的密钥列表、轮询频率和目标证书存储。 具体来说：  
+以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为没有安全影响的信息。 该扩展需要受监视的密钥列表、轮询频率和目标证书存储。 具体而言：  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",

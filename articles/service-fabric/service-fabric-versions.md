@@ -3,32 +3,34 @@ title: Azure Service Fabric 版本
 description: 了解主动支持的 Azure Service Fabric 和平台版本中的群集版本
 ms.topic: troubleshooting
 ms.date: 04/12/2021
-ms.openlocfilehash: bf9eee45ab674e7089fbf5210d6d5677ae4e11a9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 930de308562fc0a5d73b3b5ee0799324aa3bda3d
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754951"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659158"
 ---
 # <a name="service-fabric-supported-versions"></a>受支持的 Service Fabric 版本
 本文中的表概述了主动支持的 Service Fabric 和平台版本。
 
 ## <a name="windows"></a>Windows
 
-| Service Fabric 运行时 |可直接从此版本升级|可降级到|兼容的 SDK 或 NuGet 包版本|支持的 .NET 运行时** |OS 版本。 |结束支持 |
+| Service Fabric 运行时 |可直接从此版本升级|可降级到*|兼容的 SDK 或 NuGet 包版本|支持的 .NET 运行时** |OS 版本。 |结束支持 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 8.1 CU2 | 7.2 CU7 | 8.0 | 低于或等于版本 5.1 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
-| 8.1 CU1 | 7.2 CU7 | 8.0 | 低于或等于版本 5.1 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
-| 8.1 RTO | 7.2 CU7 | 8.0 | 低于或等于版本 5.1 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
-| 8.0 CU3 | 7.1 CU10 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
-| 8.0 CU2 | 7.1 CU10 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
-| 8.0 CU1 | 7.1 CU10 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
-| 8.0 RTO | 7.1 CU10 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
-| 7.2 CU7 | 7.0 CU9 | 7.1 | 版本 4.2 或更低版本 | .NET 5.0（预览版支持）、>= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2021 年 11 月 30 日 |
-| 7.2 CU6 | 7.0 CU4 |7.1 | 版本 4.2 或更低版本 | .NET 5.0（预览版支持）、>= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
-| 7.2 RTO-CU5 | 7.0 CU4 | 7.1 |版本 4.2 或更低版本 | >= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
-| 7.1 |7.0 CU3 |不适用 | 版本 4.1 或更低版本 | >= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2021 年 7 月 31 日 |
+| 8.1 CU3<br>8.1.335.9590 | 7.2 CU7<br>7.2.477.9590 | 8.0 | 低于或等于版本 5.1 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
+| 8.1 CU2<br>8.1.329.9590 | 7.2 CU7<br>7.2.477.9590 | 8.0 | 低于或等于版本 5.1 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
+| 8.1 CU1<br>8.1.321.9590 | 7.2 CU7<br>7.2.477.9590 | 8.0 | 低于或等于版本 5.1 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
+| 8.1 RTO<br>8.1.316.9590 | 7.2 CU7<br>7.2.477.9590 | 8.0 | 低于或等于版本 5.1 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
+| 8.0 CU3<br>8.0.536.9590 | 7.1 CU10<br>7.1.510.9590 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 CU2<br>8.0.521.9590 | 7.1 CU10<br>7.1.510.9590 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 CU1<br>8.0.516.9590 | 7.1 CU10<br>7.1.510.9590 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 RTO<br>8.0.514.9590 | 7.1 CU10<br>7.1.510.9590 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 7.2 CU7<br>7.2.477.9590 | 7.0 CU9<br>7.0.478.9590 | 7.1 | 版本 4.2 或更低版本 | .NET 5.0（预览版支持）、>= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2021 年 11 月 30 日 |
+| 7.2 CU6<br>7.2.457.9590 | 7.0 CU4<br>7.0.470.9590 |7.1 | 版本 4.2 或更低版本 | .NET 5.0（预览版支持）、>= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
+| 7.2 RTO-CU5<br>7.2.413.9590-7.2.452.9590 | 7.0 CU4<br>7.0.470.9590 | 7.1 |版本 4.2 或更低版本 | >= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
+| 7.1<br>7.1.510.9590 |7.0 CU3<br>7.0.466.9590 |不适用 | 版本 4.1 或更低版本 | >= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2021 年 7 月 31 日 |
 
+\* 该版本应该仍享受支持。
 ** Service Fabric 不提供 .NET Core 运行时。 由服务作者负责确保其<a href="/dotnet/core/deploying/">可用</a>。
 
 ## <a name="supported-windows-versions-and-support-end-date"></a>受支持的 Windows 版本和支持结束日期
@@ -61,18 +63,20 @@ ms.locfileid: "124754951"
 
 ## <a name="linux"></a>Linux
 
-| Service Fabric 运行时 | 可直接从此版本升级 |可降级到 |兼容的 SDK 或 NuGet 包版本 | 支持的 .NET 运行时** | OS 版本 | 结束支持 |
+| Service Fabric 运行时 | 可直接从此版本升级 |可降级到*|兼容的 SDK 或 NuGet 包版本 | 支持的 .NET 运行时** | OS 版本 | 结束支持 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 8.1 CU2 | 7.2 CU7 | 8.0 | 低于或等于版本 5.1 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
-| 8.1 CU1 | 7.2 CU7 | 8.0 | 低于或等于版本 5.1 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
-| 8.1 RTO | 7.2 CU7 | 8.0 | 低于或等于版本 5.1 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
-| 8.0 CU3 | 7.1 CU8 | 7.2 | 版本 5.0 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2022 年 2 月 28 日 |
-| 8.0 CU1 | 7.1 CU8 | 7.2 | 版本 5.0 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2022 年 2 月 28 日 |
-| 8.0 RTO | 7.1 CU8 | 7.2 | 版本 5.0 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2022 年 2 月 28 日 |
-| 7.2 CU7 | 7.0 CU9 | 7.1 | 低于或等于版本 4.2 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
-| 7.2 RTO-CU6 | 7.0 CU4 | 7.1 | 低于或等于版本 4.2 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
-| 7.1 | 7.0 CU3 | 不适用 | 低于或等于版本 4.1 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 7 月 31 日 |
+| 8.1 CU3<br>8.1.334.1 | 7.2 CU7<br>7.2.476.1 | 8.0 | 低于或等于版本 5.1 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
+| 8.1 CU2<br>8.1.328.1 | 7.2 CU7<br>7.2.476.1 | 8.0 | 低于或等于版本 5.1 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
+| 8.1 CU1<br>8.1.323.1 | 7.2 CU7<br>7.2.476.1 | 8.0 | 低于或等于版本 5.1 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
+| 8.1 RTO<br>8.1.320.1 | 7.2 CU7<br>7.2.476.1 | 8.0 | 低于或等于版本 5.1 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
+| 8.0 CU3<br>8.0.527.1 | 7.1 CU8<br>7.1.508.1 | 7.2 | 版本 5.0 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 CU1<br>8.0.515.1 | 7.1 CU8<br>7.1.508.1 | 7.2 | 版本 5.0 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 RTO<br>8.0.513.1 | 7.1 CU8<br>7.1.508.1 | 7.2 | 版本 5.0 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 7.2 CU7<br>7.2.476.1 | 7.0 CU9<br>7.0.472.1 | 7.1 | 低于或等于版本 4.2 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
+| 7.2 RTO-CU6<br>7.2.431.1-7.2.456.1 | 7.0 CU4<br>7.0.469.1 | 7.1 | 低于或等于版本 4.2 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
+| 7.1<br>7.1.508.1| 7.0 CU3<br>7.0.465.1 | 不适用 | 低于或等于版本 4.1 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 7 月 31 日 |
 
+\* 该版本应该仍享受支持。
 ** Service Fabric 不提供 .NET Core 运行时，由服务作者负责确保其<a href="/dotnet/core/deploying/">可用</a>
 
 ## <a name="supported-linux-versions-and-support-end-date"></a>受支持的 Linux 版本和支持结束日期
@@ -89,6 +93,7 @@ ms.locfileid: "124754951"
 
 | 版本名称 | Windows 版本号 | Linux 版本号 |
 | --- | --- | --- |
+| 8.1 CU3 | 8.1.335.9590 | 8.1.334.1 |
 | 8.1 CU2 | 8.1.329.9590 | 8.1.328.1 |
 | 8.1 CU1 | 8.1.321.9590 | 8.1.323.1 |
 | 8.1 RTO | 8.1.316.9590 | 8.1.320.1 |
@@ -98,7 +103,6 @@ ms.locfileid: "124754951"
 | 8.0 RTO | 8.0.514.9590 | 8.0.513.1 | 
 | 7.2 CU7 | 7.2.477.9590 | 7.2.476.1 |
 | 7.2 CU6 | 7.2.457.9590 | 7.2.456.1 |
-| 7.2 CU7 | 7.2.477.9590 | 7.2.476.1 |
 | 7.2 CU5 | 7.2.452.9590 | 7.2.454.1 |
 | 7.2 CU4 | 7.2.445.9590 | 7.2.447.1 |
 | 7.2 CU3 | 7.2.433.9590 | NA |

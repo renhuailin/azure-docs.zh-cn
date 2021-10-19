@@ -3,12 +3,12 @@ title: 确定所需设备
 description: 了解用于经认证的 Defender for IoT 传感器和本地管理控制台的硬件和虚拟设备。
 ms.date: 06/21/2021
 ms.topic: how-to
-ms.openlocfilehash: b22f1dc81aee7ee20f4490d716b1e2af953b4553
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: c124ccd69257b9a0b7a57c53b6fa6b0817d95fb6
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113015776"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754342"
 ---
 # <a name="identify-required-appliances"></a>确定所需设备
 
@@ -32,7 +32,7 @@ Defender for IoT 支持物理和虚拟部署。
 
 ### <a name="physical-sensors"></a>物理传感器
 
-本部分提供可用的物理传感器型号的概述。 你可以购买预配置了软件的传感器，或购买未进行预配置的传感器。
+本部分提供可用的物理传感器型号的概述。 可以购买预配置了软件的传感器，或购买未进行预配置的传感器。
 
 | 部署类型 | 企业 | Enterprise | SMB 机架装载| SMB 加固型 |
 |--|--|--|--|--|
@@ -40,7 +40,7 @@ Defender for IoT 支持物理和虚拟部署。
 | 建模 | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 | HPE EL300 |
 | 监视端口 | 多达 15 个 RJ45 或 8 个 OPT | 多达 8 个 RJ45 或 6 个 OPT | 最多 4 个 RJ45 | 最多 5 个 RJ45 |
 | 最大带宽 [1](#anchortext) | 3 Gb/秒 | 1 Gb/秒 | 200 Mb/秒 | 100 Mb/秒 |
-| 最大受保护设备数 | 30,000 | 15,000 | 1,000 | 800 |
+| 最大受保护设备数 | 10,000 | 10,000 | 1,000 | 800 |
 
 有关供应商的详细信息，请参阅[设备规格](#appliance-specifications)。
 
@@ -54,12 +54,12 @@ Defender for IoT 支持物理和虚拟部署。
 
 ### <a name="virtual-sensors"></a>虚拟传感器
 
-本部分提供可用虚拟传感器的概述。
+本部分介绍可用的虚拟传感器。
 
 | 部署类型 | 企业 | Enterprise | SMB |
 |--|--|--|--|
 | 最大带宽 | 2.5 Gb/秒 | 800 Mb/秒 | 160 Mb/秒 |
-| 最大受保护设备数 | 30,000 | 10,000 | 800 |
+| 最大受保护设备数 | 10,000 | 10,000 | 800 |
 
 ## <a name="on-premises-management-console-appliance"></a>本地管理控制台设备
 

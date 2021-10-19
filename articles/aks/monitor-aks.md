@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/29/2021
-ms.openlocfilehash: 68f0d94482d65f261b40095ac715ad65f76fe7af
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 464e848814da046600b05a1feea632a1ceaa141a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124772194"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713837"
 ---
 # <a name="monitoring-azure-kubernetes-service-aks-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure Kubernetes 服务 (AKS)
 此方案描述如何使用 Azure Monitor 监视 Azure Kubernetes 服务 (AKS) 的运行状况和性能。 它包括收集对收集到的数据进行监视、分析和可视化来确定趋势至关重要的遥测，还介绍如何配置警报来主动通知关键问题。
@@ -19,10 +19,10 @@ ms.locfileid: "124772194"
 [云监视指南](/azure/cloud-adoption-framework/manage/monitor/)定义了在 Azure 资源方面应关注的[主要监视目标](/azure/cloud-adoption-framework/strategy/monitoring-strategy#formulate-monitoring-requirements)。 此方案着重于使用 Azure Monitor 监视运行状况和状态。
 
 ## <a name="scope-of-the-scenario"></a>此方案的应用范围
-本方案适用于使用 Azure Monitor 监视 AKS 的客户。 它不包含下列操作，不过此内容可能会在对方案的后续更新中添加。
+本方案适用于使用 Azure Monitor 监视 AKS 的客户。 它不包含以下内容，不过，这些内容可能会在方案的后续更新中加入。
 
 - 监视 Azure 之外的 Kubernetes 群集，参考已启用 Azure Arc 的 Kubernetes 的现有内容除外。 
-- 监视带有 Azure Monitor 以外的工具的 AKS，除非填补 Azure Monitor 与容器见解中的差距。
+- 使用 Azure Monitor 以外的工具监视 AKS，填补了 Azure Monitor 和容器见解的空白。
 
 > [!NOTE]
 > Azure Monitor 旨在监视云资源的可用性和性能。 尽管存储在 Azure Monitor 的操作数据对调查安全事件可能有用，但 Azure 中的其他服务旨在监视安全。 AKS 的安全监视是通过 [Azure Sentinel](../sentinel/overview.md) 和 [Azure 安全中心](../security-center/security-center-introduction.md)完成的。 若要了解 Azure 中的安全监视工具及其与 Azure Monitor 的关系，请参阅[使用 Azure Monitor 监视虚拟机 - 安全监视](../azure-monitor/vm/monitor-virtual-machine-security.md)。

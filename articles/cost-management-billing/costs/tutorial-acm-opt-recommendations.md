@@ -3,24 +3,24 @@ title: 教程 - 使用建议降低 Azure 成本
 description: 本教程帮助你使用优化建议来降低 Azure 成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f8b8b99c1cf2be554703eb49de8c6ff2a39b53be
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d536f8ceb0ae044320e0331671ec33cea501f6b0
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128567692"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711327"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>教程：根据建议优化成本
 
-Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 Azure 顾问通过识别闲置和未充分利用的资源来优化和提高效率。 本教程通过一个示例逐步讲解如何识别未充分利用的 Azure 资源，并采取措施来降低成本。
+成本管理与 Azure 顾问配合可提供成本优化建议。 Azure 顾问通过识别闲置和未充分利用的资源来优化和提高效率。 本教程通过一个示例逐步讲解如何识别未充分利用的 Azure 资源，并采取措施来降低成本。
 
-请观看视频[在 Azure 成本管理中优化云投资](https://www.youtube.com/watch?v=cSNPoAb-TNc)，详细了解如何使用顾问来优化成本。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
+请观看[在成本管理中优化云投资](https://www.youtube.com/watch?v=cSNPoAb-TNc)视频，详细了解如何使用顾问来优化成本。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 

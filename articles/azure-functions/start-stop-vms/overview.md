@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.service: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
-ms.openlocfilehash: 24872e96333aeb67661c462e54acebc62b32c8aa
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: e71f6b6dde1ae12a68f425dcb372cca73456de73
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455411"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858115"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>启动/停止 VM v2（预览版）概述
 
@@ -45,9 +45,15 @@ ms.locfileid: "129455411"
 
  [Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)用于配置以及管理 VM 操作的启动计划和停止计划，方法是使用 JSON 有效负载来调用函数。 默认情况下，在初始部署期间，它会为下列方案创建总共 5 个逻辑应用：
 
-- “计划”- 启动操作和停止操作基于你针对 Azure 资源管理器 VM 和经典 VM 指定的计划。 ststv2_vms_Scheduled_start 和 ststv2_vms_Scheduled_stop 分别用于配置计划的启动和计划的停止 。
+- 计划 - 启动操作和停止操作基于针对 Azure 资源管理器 VM 和经典 VM 指定的计划。 ststv2_vms_Scheduled_start 和 ststv2_vms_Scheduled_stop 分别用于配置计划的启动和计划的停止 。
 
-- “序列”- 启动操作和停止操作基于针对具有预定义排序标记的 VM 的计划。 仅支持两个命名标记，即 sequencestart 和 sequencestop 。 ststv2_vms_Sequenced_start 和 ststv2_vms_Sequenced_stop 分别用于配置排序启动和排序停止 。
+- 序列 - 启动操作和停止操作基于针对具有预定义排序标记的 VM 的计划。 仅支持两个命名标记，即 sequencestart 和 sequencestop 。 ststv2_vms_Sequenced_start 和 ststv2_vms_Sequenced_stop 分别用于配置排序启动和排序停止 。 
+
+    使用序列功能的正确方式是在要按顺序启动的每个 VM 上创建名为“sequencestart”的标记。 对于相应范围内的每个 VM，标记值需要为范围从 1 到 N 的整数。 标记是可选的，如果不存在，VM 不会参与排序。 相同的条件适用于停止仅标记名称不同的 VM，并且在这种情况下应使用 sequencestop。 必须在每个 VM 中配置这两个标记才能进行启动和停止操作。
+
+    例如，下表显示了两个顺序相反的 VM 如何以相同的顺序运行：
+
+    :::image type="content" source="media/overview/sequence-settings-table.png" alt-text="显示序列设置标记示例的表":::
 
     > [!NOTE]
     > 此方案仅支持 Azure 资源管理器 VM。

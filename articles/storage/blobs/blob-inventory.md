@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 9cf53cdf35435030b9aa16b8336d80d887e6efbd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6962688a574d7f7c11f8cbfc71ccdb29ac3b6445
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584193"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619381"
 ---
 # <a name="azure-storage-blob-inventory"></a>Azure 存储 Blob 清单
 
@@ -254,7 +254,7 @@ Azure 存储 Blob 清单功能提供存储帐户中的容器、Blob、快照和 
 
 规则的每个清单运行会生成以下文件：
 
-- 清单文件：规则的清单运行会生成一个或多个 CSV 或 Apache Parquet 格式的文件。 如果匹配的对象计数很大，则会生成多个文件而不是单个文件。 每个此类文件包含匹配的对象及其元数据。 对于 CS 格式的文件，第一行始终是架构行。 下图显示了在 Microsoft Excel 中打开的清单 CSV 文件。
+- 清单文件：规则的清单运行会生成一个或多个 CSV 或 Apache Parquet 格式的文件。 如果匹配的对象计数很大，则会生成多个文件而不是单个文件。 每个此类文件包含匹配的对象及其元数据。 对于 CSV 格式的文件，第一行始终是架构行。 下图显示了在 Microsoft Excel 中打开的清单 CSV 文件。
 
   :::image type="content" source="./media/blob-inventory/csv-file-excel.png" alt-text="在 Microsoft Excel 中打开的清单 CSV 文件的屏幕截图":::
 

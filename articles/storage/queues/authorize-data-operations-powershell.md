@@ -10,12 +10,12 @@ ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 862c576ae86cd7d91a1bd73243caa0a68e3689c1
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: bcf8d828bb20296a27b9288a2ba604bce1b7aef9
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900532"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855434"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>使用 Azure AD 凭据运行 PowerShell 命令以访问队列数据
 
@@ -86,4 +86,4 @@ Azure 存储扩展支持针对队列数据的操作。 可调用的操作取决�
 ## <a name="next-steps"></a>后续步骤
 
 - [分配用于访问队列数据的 Azure 角色](assign-azure-role-data-access.md)
-- [使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限](../common/storage-auth-aad-msi.md)
+- [使用 Azure 资源托管标识授予对 Blob 数据的访问权限](../blobs/authorize-managed-identity.md)

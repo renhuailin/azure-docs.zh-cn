@@ -1,6 +1,6 @@
 ---
 title: 为 Azure API 管理自承载网关配置本地指标和日志 | Microsoft Docs
-description: 了解如何为 Kubernetes 群集上的 Azure API 管理自承载网关配置本地指标和日志
+description: 了解如何在 Kubernetes 群集上为 Azure API 管理自承载网关配置本地指标和日志
 services: api-management
 documentationcenter: ''
 author: dlepow
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/11/2021
 ms.author: danlep
-ms.openlocfilehash: 94dde4e35a072431fbcc5a30b3257b7a70b59e44
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 421111e289ffba14b792af5cf810ac562164c846
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128551111"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660830"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>为 Azure API 管理自承载网关配置本地指标和日志
 
@@ -30,6 +30,9 @@ ms.locfileid: "128551111"
 ### <a name="deploy-statsd-and-prometheus-to-the-cluster"></a>将 StatsD 和 Prometheus 部署到群集
 
 下面是一个示例 YAML 配置，用于将 StatsD 和 Prometheus 部署到已部署自承载网关的 Kubernetes 群集。 它还会为每个群集创建一个[服务](https://kubernetes.io/docs/concepts/services-networking/service/)。 自承载网关会将指标发布到 StatsD 服务。 我们将通过 Prometheus 的服务访问其仪表板。
+
+> [!NOTE]
+> 以下示例从 Docker Hub 拉取公共容器映像。 建议设置一个拉取密钥，以使用 Docker Hub 帐户进行身份验证，而不是发出匿名拉取请求。 若要在使用公共内容时提高可靠性，请在专用 Azure 容器注册表中导入和管理映像。 [详细了解如何使用公共映像](../container-registry/buffer-gate-public-content.md)。
 
 ```yaml
 apiVersion: v1

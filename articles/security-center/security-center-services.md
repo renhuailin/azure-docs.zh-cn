@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/18/2021
 ms.custom: references_regions
 ms.author: memildin
-ms.openlocfilehash: 3174aff7529e8248cffb39ee10684e843b4fd0b1
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 21c453da9a2e84e4e936b92f04748854cbd928d3
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418568"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710741"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -30,16 +30,16 @@ ms.locfileid: "122418568"
 |[无文件安全警报](alerts-reference.md#alerts-windows)|✔|✔|✔|是|
 |[基于网络的安全警报](other-threat-protections.md#network-layer)|✔|✔|-|是|
 |[恰时 VM 访问](security-center-just-in-time.md)|✔|-|-|是|
-|[本机漏洞评估](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|是|
+|[集成 Qualys 漏洞扫描程序](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|是|
 |[文件完整性监视](security-center-file-integrity-monitoring.md)|✔|✔|✔|是|
 |[自适应应用程序控制](security-center-adaptive-application.md)|✔|-|✔|是|
 |[网络映射](security-center-network-recommendations.md#network-map)|✔|✔|-|是|
 |[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|是|
 |[合规性仪表板和报表](security-center-compliance-dashboard.md)|✔|✔|✔|是|
 |[Docker 主机强化](./harden-docker-hosts.md)|-|-|-|是|
-|缺少 OS 修补程序评估|✔|✔|✔|Azure：否<br><br>已启用 Arc：是|
-|安全配置错误评估|✔|✔|✔|Azure：否<br><br>已启用 Arc：是|
-|[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure：否<br><br>已启用 Arc：是|
+|缺少 OS 修补程序评估|✔|✔|✔|Azure：否<br><br>已启用 Azure Arc：是|
+|安全配置错误评估|✔|✔|✔|Azure：否<br><br>已启用 Azure Arc：是|
+|[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure：否<br><br>已启用 Azure Arc：是|
 |磁盘加密评估|✔</br>（适用于[支持的场景](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)）|✔|-|否|
 |第三方漏洞评估|✔|-|✔|否|
 |[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|否|
@@ -54,15 +54,15 @@ ms.locfileid: "122418568"
 | [无文件安全警报](alerts-reference.md#alerts-windows)                                                            | -                                                                                                               | -                                    | -                              | 是                               |
 | [基于网络的安全警报](other-threat-protections.md#network-layer)                                                | ✔                                                                                                              | ✔                                    | -                              | 是                               |
 | [恰时 VM 访问](security-center-just-in-time.md)                                                                 | ✔                                                                                                              | -                                    | -                              | 是                               |
-| [本机漏洞评估](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner) | ✔                                                                                                              | -                                    | ✔                             | 是                               |
+| [集成 Qualys 漏洞扫描程序](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner) | ✔                                                                                                              | -                                    | ✔                             | 是                               |
 | [文件完整性监视](security-center-file-integrity-monitoring.md)                                                 | ✔                                                                                                              | ✔                                    | ✔                             | 是                               |
 | [自适应应用程序控制](security-center-adaptive-application.md)                                                  | ✔                                                                                                              | -                                    | ✔                             | 是                               |
 | [网络映射](security-center-network-recommendations.md#network-map)                                                     | ✔                                                                                                              | ✔                                    | -                              | 是                               |
 | [自适应网络强化](security-center-adaptive-network-hardening.md)                                               | ✔                                                                                                              | -                                    | -                              | 是                               |
 | [合规性仪表板和报表](security-center-compliance-dashboard.md)                                      | ✔                                                                                                              | ✔                                    | ✔                             | 是                               |
 | [Docker 主机强化](./harden-docker-hosts.md)                                                                         | ✔                                                                                                              | ✔                                    | ✔                             | 是                               |
-| 缺少 OS 修补程序评估                                                                                             | ✔                                                                                                              | ✔                                    | ✔                             | Azure：否<br><br>已启用 Arc：是 |
-| 安全配置错误评估                                                                                     | ✔                                                                                                              | ✔                                    | ✔                             | Azure：否<br><br>已启用 Arc：是 |
+| 缺少 OS 修补程序评估                                                                                             | ✔                                                                                                              | ✔                                    | ✔                             | Azure：否<br><br>已启用 Azure Arc：是 |
+| 安全配置错误评估                                                                                     | ✔                                                                                                              | ✔                                    | ✔                             | Azure：否<br><br>已启用 Azure Arc：是 |
 | [终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)                    | -                                                                                                               | -                                    | -                              | 否                                |
 | 磁盘加密评估                                                                                                | ✔</br>（适用于[支持的场景](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)） | ✔                                    | -                              | 否                                |
 | 第三方漏洞评估                                                                                      | ✔                                                                                                              | -                                    | ✔                             | 否                                |
@@ -134,7 +134,7 @@ ms.locfileid: "122418568"
 | - [自适应应用程序控制](./security-center-adaptive-application.md)                                                                              | GA             | GA                             | GA            |
 | - [自适应网络强化](./security-center-adaptive-network-hardening.md)                                                                           | GA             | 不可用                  | 不可用 |
 | - [Docker 主机强化](./harden-docker-hosts.md)                                                                                                       | GA             | GA                             | GA            |
-| - [计算机的集成漏洞评估](./deploy-vulnerability-assessment-vm.md)                                                             | GA             | 不可用                  | 不可用 |
+| - [集成 Qualys 漏洞扫描程序](./deploy-vulnerability-assessment-vm.md)                                                             | GA             | 不可用                  | 不可用 |
 | - [合规性仪表板和报表](./security-center-compliance-dashboard.md) <sup>[8](#footnote8)</sup>                                       | GA             | GA                             | GA            |
 | - [Microsoft Defender for Endpoint 部署和集成许可证](./security-center-wdatp.md)                                                         | GA             | GA                             | 不可用 |
 | - [连接 AWS 帐户](./quickstart-onboard-aws.md)                                                                                                      | GA             | 不可用                  | 不可用 |
@@ -147,7 +147,7 @@ ms.locfileid: "122418568"
 
 <sup><a name="footnote3" /></a>3</sup> 需要适用于容器注册表的 Azure Defender。
 
-<sup><a name="footnote4" /></a>4</sup> 部分 GA：对启用了 Arc 的群集的支持处于公开预览状态，在 Azure 政府中不可用。
+<sup><a name="footnote4" /></a>4</sup> 部分正式发布：对已启用 Azure Arc 的群集的支持现为公共预览版，不可用于 Azure 政府。
 
 <sup><a name="footnote5" /></a>5</sup> 需要 Azure Defender for Kubernetes。
 

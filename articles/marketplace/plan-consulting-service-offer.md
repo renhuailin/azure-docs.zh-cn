@@ -1,6 +1,6 @@
 ---
-title: 如何为 Microsoft 商业市场规划咨询服务产品/服务
-description: 如何使用 Microsoft 合作伙伴中心的商业市场计划为 Microsoft AppSource 或 Azure 市场规划新的咨询服务产品/服务。
+title: 为商业市场计划咨询服务产品/服务
+description: 使用合作伙伴中心为 Microsoft AppSource 或 Azure 市场计划新的咨询服务产品/服务。
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 3ffca17efa59a0544e06bb3bd4fbae1d812f2823
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7350fe9dfcadce2d454ab5ee9e78ad80b996bafe
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124819206"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667243"
 ---
-# <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>如何规划商业市场中的咨询服务产品/服务
+# <a name="plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>在商业市场中计划咨询服务产品/服务
 
 本文介绍向 Microsoft 商业市场发布咨询服务产品/服务的不同选项和要求。 阅读本文，了解如何准备好产品/服务，使其能够通过合作伙伴中心发布。
 

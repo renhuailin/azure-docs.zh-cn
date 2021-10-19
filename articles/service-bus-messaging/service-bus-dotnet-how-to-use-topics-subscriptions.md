@@ -3,32 +3,43 @@ title: Azure 服务总线主题和订阅入门
 description: 本快速入门介绍如何使用 azure-messaging-servicebus 包将消息发送到 Azure 服务总线主题。
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.date: 09/16/2021
-ms.custom: contperf-fy22q1
-ms.openlocfilehash: 330a69d437ffb58cb0e47ab6f9fe6a76fda9b8a6
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 10/11/2021
+ms.custom: contperf-fy22q2
+ms.openlocfilehash: 05efcd742b4b5a70925cdd6bd8fad62a61ba4a53
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533521"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129807461"
 ---
-# <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-its-subscriptions-net"></a>向 Azure 服务总线主题发送消息，并从其订阅接收消息 (.NET)
+# <a name="get-started-with-azure-service-bus-topics-and-subscriptions"></a>Azure 服务总线主题和订阅入门
 本快速入门介绍如何使用 [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) .NET 库向服务总线主题发送消息和接收有关该主题订阅的消息。
 
+在本快速入门中，你将执行以下步骤：
+
+1. 使用 Azure 门户创建服务总线命名空间。
+2. 使用 Azure 门户创建服务总线主题。
+3. 使用 Azure 门户创建该主题的服务总线订阅。
+4. 编写 .NET Core 控制台应用程序，向主题发送一组消息。
+5. 编写 .NET Core 控制台应用程序，从订阅接收这些消息。
+
 > [!NOTE]
-> 可以在 [GitHub 上用于 .NET 的 Azure SDK 存储库中](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)找到更多 Azure 服务总线的 .NET 示例。
+> 本快速入门分步说明将一批消息发送到某个服务总线主题并从该主题的订阅接收这些消息这一简单场景。 可以在 [GitHub 上用于 .NET 的 Azure SDK 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)中找到预生成的 Azure 服务总线的 .NET 示例。 
 
 ## <a name="prerequisites"></a>先决条件
 如果你是首次使用该服务，请在使用本快速入门之前先参阅[服务总线概述](service-bus-messaging-overview.md)。 
 
 - **Azure 订阅**。 若要使用 Azure 服务（包括 Azure 服务总线），需要一个订阅。  如果没有现有的 Azure 帐户，可以注册[免费试用](https://azure.microsoft.com/free/)帐户，或者在[创建帐户](https://azure.microsoft.com)时使用 MSDN 订阅者权益。
 - Microsoft Visual Studio 2019。 Azure 服务总线客户端库利用 C# 8.0 中引入的新功能。  你仍可使用以前的 C# 语言版本的库，但新语法将不可用。 若要使用完整语法，建议使用 [.NET Core SDK](https://dotnet.microsoft.com/download) 3.0 或更高版本进行编译，并将[语言版本](/dotnet/csharp/language-reference/configure-language-version#override-a-default)设置为 `latest`。 如果使用 Visual Studio，Visual Studio 2019 以前的版本与生成 C# 8.0 项目时所需的工具将不兼容。 可在[此处](https://visualstudio.microsoft.com/vs/)下载 Visual Studio 2019（包括免费的 Community Edition）。
-- 遵循这一[快速入门](service-bus-quickstart-topics-subscriptions-portal.md)中的步骤，创建一个“服务总线”主题和多个对该主题的订阅。 
 
-    > [!IMPORTANT]
-    > 记录到命名空间的连接字符串、主题名称和某个主题订阅的名称。 本教程后面会用到它们。
- 
-## <a name="send-messages-to-a-topic"></a>将消息发送到主题
+[!INCLUDE [service-bus-create-namespace-portal](./includes/service-bus-create-namespace-portal.md)]
+
+[!INCLUDE [service-bus-create-topic-subscription-portal](./includes/service-bus-create-topic-subscription-portal.md)]
+
+> [!IMPORTANT]
+> 记录到命名空间的连接字符串、主题名称和订阅名称。 本教程后面会用到它们。
+
+## <a name="send-messages-to-the-topic"></a>将消息发送到主题
 本部分介绍如何创建一个向服务总线主题发送消息的 .NET Core 控制台应用程序。 
 
 ### <a name="create-a-console-application"></a>创建控制台应用程序
@@ -56,6 +67,30 @@ ms.locfileid: "129533521"
 
 ### <a name="add-code-to-send-messages-to-the-topic"></a>添加将消息发送到主题的代码 
 
+1. 在 Program.cs 中将以下 `using` 语句添加到命名空间定义顶部，位于类声明之前。
+
+    ```csharp
+    using System.Threading.Tasks;
+    using Azure.Messaging.ServiceBus;
+    ```
+2. 在 `Program` 类中，在 `Main` 方法前声明以下属性。 将 `<NAMESPACE CONNECTION STRING>` 替换为服务总线命名空间的连接字符串。 此外，将 `<TOPIC NAME>` 替换为你的服务总线主题的名称。
+
+    ```csharp
+    // connection string to your Service Bus namespace
+    static string connectionString = "<NAMESPACE CONNECTION STRING>";
+
+    // name of your Service Bus topic
+    static string topicName = "<TOPIC NAME>";
+
+    // the client that owns the connection and can be used to create senders and receivers
+    static ServiceBusClient client;
+
+    // the sender used to publish messages to the topic
+    static ServiceBusSender sender;
+
+    // number of messages to be sent to the topic
+    private const int numOfMessages = 3;
+    ```    
 1. 将 Program.cs 中的代码替换为以下代码。 下面是代码中的重要步骤。  
     1. 使用命名空间的连接字符串创建 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 
     1. 对 `ServiceBusClient` 对象调用 [CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) 方法，从而为特定的“服务总线”主题创建 [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender) 对象。     
@@ -63,75 +98,119 @@ ms.locfileid: "129533521"
     1. 使用 [ServiceBusMessageBatch.TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage) 将消息添加到该批次。 
     1. 使用 [ServiceBusSender.SendMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessagesasync) 方法将批量消息发送到“服务总线”主题。
     
-        有关更多信息，请参阅代码注释。
+    ```csharp
+    static async Task Main()
+    {
+        // The Service Bus client types are safe to cache and use as a singleton for the lifetime
+        // of the application, which is best practice when messages are being published or read
+        // regularly.
+        //
+        // Create the clients that we'll use for sending and processing messages.
+        client = new ServiceBusClient(connectionString);
+        sender = client.CreateSender(topicName);
 
-        ```csharp
-        using System;
-        using System.Threading.Tasks;
-        using Azure.Messaging.ServiceBus;
-        
-        namespace TopicSender
+        // create a batch 
+        using ServiceBusMessageBatch messageBatch = await sender.CreateMessageBatchAsync();
+
+        for (int i = 1; i <= numOfMessages; i++)
         {
-            class Program
+            // try adding a message to the batch
+            if (!messageBatch.TryAddMessage(new ServiceBusMessage($"Message {i}")))
             {
-                // connection string to your Service Bus namespace
-                static string connectionString = "<NAMESPACE CONNECTION STRING>";
-        
-                // name of your Service Bus topic
-                static string topicName = "<TOPIC NAME>";
-        
-                // the client that owns the connection and can be used to create senders and receivers
-                static ServiceBusClient client;
-        
-                // the sender used to publish messages to the topic
-                static ServiceBusSender sender;
-        
-                // number of messages to be sent to the topic
-                private const int numOfMessages = 3;
-        
-                static async Task Main()
-                {
-                    // The Service Bus client types are safe to cache and use as a singleton for the lifetime
-                    // of the application, which is best practice when messages are being published or read
-                    // regularly.
-                    //
-                    // Create the clients that we'll use for sending and processing messages.
-                    client = new ServiceBusClient(connectionString);
-                    sender = client.CreateSender(topicName);
-        
-                    // create a batch 
-                    using ServiceBusMessageBatch messageBatch = await sender.CreateMessageBatchAsync();
-        
-                    for (int i = 1; i <= numOfMessages; i++)
-                    {
-                        // try adding a message to the batch
-                        if (!messageBatch.TryAddMessage(new ServiceBusMessage($"Message {i}")))
-                        {
-                            // if it is too large for the batch
-                            throw new Exception($"The message {i} is too large to fit in the batch.");
-                        }
-                    }
-        
-                    try
-                    {
-                        // Use the producer client to send the batch of messages to the Service Bus topic
-                        await sender.SendMessagesAsync(messageBatch);
-                        Console.WriteLine($"A batch of {numOfMessages} messages has been published to the topic.");
-                    }
-                    finally
-                    {
-                        // Calling DisposeAsync on client types is required to ensure that network
-                        // resources and other unmanaged objects are properly cleaned up.
-                        await sender.DisposeAsync();
-                        await client.DisposeAsync();
-                    }
-        
-                    Console.WriteLine("Press any key to end the application");
-                    Console.ReadKey();
-                }
+                // if it is too large for the batch
+                throw new Exception($"The message {i} is too large to fit in the batch.");
             }
-        }    
-        ```
+        }
+
+        try
+        {
+            // Use the producer client to send the batch of messages to the Service Bus topic
+            await sender.SendMessagesAsync(messageBatch);
+            Console.WriteLine($"A batch of {numOfMessages} messages has been published to the topic.");
+        }
+        finally
+        {
+            // Calling DisposeAsync on client types is required to ensure that network
+            // resources and other unmanaged objects are properly cleaned up.
+            await sender.DisposeAsync();
+            await client.DisposeAsync();
+        }
+
+        Console.WriteLine("Press any key to end the application");
+        Console.ReadKey();
+    }
+    ```
+1. Program.cs 文件的内容如下所示： 
+    
+    有关更多信息，请参阅代码注释。
+
+    ```csharp
+    using System;
+    using System.Threading.Tasks;
+    using Azure.Messaging.ServiceBus;
+    
+    namespace TopicSender
+    {
+        class Program
+        {
+            // connection string to your Service Bus namespace
+            static string connectionString = "<NAMESPACE CONNECTION STRING>";
+    
+            // name of your Service Bus topic
+            static string topicName = "<TOPIC NAME>";
+    
+            // the client that owns the connection and can be used to create senders and receivers
+            static ServiceBusClient client;
+    
+            // the sender used to publish messages to the topic
+            static ServiceBusSender sender;
+    
+            // number of messages to be sent to the topic
+            private const int numOfMessages = 3;
+    
+            static async Task Main()
+            {
+                // The Service Bus client types are safe to cache and use as a singleton for the lifetime
+                // of the application, which is best practice when messages are being published or read
+                // regularly.
+                //
+                // Create the clients that we'll use for sending and processing messages.
+                client = new ServiceBusClient(connectionString);
+                sender = client.CreateSender(topicName);
+    
+                // create a batch 
+                using ServiceBusMessageBatch messageBatch = await sender.CreateMessageBatchAsync();
+    
+                for (int i = 1; i <= numOfMessages; i++)
+                {
+                    // try adding a message to the batch
+                    if (!messageBatch.TryAddMessage(new ServiceBusMessage($"Message {i}")))
+                    {
+                        // if it is too large for the batch
+                        throw new Exception($"The message {i} is too large to fit in the batch.");
+                    }
+                }
+    
+                try
+                {
+                    // Use the producer client to send the batch of messages to the Service Bus topic
+                    await sender.SendMessagesAsync(messageBatch);
+                    Console.WriteLine($"A batch of {numOfMessages} messages has been published to the topic.");
+                }
+                finally
+                {
+                    // Calling DisposeAsync on client types is required to ensure that network
+                    // resources and other unmanaged objects are properly cleaned up.
+                    await sender.DisposeAsync();
+                    await client.DisposeAsync();
+                }
+    
+                Console.WriteLine("Press any key to end the application");
+                Console.ReadKey();
+            }
+        }
+    }    
+    ```
 1. 将 `<NAMESPACE CONNECTION STRING>` 替换为服务总线命名空间的连接字符串。 此外，将 `<TOPIC NAME>` 替换为你的服务总线主题的名称。 
 1. 生成项目并确保没有错误。 
 1. 运行程序并等待出现确认消息。
@@ -166,6 +245,8 @@ ms.locfileid: "129533521"
 
 1. 在菜单中选择“工具” > “NuGet 包管理器” > “包管理器控制台”。 
 1. 在“包管理器控制台”窗口中，确认“SubscriptionReceiver”已选定为“默认项目”。 如果不是，请使用下拉列表选择“SubscriptionReceiver”。
+
+    :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/select-subscription-receiver-project.png" alt-text="显示在“包管理器控制台”窗口中选择“SubscriptionReceiver”项目的图像。" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/select-subscription-receiver-project.png":::    
 1. 运行以下命令安装 Azure.Messaging.ServiceBus NuGet 包：
 
     ```cmd
@@ -173,98 +254,189 @@ ms.locfileid: "129533521"
     ```
 
 ### <a name="add-code-to-receive-messages-from-the-subscription"></a>添加代码以从订阅接收消息
+1. 在 Program.cs 中将以下 `using` 语句添加到命名空间定义顶部，位于类声明之前。
+
+    ```csharp
+    using System.Threading.Tasks;
+    using Azure.Messaging.ServiceBus;
+    ```
+2. 在 `Program` 类中，在 `Main` 方法前声明以下属性。 将占位符替换为正确的值：
+    - 将 `<NAMESPACE CONNECTION STRING>` 替换为服务总线命名空间的连接字符串
+    - 将 `<TOPIC NAME>` 替换为你的服务总线主题的名称
+    - 将 `<SERVICE BUS - TOPIC SUBSCRIPTION NAME>` 替换为主题的订阅名称。 
+
+    ```csharp
+    // connection string to your Service Bus namespace
+    static string connectionString = "<NAMESPACE CONNECTION STRING>";
+
+    // name of the Service Bus topic
+    static string topicName = "<SERVICE BUS TOPIC NAME>";
+
+    // name of the subscription to the topic
+    static string subscriptionName = "<SERVICE BUS - TOPIC SUBSCRIPTION NAME>";
+
+    // the client that owns the connection and can be used to create senders and receivers
+    static ServiceBusClient client;
+
+    // the processor that reads and processes messages from the subscription
+    static ServiceBusProcessor processor;    
+    ```
+3. 将以下方法添加到 `Program` 类中以处理接收到的消息和任何错误。 
+
+    ```csharp
+    // handle received messages
+    static async Task MessageHandler(ProcessMessageEventArgs args)
+    {
+        string body = args.Message.Body.ToString();
+        Console.WriteLine($"Received: {body} from subscription: {subscriptionName}");
+
+        // complete the message. messages is deleted from the subscription. 
+        await args.CompleteMessageAsync(args.Message);
+    }
+
+    // handle any errors when receiving messages
+    static Task ErrorHandler(ProcessErrorEventArgs args)
+    {
+        Console.WriteLine(args.Exception.ToString());
+        return Task.CompletedTask;
+    }
+    ```
 1. 将 Program.cs 中的代码替换为以下代码。 下面是代码中的重要步骤：
     1. 使用命名空间的连接字符串创建 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 
     1. 对 `ServiceBusClient` 对象调用 [CreateProcessor](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor) 方法，从而为指定的“服务总线”队列创建 [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) 对象。 
     1. 为 `ServiceBusProcessor` 对象的 [ProcessMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync) 和 [ProcessErrorAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processerrorasync) 事件指定处理程序。 
     1. 通过对 `ServiceBusProcessor` 对象调用 [StartProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.startprocessingasync) 以开始处理消息。 
     1. 当用户按下某个键结束处理时，将对 `ServiceBusProcessor` 对象调用 [StopProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.stopprocessingasync)。 
+    
 
-        有关更多信息，请参阅代码注释。
+    有关更多信息，请参阅代码注释。
 
-        ```csharp
-        using System;
-        using System.Threading.Tasks;
-        using Azure.Messaging.ServiceBus;
-        
-        namespace SubscriptionReceiver
+    ```csharp
+    static async Task Main()
+    {
+        // The Service Bus client types are safe to cache and use as a singleton for the lifetime
+        // of the application, which is best practice when messages are being published or read
+        // regularly.
+        //
+        // Create the clients that we'll use for sending and processing messages.
+        client = new ServiceBusClient(connectionString);
+
+        // create a processor that we can use to process the messages
+        processor = client.CreateProcessor(topicName, subscriptionName, new ServiceBusProcessorOptions());
+
+        try
         {
-            class Program
+            // add handler to process messages
+            processor.ProcessMessageAsync += MessageHandler;
+
+            // add handler to process any errors
+            processor.ProcessErrorAsync += ErrorHandler;
+
+            // start processing 
+            await processor.StartProcessingAsync();
+
+            Console.WriteLine("Wait for a minute and then press any key to end the processing");
+            Console.ReadKey();
+
+            // stop processing 
+            Console.WriteLine("\nStopping the receiver...");
+            await processor.StopProcessingAsync();
+            Console.WriteLine("Stopped receiving messages");
+        }
+        finally
+        {
+            // Calling DisposeAsync on client types is required to ensure that network
+            // resources and other unmanaged objects are properly cleaned up.
+            await processor.DisposeAsync();
+            await client.DisposeAsync();
+        }
+    }    
+    ```
+1. `Program.cs` 应该如下所示：  
+
+    ```csharp
+    using System;
+    using System.Threading.Tasks;
+    using Azure.Messaging.ServiceBus;
+    
+    namespace SubscriptionReceiver
+    {
+        class Program
+        {
+            // connection string to your Service Bus namespace
+            static string connectionString = "<NAMESPACE CONNECTION STRING>";
+    
+            // name of the Service Bus topic
+            static string topicName = "<SERVICE BUS TOPIC NAME>";
+        
+            // name of the subscription to the topic
+            static string subscriptionName = "<SERVICE BUS - TOPIC SUBSCRIPTION NAME>";
+    
+            // the client that owns the connection and can be used to create senders and receivers
+            static ServiceBusClient client;
+    
+            // the processor that reads and processes messages from the subscription
+            static ServiceBusProcessor processor;
+    
+            // handle received messages
+            static async Task MessageHandler(ProcessMessageEventArgs args)
             {
-                // connection string to your Service Bus namespace
-                static string connectionString = "<NAMESPACE CONNECTION STRING>";
-        
-                // name of the Service Bus topic
-                static string topicName = "<SERVICE BUS TOPIC NAME>";
-            
-                // name of the subscription to the topic
-                static string subscriptionName = "<SERVICE BUS - TOPIC SUBSCRIPTION NAME>";
-        
-                // the client that owns the connection and can be used to create senders and receivers
-                static ServiceBusClient client;
-        
-                // the processor that reads and processes messages from the subscription
-                static ServiceBusProcessor processor;
-        
-                // handle received messages
-                static async Task MessageHandler(ProcessMessageEventArgs args)
+                string body = args.Message.Body.ToString();
+                Console.WriteLine($"Received: {body} from subscription: {subscriptionName}");
+    
+                // complete the message. messages is deleted from the subscription. 
+                await args.CompleteMessageAsync(args.Message);
+            }
+    
+            // handle any errors when receiving messages
+            static Task ErrorHandler(ProcessErrorEventArgs args)
+            {
+                Console.WriteLine(args.Exception.ToString());
+                return Task.CompletedTask;
+            }
+    
+            static async Task Main()
+            {
+                // The Service Bus client types are safe to cache and use as a singleton for the lifetime
+                // of the application, which is best practice when messages are being published or read
+                // regularly.
+                //
+                // Create the clients that we'll use for sending and processing messages.
+                client = new ServiceBusClient(connectionString);
+    
+                // create a processor that we can use to process the messages
+                processor = client.CreateProcessor(topicName, subscriptionName, new ServiceBusProcessorOptions());
+    
+                try
                 {
-                    string body = args.Message.Body.ToString();
-                    Console.WriteLine($"Received: {body} from subscription: {subscriptionName}");
-        
-                    // complete the message. messages is deleted from the subscription. 
-                    await args.CompleteMessageAsync(args.Message);
+                    // add handler to process messages
+                    processor.ProcessMessageAsync += MessageHandler;
+    
+                    // add handler to process any errors
+                    processor.ProcessErrorAsync += ErrorHandler;
+    
+                    // start processing 
+                    await processor.StartProcessingAsync();
+    
+                    Console.WriteLine("Wait for a minute and then press any key to end the processing");
+                    Console.ReadKey();
+    
+                    // stop processing 
+                    Console.WriteLine("\nStopping the receiver...");
+                    await processor.StopProcessingAsync();
+                    Console.WriteLine("Stopped receiving messages");
                 }
-        
-                // handle any errors when receiving messages
-                static Task ErrorHandler(ProcessErrorEventArgs args)
+                finally
                 {
-                    Console.WriteLine(args.Exception.ToString());
-                    return Task.CompletedTask;
-                }
-        
-                static async Task Main()
-                {
-                    // The Service Bus client types are safe to cache and use as a singleton for the lifetime
-                    // of the application, which is best practice when messages are being published or read
-                    // regularly.
-                    //
-                    // Create the clients that we'll use for sending and processing messages.
-                    client = new ServiceBusClient(connectionString);
-        
-                    // create a processor that we can use to process the messages
-                    processor = client.CreateProcessor(topicName, subscriptionName, new ServiceBusProcessorOptions());
-        
-                    try
-                    {
-                        // add handler to process messages
-                        processor.ProcessMessageAsync += MessageHandler;
-        
-                        // add handler to process any errors
-                        processor.ProcessErrorAsync += ErrorHandler;
-        
-                        // start processing 
-                        await processor.StartProcessingAsync();
-        
-                        Console.WriteLine("Wait for a minute and then press any key to end the processing");
-                        Console.ReadKey();
-        
-                        // stop processing 
-                        Console.WriteLine("\nStopping the receiver...");
-                        await processor.StopProcessingAsync();
-                        Console.WriteLine("Stopped receiving messages");
-                    }
-                    finally
-                    {
-                        // Calling DisposeAsync on client types is required to ensure that network
-                        // resources and other unmanaged objects are properly cleaned up.
-                        await processor.DisposeAsync();
-                        await client.DisposeAsync();
-                    }
+                    // Calling DisposeAsync on client types is required to ensure that network
+                    // resources and other unmanaged objects are properly cleaned up.
+                    await processor.DisposeAsync();
+                    await client.DisposeAsync();
                 }
             }
         }
-        ```
+    }
+    ```
 1. 将占位符替换为正确的值：
     - 将 `<NAMESPACE CONNECTION STRING>` 替换为服务总线命名空间的连接字符串
     - 将 `<TOPIC NAME>` 替换为你的服务总线主题的名称

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3285c18394c8c59d17e41b3a3eb3fd43428cd61
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 7cda4fe1af43b0bf7f091f34ae03a021c2ac4d20
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129229575"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667528"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>向 Azure Active Directory 中的 Microsoft 365 组分配敏感度标签
 
@@ -141,9 +141,9 @@ Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https:/
 1. 在选定组的页面上，选择“属性”，然后从列表中选择一个新的敏感度标签。
 1. 选择“保存”。
 
-### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>对已发布标签的组设置所做的更改不会在组中更新
+### <a name="group-setting-changes-to-published-labels-arent-updated-on-the-groups"></a>对已发布标签的组设置所做的更改不会在组中更新
 
-作为最佳做法，我们建议不要在将标签应用于组之后更改标签的组设置。 当你在 [Microsoft 365 合规中心](https://sip.protection.office.com/homepage)对与已发布标签关联的组设置进行更改时，这些策略更改不会自动应用于受影响的组。
+当你在 [Microsoft 365 合规中心](https://sip.protection.office.com/homepage)更改已发布的标签的组设置时，这些策略更改不会自动应用于带标签的组。 发布敏感度标签并将其应用到组后，Microsoft 建议不要在 Microsoft 365 合规中心更改该标签的组设置。
 
 如果必须进行更改，请使用 [Azure AD PowerShell 脚本](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)将更新手动应用于受影响的组。 此方法可确保所有现有组都强制实施新的设置。
 

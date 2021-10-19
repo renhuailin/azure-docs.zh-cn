@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0aad268f8721d2f4747c4e3dec3860e52dd7112a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 8f5cbcefa37df245f025895f421df4c4c7907ff4
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352799"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709991"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -299,6 +299,12 @@ Azure AD B2C 发出审核日志，其中包含有关其资源、颁发的令牌�
 通过将 Azure Application Insights 集成到 Azure AD B2C 自定义策略，可深入了解用户如何注册、登录、重置其密码或编辑其个人资料。 了解此类信息后，可以针对未来的开发周期做出数据驱动的决策。
 
 有关详细信息，请查看[使用 Application Insights 在 Azure Active Directory B2C 中跟踪用户行为](analytics-with-application-insights.md)。
+
+## <a name="automation-using-microsoft-graph-api"></a>使用 Microsoft Graph API 实现自动化
+
+使用 MS 图形 API 管理 Azure AD B2C 目录。 还可创建 Azure AD B2C 目录本身。 可管理用户、标识提供者、用户流和自定义策略等。 
+
+了解如何[使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-operations.md)。 
 
 ## <a name="azure-ad-b2c-service-limits-and-restrictions"></a>Azure AD B2C 服务限制和局限性
 详细了解 [Azure AD B2C 服务限制和局限性](service-limits.md)

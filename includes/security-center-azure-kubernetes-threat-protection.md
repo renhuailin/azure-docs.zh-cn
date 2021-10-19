@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 04/07/2021
 ms.topic: include
-ms.openlocfilehash: 24f466e7c9a9e5630510f73652fcf515540bee10
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 0d0a5faa2941e429fab1d6250ef443257024a616
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123646567"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725654"
 ---
 Azure Defender 为容器化环境提供实时威胁防护，并针对可疑活动发出警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。
 
@@ -25,7 +25,7 @@ Azure Defender 可提供不同级别的威胁防护：
     有关主机级别的警报列表，请参阅[警报参考表](../articles/security-center/alerts-reference.md#alerts-containerhost)。
 
 
-* **群集级别（由 Azure Defender for Kubernetes 提供）** - 在群集级别，威胁防护基于对 Kubernetes 审核日志的分析。 要启用此无代理监视，请启用 Azure Defender。 如果群集位于本地或其他云提供商上，请启用[已启用 Arc 的 Kubernetes 和 Azure Defender 扩展](../articles/security-center/defender-for-kubernetes-azure-arc.md)。
+* **群集级别（由 Azure Defender for Kubernetes 提供）** - 在群集级别，威胁防护基于对 Kubernetes 审核日志的分析。 要启用此无代理监视，请启用 Azure Defender。 如果群集位于本地或其他云提供商上，请启用[已启用 Azure Arc 的 Kubernetes 和 Azure Defender 扩展](../articles/security-center/defender-for-kubernetes-azure-arc.md)。
 
     若要在此级别生成警报，Azure Defender 会监视群集的日志。 此级别的事件示例包括公开 Kubernetes 仪表板、创建高特权角色，以及创建敏感的装入点。
 

@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure AD 和 Datawiza 实现安全的混合访问
+title: 使用 Datawiza 保护混合访问
+titleSuffix: Azure AD
 description: 本教程介绍如何将 Datawiza 与 Azure AD 集成以实现安全的混合访问
 services: active-directory
 author: gargi-sinha
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 8/27/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19a3f4835e3e2b20d0921aa2a259739ec6cd51bc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 844c450e5a549458964b7747160d7efe553d406a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754168"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620690"
 ---
 # <a name="tutorial-configure-datawiza-with-azure-active-directory-for-secure-hybrid-access"></a>教程：为 Datawiza 配置 Azure Active Directory 以实现安全的混合访问
 

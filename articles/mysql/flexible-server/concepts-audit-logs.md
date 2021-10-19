@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: af4356a4f432572920bd07fd8d7ea8c7e5f6663e
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 769f178a65ac096446cd98015050ad1a35b3ef09
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122653118"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612439"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>使用 Azure Database for MySQL 灵活服务器中的审核日志跟踪数据库活动
 
@@ -52,7 +52,7 @@ ms.locfileid: "122653118"
 
 ## <a name="access-audit-logs"></a>访问审核日志
 
-审核日志与 Azure Monitor 诊断设置相集成。 在 MySQL 灵活服务器上启用审核日志后，可以将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解诊断设置，请参阅[诊断日志文档](../../azure-monitor/essentials/platform-logs-overview.md)。 若要详细了解如何在 Azure 门户中启用诊断设置，请参阅[审核日志门户文章](how-to-configure-audit-logs-portal.md#set-up-diagnostics)。
+审核日志与 Azure Monitor 诊断设置相集成。 在 MySQL 灵活服务器上启用审核日志后，可以将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解诊断设置，请参阅[诊断日志文档](../../azure-monitor/essentials/platform-logs-overview.md)。 若要详细了解如何在 Azure 门户中启用诊断设置，请参阅[审核日志门户文章](tutorial-configure-audit.md#set-up-diagnostics)。
 
 以下部分介绍基于事件类型的 MySQL 审核日志的输出。 根据输出方法，包含的字段以及这些字段出现的顺序可能会有所不同。
 
@@ -199,5 +199,5 @@ ms.locfileid: "122653118"
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[慢查询日志](concepts-slow-query-logs.md)
-- 通过 [Azure 门户](how-to-configure-audit-logs-portal.md)配置审核查询日志
+- 配置[审核](tutorial-query-performance-insights.md)
 <!-- - [How to configure audit logs in the Azure portal](howto-configure-audit-logs-portal.md)-->

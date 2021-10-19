@@ -8,41 +8,64 @@ ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/05/2021
-ms.openlocfilehash: 83b40121de72dc45582ded94580154f5124817b0
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 1c47e42f3186d573fb57f1ebaa89140e0c713c0e
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061003"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614459"
 ---
-# <a name="create-azure-data-factory-data-flow"></a>创建 Azure 数据工厂数据流
+# <a name="create-azure-data-factory-data-flows"></a>创建 Azure 数据工厂数据流
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 [!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
-在 ADF 中映射数据流提供了一种无需任何编码即可大规模转换数据的方法，。 通过构造一系列转换，可以在数据流设计器中设计数据转换作业。 从任意数量的源转换开始，然后是数据转换步骤。 然后，使用接收器完成数据流，以将结果放在目标提供程序中。
+映射数据流提供了一种无需进行任何编码即可大规模转换数据的方法。 通过构造一系列转换，可以在数据流设计器中设计数据转换作业。 从任意数量的源转换开始，然后是数据转换步骤。 然后，使用接收器完成数据流，以将结果放在目标提供程序中。
 
-首先从 Azure 门户创建一个新的 V2 数据工厂。 创建新工厂后，在“打开 Azure 数据工厂工作室”磁贴中选择“打开”，以启动数据工厂 UI。
+## <a name="steps-to-create-a-new-data-flow"></a>创建新数据流的步骤
 
-:::image type="content" source="media/data-flow/v2portal.png" alt-text="屏幕截图显示了“版本”选择为 V2 的“新建数据工厂”窗格。":::
+# <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-进入数据工厂 UI 后，你可以使用示例数据流。 示例可从 ADF 模板库中获得。 在 ADF 中，在主页的“发现更多”部分中选择“管道模板”磁贴，并从模板库中选择“数据流”类别。
+首先从 Azure 门户[创建一个新的 V2 数据工厂](quickstart-create-data-factory-portal.md)。 创建新工厂后，在门户中选择“打开 Azure 数据工厂工作室”磁贴，以启动数据工厂工作室。
 
-:::image type="content" source="media/data-flow/template.png" alt-text="屏幕截图显示了选中“使用数据流转换数据”的“数据流”选项卡。":::
+:::image type="content" source="media/data-flow-create/open-data-factory-studio-from-portal.png" alt-text="显示如何从 Azure 门户打开数据工厂工作室的屏幕截图。":::
 
-系统将提示输入 Azure Blob 存储帐户信息。
+可以从模板库添加示例数据流。 若要浏览库，请在数据工厂工作室中选择“作者”选项卡，然后单击加号选择“管道” | “模板库”。
 
-:::image type="content" source="media/data-flow/template2.png" alt-text="屏幕截图显示了“使用数据流转换数据”窗格，你可以在其中输入“用户输入”。":::
+:::image type="content" source="media/data-flow-create/open-template-gallery-from-data-factory.png" alt-text="显示如何在数据工厂中打开模板库。":::
 
-[可在此处找到用于这些示例的数据](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata)。 下载示例数据并将文件存储在 Azure Blob 存储帐户中，以便执行示例。
+在此处选择“数据流”类别，以从可用模板中进行选择。
 
-## <a name="create-new-data-flow"></a>创建新的数据流
+:::image type="content" source="media/data-flow-create/template-gallery-filtered-for-data-flow.png" alt-text="显示针对数据流筛选的模板库。":::
 
-使用 ADF UI 中的“创建资源”“加号”按钮创建数据流。
+你还可以在不使用模板的情况下将数据流直接添加到数据工厂。 在数据工厂工作室中选择“作者”选项卡，然后单击加号选择“数据流” | “数据流”。  
 
-:::image type="content" source="media/data-flow/newresource.png" alt-text="屏幕截图显示了从“工厂资源”菜单中选择的“数据流”。":::
+:::image type="content" source="media/data-flow-create/create-data-flow-directly.png" alt-text="显示如何直接创建空数据流的屏幕截图。":::
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+首先从 Azure 门户[创建一个新的 Synapse 工作区](../synapse-analytics/quickstart-create-workspace.md)。 创建新工作区后，选择“打开 Azure Studio”磁贴以启动数据工厂 UI。
+    
+:::image type="content" source="media/data-flow-create/open-synapse-studio-from-portal.png" alt-text="显示如何从 Azure 门户打开 Synapse Studio 的屏幕截图。":::
+
+可以从模板库添加示例数据流。  若要浏览库，请在 Synapse Studio 中选择“集成”选项卡，然后单击加号选择“浏览库”。
+
+:::image type="content" source="media/data-flow-create/open-template-gallery-from-synapse.png" alt-text="显示如何在数据工厂中打开模板库。":::
+
+在此处根据“类别: 数据流”进行筛选，以从可用模板中进行选择。
+
+:::image type="content" source="media/data-flow-create/synapse-template-gallery-filtered-for-data-flow.png" alt-text="显示针对数据流筛选的模板库。":::
+
+你还可以在不使用模板的情况下将数据流直接添加到工作区。 在 Synapse Studio 中选择“集成”选项卡，单击加号选择“管道”。  然后，在管道中展开“移动和转换”活动部分，并将“数据流”拖到管道的画布上。
+
+:::image type="content" source="media/data-flow-create/create-pipeline-in-synapse.png" alt-text="显示如何直接创建空管道的屏幕截图。":::
+
+:::image type="content" source="media/data-flow-create/add-data-flow-to-pipeline-synapse.png" alt-text="显示如何将空数据流直接添加到管道的屏幕截图。":::
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 
-开始使用[源转换](data-flow-source.md)生成数据转换。
+* [教程：使用映射数据流转换数据](tutorial-data-flow.md)
+* 开始使用[源转换](data-flow-source.md)生成数据转换。

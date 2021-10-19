@@ -1,5 +1,6 @@
 ---
-title: 对应用程序执行许可时发生的意外错误 | Microsoft Docs
+title: 对应用程序执行许可时发生的意外错误
+titleSuffix: Azure AD
 description: 介绍对应用程序进行许可期间可能发生的错误，以及解决这些错误的方法
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6203c56d5b05679ce387cd08193fe19e7dad402f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6bb824f9527619033467594a98310663c1113fdc
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738886"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620728"
 ---
-# <a name="unexpected-error-when-performing-consent-to-an-application"></a>对应用程序执行许可时发生的意外错误
+# <a name="unexpected-error-when-performing-consent-to-an-application-in-azure-active-directory"></a>对 Azure Active Directory 中的应用程序授予同意时发生意外错误
 
 本文介绍对应用程序进行许可期间可能发生的错误。 如果要对不包含任何错误消息的意外许可提示进行故障排除，请参阅 [Azure AD 的身份验证方案](../develop/authentication-vs-authorization.md)。
 

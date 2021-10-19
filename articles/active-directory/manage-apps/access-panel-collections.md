@@ -1,6 +1,7 @@
 ---
-title: 在 Azure Active Directory 中创建“我的应用”门户的集合 |Microsoft Docs
-description: 使用“我的应用”集合自定义“我的应用”页，以便为最终用户提供更简单的“我的应用”体验。 以单独的选项卡的方式将应用程序组织到组中。
+title: 为“我的应用”门户创建集合
+titleSuffix: Azure AD
+description: 使用“我的应用”集合来自定义“我的应用”页面，为用户提供更简单的“我的应用”体验。 以单独的选项卡的方式将应用程序组织到组中。
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 09/02/2021
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02ccd18f4a394d17bcc73dab836c7972b37116a4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 610679e7a720f6736b575d2e58bc424de9e96d8d
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124817833"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617884"
 ---
-# <a name="create-collections-on-the-my-apps-portal"></a>在“我的应用”门户中创建集合
+# <a name="create-collections-on-the-my-apps-portal-in-azure-active-directory"></a>在 Azure Active Directory 中的“我的应用”门户上创建集合
 
 用户可以使用“我的应用”门户来查看和启动他们有权访问的基于云的应用程序。 默认情况下，用户可以访问的所有应用程序都列在一个页面上。 为了更好地为用户组织此页面，如果你有 Azure AD Premium P1 或 P2 许可证，就可以设置集合。 使用集合，你可以将相关的应用程序分组（例如，按作业角色、任务或项目），并在单独的选项卡上显示它们。集合实质上是对用户可以访问的应用程序应用筛选器，因此用户只会看到集合中已分配给他们的那些应用程序。
 

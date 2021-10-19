@@ -8,12 +8,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 050a587ba5fb91ce6c9483d31cccd90f1943e567
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1bf3f8e082a54e7f48fa43040e40cb54001b1d19
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652494"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715425"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
@@ -190,16 +190,16 @@ Total: 1203.39 has confidence 0.774
 > [!TIP]
 > 还可以使用 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法（例如 `begin_recognize_invoices`）分析本地发票图像。 
 
-## <a name="analyze-identity-documents"></a>分析标识文档
+## <a name="analyze-id-documents"></a>分析 ID 文档
 
-本部分演示如何使用表单识别器预生成的 ID 模型，分析和提取政府颁发的标识文档（全球护照和美国驾照）中的关键信息。 有关标识文档分析的详细信息，请参阅[预生成的标识模型概念指南](../../concept-identification-cards.md)。
+本部分演示如何使用表单识别器预生成的 ID 模型，分析和提取政府颁发的标识文档（全球护照和美国驾照）中的关键信息。 有关 ID 文档分析的详细信息，请参阅[预生成的标识模型概念指南](../../concept-identification-cards.md)。
 
-若要分析位于某个 URL 的标识文档，请使用 `begin_recognize_id_documents_from_url` 方法。
+若要从 URL 分析 ID 文档，请使用 `begin_recognize_id_documents_from_url` 方法。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_id)]
 
 > [!TIP]
- > 还可以使用 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true#methods) 方法（例如 `begin_recognize_identity_documents`）分析标识文档图像。 
+ > 还可使用 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true#methods) 方法（例如 `begin_recognize_identity_documents`）分析 ID 文档图像。 
 
 ## <a name="train-a-custom-model"></a>训练自定义模型
 
@@ -401,7 +401,7 @@ python quickstart-file.py
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../../cognitive-services/cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../../cognitive-services/cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../../cognitive-services/cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="troubleshooting"></a>疑难解答

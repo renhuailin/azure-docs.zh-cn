@@ -3,12 +3,12 @@ title: 公共终结点和网络
 description: Azure 视频分析器公开一组公共网络终结点，这些终结点可实现不同的产品方案，包括管理、获取和播放。 本文介绍如何访问公共终结点和网络。
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 0debf9b00bc8c3d78810fb377aa6e065589e6f96
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: ad02a9ddd0ff2893e14d48f6698c83108f1acd63
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389639"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659595"
 ---
 # <a name="public-endpoints-and-networking"></a>公共终结点和网络
 
@@ -54,7 +54,7 @@ Azure 视频分析器公开一组公共网络终结点，这些终结点可实�
 
 ## <a name="azure-storage"></a>Azure 存储
 
-* **目的**：当管道 (TODO: link) 通过视频接收器 (TODO: link to section in pipeline.md) 节点配置为在云上存储视频时，录制音频、视频和推理数据。
+* 目的：当[管道](pipeline.md)通过[视频接收器](pipeline.md#video-sink)节点配置为在云上存储视频时，录制音频、视频和推理数据。
 * **身份验证和授权**：授权由标准 Azure 存储服务身份验证和授权强制措施执行。 在这种情况下，通过容器特定的 SAS URL 访问存储。
 * **要求**：只有在配置视频分析器边缘管道以将视频存档到云时，才需要访问此终结点。
 
@@ -64,11 +64,11 @@ Azure 视频分析器公开一组公共网络终结点，这些终结点可实�
 * **身份验证和授权**：请参阅 Azure IoT 中心文档。
 * **要求**：需要使用 Azure IoT Edge 运行时的正确配置和运行边缘设备，以确保 Azure 视频分析器边缘模块正常工作。
 
-## <a name="114----tls-encryption"></a>1.1.4    TLS 加密 
+##  <a name="tls-encryption"></a>TLS 加密 
 
 * **加密和服务器身份验证**：所有视频分析器终结点都通过 TLS 1.2 合规终结点进行公开。
 
-## <a name="115----references"></a>1.1.5    引用 
+##  <a name="references"></a>参考 
 
 公共:
 

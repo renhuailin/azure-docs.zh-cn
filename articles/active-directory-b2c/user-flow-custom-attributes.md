@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3e3cb266e9da128e9379d6868d189ac72408c4f7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 05d5d4a3ed9ea9e9ea99cd917762973f2865528f
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605822"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657314"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中定义自定义属性
 
@@ -48,7 +48,7 @@ Azure AD B2C 允许你扩展存储在每个用户帐户中的属性集。 还可
 1. 提供自定义属性的“名称”（例如，“ShoeSize”）
 1. 选择“数据类型”。 仅“String”、“Boolean”和“Int”可供选择。
 1. （可选）输入“说明”以供参考。
-1. 单击“创建”。
+1. 选择“创建”。
 
 现在自定义属性在“用户属性”列表中显示，以便在用户流中使用。 自定义属性只有在任何用户流中第一次使用时才创建，而不是将其添加到“用户属性”列表时创建。
 
@@ -58,9 +58,9 @@ Azure AD B2C 允许你扩展存储在每个用户帐户中的属性集。 还可
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 选择策略（例如，“B2C_1_SignupSignin”）将其打开。
-1. 选择“用户属性”，然后选择自定义属性（例如，“ShoeSize”）。 单击“保存”  。
+1. 选择“用户属性”，然后选择自定义属性（例如，“ShoeSize”）。 选择“保存”。
 1. 选择“应用程序声明”，然后选择自定义属性。
-1. 单击“保存”。
+1. 选择“保存”。
 
 使用用户流（其中使用了新创建的自定义属性）创建新用户后，可以在 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 中查询该对象。 或者，可以对用户流使用[运行用户流](./tutorial-create-user-flows.md)功能来验证客户体验。 现在可以在注册期间收集的属性的列表中看到“ShoeSize”，并在发送回应用程序的令牌中看到它。
 
@@ -72,7 +72,7 @@ Azure AD B2C 允许你扩展存储在每个用户帐户中的属性集。 还可
 
 ::: zone pivot="b2c-user-flow"
 
-获取应用程序 ID：
+### <a name="get-extensions-apps-application-id"></a>获取扩展应用的应用程序 ID
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
@@ -86,9 +86,9 @@ Azure AD B2C 允许你扩展存储在每个用户帐户中的属性集。 还可
 
 ::: zone pivot="b2c-custom-policy"
 
-获取应用程序属性：
+### <a name="get-extensions-apps-application-properties"></a>获取扩展应用的应用程序属性
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
 1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
@@ -188,6 +188,36 @@ Microsoft Graph API 支持使用扩展特性创建和更新用户。 Graph API �
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyId": "212342" 
 ``` 
+
+## <a name="remove-extension-attribute"></a>删除扩展属性
+
+与内置属性不同，你可以删除扩展/自定义属性。 还可以删除扩展属性的值。 
+
+> [!Important]
+> 删除扩展/自定义属性之前，请将目录中的每个帐户的扩展属性值设置为 null。  这样即可显式删除扩展属性的值。 然后，继续删除扩展属性本身。 扩展/自定义属性可以使用 MS 图形 API 进行查询。 
+
+::: zone pivot="b2c-user-flow"
+
+使用以下步骤从用户流中删除扩展/自定义属性：
+
+1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
+2. 确保正在使用的目录包含 Azure AD B2C 租户：
+    1.  在门户工具栏中选择“目录 + 订阅”图标。
+    1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中，找到你的 Azure AD B2C 目录，然后选择“切换” 
+1. 选择 Azure 门户左上角的“所有服务”  ，搜索并选择 **Azure AD B2C**。
+1. 选择“用户属性”，然后选择要删除的属性。
+1. 选择“删除”，然后选择“是”进行确认 。
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+若要删除自定义属性，请使用 [MS 图形 API](microsoft-graph-operations.md) 并使用 [Delete](/graph/api/application-delete-extensionproperty)命令。
+
+::: zone-end
+
+ 
+
 
 ## <a name="next-steps"></a>后续步骤
 

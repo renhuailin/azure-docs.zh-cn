@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 3a6bb0fd360b334299c6cd1be2795121a3b53203
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e73e8226bd90b1600b0f3538e34c9f4f937ce189
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124777519"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129807383"
 ---
 # <a name="index-data-from-sharepoint-online"></a>从 SharePoint Online 索引数据
 
@@ -265,9 +265,6 @@ api-key: [admin key]
 ## <a name="indexing-document-metadata"></a>索引文档元数据
 如果已将索引器设置为索引文档元数据，则以下元数据将可用于索引。
 
-> [!NOTE]
-> 当前预览版中不包含自定义元数据。
-
 | 标识符 | 类型 | 说明 | 
 | ------------- | -------------- | ----------- |
 | metadata_spo_site_library_item_id | Edm.String | 站点 ID、库 ID 和项 ID 的组合键，用于唯一标识站点文档库中的项。 |
@@ -284,6 +281,9 @@ api-key: [admin key]
 
 SharePoint Online 索引器还支持每种文档类型特定的元数据。 有关详细信息，可查看 [Azure 认知搜索中使用的内容元数据属性](search-blob-metadata-properties.md)。
 
+> [!NOTE]
+> 若要为自定义元数据编制索引，[必须在查询定义中指定 `additionalColumns`](#query)
+
 <a name="controlling-which-documents-are-indexed"></a>
 
 ## <a name="controlling-which-documents-are-indexed"></a>控制要索引哪些文档
@@ -298,6 +298,8 @@ name 属性是必需的，并且必须是以下三个值之一：
 +   useQuery
     + 仅索引在 query 中定义的内容。
 
+<a name="query"></a>
+
 ### <a name="query"></a>查询
 query 属性由关键字/值对组成。 下面是可使用的关键字。 这些值为站点 URL 或文档库 URL。
 
@@ -310,6 +312,7 @@ query 属性由关键字/值对组成。 下面是可使用的关键字。 这�
 | includeLibrariesInSite | 从连接字符串中定义的站点内的所有库索引内容。 这些仅限于站点的子站点 <br><br> 此关键字的 query 值应为站点或子站点的 URI。 | 从 mysite 中的所有文档库中索引所有内容。 <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrariesInSite=https://mycompany.sharepoint.com/mysite" } ``` |
 | includeLibrary | 从此库中索引内容。 <br><br> 此关键字的 query 值应采用以下格式之一： <br><br> 示例 1： <br><br> includeLibrary=[站点或子站点]/[文档库] <br><br> 示例 2： <br><br> 从浏览器复制的 URI。 | 从 MyDocumentLibrary 中索引所有内容： <br><br> 示例 1： <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/mysite/MyDocumentLibrary" } ``` <br><br> 示例 2： <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/teams/mysite/MyDocumentLibrary/Forms/AllItems.aspx" } ``` |
 | excludeLibrary |  不从此库中索引内容。 <br><br> 此关键字的 query 值应采用以下格式之一： <br><br> 示例 1： <br><br> excludeLibrary=[站点或子站点 URI]/[文档库] <br><br> 示例 2： <br><br> 从浏览器复制的 URI。 | 从我的所有库中索引所有内容（MyDocumentLibrary 除外）： <br><br> 示例 1： <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrariesInSite=https://mysite.sharepoint.com/subsite1; excludeLibrary=https://mysite.sharepoint.com/subsite1/MyDocumentLibrary" } ``` <br><br> 示例 2： <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrariesInSite=https://mycompany.sharepoint.com/teams/mysite; excludeLibrary=https://mycompany.sharepoint.com/teams/mysite/MyDocumentLibrary/Forms/AllItems.aspx" } ``` |
+| additionalColumns | 为此库中的列编制索引。 <br><br> 此关键字的查询值应包括你要编制索引的列名的逗号分隔列表。 使用双反斜杠来转义列名中的分号和逗号： <br><br> 示例 1： <br><br> additionalColumns=MyCustomColumn,MyCustomColumn2 <br><br> 示例 2： <br><br> additionalColumns=MyCustomColumnWith\\,,MyCustomColumn2With\\; | 从 MyDocumentLibrary 中索引所有内容： <br><br> 示例 1： <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/mysite/MyDocumentLibrary;additionalColumns=MyCustomColumn,MyCustomColumn2" } ``` <br><br> 请注意，在使用双反斜杠转义字符时，JSON 要求使用一个反斜杠来转义另一个反斜杠。 <br><br> 示例 2： <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/teams/mysite/MyDocumentLibrary/Forms/AllItems.aspx;additionalColumns=MyCustomColumnWith\\,,MyCustomColumnWith\\;" } ``` |
 
 ## <a name="index-by-file-type"></a>按文件类型编制索引
 可控制要索引哪些文档以及要跳过哪些文档。

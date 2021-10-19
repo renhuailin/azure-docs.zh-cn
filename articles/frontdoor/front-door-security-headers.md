@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: e8462b98aee1d34b6c7a2ed671667223eca45a25
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 48f70bd0cd71ffc517d7955f645c579f1ffa2b48
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551911"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714867"
 ---
 # <a name="tutorial-add-security-headers-with-rules-engine"></a>教程：使用规则引擎添加安全性标头
 
@@ -43,7 +43,7 @@ ms.locfileid: "106551911"
 1. 添加标头名称：“Content-Security-Policy”，并定义此标头应接受的值。 在此方案中，我们选择“script-src 'self' https://apiphany.portal.azure-api.net”。
 
    > [!NOTE]
-   > 标头值限制为 128 个字符。
+   > 标头值限制为 640 个字符。
 
 1. 添加了所有要配置的规则后，请不要忘记转到首选路由，并将规则引擎配置关联到路由规则。 若要使规则正常运行，需要执行此步骤。 
 

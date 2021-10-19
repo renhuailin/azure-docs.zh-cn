@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2021
-ms.openlocfilehash: 1968bb34d124fa37a51b296071ee24b3eae47772
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/04/2021
+ms.openlocfilehash: 80471da945dcc5fdee690ec477599565777f1beb
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273716"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611446"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>在 Azure 认知搜索服务中使用基于角色的授权
 
@@ -294,3 +294,19 @@ SDK 的 GitHub 存储库中提供了有关[在 Azure SDK for .NET 中使用 AAD 
 
 > [!TIP]
 > 将会通过 Azure Active Directory 对管理 REST API 调用进行身份验证。 有关设置安全主体和请求的指导，请参阅博客文章 [Azure REST APIs with Postman (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/)（通过 Postman 使用 Azure REST API（2021 年））。 已使用该博客文章中提供的说明和 Postman 集合对前面的示例进行了测试。
+
+## <a name="conditional-access"></a>条件性访问
+
+[条件访问](../active-directory/conditional-access/overview.md)是由 Azure Active Directory 用来强制实施组织策略的工具。 使用条件访问策略，可以在必要时应用适当的访问控制来确保组织的安全。 使用基于角色的访问控制访问 Azure 认知搜索服务时，条件访问可以强制实施组织策略。
+
+若要为 Azure 认知搜索启用条件访问策略，请执行以下步骤：
+1. [登录](https://portal.azure.com) Azure 门户。
+1. 搜索“Azure AD 条件访问”。
+1. 选择“策略”。
+1. 选择“+ 新建策略”。
+1. 在策略的“云应用或操作”部分，根据你设置策略的方式，添加“Azure 认知搜索”作为云应用 。
+1. 更新策略的其余参数。 例如，指定要将此策略应用于哪些用户和组。 
+1. 保存策略。
+
+> [!IMPORTANT]
+> 如果为搜索服务分配了托管标识，则特定的搜索服务将显示为可在条件访问策略中包含或排除的云应用。 无法对特定的搜索服务强制实施条件访问策略。 应确保选择常规的“Azure 认知搜索”云应用。

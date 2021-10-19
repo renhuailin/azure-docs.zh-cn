@@ -2,13 +2,13 @@
 title: WebHook 事件传送
 description: 本文介绍如何在使用 Webhook 时进行 WebHook 事件传送和终结点验证。
 ms.topic: conceptual
-ms.date: 09/15/2021
-ms.openlocfilehash: 58da34498fa3e2fc81c8fe1476b1098688b9c6c0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/29/2021
+ms.openlocfilehash: 77908b7f36c51ca729915b09cb1e813c978235e3
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128625157"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614359"
 ---
 # <a name="webhook-event-delivery"></a>Webhook 事件传送
 Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事件准备就绪时，事件网格服务会向已配置的终结点 POST HTTP 请求，并在请求正文中包含该事件。
@@ -82,6 +82,25 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>使用 CloudEvents v1.0 验证终结点
 CloudEvents v1.0 使用 **HTTP OPTIONS** 方法实现自己的 [滥用保护语义](webhook-event-delivery.md)。 可以在 [此处](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)阅读详细内容。 使用 CloudEvents 架构进行输出时，事件网格可与 CloudEvents v1.0 滥用保护配合使用，取代事件网格验证事件机制。
+
+## <a name="event-subscriptions-considerations"></a>事件订阅注意事项
+
+若要防止在创建订阅的过程中出现问题，请使用此参考来验证主题和订阅架构之间的兼容性。 创建主题时，将定义传入事件架构，并在创建订阅时定义传出事件架构。
+
+> [!NOTE]
+> 此兼容性表参考适用于：自定义主题和事件域。
+
+| 传入事件架构 | 传出事件架构 | 支持 |
+| ---- | ---- | ---- |
+| 事件网格架构 | 事件网格架构 | 是 |
+| | 云事件 v1.0 架构 | 是 |
+| | 自定义输入架构 | 否 |
+| 云事件 v1.0 架构 | 事件网格架构 | 否 |
+| | 云事件 v1.0 架构 | 是 |
+| | 自定义输入架构 | 否 |
+| 自定义输入架构 | 事件网格架构 | 是 |
+| | 云事件 v1.0 架构 | 是 |
+| | 自定义输入架构 | 是 |
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章，了解如何排查事件订阅验证问题： 

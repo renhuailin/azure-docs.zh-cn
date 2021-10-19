@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 09/21/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b7a35b819844b411a040542d4390fae3e69b9bcc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 13e025845dd4fbd51519f85f1879cc11c6ea102d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128656011"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706896"
 ---
 # <a name="install-the-azure-monitor-agent"></a>安装 Azure Monitor 代理
 本文提供在 Azure 虚拟机和已启用 Azure Arc 的服务器上安装 [Azure Monitor 代理](azure-monitor-agent-overview.md)当前可采用的不同选项，还提供用于创建[数据收集规则关联](data-collection-rule-azure-monitor-agent.md)的选项，这些规则将定义代理应收集的数据。
